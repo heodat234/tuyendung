@@ -14,7 +14,7 @@ class Handling extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['temp'] = 1;
+		$data['temp'] = 213123;
 		$this->data['temp'] = $this->load->view('home/content',$data,true);
 		$this->load->view('home/master',$this->data);
 		

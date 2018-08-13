@@ -14,8 +14,22 @@ class Handling extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['temp'] = 213123;
+		$data['chinhsach'] = "active";
+		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/chinhsachnhansu',$data,true);
+		$this->load->view('home/master',$this->data);
+	}
+	public function cohoi_nghe_nghiep()
+	{
+		$data['cohoi'] = "active";
+		$this->data['menu'] = $this->load->view('home/menu',$data,true);
+		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep',$data,true);
+		$this->load->view('home/master',$this->data);
+	}
+	public function co_hoi_nghe_nghiep_detail($id='')
+	{
+		$data['temp'] = $id;
+		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep_detail',$data,true);
 		$this->load->view('home/master',$this->data);
 	}
 }

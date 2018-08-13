@@ -97,7 +97,7 @@
 						<li><a href="http://www.datxanh.vn/thu-vien/company-profile" target="_self">Company Profile</a></li>
 					</ul>
 				</li>
-				<li><a href="http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su" target="_self">Phát triển con người</a></li>
+				<li><a href="<?php echo base_url()?>handling/index" target="_self">Phát triển con người</a></li>
 				<li><a href="http://www.datxanh.vn/lien-he" target="_self">Liên hệ</a></li>
 			</ul></div></div>
 		</div>

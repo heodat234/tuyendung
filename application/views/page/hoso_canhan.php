@@ -119,8 +119,8 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="">
-              <input class="form-control" type="text" placeholder="">
+              <input class="form-control"  type="text" placeholder="">
+              <input class="form-control" style="margin-top: 15px" type="text" placeholder="">
 
               
             </div>
@@ -129,7 +129,8 @@
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
             <div class="col-sm-8">
               <input class="form-control" type="text" placeholder="">
-              
+              <input class="form-control" style="margin-top: 15px" type="text" placeholder="">
+               <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-top: 15px"> Lưu</button>
             </div>
           </div>
         </div>

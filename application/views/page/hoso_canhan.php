@@ -119,16 +119,16 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="Default input">
-              <input class="form-control" type="text" placeholder="Default input">
-              
+              <input class="form-control" type="text" placeholder="">
+              <input class="form-control" type="text" placeholder="">
+
               
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
             <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="Default input">
+              <input class="form-control" type="text" placeholder="">
               
             </div>
           </div>

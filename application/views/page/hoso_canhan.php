@@ -37,7 +37,8 @@
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-right"></i> Giới thiệu bản thân</a>
               </li>
               <li class=""><a href="#" target="_self"><i class="fa fa-angle-right"></i> Thông tin cá nhân</a></li>
-              <li><a href="#" target="_self"><i class="fa fa-angle-right"></i> thông tin liên hệ</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-angle-right"></i> thông tin liên hệ</a>
+              </li>
               <li class=""><a href= target="_self"><i class="fa fa-angle-right"></i> Thông tin gia đình</a></li>
               <li><a href="#" target="_self"><i class="fa fa-angle-right"></i> Kinh nghiệm làm việc</a></li>
               <li><a href="#" target="_self"><i class="fa fa-angle-right"></i> Trình độ học vấn</a></li>
@@ -46,81 +47,97 @@
           </nav>
        </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9 ">
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
           
-          <div class="col-md-7" style="padding-right: 30px;">
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-            <div class="col-sm-8">
-           
-              <input class="form-control" type="text" placeholder="Default input">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Số CMND/CCCD</label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="Default input">
-              
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Mật khẩu</label>
-            <div class="col-sm-8">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Xác nhận mật khẩu</label>
-            <div class="col-sm-8">
-               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Tên</label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="Default input">
-              
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Họ và tên đệm</label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" placeholder="Default input">
-              
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Giới tính</label>
-            <div class="col-sm-8">
-              <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
-              </label>
-              
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Ngày Sinh</label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" id="ngaysinh" placeholder="Default input">
-              
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
-            <div class="col-sm-8">
-              <textarea class="form-control" rows="2" style="resize: none;""></textarea>
-              <button type="button" class="btn" data-toggle="modal" data-target="#myModal2" style="background-color: #f58220 !important;color: white; margin-top: 15px" data-toggle="modal" data-target="#myModal">Đăng Ký
-            </button>
-            </div>
-          </div>
-            
-          </div>
+            <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">GIỚI THIỆU (INTRODUCE)</label>
+            <div class="col-sm-8">
+              
+              <textarea class="form-control" rows="4" style="resize: none;"></textarea>
+            </div>
           </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">VỊ TRÍ MONG MUỐN (EXPECT POSOTION)</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" rows="2" style="resize: none;"></textarea>
+              
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
+            <div class="col-sm-8">
+             <input class="form-control" type="text" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
+            <div class="col-sm-8">
+               <input class="form-control" type="text" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+
+            <label for="inputPassword" class="col-sm-4 col-form-label">TẢI LÊN CV</label>
+
+            <div class="col-sm-8">
+
+                <input class="form-control" type="text" placeholder="">
+                    <div class="form-group row" style="width: 100%;margin-top: 12px">
+                        <div class="col-sm-9 col-form-label">
+                            <input class="form-control"  type="text" placeholder="Chọn file..."> </div>
+                      <div class="col-sm-3 col-form-label">
+                             <button type="button" class="btn">Tải lên</button></div>
+                  </div>
+                <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-top: 15px"> Lưu</button>
+            </div>
+          </div>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" rows="2" style="resize: none;"></textarea>
+              
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" rows="2" style="resize: none;"></textarea>
+              
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" placeholder="Default input">
+              <input class="form-control" type="text" placeholder="Default input">
+              
+              
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" placeholder="Default input">
+              
+            </div>
+          </div>
+        </div>
+
+
+
+
+
 
         </div>
       

@@ -32,5 +32,12 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep_detail',$data,true);
 		$this->load->view('home/master',$this->data);
 	}
+	public function hoso_canhan()
+	{
+		$data['hoso'] = "active";
+		$this->data['menu'] = $this->load->view('home/menu',$data,true);
+		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
+		$this->load->view('home/master',$this->data);	
+	}
 }
 ?>

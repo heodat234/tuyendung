@@ -20,6 +20,7 @@
        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
       <link rel='stylesheet' type='text/css' href='<?php echo base_url()?>public/css/app.min.css' />
+      <link rel='stylesheet' type='text/css' href='<?php echo base_url()?>public/css/mycss.css' />
       <!-- <link rel='shortcut icon' href='/Data/Sites/1/skins/default/favicon.ico' /> -->
       <script src="<?php echo base_url()?>public/js/jquery.min.js" type="text/javascript" ></script>
 

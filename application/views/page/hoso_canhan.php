@@ -846,4 +846,66 @@ $('#tuden3').datetimepicker();
 $('#tuden4').datetimepicker();
 $('#tuden5').datetimepicker();
 $('#tuden6').datetimepicker();
+
+ $('#collapseOne').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseSix').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseTwo').on('shown.bs.collapse', function (event) {
+        $('#collapseOne').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseSix').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseThree').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseOne').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseSix').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseFour').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseOne').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseSix').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseFive').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseOne').collapse('hide');
+        
+        $('#collapseSix').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseSix').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseOne').collapse('hide');
+        $('#collapseSeven').collapse('hide');
+    });
+ $('#collapseSeven').on('shown.bs.collapse', function (event) {
+        $('#collapseTwo').collapse('hide');
+        $('#collapseThree').collapse('hide');
+        $('#collapseFour').collapse('hide');
+        $('#collapseFive').collapse('hide');
+        $('#collapseSix').collapse('hide');
+        $('#collapseOne').collapse('hide');
+    });
+ // $('#collapseSeven').on('hidden.bs.collapse', function (event) {
+ //        $('#collapseSeven').collapse('show');
+        
+ //    });
 </script>

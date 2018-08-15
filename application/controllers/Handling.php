@@ -39,5 +39,12 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 		$this->load->view('home/master',$this->data);	
 	}
+	public function lichsu_apply()
+	{
+		$data['ls'] = "active";
+		$this->data['menu'] = $this->load->view('home/menu',$data,true);
+		$this->data['temp'] = $this->load->view('page/lichsu_ungtuyen',$data,true);
+		$this->load->view('home/master',$this->data);	
+	}
 }
 ?>

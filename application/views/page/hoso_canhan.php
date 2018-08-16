@@ -19,7 +19,7 @@
         <tr style="background-color: #f8f9fc;border: none;">
         
         <td>
-          <textarea class="form-control" rows="5" style="resize: none; font-size: 12px; border-radius: 10px !important">My name is Nam Do, and I'm currently looking for a job in youth services. I have 10 years of experience working with youth agencies. I have a bachelor's degree in outdoor education. I raise money, train leaders and organize units. I have raised over $1000,000 each of the six years. I consider myself a good public speaker, and I have a good sense of humor."Who do you know who works with youth?"</textarea>
+          <div class="form-control textarea-info" >My name is Nam Do, and I'm currently looking for a job in youth services. I have 10 years of experience working with youth agencies. I have a bachelor's degree in outdoor education. I raise money, train leaders and organize units. I have raised over $1000,000 each of the six years. I consider myself a good public speaker, and I have a good sense of humor."Who do you know who works with youth?"</div>
         
       </td>
     </tr>

@@ -56,3 +56,44 @@
     background-image: none;
     border: 1px solid #ccc;
 }
+
+.textarea-info {
+    position: relative;
+    resize: none; 
+    font-size: 12px !important; 
+    border-radius: 10px !important;
+    box-shadow: 3px 3px 4px #666;
+    -moz-box-shadow: 3px 3px 4px #666;
+    -webkit-box-shadow: 3px 3px 4px #666;
+}
+.textarea-info:before {
+  width: 0;
+    height: 0;
+    border-top: 8px solid transparent !important;
+    border-right: 11px solid #ccc!important;
+    border-bottom: 9px solid transparent !important;
+  content: '';
+  display: block;
+  position: absolute;
+  border: 10px solid transparent;
+  border-bottom-color: rgba(0,0,0,0.5);
+  bottom: 33px;
+  left: -21px;
+}
+.textarea-info:after {
+  width: 0;
+    height: 0;
+    border-top: 11px solid transparent !important;
+    border-right: 17px solid #fff!important;
+    border-bottom: 11px solid transparent !important;
+  content: '';
+  display: block;
+  position: absolute;
+  border: 8px solid transparent;
+  bottom: 31px;
+  left: -19px;
+}
+
+.textarea-info:after {
+  
+}

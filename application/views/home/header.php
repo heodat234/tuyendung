@@ -83,7 +83,7 @@
 								<li><a href="http://www.datxanh.vn/co-dong/co-phieu-dxg/giao-dich-co-dong" target="_self">Giao dịch cổ đông</a></li>
 							</ul>
 						</li>
-						<li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="http://www.datxanh.vn/tin-tuc" target="_self">Tin tức</a><ul class="dropdown-menu">
+						<li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="http://www.datxanh.vn/tin-tuc" target="_self">Tin tức</a><ul class="dropdown-menu">
 							<li><a href="http://www.datxanh.vn/tin-tuc/tin-dat-xanh" target="_self">Tin Đất Xanh</a></li>
 							<li><a href="http://www.datxanh.vn/tin-tuc/hoat-dong-cong-dong" target="_self">Hoạt động cộng đồng</a></li>
 							<li><a href="http://www.datxanh.vn/tin-tuc/van-hoa-dat-xanh" target="_self">Văn hóa Đất Xanh</a></li>
@@ -97,7 +97,7 @@
 						<li><a href="http://www.datxanh.vn/thu-vien/company-profile" target="_self">Company Profile</a></li>
 					</ul>
 				</li>
-				<li><a href="<?php echo base_url()?>handling/index" target="_self">Phát triển con người</a></li>
+				<li class="active"><a href="<?php echo base_url()?>handling/index" target="_self">Phát triển con người</a></li>
 				<li><a href="http://www.datxanh.vn/lien-he" target="_self">Liên hệ</a></li>
 			</ul></div></div>
 		</div>

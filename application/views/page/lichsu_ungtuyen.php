@@ -4,9 +4,9 @@
       <tr> 
         <th id="th" width="10%">STT</th> 
         <th id="th" width="40%">Vị trí tuyển dụng</th> 
-        <th id="th" width="20%">Ngày hết hạng</th> 
-        <th id="th" width="20%">Ngày nộp HS</th>
-        <th id="th" width="20%">Trang thái</th>
+        <th id="th" width="18%">Ngày hết hạng</th> 
+        <th id="th" width="18%">Ngày nộp HS</th>
+        <th id="th" width="14%">Trạng thái</th>
       </tr> 
     </thead> 
     <tbody> 

@@ -18,9 +18,9 @@
       <![endif]-->
 
        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
+       <link rel='stylesheet' type='text/css' href='<?php echo base_url()?>public/css/mycss.css' />
       <link rel='stylesheet' type='text/css' href='<?php echo base_url()?>public/css/app.min.css' />
-      <link rel='stylesheet' type='text/css' href='<?php echo base_url()?>public/css/mycss.css' />
+      
       <!-- <link rel='shortcut icon' href='/Data/Sites/1/skins/default/favicon.ico' /> -->
       <script src="<?php echo base_url()?>public/js/jquery.min.js" type="text/javascript" ></script>
 
@@ -270,7 +270,7 @@ document.getElementById('ctl00_mdl141_ctl00_subscribe1_regexEmail').dispose = fu
             <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
             <div class="col-sm-8">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              <button type="button" class="btn-lg" style="background-color: #f58220 !important;color: white; margin-top: 15px" data-toggle="modal" data-target="#myModal">Đăng Nhập
+              <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-top: 15px" data-toggle="modal" data-target="#myModal">Đăng Nhập
             </button>
             <p style="margin-top: 10px"><strong>
             <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu</strong>

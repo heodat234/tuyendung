@@ -1,10 +1,10 @@
 <div class="col-xs-12">
   <div class="block-articleDetail">
     <h1 class="title-pg">Chính Sách Nhân Sự</h1>
-    <div class="fullContent"><div style="text-align: justify;">
-      <strong><img alt="" src="<?php echo base_url()?>public/image/daotao.jpg" style="float: right; margin-left: 20px; margin-bottom: 20px;" />1. Đào tạo và phát triển</strong><br />
+    <div class="fullContent"><div class="justify">
+      <strong><img alt="" src="<?php echo base_url()?>public/image/daotao.jpg" class="content1" />1. Đào tạo và phát triển</strong><br />
     Đào tạo và phát triển là phương châm của Đất Xanh nhằm giúp đội ngũ nhân sự phát huy tối đa tiềm năng và định hướng nghề nghiệp, phù hợp với từng cá nhân, giúp nhân sự ngày càng phát triển bản thân và trở thành các nhà lãnh đạo trong tương lai.</div>
-    <div style="text-align: justify;"><br />
+    <div class="justify"><br />
       Các chương trình đào tạo bao gồm:
       <ul>
         <li>Đào tạo hội nhập cho tất cả CBNV</li>
@@ -12,7 +12,7 @@
         <li>Đào tạo đội ngũ lãnh đạo tiềm năng</li>
       </ul>
       <br />
-      <img alt="" src="<?php echo base_url()?>public/image/moitruong.jpg" style="float: left; margin-right: 20px; margin-bottom: 20px;" /><strong>2. Môi trường làm việc Trẻ - Năng động</strong>
+      <img alt="" src="<?php echo base_url()?>public/image/moitruong.jpg" class="content2" /><strong>2. Môi trường làm việc Trẻ - Năng động</strong>
       <p>
         Chúng tôi không ngừng cải thiện môi trường làm việc, điều kiện làm việc để tạo sự thoái mái nhất cho CBNV khi làm việc tại Đất Xanh<br />
         Khi bạn đến với Đất Xanh bạn sẽ ngạc nhiên về một đội ngũ trẻ - năng động - nhiệt huyết - tự tin và đặc biệt rất hòa đồng và thân thiện.<br />
@@ -23,7 +23,7 @@
         <br />
         <br />
         <br />
-        <strong><img alt="" src="<?php echo base_url()?>public/image/khenthuong.jpg" style="float: right; margin-left: 20px; margin-bottom: 20px;" />3. Hệ thống lương - thưởng</strong>
+        <strong><img alt="" src="<?php echo base_url()?>public/image/khenthuong.jpg" class="content1" />3. Hệ thống lương - thưởng</strong>
       </p>
       <ul>
         <li>Tăng lương: Định kỳ xét tăng lương theo định kỳ 1 năm/lần. Thời gian xét tăng lương từ đầu năm. Tỷ lệ xét tăng lương dựa trên hiệu quả làm việc của năm trước đó</li>
@@ -38,7 +38,7 @@
       </ul>
       <p>
         <br />
-        <strong><img alt="" src="<?php echo base_url()?>public/image/dulich.jpg" style="float: left; margin-right: 40px; margin-bottom: 20px;" />4. Chính sách phúc lợi</strong></p>
+        <strong><img alt="" src="<?php echo base_url()?>public/image/dulich.jpg" class="content2"  />4. Chính sách phúc lợi</strong></p>
         <p>Đất Xanh là một trong những đơn vị có hệ thống có hệ thống phúc lợi tốt nhất trên thị trường hiện nay.</p>
         <p>
         </p>
@@ -54,7 +54,7 @@
           <li>Tặng nhà: Dành cho những CBNV có nhiều thành tích, có sự gắn bó lâu dài với Tập Đoàn</li>
         </ul>
         <p>&nbsp;</p>
-        <p><strong><img alt="" src="<?php echo base_url()?>public/image/xahoi.jpg" style="float: left; margin-right: 20px; margin-bottom: 20px;" /></strong></p>
+        <p><strong><img alt="" src="<?php echo base_url()?>public/image/xahoi.jpg" class="content2"  /></strong></p>
         <p><strong>5. Chia sẻ trách nhiệm với xã hội</strong><br />
         Đất Xanh vinh hạnh là một trong những đơn vị đóng góp ngân sách cao nhất tại Quận Bình Thạnh theo thống kê của cục thuế Tp. HCM. Ngoài ra Các chương trình thăm và tặng quà cho trẻ em nghèo tại các trung tâm trong và ngoài Thành phố được tổ chức hằng năm công với các chương trình xây nhà tình thương tình nghĩa như là một trách nhiệm buộc phải thực hiện để giúp những cảnh đời bất hạnh có cơ hội vươn lên thay đổi cuộc sống.</p>
         <p>&nbsp;</p>

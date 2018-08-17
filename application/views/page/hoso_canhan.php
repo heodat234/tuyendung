@@ -4,19 +4,19 @@
     <h1 class="title-pg">Hồ sơ của tôi</h1>
     <div class="fullContent">
       
-      <div style="color: #c0c3c5; float: right;">Mức độ hoàn thiện hồ sơ: 2/7</div>
+      <div class="color-gray title-right">Mức độ hoàn thiện hồ sơ: 2/7</div>
       <table class="table" >
-        <tr style="background-color: #ccdeed;border: none;">
+        <tr class="none-table">
 
           <td rowspan="2" width="22%">
-           <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1" style="width: 150px;height: 150px;z-index: 0" class="img">
+           <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1"  class="img image-avatar">
 
-           <div style="height: 40px; width: 150px;background-color: black ;margin-top: -40px !important; z-index: 10;position: relative; opacity: 0.4;" id="anh2" onclick="edit_anh()"><i class="fa fa-camera" style="float: right; margin-top: 20px;margin-right: 5px"></i></div>
+           <div class="image-edit"  id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
           </td>
-          <td><strong style="font-size: 20px">Nam, Do</strong></td>
+          <td><strong class="size20">Nam, Do</strong></td>
           
         </tr>
-        <tr style="background-color: #f8f9fc;border: none;">
+        <tr class="none-table2">
         
         <td>
           <div class="form-control textarea-info" >My name is Nam Do, and I'm currently looking for a job in youth services. I have 10 years of experience working with youth agencies. I have a bachelor's degree in outdoor education. I raise money, train leaders and organize units. I have raised over $1000,000 each of the six years. I consider myself a good public speaker, and I have a good sense of humor."Who do you know who works with youth?"</div>

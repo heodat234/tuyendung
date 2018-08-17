@@ -1,7 +1,7 @@
 <?php echo $temp;?>
 <div class="block-jobDetail">
   <h1 class="title-pg">Nhân viên Kinh doanh</h1>
-  <div class="full"><div style="text-align: justify;">
+  <div class="full"><div class="justify">
 <div class="row">
 <div class="col-lg-7">
 <h4>Yêu cầu tuyển dụng:</h4>

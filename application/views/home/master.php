@@ -59,7 +59,7 @@
           <div class="container">
             <div id="ctl00_divAlt1" class="altcontent1 cmszone">
 
-              <div class="breadcrumb_bg">
+              <div class="breadcrumb_bg margin-break">
                 <div class="container">
                   <div class='Module Module-153'>
                     <ol class='breadcrumb'>
@@ -75,15 +75,17 @@
                   </div>
                 </div>
               </div>
-              <div style="float: right; ">
-                <button type="button" class="btn" style="background-color: white" data-toggle="modal" data-target="#myModal"><i class="fa fa-user fa-lg" style="color: #f58220;"></i>
+              
+              <div class="floatright">
+                <button type="button" class="btn btn-white"  data-toggle="modal" data-target="#myModal"><i class="fa fa-user fa-lg orange" ></i>
                   <strong>Đăng Nhập</strong>
                 </button>
               </div>
+            
             </div>
             <div class="row">
               <div id="ctl00_divLeft" class="col-left col-lg-3 cmszone">
-                <div style="margin-top: 50px;">
+                <div >
                   <?php echo isset($menu)?$menu:'' ?>
                 </div>
               </div>
@@ -165,13 +167,13 @@
     </script>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" style="width: 60%" role="document">
+      <div class="modal-dialog modal-60"  role="document">
         <div class="modal-content">
           
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-6" style="padding-left: 30px; font-size: 14px;text-align: justify">
-               <h3 style="color: blue;">Tham gia cùng chúng tôi
+              <div class="col-md-6 text-modal" >
+               <h3 class="color-blue" ">Tham gia cùng chúng tôi
                </h3>
                <p>Gia nhập Talent Network của chúng tôi sẽ giúp bạn nâng cao khả năng tìm kiếm việc làm. Cho dù bạn ứng truyển một công việc nào đó hoặc đơn giản là cập nhật thông tin của mình, chúng tôi cũng luôn mong muốn được kết nối cùng bạn.
                </p> 
@@ -180,10 +182,10 @@
                 <li>Cập nhật các thông tin mới nhất vào công ty</li>
                 <li>Chia sẻ cơ hội việc làm với gia đình, bạn bè thông qua mạng xã hội hoặc email</li> 
               </ul>
-              <strong style="float: right;">Hãy đăng ký ngay hôm nay!</strong>
+              <strong class="title-right">Hãy đăng ký ngay hôm nay!</strong>
               </div>
-              <div class="col-md-6" style="padding-right: 30px;border-left: 1px solid #ddd;">
-               <h3 style="color: blue;">Đăng Nhập</h3>
+              <div class="col-md-6 padding-form-login" >
+               <h3 class="color-blue">Đăng Nhập</h3>
                <br>
               <div class="form-group row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
@@ -196,12 +198,12 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
                   <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                  <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-top: 15px" data-toggle="modal" data-target="#myModal">Đăng Nhập
+                  <button type="button" class="btn btn-login"  data-toggle="modal" data-target="#myModal">Đăng Nhập
                 </button>
-                <p style="margin-top: 10px"><strong>
+                <p class="margin-top10"><strong>
                 <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu</strong>
                 </p>  
-                <p style="margin-top: -5px"><a data-toggle="modal" data-target="#myModal1"><strong>
+                <p class="margin-top-5"><a data-toggle="modal" data-target="#myModal1"><strong>
                 <i class="fa fa-caret-right fa-lg"></i> Đăng ký tài khoản</strong></a>
               </p>
                 </div>
@@ -217,13 +219,13 @@
     </div>
 
     <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" style="width: 70%" role="document">
+      <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
           
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-5" style="padding-left: 30px; font-size: 14px;text-align: justify">
-               <h3 style="color: blue;">Tham gia cùng chúng tôi
+              <div class="col-md-5 padding-form-login" >
+               <h3 class="color-blue">Tham gia cùng chúng tôi
                </h3>
                <p>Gia nhập Talent Network của chúng tôi sẽ giúp bạn nâng cao khả năng tìm kiếm việc làm. Cho dù bạn ứng truyển một công việc nào đó hoặc đơn giản là cập nhật thông tin của mình, chúng tôi cũng luôn mong muốn được kết nối cùng bạn.
                </p> 
@@ -232,10 +234,10 @@
                 <li>Cập nhật các thông tin mới nhất vào công ty</li>
                 <li>Chia sẻ cơ hội việc làm với gia đình, bạn bè thông qua mạng xã hội hoặc email</li> 
               </ul>
-              <strong style="float: right;">Hãy đăng ký ngay hôm nay!</strong>
+              <strong class="title-right" ">Hãy đăng ký ngay hôm nay!</strong>
               </div>
-              <div class="col-md-7" style="padding-right: 30px;border-left: 1px solid #ddd;">
-               <h3 style="color: blue;">Đăng ký tài khoản</h3>
+              <div class="col-md-7 padding-form-login">
+               <h3 class="color-blue">Đăng ký tài khoản</h3>
                
               <div class="form-group row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
@@ -299,8 +301,8 @@
               <div class="form-group row">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="2" style="resize: none;""></textarea>
-                  <button type="button" class="btn" data-toggle="modal" data-target="#myModal2" style="background-color: #f58220 !important;color: white; margin-top: 15px" data-toggle="modal" data-target="#myModal">Đăng Ký
+                  <textarea class="form-control off-resize" rows="2" ></textarea>
+                  <button type="button" class="btn btn-login" data-toggle="modal" data-target="#myModal2" data-toggle="modal" data-target="#myModal">Đăng Ký
                 </button>
                 </div>
               </div>
@@ -313,16 +315,16 @@
     </div>
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" style="width: 70%" role="document">
+      <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
-          <h3 style="text-align: center;color:blue;padding-left: 20px;padding-right: 20px;padding-top: 30px"><strong>Đất Xanh Group chào mừng bạn dã tham gia Talent Network</strong></h3>
-          <p style="padding-left:20px;padding-right: 20px">
+          <h3 class="title-center-complete"><strong>Đất Xanh Group chào mừng bạn dã tham gia Talent Network</strong></h3>
+          <p class="padding-left-right-20">
             Xin chào <strong>Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
           </p>
-          <p style="text-align: justify; padding-left:20px;padding-right: 20px">
-            Đê tiếp tục, mới bạn <a href="#" style="color:#f58220; text-decoration: underline;">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
+          <p class="justify padding-left-right-20">
+            Đê tiếp tục, mới bạn <a href="#" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
           </p>
-          <img src="<?php echo base_url()?>public/image/banner-772x250.jpg" style="width: 100%;padding-bottom: 0px">
+          <img src="<?php echo base_url()?>public/image/banner-772x250.jpg" class="image-banner">
           
         </div>
       </div>

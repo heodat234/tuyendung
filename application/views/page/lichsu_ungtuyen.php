@@ -1,4 +1,4 @@
-<h3 style=" color: #005aa6">Lịch sử ứng tuyển</h3>
+<h3 class="color-blue">Lịch sử ứng tuyển</h3>
 <table   class="table table-striped table-bordered" > 
   <thead> 
       <tr> 

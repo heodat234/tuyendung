@@ -481,7 +481,7 @@
 <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-40 role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm người thân</h3>
+      <h3 class="title-modal">Thêm người thân</h3>
            
           
             <div class="form-group row padding-left-right-20" >
@@ -495,7 +495,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Năm sinh</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -507,7 +507,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Quan hệ</label>
             <div class="col-sm-6">
            
-             <select class="form-control">
+             <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -524,7 +524,7 @@
             </div>
           </div>
           
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -533,9 +533,9 @@
 
 
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40" role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm quá trình công tác</h3>
+      <h3 class="title-modal">Thêm quá trình công tác</h3>
            
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
@@ -555,21 +555,21 @@
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Địa chỉ</label>
             <div class="col-sm-6">
            
-              <textarea class="form-control" rows="2" style="resize: none;""></textarea>
+              <textarea class="form-control off-resize" rows="2" ></textarea>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ khi nghỉ</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nhiễm vụ/ trách nhiễm</label>
             <div class="col-sm-6">
            
@@ -577,7 +577,7 @@
               
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Lý do nghỉ</label>
             <div class="col-sm-6">
            
@@ -585,7 +585,7 @@
               
             </div>
           </div>
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal"> Thêm</button>
          
       
     </div>
@@ -593,33 +593,33 @@
 </div>
 
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40" role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm người tham khảo</h3>
+      <h3 class="title-modal">Thêm người tham khảo</h3>
            
           
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Công ty</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Liên hệ</label>
             <div class="col-sm-6">
            
@@ -627,7 +627,7 @@
               
             </div>
           </div>
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -635,11 +635,11 @@
 </div>
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40" role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm trình độ học vấn</h3>
+      <h3 class="title-modal">Thêm trình độ học vấn</h3>
            
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -650,28 +650,28 @@
               </div>
             </div>
           </div>
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên trường</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nơi học</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ trình độ</label>
             <div class="col-sm-6">
            
@@ -681,7 +681,7 @@
               </label>
             </div>
           </div>
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -689,11 +689,11 @@
 </div>
 
 <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40" role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm khóa huấn luyện/ đào tạo</h3>
+      <h3 class="title-modal">Thêm khóa huấn luyện/ đào tạo</h3>
            
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -704,21 +704,21 @@
               </div>
             </div>
           </div>
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Thời gian học</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
                 <input class="form-control" type="text"  placeholder=""></div>
                 <div class="col-sm-6">
-                <select class="form-control" style="height: 39px">
+                <select class="form-control height31" >
                   <option>Năm</option>
                   <option>Tháng</option>
                   <option>Ngày</option>
@@ -727,21 +727,21 @@
               </div>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ chứng chỉ</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -750,22 +750,22 @@
 
 
 <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40" role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm ngoại ngữ</h3>
+      <h3 class="title-modal">Thêm ngoại ngữ</h3>
            
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngoại ngữ</label>
             <div class="col-sm-8">
            
               <input class="form-control" type="text"  placeholder="Name of University/ Colleges">
             </div>
           </div>
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghe</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -773,11 +773,11 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Nói</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -785,11 +785,11 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Đọc</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -797,11 +797,11 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Viết</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -810,7 +810,7 @@
             </div>
           </div>
           
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -818,22 +818,22 @@
 </div>
 
 <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40"  role="document">
     <div class="modal-content">
-      <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm trình độ tin học</h3>
+      <h3 class="title-modal">Thêm trình độ tin học</h3>
            
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Kiến thức/ Phần mềm</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control" rows="2" style="resize: none;""></textarea>
+              <textarea class="form-control off-resize" rows="2" ></textarea>
             </div>
           </div>
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Trình độ</label>
             <div class="col-sm-6">
            
-              <select class="form-control">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -842,7 +842,7 @@
             </div>
           </div>
           
-           <button type="button" class="btn" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Thêm</button>
+           <button type="button" class="btn them-modal" > Thêm</button>
          
       
     </div>
@@ -859,39 +859,22 @@
         <h4 class="modal-title" id="myModalLabel">Cập nhật ảnh đại diện</h4>
       </div>
       <div class="modal-body">
-         <strong style="color:blue;padding-left: 40px;padding-right: 20px;padding-bottom: 20px;">Đổi ảnh đại diện</strong>
+         <strong class="title-anhdaidien">Đổi ảnh đại diện</strong>
       <br>
-           <button type="button" style="margin-left: 40px;padding-left: 10px" class="btn btnlong" >Chọn file</button>
+           <button type="button"  class="btn btnlong padding-anhdaidien" >Chọn file</button>
            <label>Không có ảnh...</label>
                   
            
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btnlong" style="background-color: #a6a6b1 !important;color: white; margin-bottom: 10px; margin-left: 32%" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; float: right;"> Lưu</button>
+        <button type="button" class="btn btnlong btn88"  data-dismiss="modal">Close</button>
+        <button type="button" class="btn btnlong btn99"> Lưu</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="modal fade" id="edit_anh_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-    <div class="modal-content">
-      <strong style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 60px;">Đổi ảnh đại diện</strong>
-      <br>
-           <button type="button" style="margin-left: 40px" class="btn btnlong" >Chọn file</button>
-           <label>Không có ảnh...</label>
-                  <br>
-           <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; margin-bottom: 10px; margin-left: 42%"> Lưu</button>
-         
-      
-    </div>
-  </div>
-</div> -->
+
 
 
 

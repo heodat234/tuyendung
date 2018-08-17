@@ -765,7 +765,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghe</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>

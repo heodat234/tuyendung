@@ -23,14 +23,20 @@
         
       </td>
     </tr>
-    <tr style="background-color: #f8f9fc; ">
-      <td style="font-size: 12px;color: #c0c3c5;border: none;padding: 5px"><i style="color: #f5821f" class="fa fa-info-circle"></i> Nam/ 26 Tuổi</td>
-      <td style="font-size: 12px;border: none;padding: 5px"><i style="color: #f5821f;" class="fa fa-dollar"></i><span style="color: #c0c3c5"> 30,000,000 - 50,000,000 VND</span></td>
+    <tr class="none-table2">
+      <td class="table-profile">
+        <i class="fa fa-info-circle orange"></i>
+         Nam/ 26 Tuổi
+       </td>
+      <td class="table-profile">
+        <i class="fa fa-dollar orange"></i>
+        <span> 30,000,000 - 50,000,000 VND</span>
+      </td>
     </tr>
-    <tr style="background-color: #f8f9fc;">
-          <td style="font-size: 12px;color: #c0c3c5;border: none;padding: 5px"><i style="color: #f5821f" class="fa fa-user"></i> 165cm/60kg</td>
+    <tr class="none-table2">
+          <td class="table-profile"><i class="fa fa-user orange"></i> 165cm/60kg</td>
         
-        <td style="font-size: 12px;border: none;padding: 5px"><i style="color: #f5821f;" class="fa fa-briefcase"></i><span style="color: #c0c3c5"> Designer, Consullant, +1...</span></td> 
+        <td class="table-profile"><i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span></td> 
         </tr> 
       </table>
 
@@ -40,17 +46,17 @@
         <div class="col-md-3">
           <nav class="block-leftMenu menuPage mrb30">
 
-            <ul class="nav navbar-nav" style="width: 100%">
+            <ul class="nav navbar-nav width100" >
               <li class="">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: green;font-size: 10px"></i> Giới thiệu bản thân</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: green; font-size: 10px"></i> Thông tin cá nhân</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: green;font-size: 10px"></i> thông tin liên hệ</a>
+              <li class=""><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green; "></i> Thông tin cá nhân</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> thông tin liên hệ</a>
               </li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: green;font-size: 10px"></i> Thông tin gia đình</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: orange;font-size: 10px"></i> Kinh nghiệm làm việc</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: orange;font-size: 10px"></i> Trình độ học vấn</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle" style="color: orange;font-size: 10px"></i> Ngoại ngữ tin học</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> Thông tin gia đình</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Kinh nghiệm làm việc</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Trình độ học vấn</a></li>
+              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
@@ -64,13 +70,13 @@
             <label for="staticEmail" class="col-sm-4"  >GIỚI THIỆU (INTRODUCE)</label>
             <div class="col-sm-8">
               
-              <textarea class="areatext kttext" rows="4" style="resize: none;"></textarea>
+              <textarea class="areatext kttext off-resize" rows="4" ></textarea>
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >VỊ TRÍ MONG MUỐN (EXPECT POSOTION)</label>
             <div class="col-sm-8">
-              <textarea class="areatext kttext" rows="2" style="resize: none;"></textarea>
+              <textarea class="areatext kttext off-resize" rows="2" "></textarea>
               
             </div>
           </div>
@@ -93,13 +99,13 @@
             <div class="col-sm-8">
 
                 <input class="kttext" type="text" placeholder="">
-                    <div class="form-group row kcform" style="width: 100%;margin-top: 12px">
+                    <div class="form-group row kcform width100 margin-top12" >
                         <div class="col-sm-6">
                             <input class="kttext"  type="text" placeholder="Chọn file..."> </div>
                       <div class="col-sm-6">
                              <button type="button" class="btn btnlong" >Tải lên</button></div>
                   </div>
-                <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; margin-top: 15px"> Lưu</button>
+                <button type="button" class="btn btnlong margin-top12" > Lưu</button>
             </div>
           </div>
         </div>
@@ -202,7 +208,7 @@
                   <option>5</option>
                 </select>
                 <br>
-                <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; margin-top: 15px"> Lưu</button>
+                <button type="button" class="btn btnlong margin-top12" > Lưu</button>
             </div>
           </div>
           
@@ -213,20 +219,20 @@
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
-              <input class="kttext " style="width: 70%" type="text" placeholder="">
+              <input class="kttext modal-70"  type="text" placeholder="">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext" rows="2" style="resize: none;"></textarea>
+              <textarea class="kttext areatext off-resize" rows="2" ></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext "  rows="2" style="resize: none;"></textarea>
+              <textarea class="kttext areatext off-resize"  rows="2" ></textarea>
               
             </div>
           </div>
@@ -235,7 +241,7 @@
             <div class="col-sm-8">
               <input class="kttext"  type="text" placeholder="">
               <br>
-              <input class="kttext" style="margin-top: 8px" type="text" placeholder="">
+              <input class="kttext margin-top-8"  type="text" placeholder="">
 
               
             </div>
@@ -244,14 +250,14 @@
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
             <div class="col-sm-8">
               <input class="kttext" type="text" placeholder="">
-              <input class="kttext" style="margin-left: 25px" type="text" placeholder="">
-               <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; margin-top: 15px"> Lưu</button>  
+              <input class="kttext margin-left-25"  type="text" placeholder="">
+               <button type="button" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
         </div>
 
         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -276,12 +282,12 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white;"> Lưu</button>  
+          <button type="button" class="btn btnlong"> Lưu</button>  
         </div>
 
         <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <label>Quá trình công tác</label>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal2"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal2"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -310,7 +316,7 @@
             </tbody> 
           </table>
            <label>Người phụ trách tham khảo</label>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal3"> Thêm</button>
+          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal3"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -338,12 +344,12 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white;"> Lưu</button>  
+          <button type="button" class="btn btnlong" > Lưu</button>  
         </div>
 
         <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <label>Trình độ học vấn</label>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal4"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal4"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -372,7 +378,7 @@
             </tbody> 
           </table>
            <label>Các khóa đào tạo</label>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal5"> Thêm</button>
+          <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal5"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -400,12 +406,12 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white;"> Lưu</button>  
+          <button type="button" class="btn btnlong" > Lưu</button>  
         </div>
 
         <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <label>Trình độ Ngoại ngữ</label>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal6"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal6"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -434,7 +440,7 @@
             </tbody> 
           </table>
           <label>Trình độ tin học</label>
-           <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white; float: right; margin-bottom: 10px" data-toggle="modal" data-target="#myModal7"> Thêm</button>
+           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal7"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr> 
@@ -456,7 +462,7 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" style="background-color: #f58220 !important;color: white;"> Lưu</button>  
+          <button type="button" class="btn btnlong" > Lưu</button>  
         </div>
 
         </div>
@@ -473,19 +479,19 @@
 </div>
 
 <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" style="width: 40%" role="document">
+  <div class="modal-dialog modal-40 role="document">
     <div class="modal-content">
       <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm người thân</h3>
            
           
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Năm sinh</label>
             <div class="col-sm-6">
            
@@ -497,7 +503,7 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Quan hệ</label>
             <div class="col-sm-6">
            
@@ -509,7 +515,7 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghề nghiệp</label>
             <div class="col-sm-6">
            
@@ -531,7 +537,7 @@
     <div class="modal-content">
       <h3 style="color:blue;padding-left: 20px;padding-right: 20px;padding-top: 20px">Thêm quá trình công tác</h3>
            
-          <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+          <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -542,7 +548,7 @@
               </div>
             </div>
           </div>
-            <div class="form-group row" style="padding-left: 20px;padding-right: 20px">
+            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên công ty</label>
             <div class="col-sm-6">
            

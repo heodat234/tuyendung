@@ -24,6 +24,11 @@
 	font-size: 12px;
 	color: #bdbdbd;
 }
+.kcform1
+{
+  margin-bottom: 10px !important;
+  
+}
 .kcform-more
 {
 	margin-bottom: 8px !important;
@@ -125,9 +130,11 @@
 }
 .text-modal
 {
-  padding-left: 30px;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
    font-size: 14px;
    text-align: justify;
+   
 }
 .color-blue
 {
@@ -139,9 +146,11 @@
 }
 .padding-form-login
 {
-  padding-right: 30px;
-  border-left: 1px
-  solid #ddd;
+  padding-right: 25px !important;
+  padding-left: 25px !important;
+  border-left: 1px !important solid #ddd;
+  font-size: 14px !important;
+  
 }
 .btn-login
 {
@@ -156,6 +165,14 @@
 .margin-top-5
 {
   margin-top: -5px
+}
+.margin-top17
+{
+  margin-top: 17px
+}
+.margin-top-13
+{
+  margin-top: -13px
 }
 .off-resize
 {

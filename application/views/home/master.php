@@ -184,27 +184,27 @@
               </ul>
               <strong class="title-right">Hãy đăng ký ngay hôm nay!</strong>
               </div>
-              <div class="col-md-6 padding-form-login" >
+              <div class="col-md-6 padding-form-login">
                <h3 class="color-blue">Đăng Nhập</h3>
                <br>
               <div class="form-group row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                  
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input class="kttext" type="text" placeholder="">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  <input type="password" class="kttext" id="inputPassword" placeholder="">
                   <button type="button" class="btn btn-login"  data-toggle="modal" data-target="#myModal">Đăng Nhập
                 </button>
-                <p class="margin-top10"><strong>
-                <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu</strong>
+                <p class="margin-top17">
+                <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu
                 </p>  
-                <p class="margin-top-5"><a data-toggle="modal" data-target="#myModal1"><strong>
-                <i class="fa fa-caret-right fa-lg"></i> Đăng ký tài khoản</strong></a>
+                <p class="margin-top-13"><a data-toggle="modal" data-target="#myModal1">
+                <i class="fa fa-caret-right fa-lg"></i> Đăng ký tài khoản</a>
               </p>
                 </div>
               </div>
@@ -224,7 +224,7 @@
           
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-5 padding-form-login" >
+              <div class="col-md-5 text-modal" >
                <h3 class="color-blue">Tham gia cùng chúng tôi
                </h3>
                <p>Gia nhập Talent Network của chúng tôi sẽ giúp bạn nâng cao khả năng tìm kiếm việc làm. Cho dù bạn ứng truyển một công việc nào đó hoặc đơn giản là cập nhật thông tin của mình, chúng tôi cũng luôn mong muốn được kết nối cùng bạn.
@@ -239,47 +239,47 @@
               <div class="col-md-7 padding-form-login">
                <h3 class="color-blue">Đăng ký tài khoản</h3>
                
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input class="kttext" type="text" placeholder="">
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Số CMND/CCCD</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input class="kttext" type="text" placeholder="">
                   
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Mật khẩu</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control"  placeholder="Password">
+                  <input type="password" class="kttextl"  placeholder="">
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Xác nhận mật khẩu</label>
                 <div class="col-sm-8">
-                   <input type="password" class="form-control" placeholder="Password">
+                   <input type="password" class="kttext" placeholder="">
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Tên</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input class="kttext" type="text" placeholder="">
                   
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Họ và tên đệm</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input class="kttext" type="text" placeholder="">
                   
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Giới tính</label>
                 <div class="col-sm-8">
                   <label class="radio-inline">
@@ -291,14 +291,14 @@
                   
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Ngày Sinh</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" id="ngaysinh" placeholder="Default input">
+                  <input class="kttext" type="text" id="ngaysinh" placeholder="">
                   
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
                   <textarea class="form-control off-resize" rows="2" ></textarea>

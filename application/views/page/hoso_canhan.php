@@ -8,16 +8,17 @@
       <table class="table" >
         <tr class="none-table">
 
-          <td rowspan="2" width="22%">
-           <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1"  class="img image-avatar">
+          <td  width="22%">
 
-           <div class="image-edit"  id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
           </td>
           <td><strong class="size20">Nam, Do</strong></td>
           
         </tr>
         <tr class="none-table2">
-        
+        <td>
+          
+
+        </td> 
         <td>
           <div class="form-control textarea-info" >My name is Nam Do, and I'm currently looking for a job in youth services. I have 10 years of experience working with youth agencies. I have a bachelor's degree in outdoor education. I raise money, train leaders and organize units. I have raised over $1000,000 each of the six years. I consider myself a good public speaker, and I have a good sense of humor."Who do you know who works with youth?"</div>
         
@@ -39,7 +40,12 @@
         <td class="table-profile"><i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span></td> 
         </tr> 
       </table>
-
+ <div >
+           <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1" class="img image-avatar">
+           <div class="image-edit" id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
+           
+         
+         </div>
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="row">

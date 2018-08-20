@@ -1,7 +1,8 @@
 <h3 class="color-blue">Lịch sử ứng tuyển</h3>
 <label><< Quay lại  </label>
+<br>
 <label>Chuyên viên kế hoạch và phân thích đầu tư (30/09/2018)</label>
-<table   class="table table-striped table-bordered" > 
+<table   class="table table-striped table-bordered fontstyte text-center" > 
   <thead> 
       <tr> 
         <th id="th" width="10%">STT</th> 

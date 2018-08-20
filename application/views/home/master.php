@@ -203,7 +203,7 @@
                 <p class="margin-top17">
                 <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu
                 </p>  
-                <p class="margin-top-13"><a data-toggle="modal" data-target="#myModal1">
+                <p class="margin-top-13"><a data-toggle="modal" data-target="#myModal1a">
                 <i class="fa fa-caret-right fa-lg"></i> Đăng ký tài khoản</a>
               </p>
                 </div>
@@ -218,7 +218,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal1a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
           
@@ -302,7 +302,7 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
                   <textarea class="form-control off-resize" rows="2" ></textarea>
-                  <button type="button" class="btn btn-login" data-toggle="modal" data-target="#myModal2" data-toggle="modal" data-target="#myModal">Đăng Ký
+                  <button type="button" class="btn btn-login" data-toggle="modal" data-target="#myModal20">Đăng Ký
                 </button>
                 </div>
               </div>
@@ -314,7 +314,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal20" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
           <h3 class="title-center-complete"><strong>Đất Xanh Group chào mừng bạn dã tham gia Talent Network</strong></h3>
@@ -331,13 +331,15 @@
     </div>
 
     <script type="text/javascript">
-        $('#myModal1').on('show.bs.modal', function (event) {
+        $('#myModal20').on('show.bs.modal', function (event) {
+            $('#myModal1a').modal('toggle');
+        });
+        $('#myModal1a').on('show.bs.modal', function (event) {
             $('#myModal').modal('toggle');
         });
         $('#ngaysinh').datetimepicker();
-        $('#myModal2').on('show.bs.modal', function (event) {
-            $('#myModal1').modal('toggle');
-        });
+        
+        
     </script>
 
   </body>

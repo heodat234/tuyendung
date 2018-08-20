@@ -11,18 +11,12 @@
     </thead> 
     <tbody> 
      <tr>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
+      <td>1</td>
+      <td><a href="<?php echo base_url()?>handling/lichsu_detail/1">Chuyên viên kế hoạch và phân tích đầu tư</td>
+      <td>30/09/2018</td>
+      <td>02/09/2018</td>
+      <td>Đã nộp HS</td>
      </tr>
-     <tr>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
-      <td>asdsa</td>
-     </tr>
+     
   </tbody> 
 </table>

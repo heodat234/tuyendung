@@ -485,21 +485,21 @@
 </div>
 
 <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40 role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm người thân</h3>
+      <h3 class="title-modal margin-bot-15">Thêm người thân</h3>
            
           
-            <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
-            <div class="col-sm-6">
+            <div class="form-group row padding-left-right-20 margin-bot-15" >
+            <label for="staticEmail"  class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
+            <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class=" width100" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row padding-left-right-20" >
+           <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Năm sinh</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <select class="form-control height31">
                   <option>Giỏi</option>
@@ -509,9 +509,9 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Quan hệ</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
              <select class="form-control height31">
                   <option>Giỏi</option>
@@ -521,11 +521,11 @@
                 </select>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghề nghiệp</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class=" width100" type="text"  placeholder="">
               
             </div>
           </div>
@@ -539,11 +539,11 @@
 
 
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm quá trình công tác</h3>
+      <h3 class="title-modal margin-bot-15">Thêm quá trình công tác</h3>
            
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -554,28 +554,28 @@
               </div>
             </div>
           </div>
-            <div class="form-group row padding-left-right-20" >
+            <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên công ty</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-           <div class="form-group row padding-left-right-20" >
+           <div class="form-group row padding-left-right-20 margin-bot-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Địa chỉ</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <textarea class="form-control off-resize" rows="2" ></textarea>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ khi nghỉ</label>
             <div class="col-sm-6">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nhiễm vụ/ trách nhiễm</label>
             <div class="col-sm-6">
            
@@ -583,7 +583,7 @@
               
             </div>
           </div>
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Lý do nghỉ</label>
             <div class="col-sm-6">
            
@@ -599,35 +599,35 @@
 </div>
 
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm người tham khảo</h3>
+      <h3 class="title-modal margin-bot-15">Thêm người tham khảo</h3>
            
           
             <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Công ty</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Liên hệ</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
            
               <input class="form-control" type="text"  placeholder="">
               
@@ -641,11 +641,11 @@
 </div>
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm trình độ học vấn</h3>
+      <h3 class="title-modal margin-bot-15">Thêm trình độ học vấn</h3>
            
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -695,11 +695,11 @@
 </div>
 
 <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm khóa huấn luyện/ đào tạo</h3>
+      <h3 class="title-modal margin-bot-15">Thêm khóa huấn luyện/ đào tạo</h3>
            
-          <div class="form-group row padding-left-right-20" >
+          <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -717,7 +717,7 @@
               <input class="form-control" type="text"  placeholder="">
             </div>
           </div>
-          <div class="form-group row padding-left-right-20">
+          <div class="form-group row padding-left-right-20 margin-bot-2">
             <label for="staticEmail" class="col-sm-4 col-form-label">Thời gian học</label>
             <div class="col-sm-8">
               <div class="form-group row">
@@ -756,9 +756,9 @@
 
 
 <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm ngoại ngữ</h3>
+      <h3 class="title-modal margin-bot-15">Thêm ngoại ngữ</h3>
            
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngoại ngữ</label>
@@ -771,7 +771,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghe</label>
             <div class="col-sm-6">
            
-              <class="form-control height31">
+              <select class="form-control height31">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -824,9 +824,9 @@
 </div>
 
 <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-40"  role="document">
+  <div class="modal-dialog width-30"  role="document">
     <div class="modal-content">
-      <h3 class="title-modal">Thêm trình độ tin học</h3>
+      <h3 class="title-modal margin-bot-15">Thêm trình độ tin học</h3>
            
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Kiến thức/ Phần mềm</label>

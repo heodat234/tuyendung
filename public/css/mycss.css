@@ -120,6 +120,11 @@
 {
   width: 40% !important;
 }
+.width-30
+{
+  width: 30% !important;
+}
+
 .modal-60
 {
   width: 60% !important;
@@ -328,3 +333,33 @@
 {
   height: 31px
 }
+.margin-bot-2
+{
+  margin-bottom: 3px !important;
+}
+.margin-bot-15
+{
+  margin-bottom: 15px !important;
+}
+.margin-bot-20
+{
+  margin-bottom: 20px !important;
+}
+.fontstyle
+{
+  font-size: 14px;
+  
+}
+.margin-left-20
+{
+  margin-left: 20px;
+}
+.format-text
+{
+  margin-left: 35px;
+  padding-top: 0px;
+   padding-bottom: 0px;
+   margin-bottom: 0px;
+    line-height: 21px; 
+}
+

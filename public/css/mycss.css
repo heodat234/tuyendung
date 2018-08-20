@@ -301,6 +301,7 @@
 {
   float: right;
    margin-bottom: 10px;
+
 }
 .title-modal
 {
@@ -315,6 +316,7 @@
   color: white;
   margin-bottom: 10px; 
   margin-left: 42%
+  
 }
 .title-anhdaidien
 {
@@ -355,7 +357,7 @@
 }
 .margin-left-20
 {
-  margin-left: 20px;
+  margin-left: 20px !important;
 }
 .format-text
 {
@@ -365,4 +367,27 @@
    margin-bottom: 0px;
     line-height: 21px; 
 }
-
+.fontbig
+{
+  font-size: 25px;
+}
+.color-green
+{
+  color: #08c174;
+}
+.margin-left-50
+{
+  margin-left: 70px;
+}
+.margin-right-20
+{
+  margin-right: 20px;
+}
+.border-question
+{
+  border: 1px solid #ccc;
+}
+.margin-bot-10
+{
+  margin-bottom: 10px !important;
+}

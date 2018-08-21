@@ -49,6 +49,7 @@
 
 <div class="modal fade" id="myModalls1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-70" role="document">
+    <form action="#" method="post">
     <div class="modal-content">
       <label class="title-modal margin-bot-15 fontbig"><strong>Trắc nghiệm kiến thức</strong></label>
       <label class="title-right title-modal margin-bot-15">Thời gian còn lại <strong class="color-blue fontbig">00:60:00</strong></label>
@@ -110,12 +111,14 @@
             </label>
            <button type="button" class="btn btnlong title-right margin-right-20" > Hoàn thành</button>
     </div>
+  </form>
   </div>
 </div>
 
 
 <div class="modal fade" id="myModalls2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
+    <form action="#" method="post">
     <div class="modal-content">
       <h3 class="title-modal margin-bot-15 ">Xác nhận lịch phỏng vấn</h3>
            
@@ -181,10 +184,12 @@
             </label>
             <button type="button" class="btn them-modal" > Thêm</button>
     </div>
+  </form>
   </div>
 </div>
 <div class="modal fade" id="myModalls3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
+    <form action="#" method="post">
     <div class="modal-content">
       <h3 class="title-modal margin-bot-15 ">Xác nhận lịch phỏng vấn</h3>
            
@@ -222,10 +227,12 @@
 
            
     </div>
+  </form>
   </div>
 </div>
 <div class="modal fade" id="myModalls4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
+    <form action="#" method="post">
     <div class="modal-content">
       <h3 class="title-modal margin-bot-15 ">Xác nhận thư mời nhận việc</h3>
            
@@ -272,11 +279,13 @@
             </label>
             <button type="button" class="btn them-modal" > OK</button>
     </div>
+  </form>
   </div>
 </div>
 
 <div class="modal fade" id="myModalls5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
+    <form action="#" method="post">
     <div class="modal-content">
       <h3 class="title-modal margin-bot-15 ">Cài đặt</h3>
        <label class="radio-inline padding-left-right-20 fontstyle margin-bot-15 margin-left-20">
@@ -287,6 +296,10 @@
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nhận e-mail đãi ngộ đặc biệt từ Tập đoàn DXG
             </label>
       <button type="button" class="btn them-modal" > OK</button>
+    </div>
+  </form>
+</div>
+</div>
 <script type="text/javascript">
 $('#ngaygio').datetimepicker();
 </script>

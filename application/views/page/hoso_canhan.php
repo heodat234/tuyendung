@@ -42,7 +42,7 @@
       </table>
  <div >
            <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1" class="img image-avatar">
-           <div class="image-edit" id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
+           <div class="image-edit margin-bot-21" id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
            
          
          </div>
@@ -52,24 +52,25 @@
         <div class="col-md-3">
           <nav class="block-leftMenu menuPage mrb30">
 
-            <ul class="nav navbar-nav width100" >
-              <li class="">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> Giới thiệu bản thân</a>
+            <ul class="nav nav-tabs width100" >
+              <li class="active">
+                <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10" style="color: green;"></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green; "></i> Thông tin cá nhân</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> thông tin liên hệ</a>
+              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10" style="color: green; "></i> Thông tin cá nhân</a></li>
+              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10" style="color: green;"></i> thông tin liên hệ</a>
               </li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: green;"></i> Thông tin gia đình</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Kinh nghiệm làm việc</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Trình độ học vấn</a></li>
-              <li><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-circle size10" style="color: orange;"></i> Ngoại ngữ tin học</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10" style="color: green;"></i> Thông tin gia đình</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10" style="color: orange;"></i> Kinh nghiệm làm việc</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10" style="color: orange;"></i> Trình độ học vấn</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10" style="color: orange;"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
 
         <div class="col-md-9 ">
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-          
+          <div class="tab-content">
+        <div id="collapseOne" class="tab-pane  in active">
+          <form action="#" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
           <div class="form-group row kcform">
@@ -114,10 +115,11 @@
                 <button type="button" class="btn btnlong margin-top12" > Lưu</button>
             </div>
           </div>
+        </form>
         </div>
 
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          
+        <div id="collapseTwo" class="tab-pane ">
+          <form action="#" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
           <div class="form-group row kcform">
@@ -218,10 +220,11 @@
             </div>
           </div>
           
-
+         </form>
         </div>
 
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseThree" class="tab-pane">
+          <form action="#" method="post">
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
@@ -260,9 +263,11 @@
                <button type="button" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
+        </form>
         </div>
 
-        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseFour" class="tab-pane ">
+         
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
@@ -289,9 +294,11 @@
             </tbody> 
           </table>
           <button type="button" class="btn btnlong"> Lưu</button>  
+        
         </div>
 
-        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseFive" class="tab-pane ">
+          
           <label>Quá trình công tác</label>
           <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal2"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
@@ -350,10 +357,12 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" > Lưu</button>  
+          <button type="button" class="btn btnlong" > Lưu</button> 
+          
         </div>
 
-        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseSix" class="tab-pane ">
+
           <label>Trình độ học vấn</label>
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal4"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
@@ -415,7 +424,7 @@
           <button type="button" class="btn btnlong" > Lưu</button>  
         </div>
 
-        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseSeven" class="tab-pane ">
           <label>Trình độ Ngoại ngữ</label>
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal6"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
@@ -472,7 +481,7 @@
         </div>
 
         </div>
-      
+      </div>
 
       </div>
     </div>
@@ -487,6 +496,7 @@
 <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người thân</h3>
            
           
@@ -531,7 +541,7 @@
           </div>
           
            <button type="button" class="btn them-modal" > Thêm</button>
-         
+         </form>
       
     </div>
   </div>
@@ -541,6 +551,7 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm quá trình công tác</h3>
            
           <div class="form-group row padding-left-right-20 margin-bot-2" >
@@ -593,7 +604,7 @@
           </div>
            <button type="button" class="btn them-modal"> Thêm</button>
          
-      
+      </form>
     </div>
   </div>
 </div>
@@ -601,6 +612,7 @@
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người tham khảo</h3>
            
           
@@ -635,7 +647,7 @@
           </div>
            <button type="button" class="btn them-modal" > Thêm</button>
          
-      
+      </form>
     </div>
   </div>
 </div>
@@ -643,6 +655,7 @@
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ học vấn</h3>
            
           <div class="form-group row padding-left-right-20 margin-bot-2" >
@@ -688,7 +701,7 @@
             </div>
           </div>
            <button type="button" class="btn them-modal" > Thêm</button>
-         
+         </form>
       
     </div>
   </div>
@@ -697,6 +710,7 @@
 <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm khóa huấn luyện/ đào tạo</h3>
            
           <div class="form-group row padding-left-right-20 margin-bot-2" >
@@ -749,7 +763,7 @@
           </div>
            <button type="button" class="btn them-modal" > Thêm</button>
          
-      
+      </form>
     </div>
   </div>
 </div>
@@ -758,6 +772,7 @@
 <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm ngoại ngữ</h3>
            
           <div class="form-group row padding-left-right-20">
@@ -818,7 +833,7 @@
           
            <button type="button" class="btn them-modal" > Thêm</button>
          
-      
+      </form>
     </div>
   </div>
 </div>
@@ -826,6 +841,7 @@
 <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30"  role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ tin học</h3>
            
           <div class="form-group row padding-left-right-20">
@@ -850,7 +866,7 @@
           
            <button type="button" class="btn them-modal" > Thêm</button>
          
-      
+      </form>
     </div>
   </div>
 </div>
@@ -860,6 +876,7 @@
 <div class="modal fade" id="edit_anh_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
         <h4 class="modal-title" id="myModalLabel">Cập nhật ảnh đại diện</h4>
@@ -876,6 +893,7 @@
         <button type="button" class="btn btnlong btn88"  data-dismiss="modal">Close</button>
         <button type="button" class="btn btnlong btn99"> Lưu</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -894,67 +912,8 @@ $('#tuden4').datetimepicker();
 $('#tuden5').datetimepicker();
 $('#tuden6').datetimepicker();
 
- $('#collapseOne').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseSix').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseTwo').on('shown.bs.collapse', function (event) {
-        $('#collapseOne').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseSix').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseThree').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseOne').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseSix').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseFour').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseOne').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseSix').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseFive').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseOne').collapse('hide');
-        
-        $('#collapseSix').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseSix').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseOne').collapse('hide');
-        $('#collapseSeven').collapse('hide');
-    });
- $('#collapseSeven').on('shown.bs.collapse', function (event) {
-        $('#collapseTwo').collapse('hide');
-        $('#collapseThree').collapse('hide');
-        $('#collapseFour').collapse('hide');
-        $('#collapseFive').collapse('hide');
-        $('#collapseSix').collapse('hide');
-        $('#collapseOne').collapse('hide');
-    });
- // $('#collapseSeven').on('hidden.bs.collapse', function (event) {
- //        $('#collapseSeven').collapse('show');
-        
- //    });
+ 
+ 
  $('#anh2').hide();
  $('#anh1').mouseenter(function()
  {

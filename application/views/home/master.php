@@ -166,11 +166,13 @@
     //]]>
     </script>
 
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-60"  role="document">
         <div class="modal-content">
           
           <div class="modal-body">
+            <form action="#" method="post">
             <div class="row">
               <div class="col-md-6 text-modal" >
                <h3 class="color-blue" ">Tham gia cùng chúng tôi
@@ -191,13 +193,13 @@
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                  
-                  <input class="kttext" type="text" placeholder="">
+                  <input class="kttext" type="text" name="email" placeholder="">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="kttext" id="inputPassword" placeholder="">
+                  <input type="password" class="kttext" id="inputPassword" name="password" placeholder="">
                   <button type="button" class="btn btn-login"  data-toggle="modal" data-target="#myModal">Đăng Nhập
                 </button>
                 <p class="margin-top17">
@@ -212,17 +214,20 @@
                 
               </div>
             </div>
+          </form>
           </div>
           
         </div>
       </div>
     </div>
 
+
     <div class="modal fade" id="myModal1a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
           
           <div class="modal-body">
+            <form action="#" method="post">
             <div class="row">
               <div class="col-md-5 text-modal" >
                <h3 class="color-blue">Tham gia cùng chúng tôi
@@ -308,6 +313,7 @@
               </div>
                 
               </div>
+            </div>
             </div>
           </div>
         </div>

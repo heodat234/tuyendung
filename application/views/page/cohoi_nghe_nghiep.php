@@ -230,6 +230,7 @@
 <div class="modal fade" id="myModalch1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
+      <form action="#" method="post">
       <h3 class="title-modal margin-bot-15">Nộp hồ sơ</h3>
             <div class="form-group row padding-left-right-20 " >
             <label for="staticEmail" class="col-sm-4 col-form-label">Vi trí nộp</label>
@@ -246,7 +247,7 @@
             </div>
           </div>
           <label class="radio-inline padding-left-right-20 fontstyle margin-bot-15 margin-left-20">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Tôi đồng ý các cam kết DXG đề ra
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" > Tôi đồng ý các cam kết DXG đề ra
             </label>
             <label class="padding-left-right-20 justify fontstyle format-text" >
                1.   &nbsp;  &nbsp;   Trả lời của tôi cho những câu hỏi phỏng vấn của công ty và các thông tin do tôi cung cấp là hoàn toàn chính xác. </label>
@@ -256,11 +257,24 @@
                3.   &nbsp;  &nbsp;   Trong bảng khai thông tin, nếu tôi cung cấp thông tin sai lệch, Công ty có thể từ chối tuyển dụng hoặc sa thải tôi nếu tôi đã được nhận vào công ty làm việc.
                </label>
 
-           <button type="button" class="btn them-modal" > OK</button>
+           <button id="okok" type="button" class="btn them-modal" disabled> OK</button>
+         </form>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
   $('#ngaybd').datetimepicker();
+  
+  $(document).ready(function(){
+    $('#inlineRadio1').click(function(){
+      
+    if( $('#inlineRadio1').is(":checked") == true)
+      $('#okok').prop('disabled',false);
+    else
+      $('#okok').prop('disabled',true);
+  });
+    
+  });
+
 </script>

@@ -316,9 +316,9 @@
   color: white;
   margin-bottom: 10px; 
   width: 100px;
-  font-size: 13px;
-  padding: 4px;
-  margin-left: 42%
+  font-size: 13px !important;
+  padding: 4px !important;
+  margin-left: 38%
   
 }
 .title-anhdaidien
@@ -393,4 +393,8 @@
 .margin-bot-10
 {
   margin-bottom: 10px !important;
+}
+.middle
+{
+  vertical-align: middle;
 }

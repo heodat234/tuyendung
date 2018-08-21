@@ -55,8 +55,8 @@
       <table   class="table table-striped table-bordered fontstyle" > 
         <tr>
           <td class="text-center"><button class="btn btnlong">Bắt đầu</button></td>
-          <td style="vertical-align: middle;">Vị trí ứng tuyển: Chuyên viên kế hoạch và phân tích đầu tư (30/09/2018)</td>
-          <td style="vertical-align: middle;">Kết quả: --/ 100</td>
+          <td class="middle">Vị trí ứng tuyển: Chuyên viên kế hoạch và phân tích đầu tư (30/09/2018)</td>
+          <td class="middle">Kết quả: --/ 100</td>
         </tr>
         <tr><td colspan="3" class="padding-left-right-20">  Người thực hiện: Nam Do ----  Lưu ý: Sau khi bấm Bắt đầu, thời gian sẽ được tính ngay kể cả khi màn hình trắc nghiệm đóng lại </td>
         </tr>

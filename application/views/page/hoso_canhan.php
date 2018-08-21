@@ -491,7 +491,7 @@
            
           
             <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail"  class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
+            <label for="staticEmail"  class="col-sm-4 col-form-label">Họ và tên</label>
             <div class="col-sm-8">
            
               <input class=" width100" type="text"  placeholder="">

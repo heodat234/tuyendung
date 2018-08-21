@@ -77,24 +77,24 @@
             <label for="staticEmail" class="col-sm-4"  >GIỚI THIỆU (INTRODUCE)</label>
             <div class="col-sm-8">
               
-              <textarea class="areatext kttext off-resize" rows="4" ></textarea>
+              <textarea class="areatext kttext off-resize" rows="4" name="gioithieu"></textarea>
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >VỊ TRÍ MONG MUỐN (EXPECT POSOTION)</label>
             <div class="col-sm-8">
-              <textarea class="areatext kttext off-resize" rows="2" "></textarea>
+              <textarea class="areatext kttext off-resize" rows="2" name="vitri"></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhapht">THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
              <input class="kttext" type="text" placeholder="">
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhap_mongmuon" >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
                <input class="kttext" type="text" placeholder="">
             </div>
@@ -105,10 +105,10 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder="">
+                <input class="kttext" type="text" placeholder="" name="filecvht">
                     <div class="form-group row kcform width100 margin-top12" >
                         <div class="col-sm-6">
-                            <input class="kttext"  type="text" placeholder="Chọn file..."> </div>
+                            <input class="kttext"  type="text" placeholder="Chọn file..." name="filecv"> </div>
                       <div class="col-sm-6">
                              <button type="button" class="btn btnlong" >Tải lên</button></div>
                   </div>
@@ -127,16 +127,16 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Họ"> </div>
+                <input class="kttext" type="text" placeholder="Họ" name="ho"> </div>
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Tên"></div>
+                <input class="kttext" type="text" placeholder="Tên" name="ten"></div>
               </div>
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY SINH (DOB)</label>
             <div class="col-sm-6">
-              <input class="kttext" type="text" id="ngaysinh"></div>
+              <input class="kttext" type="text" id="ngaysinh" name="ngaysinh1"></div>
               
             </div>
               
@@ -154,7 +154,7 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NƠI SINH (POB)</label>
             <div class="col-sm-6">
-               <select class="seletext">
+               <select class="seletext" name="noisinh">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -166,13 +166,13 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">DÂN TÔC (ETHNIC)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="">
+               <input class="kttext" type="text" placeholder="" name="dantoc">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">QUỐC TỊCH (NATIONALITY)</label>
             <div class="col-sm-6">
-                <select class="seletext">
+                <select class="seletext" name="quoctich">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -184,31 +184,31 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (CM)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="">
+               <input class="kttext" type="text" placeholder="" name="chieucao">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (KG)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="">
+               <input class="kttext" type="text" placeholder="" name="cannang">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CMND (ID)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="">
+               <input class="kttext" type="text" placeholder="" name="cmnd">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY CẤP (ISSUED DATE)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" id="ngaycap" placeholder="">
+               <input class="kttext" type="text" id="ngaycap" placeholder="" name="ngaycap">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NƠI CẤP (ISSUED PLACE)</label>
             <div class="col-sm-6">
-               <select class="seletext">
+               <select class="seletext" name="noicap">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -228,29 +228,29 @@
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
-              <input class="kttext modal-70"  type="text" placeholder="">
+              <input class="kttext modal-70"  type="text" placeholder="" name="email">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize" rows="2" ></textarea>
+              <textarea class="kttext areatext off-resize" rows="2" name="dctt"></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize"  rows="2" ></textarea>
+              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" ></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="kttext"  type="text" placeholder="">
+              <input class="kttext"  type="text" placeholder="" name="dt1">
               <br>
-              <input class="kttext margin-top-8"  type="text" placeholder="">
+              <input class="kttext margin-top-8"  type="text" placeholder="" name="dt2">
 
               
             </div>
@@ -258,8 +258,8 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
             <div class="col-sm-8">
-              <input class="kttext" type="text" placeholder="">
-              <input class="kttext margin-left-25"  type="text" placeholder="">
+              <input class="kttext" type="text" placeholder="" name="dtkhancap">
+              <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap">
                <button type="button" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
@@ -504,14 +504,14 @@
             <label for="staticEmail"  class="col-sm-4 col-form-label">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class=" width100" type="text"  placeholder="">
+              <input class=" width100" type="text"  placeholder="" name="hoten">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="namsinh">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -523,7 +523,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31">
+             <select class="form-control height31" class="quanhe">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -535,7 +535,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghề nghiệp</label>
             <div class="col-sm-8">
            
-              <input class=" width100" type="text"  placeholder="">
+              <input class=" width100" type="text"  placeholder="" name="nghenghiep">
               
             </div>
           </div>
@@ -559,9 +559,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden5" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden5" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden6" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden6" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
@@ -569,28 +569,28 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên công ty</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="tencty">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Địa chỉ</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="diachi"></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ khi nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="chucvukhinghi">
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nhiễm vụ/ trách nhiễm</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="nhiemvu">
               
             </div>
           </div>
@@ -598,7 +598,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Lý do nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="lydonghi">
               
             </div>
           </div>
@@ -620,28 +620,28 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="hoten">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="chucvu">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Công ty</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="congty">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Liên hệ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="lienhe">
               
             </div>
           </div>
@@ -663,9 +663,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden1" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden1" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden2" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden2" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
@@ -673,28 +673,28 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên trường</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="tentruong">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Nơi học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="noihoc">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="nganhhoc">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ trình độ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="trinhdo">
               <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Bằng cao nhất của bạn (*)
               </label>
@@ -718,9 +718,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden3" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden3" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden4" placeholder=""></div>
+                <input class="form-control" type="text" id="tuden4" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
@@ -728,7 +728,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="cs_daotao">
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-2">
@@ -736,9 +736,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text"  placeholder=""></div>
+                <input class="form-control" type="text"  placeholder="" name="tghoc"></div>
                 <div class="col-sm-6">
-                <select class="form-control height31" >
+                <select class="form-control height31" name="donvi">
                   <option>Năm</option>
                   <option>Tháng</option>
                   <option>Ngày</option>
@@ -751,14 +751,14 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="nganhhoc">
             </div>
           </div>
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ chứng chỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="">
+              <input class="form-control" type="text"  placeholder="" name="bangcap">
             </div>
           </div>
            <button type="button" class="btn them-modal" > Thêm</button>
@@ -779,14 +779,14 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngoại ngữ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="Name of University/ Colleges">
+              <input class="form-control" type="text"  placeholder="Name of University/ Colleges" name="tentruong">
             </div>
           </div>
             <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Nghe</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="nghe">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -798,7 +798,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Nói</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="noi">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -810,7 +810,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Đọc</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="doc">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -822,7 +822,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Viết</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="viet">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>
@@ -848,14 +848,14 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Kiến thức/ Phần mềm</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="phanmem"></textarea>
             </div>
           </div>
             <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Trình độ</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31">
+              <select class="form-control height31" name="trinhdo">
                   <option>Giỏi</option>
                   <option>Khá</option>
                   <option>Trung Bình</option>

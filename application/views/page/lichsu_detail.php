@@ -125,32 +125,32 @@
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Vị trí ứng truyển</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="vitri"></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nội dung</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="noidung" ></textarea>
             </div>
           </div>
             <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngày giờ PV</label>
             <div class="col-sm-6">
            
-              <input class="form-control width-100" type="text"  id="ngaygio" placeholder="">
+              <input class="form-control width-100" type="text"  id="ngaygio" placeholder="" name="ngaygio">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Địa điểm</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="diadiem"></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Người liên hệ</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="lienhe"></textarea>
             </div>
           </div>
 
@@ -159,13 +159,13 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-7">
-                <select class="form-control height31" >
+                <select class="form-control height31" name="ngay" >
                   
                   <option>Ngày</option>
                   
                 </select></div>
                 <div class="col-sm-5">
-                <select class="form-control height31" >
+                <select class="form-control height31" name="gio">
                   
                   <option>Giờ</option>
                   
@@ -176,7 +176,7 @@
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Lý do thay đổi lịch</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="lydo"></textarea>
             </div>
           </div>
           <label class="radio-inline padding-left-right-20 fontstyle margin-bot-15 margin-left-20">
@@ -196,32 +196,32 @@
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Vị trí ứng truyển</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="vitri"></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nội dung</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="noidung"></textarea>
             </div>
           </div>
             <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngày giờ PV</label>
             <div class="col-sm-6">
            
-              <input class="form-control width-100" type="text"  id="ngaygio" placeholder="">
+              <input class="form-control width-100" type="text"  id="ngaygio" placeholder="" name="ngaygio">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Địa điểm</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="diadiem" ></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Người liên hệ</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="lienhe"></textarea>
             </div>
           </div>
 
@@ -239,13 +239,13 @@
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Vị trí ứng truyển</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="vitri" ></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Kết quả</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="6" ></textarea>
+              <textarea class="form-control off-resize" rows="6" name="kq"></textarea>
             </div>
           </div>
 
@@ -254,13 +254,13 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-7">
-                <select class="form-control height31" >
+                <select class="form-control height31" name="ngay">
                   
                   <option>Ngày</option>
                   
                 </select></div>
                 <div class="col-sm-5">
-                <select class="form-control height31" >
+                <select class="form-control height31" name="gio">
                   
                   <option>Giờ</option>
                   
@@ -271,7 +271,7 @@
           <div class="form-group row padding-left-right-20 margin-bot-10" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Lý do thay đổi lịch</label>
             <div class="col-sm-8">
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="lydo" ></textarea>
             </div>
           </div>
           <label class="radio-inline padding-left-right-20 fontstyle margin-bot-15 margin-left-20">

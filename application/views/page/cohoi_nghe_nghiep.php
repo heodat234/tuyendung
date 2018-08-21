@@ -236,14 +236,14 @@
             <label for="staticEmail" class="col-sm-4 col-form-label">Vi trí nộp</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize" rows="2" ></textarea>
+              <textarea class="form-control off-resize" rows="2" name="vitrinop" ></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20  margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Thời điểm có thể bắt đầu làm việc</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  id="ngaybd">
+              <input class="form-control" type="text"  id="ngaybd" name="ngaybd">
             </div>
           </div>
           <label class="radio-inline padding-left-right-20 fontstyle margin-bot-15 margin-left-20">

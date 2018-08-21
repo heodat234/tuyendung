@@ -315,6 +315,9 @@
   background-color: #f58220 !important;
   color: white;
   margin-bottom: 10px; 
+  width: 100px;
+  font-size: 13px;
+  padding: 4px;
   margin-left: 42%
   
 }

@@ -4,14 +4,13 @@
 <div class="Module Module-167">
 	<div class="ModuleContent">
 		<nav class="block-leftMenu menuPage mrb30">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav long2">
 				<li class="<?php echo isset($chinhsach)? $chinhsach:'' ?>"><a href="<?php echo base_url()?>handling/index" target="_self"><i class="fa fa-angle-right"></i> Chính sách nhân sự</a></li>
 				<li class="<?php echo isset($cohoi)? $cohoi:'' ?>"><a href="<?php echo base_url()?>handling/cohoi_nghe_nghiep" target="_self"><i class="fa fa-angle-right"></i> Cơ hội nghề nghiệp</a></li>
 				<li><a href="#" target="_self"><i class="fa fa-angle-right"></i> Qui định hồ sơ ứng tuyển</a></li>
-				<?php if($this->session->has_userdata('user')) {?>
-				<li class="<?php echo isset($hoso)? $hoso:'' ?> hoso1"><a href="<?php echo base_url()?>handling/hoso_canhan" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân</a></li>
-				<li class="<?php echo isset($ls)? $ls:'' ?> lichsu1"><a href="<?php echo base_url()?>handling/lichsu_apply" target="_self"><i class="fa fa-angle-right"></i> Lịch sử ứng tuyển</a></li>
-				<?php }?>
+				<li class="<?php echo isset($hoso)? $hoso:'' ?> hide" id="hoso1"><a href="<?php echo base_url()?>handling/hoso_canhan" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân</a></li>
+				<li class="<?php echo isset($ls)? $ls:'' ?> hide" id="lichsu1"><a href="<?php echo base_url()?>handling/lichsu_apply" target="_self"><i class="fa fa-angle-right"></i> Lịch sử ứng tuyển</a></li>
+				
 			</ul>
 		</nav>
 	</div>
@@ -34,5 +33,12 @@
 </div>
 <div>
 </div>
-
+<?php if($this->session->has_userdata('user'))
+{ ?>
+ <script type="text/javascript">
+ 	 $('#hoso1').removeClass('hide');
+      $('#lichsu1').removeClass('hide');
+ </script>
+<?php 
+} ?>
 	

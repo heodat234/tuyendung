@@ -368,7 +368,8 @@
               $('#name_tb').text(data[0]['name']);
               $('#myModal20').modal('show');
               $('.long').html('<label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> '+data[0]['name']+'&nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>');
-              
+              $('#hoso1').removeClass('hide');
+              $('#lichsu1').removeClass('hide');
             }else{
               $('#err-login').text('Sai email hoặc mật khẩu. Vui lòng nhập lại!').removeClass('hide');
             }

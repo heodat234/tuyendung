@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 		$password = md5($frm['password']);
 		$a_UserChecking = $this->Login_model->a_fCheckUser( $username, $password );
 		if($a_UserChecking){
-			$this->session->set_userdata('user', $a_UserChecking);
+			$this->session->set_userdata('user', $a_UserChecking[0]);
 			echo json_encode($a_UserChecking);
 		}else{
 			echo "1";

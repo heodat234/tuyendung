@@ -7,9 +7,9 @@ class Handling extends CI_Controller {
 	{
 		parent::__construct();
 		
+		$this->load->library('session');
 		
 		
-		$this->load->model('M_Test');  
 		
 		$this->load->helper('url');
 		$this->data['header'] = $this->load->view('home/header',null,true);

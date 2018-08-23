@@ -8,8 +8,10 @@
 				<li class="<?php echo isset($chinhsach)? $chinhsach:'' ?>"><a href="<?php echo base_url()?>handling/index" target="_self"><i class="fa fa-angle-right"></i> Chính sách nhân sự</a></li>
 				<li class="<?php echo isset($cohoi)? $cohoi:'' ?>"><a href="<?php echo base_url()?>handling/cohoi_nghe_nghiep" target="_self"><i class="fa fa-angle-right"></i> Cơ hội nghề nghiệp</a></li>
 				<li><a href="#" target="_self"><i class="fa fa-angle-right"></i> Qui định hồ sơ ứng tuyển</a></li>
-				<li class="<?php echo isset($hoso)? $hoso:'' ?>"><a href="<?php echo base_url()?>handling/hoso_canhan" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân</a></li>
-				<li class="<?php echo isset($ls)? $ls:'' ?>"><a href="<?php echo base_url()?>handling/lichsu_apply" target="_self"><i class="fa fa-angle-right"></i> Lịch sử ứng tuyển</a></li>
+				<?php if($this->session->has_userdata('user')) {?>
+				<li class="<?php echo isset($hoso)? $hoso:'' ?> hoso1"><a href="<?php echo base_url()?>handling/hoso_canhan" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân</a></li>
+				<li class="<?php echo isset($ls)? $ls:'' ?> lichsu1"><a href="<?php echo base_url()?>handling/lichsu_apply" target="_self"><i class="fa fa-angle-right"></i> Lịch sử ứng tuyển</a></li>
+				<?php }?>
 			</ul>
 		</nav>
 	</div>

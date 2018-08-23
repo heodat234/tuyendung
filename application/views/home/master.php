@@ -76,10 +76,16 @@
                 </div>
               </div>
               
-              <div class="floatright">
-                <button type="button" class="btn btn-white"  data-toggle="modal" data-target="#myModal"><i class="fa fa-user fa-lg orange" ></i>
+              <div class="floatright long ">
+                <?php if($this->session->has_userdata('user')) {?>
+                <label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> <?php echo $this->session->userdata('user')['name']?> &nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>
+                
+           <?php   }else
+           { ?>
+            <button type="button" class="btn btn-white"  data-toggle="modal" data-target="#myModal"><i class="fa fa-user fa-lg orange" ></i>
                   <strong>Đăng Nhập</strong>
                 </button>
+            <?php }?>
               </div>
             
             </div>
@@ -336,11 +342,7 @@
         </div>
       </div>
     </div>
-    <style type="text/css">
-      .hide{
-        display: none;
-      }
-    </style>
+    
     <script type="text/javascript">
         // $('#myModal20').on('show.bs.modal', function (event) {
         //     $('#myModal1a').modal('toggle');
@@ -363,8 +365,10 @@
               $('#err-login').addClass('hide');
               // console.log(data[0]['email']);
               $('#myModal').modal('hide');
-              $('#name_tb').text(data[0]['email']);
+              $('#name_tb').text(data[0]['name']);
               $('#myModal20').modal('show');
+              $('.long').html('<label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> '+data[0]['name']+'&nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>');
+              
             }else{
               $('#err-login').text('Sai email hoặc mật khẩu. Vui lòng nhập lại!').removeClass('hide');
             }

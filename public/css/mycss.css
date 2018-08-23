@@ -402,3 +402,14 @@
 {
   margin-bottom: 21px !important;
 }
+.dangnhap1
+{
+  float:right !important;
+  padding-top: 10px;
+  padding-right: 30px;
+  font-weight: 400;
+
+}
+.hide{
+        display: none;
+      }

@@ -234,7 +234,7 @@
         <div class="modal-content">
           
           <div class="modal-body">
-            <form action="#" method="post">
+            
             <div class="row">
               <div class="col-md-5 text-modal" >
                <h3 class="color-blue">Tham gia cùng chúng tôi
@@ -249,45 +249,46 @@
               <strong class="title-right" ">Hãy đăng ký ngay hôm nay!</strong>
               </div>
               <div class="col-md-7 padding-form-login">
+                <form id="sign-in">
                <h3 class="color-blue">Đăng ký tài khoản</h3>
                
               <div class="form-group row kcform1">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                
-                  <input class="kttext" type="text" placeholder="">
+                  <input class="kttext" type="text" placeholder="" name="email">
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Số CMND/CCCD</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="">
+                  <input class="kttext" type="text" placeholder="" name="cmnd">
                   
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Mật khẩu</label>
                 <div class="col-sm-8">
-                  <input type="password" class="kttextl"  placeholder="">
+                  <input type="password" class="kttextl"  placeholder="" name="pass">
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Xác nhận mật khẩu</label>
                 <div class="col-sm-8">
-                   <input type="password" class="kttext" placeholder="">
+                   <input type="password" class="kttext" placeholder="" name="repass">
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Tên</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="">
+                  <input class="kttext" type="text" placeholder="" name="firstname">
                   
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Họ và tên đệm</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="">
+                  <input class="kttext" type="text" placeholder="" name="lastname">
                   
                 </div>
               </div>
@@ -295,10 +296,10 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Giới tính</label>
                 <div class="col-sm-8">
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> Nam
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0"> Nữ
                   </label>
                   
                 </div>
@@ -306,26 +307,26 @@
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Ngày Sinh</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" id="ngaysinh" placeholder="">
+                  <input class="kttext" type="text" id="ngaysinh" placeholder="" name="birthday">
                   
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control off-resize" rows="2" ></textarea>
-                  <button type="button" class="btn btn-login" data-toggle="modal" data-target="#myModal20">Đăng Ký
+                  <textarea class="form-control off-resize" rows="2" name="position"></textarea>
+                  <button type="button" class="btn btn-login" id="btn_sign_in" data-toggle="modal" data-target="#myModal20">Đăng Ký
                 </button>
                 </div>
               </div>
-                
+                </form>
               </div>
             </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+   
 
     <div class="modal fade" id="myModal20" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
@@ -375,6 +376,32 @@
             }
             
             // console.log(data);
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+          
+        });
+
+         $('#btn_sign_in').click(function(event) {
+          $.ajax({
+            url: '<?php echo base_url() ?>login/insertUser',
+            type: 'POST',
+            dataType: 'json',
+            data: $('form#sign-in').serialize(),
+          })
+          .done(function(data) {
+             if (data != '1') {
+              $('#err-login').addClass('hide');
+              // console.log(data[0]['email']);
+              $('#myModal').modal('hide');
+              $('#name_tb').text(data[0]['name']);
+              $('#myModal20').modal('show');
+             }
+           
           })
           .fail(function() {
             console.log("error");

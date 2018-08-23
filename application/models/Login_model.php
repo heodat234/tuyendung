@@ -2,7 +2,7 @@
 class Login_model extends CI_Model{
 	
 	/* Gán tên bảng cần xử lý*/
-	private $_name = 'CDD_Profile';
+	private $table = 'CDD_Profile';
 	
 	function __construct(){
         parent::__construct();
@@ -23,7 +23,7 @@ class Login_model extends CI_Model{
     public function checkMail( $mail ){
         $a_User =   $this->db->select()
                             ->where('email', $mail)
-                            ->get($this->_name)
+                            ->get($this->table)
                             ->row_array();
         if(count($a_User) >0){
             return true;
@@ -36,7 +36,7 @@ class Login_model extends CI_Model{
         $a_User =   $this->db->select()
                             ->where('id', $id)
                             ->where('password', md5($pass))
-                            ->get($this->_name)
+                            ->get($this->table)
                             ->row_array();
         if(count($a_User) >0){
             return 1;
@@ -48,53 +48,53 @@ class Login_model extends CI_Model{
     public function selectUser()
     {
         $this->db->select() ;
-        $query = $this->db->get($this->_name);
+        $query = $this->db->get($this->table);
         return $query->result_array();
     }
     public function selectUserById($id)
     {
         $this->db->select()->where('id', $id);
-        $query = $this->db->get($this->_name);
+        $query = $this->db->get($this->table);
         return $query->row_array();
     }
     //thêm tài khoản mới
     public function insertUser($data)
     {
-        $a_User =   $this->db->insert($this->_name,$data);
+        $a_User =   $this->db->insert($this->table,$data);
     }
     //sửa tài khoản 
     public function editUser($data)
     {
         $a_User =   $this->db->where('id', $data['id'])
-                            ->update($this->_name,$data);
+                            ->update($this->table,$data);
     }
     public function editPassword($data)
     {
         $a_User =   $this->db->where('id', $data['id'])
-                            ->update($this->_name,$data);
+                            ->update($this->table,$data);
     }
     //xóa tài khoản
     public function deleteUser($data)
     {
         $a_User =   $this->db->where('email', $data)
-                            ->delete($this->_name);
+                            ->delete($this->table);
     }
     //kiểm tra thông tin đăng nhập bằng facebook hoặc google
     public function checkUser($data){
          $prevCheck = $this->db->where(array('oauth_provider'=>$data['oauth_provider'],'oauth_uid'=>$data['oauth_uid']))
-                ->get($this->_name)
+                ->get($this->table)
                 ->row_array();
                 // var_dump($data);
         if($prevCheck > 0){
-            // $update = $this->db->update($this->_name,$data,array('id'=>$prevCheck['id']));
+            // $update = $this->db->update($this->table,$data,array('id'=>$prevCheck['id']));
             $userID = $prevCheck['id'];
         }else{
             if ($this->checkMail($data['email'])) {
                 $update = $this->db->where('email', $data['email'])
-                               ->update($this->_name,$data);
+                               ->update($this->table,$data);
                 $userID = 1;
             }else{
-                $insert = $this->db->insert($this->_name,$data);
+                $insert = $this->db->insert($this->table,$data);
                 $userID = $this->db->insert_id();
             }
         }
@@ -106,7 +106,7 @@ class Login_model extends CI_Model{
     {
         $data['active'] = 1;
         $a_User =   $this->db->where('email', $email)
-                            ->update($this->_name,$data);
+                            ->update($this->table,$data);
     }
   
 }

@@ -58,5 +58,6 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/lichsu_detail',$data,true);
 		$this->load->view('home/master',$this->data);	
 	}
+	
 }
 ?>

@@ -52,60 +52,60 @@ class Login extends CI_Controller {
 	}
 
 	//đăng kí tài khoản mới
-	public function insertUser()
-	{
-		$frm = $this->input->post();
-		$a_UserInfo['name'] = $frm['name'];
-		$a_UserInfo['email'] = $frm['email'];
-		$a_UserInfo['password'] = md5($frm['password']);
-		$a_UserInfo['phone'] 		= $frm['phone'];
-		$a_UserInfo['dia_chi'] 		= $frm['dia_chi'];
-		$a_UserInfo['gioi_tinh'] 	= $frm['gioi_tinh'];
-		$a_UserInfo['ngay_sinh'] 	= $frm['ngay_sinh'];
-		$a_UserInfo['cmnd'] 		= $frm['cmnd'];
-		$a_UserInfo['nhom_mau'] 	= $frm['nhom_mau'];
-		if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {
-			$this->b_Check = false;
-		}else{
-			$this->b_Check = true;
+	// public function insertUser()
+	// {
+	// 	$frm = $this->input->post();
+	// 	$a_UserInfo['name'] = $frm['name'];
+	// 	$a_UserInfo['email'] = $frm['email'];
+	// 	$a_UserInfo['password'] = md5($frm['password']);
+	// 	$a_UserInfo['phone'] 		= $frm['phone'];
+	// 	$a_UserInfo['dia_chi'] 		= $frm['dia_chi'];
+	// 	$a_UserInfo['gioi_tinh'] 	= $frm['gioi_tinh'];
+	// 	$a_UserInfo['ngay_sinh'] 	= $frm['ngay_sinh'];
+	// 	$a_UserInfo['cmnd'] 		= $frm['cmnd'];
+	// 	$a_UserInfo['nhom_mau'] 	= $frm['nhom_mau'];
+	// 	if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {
+	// 		$this->b_Check = false;
+	// 	}else{
+	// 		$this->b_Check = true;
 
-			if (!empty($_FILES['avatar']['name'])) {
+	// 		if (!empty($_FILES['avatar']['name'])) {
 			
-				$config['upload_path'] = './images/avatar';
-				$config['allowed_types'] = 'jpg|png';
-				$config['file_name'] = $_FILES['avatar']['name'];
-				$this->load->library('upload', $config);
-				$this->upload->initialize($config);
-				if ($this->upload->do_upload('avatar')) {
-					$uploadData = $this->upload->data();
-					$a_UserInfo['avatar']  = $uploadData['file_name'];
-				} else{
-					$error = $this->upload->display_errors();
-            		echo $error;
-					$a_UserInfo['avatar'] = '';
-				}
-			}else{
-				$a_UserInfo['avatar']  = '';
-			}
+	// 			$config['upload_path'] = './images/avatar';
+	// 			$config['allowed_types'] = 'jpg|png';
+	// 			$config['file_name'] = $_FILES['avatar']['name'];
+	// 			$this->load->library('upload', $config);
+	// 			$this->upload->initialize($config);
+	// 			if ($this->upload->do_upload('avatar')) {
+	// 				$uploadData = $this->upload->data();
+	// 				$a_UserInfo['avatar']  = $uploadData['file_name'];
+	// 			} else{
+	// 				$error = $this->upload->display_errors();
+ //            		echo $error;
+	// 				$a_UserInfo['avatar'] = '';
+	// 			}
+	// 		}else{
+	// 			$a_UserInfo['avatar']  = '';
+	// 		}
 
-			$this->Login_model->insertUser( $a_UserInfo );
-			$this->email->from('hososuckhoe.org@gmail.com', 'Hồ sơ sức khỏe');
-			//cau hinh nguoi nhan
-			$this->email->to($a_UserInfo['email']);
-			$this->email->subject('Xác nhận tài khoản');
-			$this->email->message('Cảm ơn bạn đã đăng ký tài khoản tại hososuckhoe.org. Bấm vào <a href="'.base_url().'activeUser/'.$a_UserInfo['email'].'/'.$this->a_Data['csrf']['hash'].'">đây</a> để xác nhận tài khoản của bạn.<br>');
+	// 		$this->Login_model->insertUser( $a_UserInfo );
+	// 		$this->email->from('hososuckhoe.org@gmail.com', 'Hồ sơ sức khỏe');
+	// 		//cau hinh nguoi nhan
+	// 		$this->email->to($a_UserInfo['email']);
+	// 		$this->email->subject('Xác nhận tài khoản');
+	// 		$this->email->message('Cảm ơn bạn đã đăng ký tài khoản tại hososuckhoe.org. Bấm vào <a href="'.base_url().'activeUser/'.$a_UserInfo['email'].'/'.$this->a_Data['csrf']['hash'].'">đây</a> để xác nhận tài khoản của bạn.<br>');
 			 
-			//thuc hien gui
-			$this->email->send();
+	// 		//thuc hien gui
+	// 		$this->email->send();
 
-			$this->a_Data['a_Check']= 'Tài khoản của bạn đã được đăng ký. Vui lòng vào mail để kiểm tra và xác nhận tài khoản trước khi đăng nhập.';
-			$this->_data['html_body'] = $this->load->view('page/login', $this->a_Data, TRUE);
-        	return $this->load->view('home/master', $this->_data);
-		}
-		$this->a_Data['b_Check']= $this->b_Check;
-		$this->_data['html_body'] = $this->load->view('page/register',$this->a_Data, TRUE);
-        return $this->load->view('home/master', $this->_data);
-	}
+	// 		$this->a_Data['a_Check']= 'Tài khoản của bạn đã được đăng ký. Vui lòng vào mail để kiểm tra và xác nhận tài khoản trước khi đăng nhập.';
+	// 		$this->_data['html_body'] = $this->load->view('page/login', $this->a_Data, TRUE);
+ //        	return $this->load->view('home/master', $this->_data);
+	// 	}
+	// 	$this->a_Data['b_Check']= $this->b_Check;
+	// 	$this->_data['html_body'] = $this->load->view('page/register',$this->a_Data, TRUE);
+ //        return $this->load->view('home/master', $this->_data);
+	// }
 
 	public function activeUser($email, $token){
         $this->Login_model->activeUser($email);
@@ -167,6 +167,29 @@ class Login extends CI_Controller {
 		$this->Login_model->editPassword($data);
 		$this->session->unset_userdata('user');
 		redirect(base_url('pageLogin'));
+	}
+	public function insertUser()
+	{		
+		if($this->input->post('pass') != $this->input->post('repass'))
+		{
+			echo '<script type="text/javascript">alert("Bạn Xác Nhận Mật Khẩu Sai!!")			 		 
+				 		</script>';
+		}
+		else
+		{
+			$data['email'] = $this->input->post('email');
+			$data['idnumber'] = $this->input->post('cmnd');
+			$data['password'] = md5($this->input->post('pass'));
+			$data['name'] = $this->input->post('lastname').' '.$this->input->post('firstname');
+			$data['firstname'] = $this->input->post('firstname');
+			$data['lastname'] = $this->input->post('lastname');
+			$data['gender'] = $this->input->post('inlineRadioOptions');
+			$data['dob'] = $this->input->post('birthday');
+			// khong co vi tri mong muon
+			$this->Login_model->insertUser($data);
+			echo '1';
+		}
+		
 	}
 
 	

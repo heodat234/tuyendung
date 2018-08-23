@@ -396,7 +396,7 @@
 }
 .middle
 {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 .margin-bot-21
 {
@@ -407,9 +407,13 @@
   float:right !important;
   padding-top: 10px;
   padding-right: 30px;
-  font-weight: 400;
+  font-weight: 600;
 
 }
 .hide{
         display: none;
       }
+.middle2
+{
+  vertical-align: middle !important;
+}

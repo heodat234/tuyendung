@@ -271,14 +271,14 @@
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead> 
-              <tr> 
+              <tr class="fontstyle"> 
                 <th id="th" width="30%">Họ và tên</th> 
                 <th id="th" width="20%">Năm sinh</th> 
                 <th id="th" width="20%">Quan hệ</th> 
                 <th id="th" width="30%">Nghề nghiệp</th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>
@@ -293,8 +293,8 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong"> Lưu</button>  
-        
+         <!--  <button type="button" class="btn btnlong"> Lưu</button>  
+         -->
         </div>
 
         <div id="collapseFive" class="tab-pane ">
@@ -302,16 +302,16 @@
           <label>Quá trình công tác</label>
           <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal2"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
-            <thead> 
-              <tr> 
-                <th id="th" width="30%">Từ - Đến</th> 
-                <th id="th" width="20%">Cty/ Địa chỉ/ ĐT</th> 
-                <th id="th" width="20%">Chức vụ khi nghỉ</th> 
-                <th id="th" width="30%">Nhiệm vụ/ Trách nhiệm</th>
-                 <th id="th" width="30%">Lý do nghỉ</th>
+            <thead class="fontstyle"> 
+              <tr > 
+                <th id="th" class="middle2" width="20%">Từ - Đến</th> 
+                <th id="th" class="middle2" width="22%">Cty/ Địa chỉ/ ĐT</th> 
+                <th id="th" width="15%">Chức vụ khi nghỉ</th> 
+                <th id="th" width="20%">Nhiệm vụ/ Trách nhiệm</th>
+                 <th id="th" class="middle2" width="25%">Lý do nghỉ</th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>
@@ -332,7 +332,7 @@
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal3"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead> 
-              <tr> 
+              <tr class="fontstyle"> 
                 <th id="th" width="30%">Họ và tên</th> 
                 <th id="th" width="20%">Chức vụ</th> 
                 <th id="th" width="20%">Công ty</th> 
@@ -340,7 +340,7 @@
                  
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>
@@ -357,8 +357,8 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" > Lưu</button> 
-          
+         <!--  <button type="button" class="btn btnlong" > Lưu</button> 
+          --> 
         </div>
 
         <div id="collapseSix" class="tab-pane ">
@@ -366,13 +366,13 @@
           <label>Trình độ học vấn</label>
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal4"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
-            <thead> 
-              <tr> 
-                <th id="th" width="30%">Từ - Đến</th> 
-                <th id="th" width="20%">Trường</th> 
-                <th id="th" width="20%">Nơi học</th> 
-                <th id="th" width="30%">Ngành học</th>
-                 <th id="th" width="30%">Bằng cấp</th>
+            <thead class="fontstyle"> 
+              <tr > 
+                <th id="th" width="22%">Từ - Đến</th> 
+                <th id="th" width="23%">Trường</th> 
+                <th id="th" width="15%">Nơi học</th> 
+                <th id="th" width="20%">Ngành học</th>
+                 <th id="th" width="20%">Bằng cấp</th>
               </tr> 
             </thead> 
             <tbody> 
@@ -395,16 +395,16 @@
            <label>Các khóa đào tạo</label>
           <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal5"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
-            <thead> 
+            <thead class="fontstyle"> 
               <tr> 
-                <th id="th" width="30%">Từ - Đến</th> 
-                <th id="th" width="20%">Cơ sở đạo tào</th> 
-                <th id="th" width="20%">Thời gian học</th> 
-                <th id="th" width="30%">Ngành học</th>
-                 <th id="th" width="30%">Bằng cấp</th>
+                <th id="th" width="20%">Từ - Đến</th> 
+                <th id="th" width="23%">Cơ sở đạo tào</th> 
+                <th id="th" width="21%">Thời gian học</th> 
+                <th id="th" width="18%">Ngành học</th>
+                 <th id="th" width="18%">Bằng cấp</th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>
@@ -421,14 +421,14 @@
              </tr>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" > Lưu</button>  
+          <!-- <button type="button" class="btn btnlong" > Lưu</button>   -->
         </div>
 
         <div id="collapseSeven" class="tab-pane ">
           <label>Trình độ Ngoại ngữ</label>
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal6"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
-            <thead> 
+            <thead class="fontstyle"> 
               <tr> 
                 <th id="th" >Ngoại Ngữ</th> 
                 <th id="th" >Nghe</th> 
@@ -437,7 +437,7 @@
                 <th id="th" >Viết</th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>
@@ -457,14 +457,14 @@
           <label>Trình độ tin học</label>
            <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal7"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
-            <thead> 
+            <thead class="fontstyle"> 
               <tr> 
                 
                 <th id="th" width="60%">Phần mềm</th> 
                 <th id="th" width="40%">Trình độ</th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
              <tr>
               <td>asdsa</td>
               <td>asdsa</td>

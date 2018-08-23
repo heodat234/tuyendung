@@ -7,6 +7,10 @@ class Handling extends CI_Controller {
 	{
 		parent::__construct();
 		
+		
+		
+		$this->load->model('M_Test');  
+		
 		$this->load->helper('url');
 		$this->data['header'] = $this->load->view('home/header',null,true);
 	    $this->data['menu'] = $this->load->view('home/menu',null,true);
@@ -14,6 +18,7 @@ class Handling extends CI_Controller {
 	}
 	public function index()
 	{
+
 		$data['chinhsach'] = "active";
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/chinhsachnhansu',$data,true);

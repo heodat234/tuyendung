@@ -172,7 +172,7 @@
         <div class="modal-content">
           
           <div class="modal-body">
-            <form action="#" method="post">
+            <form  id="form-login">
             <div class="row">
               <div class="col-md-6 text-modal" >
                <h3 class="color-blue" ">Tham gia cùng chúng tôi
@@ -189,6 +189,7 @@
               <div class="col-md-6 padding-form-login">
                <h3 class="color-blue">Đăng Nhập</h3>
                <br>
+               <div class="alert alert-danger hide" id="err-login"></div>
               <div class="form-group row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
@@ -200,7 +201,7 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
                   <input type="password" class="kttext" id="inputPassword" name="password" placeholder="">
-                  <button type="button" class="btn btn-login"  data-toggle="modal" data-target="#myModal">Đăng Nhập
+                  <button type="button" class="btn btn-login"  id="btn_login">Đăng Nhập
                 </button>
                 <p class="margin-top17">
                 <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu
@@ -325,7 +326,7 @@
         <div class="modal-content">
           <h3 class="title-center-complete"><strong>Đất Xanh Group chào mừng bạn dã tham gia Talent Network</strong></h3>
           <p class="padding-left-right-20">
-            Xin chào <strong>Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
+            Xin chào <strong id="name_tb">Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
           </p>
           <p class="justify padding-left-right-20">
             Đê tiếp tục, mới bạn <a href="#" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
@@ -335,17 +336,49 @@
         </div>
       </div>
     </div>
-
+    <style type="text/css">
+      .hide{
+        display: none;
+      }
+    </style>
     <script type="text/javascript">
-        $('#myModal20').on('show.bs.modal', function (event) {
-            $('#myModal1a').modal('toggle');
-        });
+        // $('#myModal20').on('show.bs.modal', function (event) {
+        //     $('#myModal1a').modal('toggle');
+        // });
         $('#myModal1a').on('show.bs.modal', function (event) {
             $('#myModal').modal('toggle');
         });
         $('#ngaysinh').datetimepicker();
         
-        
+
+        $('#btn_login').click(function(event) {
+          $.ajax({
+            url: '<?php echo base_url() ?>login/loginUser',
+            type: 'POST',
+            dataType: 'json',
+            data: $('form#form-login').serialize(),
+          })
+          .done(function(data) {
+            if (data != '1') {
+              $('#err-login').addClass('hide');
+              // console.log(data[0]['email']);
+              $('#myModal').modal('hide');
+              $('#name_tb').text(data[0]['email']);
+              $('#myModal20').modal('show');
+            }else{
+              $('#err-login').text('Sai email hoặc mật khẩu. Vui lòng nhập lại!').removeClass('hide');
+            }
+            
+            // console.log(data);
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+          
+        });
     </script>
 
   </body>

@@ -10,8 +10,8 @@ class Handling extends CI_Controller {
 		$this->load->library('session');
 		
 		
-		
-		$this->load->helper('url');
+		$this->load->model(array('Login_model'));
+		$this->load->helper(array('url','my_helper'));
 		$this->data['header'] = $this->load->view('home/header',null,true);
 	    $this->data['menu'] = $this->load->view('home/menu',null,true);
 	    $this->data['footer'] = $this->load->view('home/footer',null,true);
@@ -40,6 +40,7 @@ class Handling extends CI_Controller {
 	public function hoso_canhan()
 	{
 		$data['hoso'] = "active";
+		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 		$this->load->view('home/master',$this->data);	
@@ -58,6 +59,13 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/lichsu_detail',$data,true);
 		$this->load->view('home/master',$this->data);	
 	}
-	
+	public function update_introduce()
+	{
+		$frm = $this->input->post();	
+		$data['introduction'] = $frm['currentbenefit'];
+		$data['currentbenefit'] = $frm['desirebenefit'];
+		$data['desirebenefit'] = $frm['desirebenefit'];
+		$data['profilesrc'] = $frm['desirebenefit'];
+ 	}
 }
 ?>

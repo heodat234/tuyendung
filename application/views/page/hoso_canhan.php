@@ -11,7 +11,7 @@
           <td  width="22%">
 
           </td>
-          <td><strong class="size20">Nam, Do</strong></td>
+          <td><strong class="size20"><?php echo $candidate['firstname']?>, <?php echo $candidate['lastname']?></strong></td>
           
         </tr>
         <tr class="none-table2">
@@ -20,18 +20,21 @@
 
         </td> 
         <td>
-          <div class="form-control textarea-info" >My name is Nam Do, and I'm currently looking for a job in youth services. I have 10 years of experience working with youth agencies. I have a bachelor's degree in outdoor education. I raise money, train leaders and organize units. I have raised over $1000,000 each of the six years. I consider myself a good public speaker, and I have a good sense of humor."Who do you know who works with youth?"</div>
+          <div class="form-control textarea-info" ><?php echo $candidate['introduction']?></div>
         
       </td>
     </tr>
     <tr class="none-table2">
       <td class="table-profile">
         <i class="fa fa-info-circle orange"></i>
-         Nam/ 26 Tuổi
+         <?php if($candidate['gender'] == 1) echo "Nam"; 
+              else if($candidate['gender'] == 0) echo "Nữ";
+              ?>/ <?php echo getAge($candidate['dateofbirth']);
+               ?> tuổi
        </td>
       <td class="table-profile">
         <i class="fa fa-dollar orange"></i>
-        <span> 30,000,000 - 50,000,000 VND</span>
+        <span> <?php echo $candidate['desirebenefit']?> VND</span>
       </td>
     </tr>
     <tr class="none-table2">
@@ -41,7 +44,12 @@
         </tr> 
       </table>
  <div >
+          <?php if($candidate['imagelink'] == null) {?>
            <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1" class="img image-avatar">
+           <?php }
+           else { ?>
+           <img src="<?php echo base_url()?>public/image/<?php echo $candidate['imagelink'] ?>" alt="" id="anh1" class="img image-avatar">
+           <?php } ?>
            <div class="image-edit margin-bot-21" id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
            
          
@@ -77,7 +85,7 @@
             <label for="staticEmail" class="col-sm-4"  >GIỚI THIỆU (INTRODUCE)</label>
             <div class="col-sm-8">
               
-              <textarea class="areatext kttext off-resize" rows="4" name="gioithieu"></textarea>
+              <textarea class="areatext kttext off-resize" rows="4" name="gioithieu"><?php echo $candidate['introduction'] ?></textarea>
             </div>
           </div>
           <div class="form-group row kcform">
@@ -90,13 +98,13 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhapht">THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
-             <input class="kttext" type="text" placeholder="">
+             <input class="kttext" type="text" placeholder="" value="<?php echo $candidate['currentbenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhap_mongmuon" >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
-               <input class="kttext" type="text" placeholder="">
+               <input class="kttext" type="text" placeholder="" value="<?php echo $candidate['desirebenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -105,7 +113,7 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder="" name="filecvht">
+                <input class="kttext" type="text" placeholder="" name="filecvht" value="<?php echo $candidate['profilesrc'] ?>">
                     <div class="form-group row kcform width100 margin-top12" >
                         <div class="col-sm-6">
                             <input class="kttext"  type="text" placeholder="Chọn file..." name="filecv"> </div>
@@ -876,7 +884,8 @@
 <div class="modal fade" id="edit_anh_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="UploadContent.php" method="POST" enctype="multipart/form-data">
+
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
         <h4 class="modal-title" id="myModalLabel">Cập nhật ảnh đại diện</h4>
@@ -884,20 +893,45 @@
       <div class="modal-body">
          <strong class="title-anhdaidien">Đổi ảnh đại diện</strong>
       <br>
-           <button type="button"  class="btn btnlong padding-anhdaidien" >Chọn file</button>
-           <label>Không có ảnh...</label>
-                  
+           <!-- <button type="file"  class="btn btnlong padding-anhdaidien"  >Chọn file</button>
+           <label>Không có ảnh...</label> -->
+              
+       <input type="file" class="btn btnlong padding-anhdaidien" name="image">  
            
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btnlong btn88"  data-dismiss="modal">Close</button>
-        <button type="button" class="btn btnlong btn99"> Lưu</button>
+        <!-- <button type="button" class="btn btnlong btn99"> Lưu</button> -->
+        <input type="submit" class="btn btnlong btn99" value="Lưu">  
       </div>
     </form>
     </div>
   </div>
 </div>
+<?php
 
+// connect to database
+
+
+// file properties
+$file = $_FILES['image']['tmp_name'];
+
+if (!isset($file))
+  echo "Please select a profile pic";
+else
+{
+  $image = addslashes(file_get_content($_FILES['image']['tmp_name']));
+  $image_name = addslashes($FILES['image']['name']);
+  $image_size = getimagesize($_FILES['image']['tmp_name']);
+
+  if ($image_size==FALSE)
+    echo "That isn't a image.";
+  else
+  {
+    $insert = mysql_query("INSERT INTO content VALUES ('','','','','','','','','','$image_name','$image',)");
+  }
+}
+?>
 
 
 

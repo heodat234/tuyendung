@@ -2,8 +2,8 @@
 class Login_model extends CI_Model{
 	
 	/* Gán tên bảng cần xử lý*/
-	private $table = 'CDD_Profile';
-	
+	private $table = 'operator';
+	// 
 	function __construct(){
         parent::__construct();
         $this->load->database();
@@ -11,7 +11,7 @@ class Login_model extends CI_Model{
     } 
     //kiểm tra thông tin đăng nhập thường
     function a_fCheckUser( $username, $pass ){
-    	$sql = "SELECT * FROM CDD_Profile where (( email = '$username' OR idnumber = '$username') and password ='$pass')";
+    	$sql = "SELECT * FROM operator where (( email = '$username' OR operatorname = '$username') and password ='$pass')";
             $query = $this->db->query($sql)->result_array();
     	if(count($query) >0){
     		return $query;
@@ -25,13 +25,13 @@ class Login_model extends CI_Model{
                             ->where('email', $mail)
                             ->get($this->table)
                             ->row_array();
-        if(count($a_User) >0){
+        if($a_User != null){
             return true;
         } else {
             return false;
         }
     }
-
+    // kiem tra co dung password khong
     public function checkPassword($id, $pass ){
         $a_User =   $this->db->select()
                             ->where('id', $id)
@@ -102,11 +102,16 @@ class Login_model extends CI_Model{
         return $userID?$userID:FALSE;
     }
 
-    function activeUser($email)
-    {
-        $data['active'] = 1;
-        $a_User =   $this->db->where('email', $email)
-                            ->update($this->table,$data);
-    }
-  
+    // function activeUser($email)
+    // {
+    //     $data['active'] = 1;
+    //     $a_User =   $this->db->where('email', $email)
+    //                         ->update($this->table,$data);
+    // }
+        public function selectTableById($table,$id)
+        {
+            $this->db->select()->where('candidateid', $id);
+            $query = $this->db->get($table);
+           return $query->row_array();
+        }
 }

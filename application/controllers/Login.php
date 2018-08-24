@@ -107,13 +107,13 @@ class Login extends CI_Controller {
  //        return $this->load->view('home/master', $this->_data);
 	// }
 
-	public function activeUser($email, $token){
-        $this->Login_model->activeUser($email);
-        $this->a_Data['d_Check']= true;
-		$this->_data['html_body'] = $this->load->view('page/login',$this->a_Data, TRUE);
-        return $this->load->view('home/master', $this->_data);
+	// public function activeUser($email, $token){
+ //        $this->Login_model->activeUser($email);
+ //        $this->a_Data['d_Check']= true;
+	// 	$this->_data['html_body'] = $this->load->view('page/login',$this->a_Data, TRUE);
+ //        return $this->load->view('home/master', $this->_data);
 
-    }
+ //    }
 	
 	//đăng xuất
 	public function logout($value='')
@@ -169,25 +169,25 @@ class Login extends CI_Controller {
 		redirect(base_url('pageLogin'));
 	}
 	public function insertUser()
-	{		
-		if($this->input->post('pass') != $this->input->post('repass'))
-		{
-			echo '<script type="text/javascript">alert("Bạn Xác Nhận Mật Khẩu Sai!!")			 		 
-				 		</script>';
-		}
-		else
-		{
-			$data['email'] = $this->input->post('email');
-			$data['idnumber'] = $this->input->post('cmnd');
-			$data['password'] = md5($this->input->post('pass'));
-			$data['name'] = $this->input->post('lastname').' '.$this->input->post('firstname');
-			$data['firstname'] = $this->input->post('firstname');
-			$data['lastname'] = $this->input->post('lastname');
-			$data['gender'] = $this->input->post('inlineRadioOptions');
-			$data['dob'] = $this->input->post('birthday');
-			// khong co vi tri mong muon
-			$this->Login_model->insertUser($data);
-			echo '1';
+	{	
+		$frm = $this->input->post();	
+		$a_UserInfo['email'] 		= $frm['email'];
+		$a_UserInfo['roleid'] 		= 1;
+		$a_UserInfo['idcard'] 		= $frm['cmnd'];
+		$a_UserInfo['password']		= md5($frm['pass']);
+		$a_UserInfo['operatorname'] = $frm['firstname'];
+		if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {	
+			echo "-1";
+		}else{
+			if($frm['pass'] != $frm['repass']){
+				echo "-2";
+			}
+			else{
+
+				$this->Login_model->insertUser( $a_UserInfo );
+				$this->session->set_userdata('user', $a_UserInfo);
+				echo json_encode($a_UserInfo);
+			}
 		}
 		
 	}

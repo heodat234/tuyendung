@@ -78,7 +78,7 @@
               
               <div class="floatright long ">
                 <?php if($this->session->has_userdata('user')) {?>
-                <label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> <?php echo $this->session->userdata('user')['name']?> &nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>
+                <label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> <?php echo $this->session->userdata('user')['operatorname']?> &nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>
                 
            <?php   }else
            { ?>
@@ -251,7 +251,7 @@
               <div class="col-md-7 padding-form-login">
                 <form id="sign-in">
                <h3 class="color-blue">Đăng ký tài khoản</h3>
-               
+               <div class="alert alert-danger hide" id="err-sign-in"></div>
               <div class="form-group row kcform1">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
@@ -296,10 +296,10 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Giới tính</label>
                 <div class="col-sm-8">
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> Nam
+                    <input type="radio" name="gender" id="inlineRadio1" value="1"> Nam
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0"> Nữ
+                    <input type="radio" name="gender" id="inlineRadio2" value="0"> Nữ
                   </label>
                   
                 </div>
@@ -315,7 +315,7 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
                   <textarea class="form-control off-resize" rows="2" name="position"></textarea>
-                  <button type="button" class="btn btn-login" id="btn_sign_in" data-toggle="modal" data-target="#myModal20">Đăng Ký
+                  <button type="button" class="btn btn-login" id="btn_sign_in" >Đăng Ký
                 </button>
                 </div>
               </div>
@@ -336,7 +336,7 @@
             Xin chào <strong id="name_tb">Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
           </p>
           <p class="justify padding-left-right-20">
-            Đê tiếp tục, mới bạn <a href="#" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
+            Đê tiếp tục, mới bạn <a href="<?php echo base_url()?>handling/hoso_canhan" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
           </p>
           <img src="<?php echo base_url()?>public/image/banner-772x250.jpg" class="image-banner">
           
@@ -348,6 +348,7 @@
         // $('#myModal20').on('show.bs.modal', function (event) {
         //     $('#myModal1a').modal('toggle');
         // });
+
         $('#myModal1a').on('show.bs.modal', function (event) {
             $('#myModal').modal('toggle');
         });
@@ -366,9 +367,9 @@
               $('#err-login').addClass('hide');
               // console.log(data[0]['email']);
               $('#myModal').modal('hide');
-              $('#name_tb').text(data[0]['name']);
+              $('#name_tb').text(data[0]['operatorname']);
               $('#myModal20').modal('show');
-              $('.long').html('<label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> '+data[0]['name']+'&nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>');
+              $('.long').html('<label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> '+data[0]['operatorname']+'&nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>');
               $('#hoso1').removeClass('hide');
               $('#lichsu1').removeClass('hide');
             }else{
@@ -394,12 +395,25 @@
             data: $('form#sign-in').serialize(),
           })
           .done(function(data) {
-             if (data != '1') {
-              $('#err-login').addClass('hide');
+             if (data != '-1' && data != '-2') {
+              $('#err-sign-in').addClass('hide');
               // console.log(data[0]['email']);
+              $('#myModal1a').modal('hide');
               $('#myModal').modal('hide');
-              $('#name_tb').text(data[0]['name']);
+              $('#name_tb').text(data['operatorname']);
               $('#myModal20').modal('show');
+              $('.long').html('<label class="dangnhap1"><i class="fa fa-user fa-lg orange" ></i> '+data['operatorname']+'&nbsp|&nbsp <a href="#">Cài đặt</a>&nbsp |&nbsp <a href="<?php echo base_url()?>login/logout">Thoát</a></label>');
+              $('#hoso1').removeClass('hide');
+              $('#lichsu1').removeClass('hide');
+             }
+             else
+             {
+                if(data == '-1'){
+                  $('#err-sign-in').text('Email đã tồn tại. Vui lòng nhập lại!').removeClass('hide');
+                }
+                else{
+                  $('#err-sign-in').text('Nhập lại mật khẩu không đúng. Vui lòng nhập lại!').removeClass('hide');
+                }
              }
            
           })
@@ -415,4 +429,3 @@
 
   </body>
 </html>
-

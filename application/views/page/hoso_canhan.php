@@ -27,8 +27,8 @@
     <tr class="none-table2">
       <td class="table-profile">
         <i class="fa fa-info-circle orange"></i>
-         <?php if($candidate['gender'] == 1) echo "Nam"; 
-              else if($candidate['gender'] == 0) echo "Nữ";
+         <?php if($candidate['gender'] == "M") echo "Nam"; 
+              else if($candidate['gender'] == "F") echo "Nữ";
               ?>/ <?php echo getAge($candidate['dateofbirth']);
                ?> tuổi
        </td>
@@ -65,7 +65,7 @@
                 <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10" style="color: green;"></i> Giới thiệu bản thân</a>
               </li>
               <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10" style="color: green; "></i> Thông tin cá nhân</a></li>
-              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10" style="color: green;"></i> thông tin liên hệ</a>
+              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10" style="color: green;"></i> Thông tin liên hệ</a>
               </li>
               <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10" style="color: green;"></i> Thông tin gia đình</a></li>
               <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10" style="color: orange;"></i> Kinh nghiệm làm việc</a></li>
@@ -78,33 +78,33 @@
         <div class="col-md-9 ">
           <div class="tab-content">
         <div id="collapseOne" class="tab-pane  in active">
-          <form action="#" method="post">
+          <form action="<?php echo base_url()?>handling/update_introduce" method="post" enctype="multipart/form-data">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
           <div class="form-group row kcform">
             <label for="staticEmail" class="col-sm-4"  >GIỚI THIỆU (INTRODUCE)</label>
             <div class="col-sm-8">
               
-              <textarea class="areatext kttext off-resize" rows="4" name="gioithieu"><?php echo $candidate['introduction'] ?></textarea>
+              <textarea class="areatext kttext off-resize" rows="4" name="introduction"><?php echo $candidate['introduction'] ?></textarea>
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >VỊ TRÍ MONG MUỐN (EXPECT POSOTION)</label>
             <div class="col-sm-8">
-              <textarea class="areatext kttext off-resize" rows="2" name="vitri"></textarea>
+              <textarea class="areatext kttext off-resize" rows="2" name="position"></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhapht">THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
-             <input class="kttext" type="text" placeholder="" value="<?php echo $candidate['currentbenefit'] ?>">
+             <input class="kttext" type="text" placeholder="" name="cur_benefit" value="<?php echo $candidate['currentbenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label" name="thunhap_mongmuon" >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label"  >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
-               <input class="kttext" type="text" placeholder="" value="<?php echo $candidate['desirebenefit'] ?>">
+               <input class="kttext" type="text" placeholder="" name="desirebenefit"  value="<?php echo $candidate['desirebenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -113,21 +113,30 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder="" name="filecvht" value="<?php echo $candidate['profilesrc'] ?>">
+                <input class="kttext" type="text" placeholder=""  value="<?php echo $candidate['profilesrc'] ?>">
                     <div class="form-group row kcform width100 margin-top12" >
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             <input class="kttext"  type="text" placeholder="Chọn file..." name="filecv"> </div>
                       <div class="col-sm-6">
-                             <button type="button" class="btn btnlong" >Tải lên</button></div>
+                             <input type="file" class="btn btnlong" name="profilesrc"></div> -->
+                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control " readonly="">        
+                    </div>
+                    <div class="col-sm-6">
+                    <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector" style="background-color:white">
+                        <input id="my-file-selector" name="profilesrc" type="file" style="display:none;">
+                        Tải lên
+                    </label>
+                    </div>
+
                   </div>
-                <button type="button" class="btn btnlong margin-top12" > Lưu</button>
+                <button type="submit" class="btn btnlong margin-top12" > Lưu</button>
             </div>
           </div>
         </form>
         </div>
 
         <div id="collapseTwo" class="tab-pane ">
-          <form action="#" method="post">
+          <form action="<?php echo base_url()?>handling/update_profile" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
           <div class="form-group row kcform">
@@ -135,16 +144,16 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Họ" name="ho"> </div>
+                <input class="kttext" type="text" placeholder="Họ" name="ho" value="<?php echo $candidate['firstname'] ?>"> </div>
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Tên" name="ten"></div>
+                <input class="kttext" type="text" placeholder="Tên" name="ten" value="<?php echo $candidate['lastname'] ?>"></div>
               </div>
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY SINH (DOB)</label>
             <div class="col-sm-6">
-              <input class="kttext" type="text" id="ngaysinh" name="ngaysinh1"></div>
+              <input class="kttext" type="text" id="ngaysinh" name="ngaysinh1" value="<?php echo $candidate['dateofbirth'] ?>"></div>
               
             </div>
               
@@ -152,40 +161,38 @@
             <label for="inputPassword" class="col-sm-4 col-form-label">GIỚI TÍNH (GENDER)</label>
             <div class="col-sm-8">
              <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
+                <input type="radio" name="gender" id="inlineRadio1" value="M" <?php if($candidate['gender'] == 'M') echo 'checked';?>> Nam
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
+                <input type="radio" name="gender" id="inlineRadio2" value="F" <?php if($candidate['gender'] == 'F') echo 'checked'; ?>> Nữ
               </label>
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NƠI SINH (POB)</label>
             <div class="col-sm-6">
-               <select class="seletext" name="noisinh">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+               <select class="seletext js-example-basic-single" name="noisinh">
+                 <option value="0" >Chọn tỉnh thành</option>
+                <?php foreach ($city as $key ) {
+
+                ?>
+                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "checked";?> ><?php echo $key['name'] ?></option>
+                  <?php } ?>
                 </select>
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">DÂN TÔC (ETHNIC)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" name="dantoc">
+               <input class="kttext" type="text" placeholder="" name="ethnic" value="<?php echo $candidate['ethnic'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">QUỐC TỊCH (NATIONALITY)</label>
             <div class="col-sm-6">
                 <select class="seletext" name="quoctich">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value="Việt Nam">Việt Nam</option>
+                  <option value="Khác" <?php if($candidate['nationality'] != "Việt Nam") echo "checked"?>>Khác</option>
                 </select>
             </div>
           </div>
@@ -204,27 +211,29 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CMND (ID)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" name="cmnd">
+               <input class="kttext" type="text" placeholder="" name="cmnd" value="<?php echo $candidate['idcard'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY CẤP (ISSUED DATE)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" id="ngaycap" placeholder="" name="ngaycap">
+               <input class="kttext" type="text" id="ngaycap" placeholder="" name="dateofissue" value="<?php echo $candidate['dateofissue'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NƠI CẤP (ISSUED PLACE)</label>
             <div class="col-sm-6">
-               <select class="seletext" name="noicap">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+               <select class="seletext js-example-basic-single" name="placeofissue">
+                 <option value="0" >Chọn tỉnh thành</option>
+                <?php foreach ($city as $key ) {
+
+                ?>
+                  <option value="<?php echo $key['name'] ?>" <?php if($candidate['placeofissue'] == $key['name']) echo 'checked'; ?> ><?php echo $key['name'] ?></option>
+                  <?php } ?>
+                </select>
                 </select>
                 <br>
-                <button type="button" class="btn btnlong margin-top12" > Lưu</button>
+                <button type="submit" class="btn btnlong margin-top12" > Lưu</button>
             </div>
           </div>
           
@@ -236,29 +245,54 @@
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
-              <input class="kttext modal-70"  type="text" placeholder="" name="email">
+              <input class="kttext modal-70"  type="text" placeholder="" name="email" value="<?php echo $candidate['email'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize" rows="2" name="dctt"></textarea>
+              <textarea class="kttext areatext off-resize" rows="2" name="dctt" value="
+              <?php 
+                  if($address != null)
+                  {
+                      foreach ($address as $key ) {
+                        if($key['addtype'] == "PREMANENT")
+                        {
+                          echo $key['address']; break;
+                        }
+                      }
+                  }
+              ?>"
+              ></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" ></textarea>
+              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" value="
+              <?php 
+                  if($address != null)
+                  {
+                      foreach ($address as $key ) {
+                        if($key['addtype'] == "CONTACT")
+                        {
+                          echo $key['address']; break;
+                        }
+                      }
+                  }
+              ?>
+              "
+              ></textarea>
               
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="kttext"  type="text" placeholder="" name="dt1">
+              <input class="kttext"  type="text" placeholder="" name="dt1" value="<?php echo $candidate['telephone'] ?>">
               <br>
-              <input class="kttext margin-top-8"  type="text" placeholder="" name="dt2">
+              <input class="kttext margin-top-8"  type="text" placeholder="" name="dt2" >
 
               
             </div>
@@ -277,6 +311,7 @@
         <div id="collapseFour" class="tab-pane ">
          
           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
+          
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr class="fontstyle"> 
@@ -287,20 +322,18 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+              <?php if($family != null) {
+              foreach ($family as $key) { ?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
+              <td><?php echo $key['name']?></td>
+              <td><?php echo $key['yob']?></td>
+              <td><?php echo $key['type']?></td>
+              <td><?php echo $key['career']?></td>
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-             </tr>
+             <?php } } ?>
             </tbody> 
           </table>
+        
          <!--  <button type="button" class="btn btnlong"> Lưu</button>  
          -->
         </div>
@@ -320,20 +353,16 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+             <?php if($experience != null) {
+              foreach ($experience as $key) { ?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-               <td>asdsa</td>
+              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo $key['company']?></td>
+              <td><?php echo $key['position']?></td>
+              <td><?php echo $key['responsibility']?></td>
+              <td><?php echo $key['quitreason']?></td>
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-               <td>asdsa</td>
-             </tr>
+             <?php } } ?>
             </tbody> 
           </table>
            <label>Người phụ trách tham khảo</label>
@@ -349,18 +378,16 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+             <?php if($reference != null) {
+              foreach ($reference as $key) { ?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
+              <td><?php echo $key['name']?></td>
+              <td><?php echo $key['position']?></td>
+              <td><?php echo $key['company']?></td>
+              <td><?php echo $key['contactno']?></td>
               
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
+             <?php } } ?>
               
              </tr>
             </tbody> 
@@ -384,20 +411,18 @@
               </tr> 
             </thead> 
             <tbody> 
+              <?php if($knowledge != null) {
+              foreach ($knowledge as $key) { 
+                if($key['traintimetype'] != null)
+                  { continue; } else {?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-               <td>asdsa</td>
+              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo $key['trainingcenter']?></td>
+              <td><?php echo $key['trainingplace']?></td>
+              <td><?php echo $key['trainingcourse']?></td>
+              <td><?php echo $key['certificate']?></td>
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-               <td>asdsa</td>
-             </tr>
+             <?php } } }?>
             </tbody> 
           </table>
            <label>Các khóa đào tạo</label>
@@ -413,20 +438,18 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+             <?php if($knowledge != null) {
+              foreach ($knowledge as $key) { 
+                if($key['traintimetype'] == null)
+                  { continue; } else {?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
+              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo $key['trainingcenter']?></td>
+              <td><?php echo $key['traintime'].' '.$key['traintimetype']?></td>
+              <td><?php echo $key['trainingcourse']?></td>
+              <td><?php echo $key['certificate']?></td>
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>  
-             </tr>
+             <?php } } } ?>
             </tbody> 
           </table>
           <!-- <button type="button" class="btn btnlong" > Lưu</button>   -->
@@ -446,20 +469,17 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+            <?php if($language != null) {
+              foreach ($language as $key) { 
+                ?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
+              <td><?php echo $key['language']?></td>
+              <td><?php echo $key['rate1']?></td>
+              <td><?php echo $key['rate2']?></td>
+              <td><?php echo $key['rate3']?></td>
+              <td><?php echo $key['rate4']?></td>
              </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-              <td>asdsa</td>
-             </tr>
+             <?php } } ?>
             </tbody> 
           </table>
           <label>Trình độ tin học</label>
@@ -473,19 +493,18 @@
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
+             <?php if($software != null) {
+              foreach ($software as $key) { 
+                ?>
              <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
-             
-             </tr>
-             <tr>
-              <td>asdsa</td>
-              <td>asdsa</td>
+              <td><?php echo $key['software']?></td>
+              <td><?php echo $key['rate1']?></td>
               
              </tr>
+             <?php } } ?>
             </tbody> 
           </table>
-          <button type="button" class="btn btnlong" > Lưu</button>  
+          
         </div>
 
         </div>
@@ -559,7 +578,7 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="" method="post">
       <h3 class="title-modal margin-bot-15">Thêm quá trình công tác</h3>
            
           <div class="form-group row padding-left-right-20 margin-bot-2" >
@@ -896,9 +915,19 @@
            <!-- <button type="file"  class="btn btnlong padding-anhdaidien"  >Chọn file</button>
            <label>Không có ảnh...</label> -->
               
-       <input type="file" class="btn btnlong padding-anhdaidien" name="image" id="image">  
+       <!-- <input type="file" class="btn btnlong padding-anhdaidien" name="image" id="image">   -->
+       <div class="input-group btn-load1">
+        <label id="browsebutton" class="btn btn-default input-group-addon btn-load2" for="my-file-selector" style="background-color:white">
+            <input id="my-file-selector" name="image" type="file" style="display:none;">
+            Browse...
+        </label>
+        <input id="label" type="text" class="form-control btn-load3" readonly="">
+    </div>
            
       </div>
+
+      
+
       <div class="modal-footer">
         <button type="button" class="btn btnlong btn88"  data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btnlong btn99"> Lưu</button> -->
@@ -923,7 +952,11 @@ $('#tuden4').datetimepicker();
 $('#tuden5').datetimepicker();
 $('#tuden6').datetimepicker();
 
- 
+
+
+ $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
  
  $('#anh2').hide();
  $('#anh1').mouseenter(function()
@@ -950,21 +983,34 @@ $('#tuden6').datetimepicker();
     $('#edit_anh_modal').modal('show');
  }
     
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
             
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
+    //         reader.onload = function (e) {
+    //             $('#blah').attr('src', e.target.result);
+    //         }
             
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
     
-          $("#image").change(function(){
-              readURL(this);
-          });
+    //       $("#image").change(function(){
+    //           readURL(this);
+    //       });
 
-      
+$(document).ready(function(){
+        $('#browsebutton :file').change(function(e){
+            var fileName = e.target.files[0].name;
+            $("#label").attr('placeholder',fileName)
+        });
+    });
+$(document).ready(function(){
+        $('#browsebutton1 :file').change(function(e){
+            var fileName = e.target.files[0].name;
+            $("#label1").attr('placeholder',fileName)
+        });
+    });
+        
+
 </script>

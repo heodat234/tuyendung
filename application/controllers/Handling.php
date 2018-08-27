@@ -51,7 +51,22 @@ class Handling extends CI_Controller {
 	public function hoso_canhan()
 	{
 		$data['hoso'] = "active";
+		$arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
+        $data['city'] =$_jsoncity;
+        $data['address'] = $this->Login_model->selectTableById('canaddress',$this->session->userdata('user')['candidateid']);
 		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$data['family'] = $this->Login_model->selectTableById('cansocial',$this->session->userdata('user')['candidateid']);
+		$data['experience'] = $this->Login_model->selectTableById('canexperience',$this->session->userdata('user')['candidateid']);
+		$data['reference'] = $this->Login_model->selectTableById('canreference',$this->session->userdata('user')['candidateid']);
+		$data['knowledge'] = $this->Login_model->selectTableById('canknowledge',$this->session->userdata('user')['candidateid']);
+		$data['language'] = $this->Login_model->selectTableById('canlanguage',$this->session->userdata('user')['candidateid']);
+		$data['software'] = $this->Login_model->selectTableById('cansoftware',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 		$this->load->view('home/master',$this->data);	
@@ -73,10 +88,26 @@ class Handling extends CI_Controller {
 	public function update_introduce()
 	{
 		$frm = $this->input->post();	
-		$data['introduction'] = $frm['currentbenefit'];
-		$data['currentbenefit'] = $frm['desirebenefit'];
+		$data['introduction'] = $frm['introduction'];
+		$data['currentbenefit'] = $frm['cur_benefit'];
 		$data['desirebenefit'] = $frm['desirebenefit'];
-		$data['profilesrc'] = $frm['desirebenefit'];
+
+		if (!empty($_FILES['profilesrc']['name'])) {
+	        $config['upload_path'] = './public/document/';
+	        $config['allowed_types'] = 'pdf|doc|docx';
+	        $config['file_name'] = $_FILES['profilesrc']['name'];
+	    	$config['overwrite'] = TRUE;  
+	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('profilesrc')) {
+          $uploadData = $this->upload->data();
+          $data["profilesrc"] = $uploadData['file_name'];
+        	
+       		 } 
+	     }
+	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+	      header('location:hoso_canhan');
  	}
  	public function upload_image()
  	{
@@ -102,5 +133,11 @@ class Handling extends CI_Controller {
 	      
 	      // echo $_FILES['image']['name'];
  	}
+ 	public function update_profile()
+ 	{
+ 			
+ 	}
+
+ 	
 }
 ?>

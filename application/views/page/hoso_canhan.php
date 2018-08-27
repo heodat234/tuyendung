@@ -119,11 +119,11 @@
                             <input class="kttext"  type="text" placeholder="Chọn file..." name="filecv"> </div>
                       <div class="col-sm-6">
                              <input type="file" class="btn btnlong" name="profilesrc"></div> -->
-                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control " readonly="">        
+                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control" readonly="">        
                     </div>
                     <div class="col-sm-6">
-                    <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector" style="background-color:white">
-                        <input id="my-file-selector" name="profilesrc" type="file" style="display:none;">
+                    <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector1" style="background-color:white">
+                        <input id="my-file-selector1" name="profilesrc" type="file" style="display:none;">
                         Tải lên
                     </label>
                     </div>
@@ -144,9 +144,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Họ" name="ho" value="<?php echo $candidate['firstname'] ?>"> </div>
+                <input class="kttext" type="text" placeholder="Họ" name="ho" value="<?php echo $candidate['lastname'] ?>"> </div>
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Tên" name="ten" value="<?php echo $candidate['lastname'] ?>"></div>
+                <input class="kttext" type="text" placeholder="Tên" name="ten" value="<?php echo $candidate['firstname'] ?>"></div>
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@
                 <?php foreach ($city as $key ) {
 
                 ?>
-                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "checked";?> ><?php echo $key['name'] ?></option>
+                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
                   <?php } ?>
                 </select>
             </div>
@@ -192,7 +192,7 @@
             <div class="col-sm-6">
                 <select class="seletext" name="quoctich">
                   <option value="Việt Nam">Việt Nam</option>
-                  <option value="Khác" <?php if($candidate['nationality'] != "Việt Nam") echo "checked"?>>Khác</option>
+                  <option value="Khác" <?php if($candidate['nationality'] != "Việt Nam") echo "selected"?>>Khác</option>
                 </select>
             </div>
           </div>
@@ -228,9 +228,9 @@
                 <?php foreach ($city as $key ) {
 
                 ?>
-                  <option value="<?php echo $key['name'] ?>" <?php if($candidate['placeofissue'] == $key['name']) echo 'checked'; ?> ><?php echo $key['name'] ?></option>
+                  <option value="<?php echo $key['name'] ?>" <?php if($candidate['placeofissue'] == $key['name']) echo 'selected'; ?> ><?php echo $key['name'] ?></option>
                   <?php } ?>
-                </select>
+                
                 </select>
                 <br>
                 <button type="submit" class="btn btnlong margin-top12" > Lưu</button>

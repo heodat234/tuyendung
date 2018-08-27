@@ -135,7 +135,19 @@ class Handling extends CI_Controller {
  	}
  	public function update_profile()
  	{
- 			
+ 		$frm = $this->input->post();	
+		$data['firstname'] = $frm['ten'];
+		$data['lastname'] = $frm['ho'];
+		$data['dateofbirth'] = $frm['ngaysinh1'];
+		$data['gender'] = $frm['gender'];
+		$data['placeofbirth'] = $frm['noisinh'];
+		$data['ethnic'] = $frm['ethnic'];
+		$data['nationality'] = $frm['quoctich'];
+		$data['idcard'] = $frm['cmnd'];
+		$data['dateofissue'] = $frm['dateofissue'];
+		$data['placeofissue'] = $frm['placeofissue'];
+		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+	      header('location:hoso_canhan');
  	}
 
  	

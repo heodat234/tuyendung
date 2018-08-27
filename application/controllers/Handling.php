@@ -7,11 +7,22 @@ class Handling extends CI_Controller {
 	{
 		parent::__construct();
 		
+		$config['upload_path'] = './uploads/';
+	    $config['allowed_types'] = 'gif|jpg|png';
+	    $config['remove_spaces'] = true;
+	    $config['file_ext_tolower'] = true;    
+	    $this->load->library('upload', $config);
+		// $this->load->helper('url');
+		// $this->load->model('sllonlineadmin');  
+		$this->load->helper('form');
+		
+		// $this->load->library('excel');
+
 		$this->load->library('session');
 		
 		
 		$this->load->model(array('Login_model'));
-		$this->load->helper(array('url','my_helper'));
+		$this->load->helper(array('url','my_helper','file'));
 		$this->data['header'] = $this->load->view('home/header',null,true);
 	    $this->data['menu'] = $this->load->view('home/menu',null,true);
 	    $this->data['footer'] = $this->load->view('home/footer',null,true);
@@ -66,6 +77,30 @@ class Handling extends CI_Controller {
 		$data['currentbenefit'] = $frm['desirebenefit'];
 		$data['desirebenefit'] = $frm['desirebenefit'];
 		$data['profilesrc'] = $frm['desirebenefit'];
+ 	}
+ 	public function upload_image()
+ 	{
+ 		if (!empty($_FILES['image']['name'])) {
+	        $config['upload_path'] = './public/image/';
+	        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+	        $config['file_name'] = $_FILES['image']['name'];
+	    	$config['overwrite'] = TRUE;  
+	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('image')) {
+          $uploadData = $this->upload->data();
+          $data["imagelink"] = $uploadData['file_name'];
+       	 } else{
+         	 $data["imagelink"] = 'unknow.jpg';
+	        }
+	      }else{
+	        $data["imagelink"] = 'unknow.jpg';
+	      }
+	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+	      header('location:hoso_canhan');
+	      
+	      // echo $_FILES['image']['name'];
  	}
 }
 ?>

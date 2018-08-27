@@ -884,7 +884,7 @@
 <div class="modal fade" id="edit_anh_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="UploadContent.php" method="POST" enctype="multipart/form-data">
+      <form action="<?php echo base_url()?>handling/upload_image" method="POST" enctype="multipart/form-data">
 
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
@@ -896,7 +896,7 @@
            <!-- <button type="file"  class="btn btnlong padding-anhdaidien"  >Chọn file</button>
            <label>Không có ảnh...</label> -->
               
-       <input type="file" class="btn btnlong padding-anhdaidien" name="image">  
+       <input type="file" class="btn btnlong padding-anhdaidien" name="image" id="image">  
            
       </div>
       <div class="modal-footer">
@@ -908,30 +908,7 @@
     </div>
   </div>
 </div>
-<?php
 
-// connect to database
-
-
-// file properties
-$file = $_FILES['image']['tmp_name'];
-
-if (!isset($file))
-  echo "Please select a profile pic";
-else
-{
-  $image = addslashes(file_get_content($_FILES['image']['tmp_name']));
-  $image_name = addslashes($FILES['image']['name']);
-  $image_size = getimagesize($_FILES['image']['tmp_name']);
-
-  if ($image_size==FALSE)
-    echo "That isn't a image.";
-  else
-  {
-    $insert = mysql_query("INSERT INTO content VALUES ('','','','','','','','','','$image_name','$image',)");
-  }
-}
-?>
 
 
 
@@ -973,4 +950,21 @@ $('#tuden6').datetimepicker();
     $('#edit_anh_modal').modal('show');
  }
     
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+          $("#image").change(function(){
+              readURL(this);
+          });
+
+      
 </script>

@@ -114,4 +114,9 @@ class Login_model extends CI_Model{
             $query = $this->db->get($table);
            return $query->row_array();
         }
+        public function updateCandidate($id,$data)
+    {
+        $a_User =   $this->db->where('candidateid', $id)
+                            ->update('candidate',$data);
+    }
 }

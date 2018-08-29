@@ -59,14 +59,14 @@ class Handling extends CI_Controller {
         );
         $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
         $data['city'] =$_jsoncity;
-        $data['address'] = $this->Login_model->selectTableById('canaddress',$this->session->userdata('user')['candidateid']);
+        $data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
 		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$data['family'] = $this->Login_model->selectTableById('cansocial',$this->session->userdata('user')['candidateid']);
-		$data['experience'] = $this->Login_model->selectTableById('canexperience',$this->session->userdata('user')['candidateid']);
-		$data['reference'] = $this->Login_model->selectTableById('canreference',$this->session->userdata('user')['candidateid']);
-		$data['knowledge'] = $this->Login_model->selectTableById('canknowledge',$this->session->userdata('user')['candidateid']);
-		$data['language'] = $this->Login_model->selectTableById('canlanguage',$this->session->userdata('user')['candidateid']);
-		$data['software'] = $this->Login_model->selectTableById('cansoftware',$this->session->userdata('user')['candidateid']);
+		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 		$this->load->view('home/master',$this->data);	
@@ -147,9 +147,225 @@ class Handling extends CI_Controller {
 		$data['dateofissue'] = $frm['dateofissue'];
 		$data['placeofissue'] = $frm['placeofissue'];
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-	      header('location:hoso_canhan');
+	     
  	}
+ 	public function ins_upd_address()
+ 	{
+ 		$frm = $this->input->post();	
+		$data['email'] = $frm['email'];
+		$data['telephone'] = $frm['dt1'];		
+		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+		//var_dump($frm['checkPREMANENT']);
+		if($frm['checkPREMANENT'] == "1")
+		{
+			$data1['address'] = $frm['dctt'];
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "PREMANENT");
+			$this->Login_model->UpdateData("canaddress",$array,$data1);
 
- 	
+		} else {
+			$data1['address'] = $frm['dctt'];
+			$data1['addtype'] = "PREMANENT";
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canaddress",$data1);
+		}
+		if($frm['checkCONTACT'] == "1")
+		{
+			$data2['address'] = $frm['dcll'];
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "CONTACT");
+			$this->Login_model->UpdateData("canaddress",$array,$data2);
+
+		} else {
+			$data2['address'] = $frm['dcll'];
+			$data2['addtype'] = "CONTACT";
+			$data2['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canaddress",$data2);
+		}
+		
+		header('location:hoso_canhan');
+ 	}
+ 	public function ins_upd_relationship()
+ 	{
+ 		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['type'] = $frm['quanhe'];
+ 			$data1['name'] = $frm['hoten'];
+ 			$data1['yob'] = $frm['namsinh'];
+ 			$data1['career'] = $frm['nghenghiep'];
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("cansocial",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['type'] = $frm['quanhe'];
+ 			$data1['name'] = $frm['hoten'];
+ 			$data1['yob'] = $frm['namsinh'];
+ 			$data1['career'] = $frm['nghenghiep'];
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("cansocial",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+	public function ins_upd_experience()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['company'] = $frm['tencty'];
+ 			$data1['position'] = $frm['chucvukhinghi'];
+ 			$data1['responsibility'] = $frm['nhiemvu'];
+ 			$data1['quitreason'] = $frm['lydonghi'];
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("canexperience",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['company'] = $frm['tencty'];
+ 			$data1['position'] = $frm['chucvukhinghi'];
+ 			$data1['responsibility'] = $frm['nhiemvu'];
+ 			$data1['quitreason'] = $frm['lydonghi'];
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canexperience",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+	public function ins_upd_reference()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['name'] = $frm['hoten'];
+ 			$data1['position'] = $frm['chucvu'];
+ 			$data1['company'] = $frm['congty'];
+ 			$data1['contactno'] = $frm['lienhe'];
+ 			
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("canreference",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['name'] = $frm['hoten'];
+ 			$data1['position'] = $frm['chucvu'];
+ 			$data1['company'] = $frm['congty'];
+ 			$data1['contactno'] = $frm['lienhe'];
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canreference",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+	public function ins_upd_knowledge()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['trainingcenter'] = $frm['tentruong'];
+ 			$data1['trainingplace'] = $frm['noihoc'];
+ 			$data1['trainingcourse'] = $frm['nganhhoc'];
+ 			$data1['certificate'] = $frm['trinhdo'];
+ 			$data1['highestcer'] = isset($frm['caonhat'])?$frm['caonhat']:"N";
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("canknowledge",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['trainingcenter'] = $frm['tentruong'];
+ 			$data1['trainingplace'] = $frm['noihoc'];
+ 			$data1['trainingcourse'] = $frm['nganhhoc'];
+ 			$data1['certificate'] = $frm['trinhdo'];
+ 			$data1['highestcer'] = isset($frm['caonhat'])?$frm['caonhat']:"N";
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canknowledge",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+ 	public function ins_upd_knowledge_v2()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['trainingcenter'] = $frm['cs_daotao'];
+ 			$data1['traintime'] = $frm['tghoc'];
+ 			$data1['traintimetype'] = $frm['donvi'];
+ 			$data1['trainingcourse'] = $frm['nganhhoc'];
+ 			$data1['certificate'] = $frm['bangcap'];
+ 			
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("canknowledge",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['datefrom'] = $frm['tu'];
+ 			$data1['dateto'] = $frm['den'];
+ 			$data1['trainingcenter'] = $frm['cs_daotao'];
+ 			$data1['traintime'] = $frm['tghoc'];
+ 			$data1['traintimetype'] = $frm['donvi'];
+ 			$data1['trainingcourse'] = $frm['nganhhoc'];
+ 			$data1['certificate'] = $frm['bangcap'];
+ 			
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canknowledge",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+	public function ins_upd_language()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['language'] = $frm['tentruong'];
+ 			$data1['rate1'] = $frm['nghe'];
+ 			$data1['rate1'] = $frm['noi'];
+ 			$data1['rate1'] = $frm['doc'];
+ 			$data1['rate1'] = $frm['viet'];
+
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("canlanguage",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['language'] = $frm['tentruong'];
+ 			$data1['rate1'] = $frm['nghe'];
+ 			$data1['rate1'] = $frm['noi'];
+ 			$data1['rate1'] = $frm['doc'];
+ 			$data1['rate1'] = $frm['viet'];
+ 			
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canlanguage",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
+	public function ins_upd_software()
+	{
+		$frm = $this->input->post();	
+ 		if($frm['checkup'] != "0")
+ 		{
+ 			$data1['software'] = $frm['phanmem'];
+ 			$data1['rate1'] = $frm['trinhdo'];
+ 			
+
+			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+			$this->Login_model->UpdateData("cansoftware",$array,$data1);
+ 		}
+ 		else
+ 		{
+ 			$data1['software'] = $frm['phanmem'];
+ 			$data1['rate1'] = $frm['trinhdo'];
+ 			
+ 			
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("cansoftware",$data1);
+ 		}
+ 		header('location:hoso_canhan');
+	}
 }
 ?>

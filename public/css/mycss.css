@@ -442,6 +442,10 @@
     
     margin-left: 8px;
 }
+
+/*.table-focused tbody tr:hover {
+background-color: #ccc;
+}*/
 .btn-tailen
 {
     color: white !important;

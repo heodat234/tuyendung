@@ -241,7 +241,7 @@
         </div>
 
         <div id="collapseThree" class="tab-pane">
-          <form action="#" method="post">
+          <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
@@ -251,10 +251,9 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize" rows="2" name="dctt" value="
-              <?php 
+              <textarea class="kttext areatext off-resize" rows="2" name="dctt" ><?php 
                   if($address != null)
-                  {
+                  { 
                       foreach ($address as $key ) {
                         if($key['addtype'] == "PREMANENT")
                         {
@@ -262,16 +261,18 @@
                         }
                       }
                   }
-              ?>"
-              ></textarea>
-              
+              ?></textarea>
+               <input type="hidden" name="checkPREMANENT" value="<?php if($address != null){
+                  foreach ($address as $key ) {
+                    if($key['addtype'] == "PREMANENT"){
+                      echo "1"; break;
+                    } } } ?>">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" value="
-              <?php 
+              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" ><?php 
                   if($address != null)
                   {
                       foreach ($address as $key ) {
@@ -281,10 +282,12 @@
                         }
                       }
                   }
-              ?>
-              "
-              ></textarea>
-              
+              ?></textarea>
+              <input type="hidden" name="checkCONTACT" value="<?php if($address != null){
+                  foreach ($address as $key ) {
+                    if($key['addtype'] == "CONTACT"){
+                      echo "1"; break;
+                    } } } ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -302,7 +305,7 @@
             <div class="col-sm-8">
               <input class="kttext" type="text" placeholder="" name="dtkhancap">
               <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap">
-               <button type="button" class="btn btnlong margin-top12" > Lưu</button>  
+               <button type="submit" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
         </form>
@@ -323,14 +326,23 @@
             </thead> 
             <tbody class="fontstyle text-center"> 
               <?php if($family != null) {
+                $i = 0;
               foreach ($family as $key) { ?>
-             <tr>
+
+             <tr onclick="editmodal('<?php echo 'click'.$i ?>')">
+              <form id="<?php echo 'click'.$i ?>">
+                <input type="text" name="hoten" value="<?php echo $key['name']?>">
+                <input type="text" name="namsinh" value="<?php echo $key['yob']?>">
+                <input type="text" name="quanhe" value="<?php echo $key['type']?>">
+                <input type="text" name="nghenghiep" value="<?php echo $key['career']?>">
+                <input type="text" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['name']?></td>
               <td><?php echo $key['yob']?></td>
               <td><?php echo $key['type']?></td>
               <td><?php echo $key['career']?></td>
              </tr>
-             <?php } } ?>
+             <?php $i++;} } ?>
             </tbody> 
           </table>
         
@@ -523,51 +535,63 @@
 <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_relationship" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người thân</h3>
            
-          
+          <input type="hidden" name="checkup" value="0">
             <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail"  class="col-sm-4 col-form-label">Họ và tên</label>
+            <label for="staticEmail"  class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class=" width100" type="text"  placeholder="" name="hoten">
+              <input class="fontstyle width100" type="text"  placeholder="" name="hoten" id="hoten11">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Năm sinh</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31" name="namsinh">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
-                  
+              <select class="form-control height31" style="font-size: 14px" name="namsinh">
+                 <option value="0" >Chọn năm sinh</option>
+                <?php
+                   $date = getdate(); 
+
+                 for($i = ($date['year'] - 10); $i > 1940; $i--) { ?>
+                  <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php } ?>  
                 </select>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Quan hệ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31" class="quanhe">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
-                  
+             <select class="form-control height31" style="font-size: 14px" name="quanhe">
+                  <option value="0" >Chọn quan hệ</option>
+                  <option value="Cha">Cha</option>
+                  <option value="Mẹ">Mẹ</option>
+                  <option value="Anh">Anh</option>
+                  <option value="Chị">Chị</option>
+                  <option value="Em">Em</option>
+                  <option value="Cháu">Cháu</option>
+                  <option value="Vợ">Vợ</option>
+                  <option value="Chồng">Chồng</option>
+                  <option value="Con">Con</option>
+                  <option value="Ông">Ông</option>
+                  <option value="Bà">Bà</option>
+                  <option value="Khác">Khác</option>
                 </select>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Nghề nghiệp</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nghề nghiệp</label>
             <div class="col-sm-8">
            
-              <input class=" width100" type="text"  placeholder="" name="nghenghiep">
+              <input class="width100 fontstyle" type="text"  placeholder="" name="nghenghiep">
               
             </div>
           </div>
           
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          </form>
       
     </div>
@@ -578,58 +602,58 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_experience" method="post">
       <h3 class="title-modal margin-bot-15">Thêm quá trình công tác</h3>
-           
+            <input type="hidden" name="checkup" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden5" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden5" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden6" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden6" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
             <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Tên công ty</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên công ty</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="tencty">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tencty">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Địa chỉ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Địa chỉ</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize" rows="2" name="diachi"></textarea>
+              <textarea class="form-control off-resize fontstyle" rows="2" name="diachi"></textarea>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ khi nghỉ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Chức vụ khi nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="chucvukhinghi">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvukhinghi">
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Nhiễm vụ/ trách nhiễm</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nhiễm vụ/ trách nhiễm</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="nhiemvu">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="nhiemvu">
               
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Lý do nghỉ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Lý do nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="lydonghi">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="lydonghi">
               
             </div>
           </div>
-           <button type="button" class="btn them-modal"> Thêm</button>
+           <button type="submit" class="btn them-modal"> Thêm</button>
          
       </form>
     </div>
@@ -639,40 +663,40 @@
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_reference" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người tham khảo</h3>
            
-          
+          <input type="hidden" name="checkup" value="0">
             <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Họ và tên</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="" name="hoten">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="hoten">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Chức vụ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Chức vụ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="" name="chucvu">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvu">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Công ty</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Công ty</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="" name="congty">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="congty">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Liên hệ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Liên hệ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="" name="lienhe">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="lienhe">
               
             </div>
           </div>
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          
       </form>
     </div>
@@ -682,9 +706,9 @@
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_knowledge" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ học vấn</h3>
-           
+           <input type="hidden" name="checkup" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
@@ -723,11 +747,11 @@
            
               <input class="form-control" type="text"  placeholder="" name="trinhdo">
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Bằng cao nhất của bạn (*)
+                <input type="radio" name="caonhat" id="inlineRadio2" value="Y"> Bằng cao nhất của bạn (*)
               </label>
             </div>
           </div>
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          </form>
       
     </div>
@@ -737,9 +761,9 @@
 <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_knowledge_v2" method="post">
       <h3 class="title-modal margin-bot-15">Thêm khóa huấn luyện/ đào tạo</h3>
-           
+           <input type="hidden" name="checkup" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
             <div class="col-sm-8">
@@ -766,9 +790,9 @@
                 <input class="form-control" type="text"  placeholder="" name="tghoc"></div>
                 <div class="col-sm-6">
                 <select class="form-control height31" name="donvi">
-                  <option>Năm</option>
-                  <option>Tháng</option>
-                  <option>Ngày</option>
+                  <option value="Năm">Năm</option>
+                  <option value="Tháng">Tháng</option>
+                  <option value="Ngày">Ngày</option>
                   
                 </select></div>
               </div>
@@ -788,7 +812,7 @@
               <input class="form-control" type="text"  placeholder="" name="bangcap">
             </div>
           </div>
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          
       </form>
     </div>
@@ -799,9 +823,9 @@
 <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_language" method="post">
       <h3 class="title-modal margin-bot-15">Thêm ngoại ngữ</h3>
-           
+           <input type="hidden" name="checkup" value="0">
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Ngoại ngữ</label>
             <div class="col-sm-8">
@@ -858,7 +882,7 @@
             </div>
           </div>
           
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          
       </form>
     </div>
@@ -868,9 +892,9 @@
 <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30"  role="document">
     <div class="modal-content">
-      <form action="#" method="post">
+      <form action="<?php echo base_url()?>handling/ins_upd_software" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ tin học</h3>
-           
+           <input type="hidden" name="checkup" value="0">
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label">Kiến thức/ Phần mềm</label>
             <div class="col-sm-8">
@@ -891,7 +915,7 @@
             </div>
           </div>
           
-           <button type="button" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" > Thêm</button>
          
       </form>
     </div>
@@ -982,23 +1006,14 @@ $('#tuden6').datetimepicker();
   //alert("asd");
     $('#edit_anh_modal').modal('show');
  }
-    
-    // function readURL(input) {
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-            
-    //         reader.onload = function (e) {
-    //             $('#blah').attr('src', e.target.result);
-    //         }
-            
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
-    
-    //       $("#image").change(function(){
-    //           readURL(this);
-    //       });
-
+   function editmodal(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModal11').modal('show');
+      $('#hoten11').val(data2.hoten);
+   }
+ 
 $(document).ready(function(){
         $('#browsebutton :file').change(function(e){
             var fileName = e.target.files[0].name;
@@ -1012,5 +1027,13 @@ $(document).ready(function(){
         });
     });
         
-
+function parseQuery(queryString) {
+    var query = {};
+    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
 </script>

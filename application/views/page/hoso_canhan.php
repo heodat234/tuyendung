@@ -313,7 +313,7 @@
 
         <div id="collapseFour" class="tab-pane ">
          
-          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal11"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel11()"> Thêm</button>  
           
           <table   class="table table-striped table-bordered" > 
             <thead> 
@@ -322,6 +322,7 @@
                 <th id="th" width="20%">Năm sinh</th> 
                 <th id="th" width="20%">Quan hệ</th> 
                 <th id="th" width="30%">Nghề nghiệp</th>
+                <th id="th" width="30%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
@@ -329,18 +330,19 @@
                 $i = 0;
               foreach ($family as $key) { ?>
 
-             <tr onclick="editmodal('<?php echo 'click'.$i ?>')">
+             <tr>
               <form id="<?php echo 'click'.$i ?>">
-                <input type="text" name="hoten" value="<?php echo $key['name']?>">
-                <input type="text" name="namsinh" value="<?php echo $key['yob']?>">
-                <input type="text" name="quanhe" value="<?php echo $key['type']?>">
-                <input type="text" name="nghenghiep" value="<?php echo $key['career']?>">
-                <input type="text" name="recordid" value="<?php echo $key['recordid']?>">
+                <input type="hidden" name="hoten" value="<?php echo $key['name']?>">
+                <input type="hidden" name="namsinh" value="<?php echo $key['yob']?>">
+                <input type="hidden" name="quanhe" value="<?php echo $key['type']?>">
+                <input type="hidden" name="nghenghiep" value="<?php echo $key['career']?>">
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['name']?></td>
               <td><?php echo $key['yob']?></td>
               <td><?php echo $key['type']?></td>
               <td><?php echo $key['career']?></td>
+              <td><i class="fa fa-edit" onclick="editmodal('<?php echo 'click'.$i ?>')"></i> <i class="f fa-trash-alt" onclick="delmodal('<?php echo 'click'.$i ?>')"></i></td>
              </tr>
              <?php $i++;} } ?>
             </tbody> 
@@ -538,7 +540,7 @@
       <form action="<?php echo base_url()?>handling/ins_upd_relationship" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người thân</h3>
            
-          <input type="hidden" name="checkup" value="0">
+          <input type="hidden" name="checkup" id="checkup" value="0">
             <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail"  class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
@@ -550,7 +552,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31" style="font-size: 14px" name="namsinh">
+              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11">
                  <option value="0" >Chọn năm sinh</option>
                 <?php
                    $date = getdate(); 
@@ -565,7 +567,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31" style="font-size: 14px" name="quanhe">
+             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11">
                   <option value="0" >Chọn quan hệ</option>
                   <option value="Cha">Cha</option>
                   <option value="Mẹ">Mẹ</option>
@@ -586,12 +588,12 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nghề nghiệp</label>
             <div class="col-sm-8">
            
-              <input class="width100 fontstyle" type="text"  placeholder="" name="nghenghiep">
+              <input class="width100 fontstyle" type="text"  placeholder="" name="nghenghiep" id="nn11">
               
             </div>
           </div>
           
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them11"> Thêm</button>
          </form>
       
     </div>
@@ -923,7 +925,6 @@
 </div>
 
 
-
 <div class="modal fade" id="edit_anh_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -962,7 +963,24 @@
   </div>
 </div>
 
+<div class="modal fade" id="myModaldel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_relationship" method="POST" enctype="multipart/form-data">
 
+      
+      <input type="hidden" name="checkup" value="0">
+         <strong class="title-anhdaidien">Thông báo</strong>
+      <br>
+          <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Bạn có muốn xóa thông tin này không?</label>
+       
+           <button type="submit" class="btn them-modal" id="them11"> Xóa</button>
+            <button type="button" class="btn them-modal" data-dismiss="modal"> Hủy</button>
+
+    </form>
+    </div>
+  </div>
+</div>
 
 
 
@@ -1010,22 +1028,34 @@ $('#tuden6').datetimepicker();
       var data = ""; 
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
+      
+      $('#them11').text("Lưu");
       $('#myModal11').modal('show');
       $('#hoten11').val(data2.hoten);
+      $('#nn11').val(data2.nghenghiep);
+      $('#checkup').val(data2.recordid);
+      $('#namsinh11').val(data2.namsinh);
+      $('#quanhe11').val(data2.quanhe);
    }
- 
-$(document).ready(function(){
-        $('#browsebutton :file').change(function(e){
-            var fileName = e.target.files[0].name;
-            $("#label").attr('placeholder',fileName)
-        });
-    });
-$(document).ready(function(){
-        $('#browsebutton1 :file').change(function(e){
-            var fileName = e.target.files[0].name;
-            $("#label1").attr('placeholder',fileName)
-        });
-    });
+     function showmodel11(){
+  
+      $('#them11').text("Thêm");
+     
+      $('#myModal11').modal('show');
+      $('#hoten11').val("");
+      $('#nn11').val("");
+      $('#checkup').val("0");
+      $('#namsinh11').val("0");
+      $('#quanhe11').val("0");
+   }
+    function delmodal(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel').modal('show');
+      $('#checkup').val(data2.recordid);
+      
+   }
         
 function parseQuery(queryString) {
     var query = {};

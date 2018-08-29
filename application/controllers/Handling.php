@@ -367,5 +367,11 @@ class Handling extends CI_Controller {
  		}
  		header('location:hoso_canhan');
 	}
+	public function del_relationship()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("cansocial",$array);
+	}
 }
 ?>

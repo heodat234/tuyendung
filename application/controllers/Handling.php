@@ -147,7 +147,7 @@ class Handling extends CI_Controller {
 		$data['dateofissue'] = $frm['dateofissue'];
 		$data['placeofissue'] = $frm['placeofissue'];
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-	     
+	     header('location:hoso_canhan');
  	}
  	public function ins_upd_address()
  	{
@@ -324,9 +324,9 @@ class Handling extends CI_Controller {
  		{
  			$data1['language'] = $frm['tentruong'];
  			$data1['rate1'] = $frm['nghe'];
- 			$data1['rate1'] = $frm['noi'];
- 			$data1['rate1'] = $frm['doc'];
- 			$data1['rate1'] = $frm['viet'];
+ 			$data1['rate2'] = $frm['noi'];
+ 			$data1['rate3'] = $frm['doc'];
+ 			$data1['rate4'] = $frm['viet'];
 
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 			$this->Login_model->UpdateData("canlanguage",$array,$data1);
@@ -335,9 +335,9 @@ class Handling extends CI_Controller {
  		{
  			$data1['language'] = $frm['tentruong'];
  			$data1['rate1'] = $frm['nghe'];
- 			$data1['rate1'] = $frm['noi'];
- 			$data1['rate1'] = $frm['doc'];
- 			$data1['rate1'] = $frm['viet'];
+ 			$data1['rate2'] = $frm['noi'];
+ 			$data1['rate3'] = $frm['doc'];
+ 			$data1['rate4'] = $frm['viet'];
  			
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canlanguage",$data1);
@@ -372,6 +372,36 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansocial",$array);
+	}
+	public function del_experience()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("canexperience",$array);
+	}
+	public function del_reference()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("canreference",$array);
+	}
+	public function del_knowledge()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("canknowledge",$array);
+	}
+	public function del_language()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("canlanguage",$array);
+	}
+	public function del_software()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
+		$this->Login_model->DeleteData("cansoftware",$array);
 	}
 }
 ?>

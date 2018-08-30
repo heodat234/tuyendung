@@ -353,13 +353,17 @@
 {
   margin-bottom: 15px !important;
 }
+.margin-bot-12
+{
+  margin-bottom: 12px !important;
+}
 .margin-bot-20
 {
   margin-bottom: 20px !important;
 }
 .fontstyle
 {
-  font-size: 14px;
+  font-size: 14px !important;
   
 }
 .margin-left-20
@@ -461,4 +465,8 @@ background-color: #ccc;
 {
   margin-top: -39px;
     margin-right: 33px;
+}
+.padding-right2
+{
+  padding-right: 2px !important;
 }

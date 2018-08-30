@@ -315,14 +315,14 @@
          
           <button type="button" class="btn btnlong btn-them" onclick="showmodel11()"> Thêm</button>  
           
-          <table   class="table table-striped table-bordered" > 
+          <table   class="table table-striped table-bordered"> 
             <thead> 
               <tr class="fontstyle"> 
                 <th id="th" width="30%">Họ và tên</th> 
                 <th id="th" width="20%">Năm sinh</th> 
                 <th id="th" width="20%">Quan hệ</th> 
-                <th id="th" width="30%">Nghề nghiệp</th>
-                <th id="th" width="30%"></th>
+                <th id="th" width="20%">Nghề nghiệp</th>
+                <th id="th" width="10%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
@@ -342,7 +342,7 @@
               <td><?php echo $key['yob']?></td>
               <td><?php echo $key['type']?></td>
               <td><?php echo $key['career']?></td>
-              <td><i class="fa fa-edit" onclick="editmodal('<?php echo 'click'.$i ?>')"></i> <i class="f fa-trash-alt" onclick="delmodal('<?php echo 'click'.$i ?>')"></i></td>
+              <td><i class="fa fa-edit" onclick="editmodal('<?php echo 'click'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal('<?php echo 'click'.$i ?>')"></i></td>
              </tr>
              <?php $i++;} } ?>
             </tbody> 
@@ -355,53 +355,75 @@
         <div id="collapseFive" class="tab-pane ">
           
           <label>Quá trình công tác</label>
-          <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal2"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel2()"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr > 
                 <th id="th" class="middle2" width="20%">Từ - Đến</th> 
-                <th id="th" class="middle2" width="22%">Cty/ Địa chỉ/ ĐT</th> 
-                <th id="th" width="15%">Chức vụ khi nghỉ</th> 
-                <th id="th" width="20%">Nhiệm vụ/ Trách nhiệm</th>
-                 <th id="th" class="middle2" width="25%">Lý do nghỉ</th>
+                <th id="th" class="middle2" width="20%">Cty/ Địa chỉ/ ĐT</th> 
+                <th id="th" width="13%">CV khi nghỉ</th> 
+                <th id="th" width="17%">NV/ Trách nhiệm</th>
+                 <th id="th" class="middle2" width="20%">Lý do nghỉ</th>
+                 <th id="th" width="10%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
-             <?php if($experience != null) {
+             <?php if($experience != null) { 
+              $i = 0;
               foreach ($experience as $key) { ?>
              <tr>
+              <form id="<?php echo 'click2'.$i ?>">
+                <input type="hidden" name="tungay" value="<?php echo $key['datefrom']?>">
+                <input type="hidden" name="denngay" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="cty" value="<?php echo $key['company']?>">
+                <input type="hidden" name="vitri" value="<?php echo $key['position']?>">
+                <input type="hidden" name="nhiemvu" value="<?php echo $key['responsibility']?>">
+                <input type="hidden" name="lydo" value="<?php echo $key['quitreason']?>">
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
               <td><?php echo $key['company']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['responsibility']?></td>
               <td><?php echo $key['quitreason']?></td>
+              <td><i class="fa fa-edit" onclick="editmodal2('<?php echo 'click2'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal2('<?php echo 'click2'.$i ?>')"></i></td>
              </tr>
-             <?php } } ?>
+             </tr>
+             <?php $i++; } } ?>
             </tbody> 
           </table>
            <label>Người phụ trách tham khảo</label>
-          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal3"> Thêm</button>
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel3()"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead> 
               <tr class="fontstyle"> 
                 <th id="th" width="30%">Họ và tên</th> 
-                <th id="th" width="20%">Chức vụ</th> 
+                <th id="th" width="15%">Chức vụ</th> 
                 <th id="th" width="20%">Công ty</th> 
-                <th id="th" width="30%">Liên hệ</th>
-                 
+                <th id="th" width="25%">Liên hệ</th>
+                <th id="th" width="10%"></th>
+                  
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
              <?php if($reference != null) {
+              $i = 0;
               foreach ($reference as $key) { ?>
              <tr>
+               <form id="<?php echo 'click3'.$i ?>">
+                <input type="hidden" name="hoten" value="<?php echo $key['name']?>">
+                <input type="hidden" name="vitri" value="<?php echo $key['position']?>">
+                <input type="hidden" name="cty" value="<?php echo $key['company']?>">
+                <input type="hidden" name="lienhe" value="<?php echo $key['contactno']?>">
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['name']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['company']?></td>
               <td><?php echo $key['contactno']?></td>
-              
+               <td><i class="fa fa-edit" onclick="editmodal3('<?php echo 'click3'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal3('<?php echo 'click3'.$i ?>')"></i></td>
              </tr>
-             <?php } } ?>
+             <?php $i++; } } ?>
               
              </tr>
             </tbody> 
@@ -413,34 +435,47 @@
         <div id="collapseSix" class="tab-pane ">
 
           <label>Trình độ học vấn</label>
-          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal4"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel4()"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr > 
-                <th id="th" width="22%">Từ - Đến</th> 
-                <th id="th" width="23%">Trường</th> 
+                <th id="th" width="20%">Từ - Đến</th> 
+                <th id="th" width="20%">Trường</th> 
                 <th id="th" width="15%">Nơi học</th> 
                 <th id="th" width="20%">Ngành học</th>
                  <th id="th" width="20%">Bằng cấp</th>
+                 <th id="th" width="10%"></th>
               </tr> 
             </thead> 
-            <tbody> 
+            <tbody class="fontstyle text-center"> 
               <?php if($knowledge != null) {
+                $i = 0;
               foreach ($knowledge as $key) { 
                 if($key['traintimetype'] != null)
                   { continue; } else {?>
              <tr>
+              <form id="<?php echo 'click4'.$i ?>">
+                <input type="hidden" name="tu" value="<?php echo $key['datefrom']?>">
+                <input type="hidden" name="den" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="truong" value="<?php echo $key['trainingcenter']?>">
+                <input type="hidden" name="noihoc" value="<?php echo $key['trainingplace']?>">
+                <input type="hidden" name="nganhhoc" value="<?php echo $key['trainingcourse']?>">
+                <input type="hidden" name="chungchi" value="<?php echo $key['certificate']?>">
+                <input type="hidden" name="caonhat" value="<?php echo $key['highestcer']?>">
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['trainingplace']?></td>
               <td><?php echo $key['trainingcourse']?></td>
               <td><?php echo $key['certificate']?></td>
+              <td><i class="fa fa-edit" onclick="editmodal4('<?php echo 'click4'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal4('<?php echo 'click4'.$i ?>')"></i></td>
              </tr>
-             <?php } } }?>
+             <?php $i++; } } }?>
             </tbody> 
           </table>
            <label>Các khóa đào tạo</label>
-          <button type="button" class="btn btnlong btn-them"  data-toggle="modal" data-target="#myModal5"> Thêm</button>
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel5()" > Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr> 
@@ -449,21 +484,34 @@
                 <th id="th" width="21%">Thời gian học</th> 
                 <th id="th" width="18%">Ngành học</th>
                  <th id="th" width="18%">Bằng cấp</th>
+                 <th id="th" width="18%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
              <?php if($knowledge != null) {
+               $i = 0;
               foreach ($knowledge as $key) { 
                 if($key['traintimetype'] == null)
                   { continue; } else {?>
              <tr>
+              <form id="<?php echo 'click5'.$i ?>">
+                <input type="hidden" name="tu" value="<?php echo $key['datefrom']?>">
+                <input type="hidden" name="den" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="truong" value="<?php echo $key['trainingcenter']?>">
+                <input type="hidden" name="tghoc" value="<?php echo $key['traintime']?>">
+                <input type="hidden" name="donvi" value="<?php echo $key['traintimetype']?>">
+                <input type="hidden" name="nganhhoc" value="<?php echo $key['trainingcourse']?>">
+                <input type="hidden" name="chungchi" value="<?php echo $key['certificate']?>">
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['traintime'].' '.$key['traintimetype']?></td>
               <td><?php echo $key['trainingcourse']?></td>
               <td><?php echo $key['certificate']?></td>
+               <td><i class="fa fa-edit" onclick="editmodal5('<?php echo 'click5'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal4('<?php echo 'click5'.$i ?>')"></i></td>
              </tr>
-             <?php } } } ?>
+             <?php $i++; } } } ?>
             </tbody> 
           </table>
           <!-- <button type="button" class="btn btnlong" > Lưu</button>   -->
@@ -471,7 +519,7 @@
 
         <div id="collapseSeven" class="tab-pane ">
           <label>Trình độ Ngoại ngữ</label>
-          <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal6"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel6()"> Thêm</button>  
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr> 
@@ -480,42 +528,62 @@
                 <th id="th" >Nói</th> 
                 <th id="th" >Đọc</th>
                 <th id="th" >Viết</th>
+                <th id="th" ></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
             <?php if($language != null) {
+              $i = 0;
               foreach ($language as $key) { 
                 ?>
              <tr>
+              <form id="<?php echo 'click6'.$i ?>">
+                <input type="hidden" name="ngonngu" value="<?php echo $key['language']?>">
+                <input type="hidden" name="rate1" value="<?php echo $key['rate1']?>">
+                <input type="hidden" name="rate2" value="<?php echo $key['rate2']?>">
+                <input type="hidden" name="rate3" value="<?php echo $key['rate3']?>">
+                <input type="hidden" name="rate4" value="<?php echo $key['rate4']?>">
+                
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['language']?></td>
               <td><?php echo $key['rate1']?></td>
               <td><?php echo $key['rate2']?></td>
               <td><?php echo $key['rate3']?></td>
               <td><?php echo $key['rate4']?></td>
+              <td><i class="fa fa-edit" onclick="editmodal6('<?php echo 'click6'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal6('<?php echo 'click6'.$i ?>')"></i></td>
              </tr>
-             <?php } } ?>
+             <?php $i++; } } ?>
             </tbody> 
           </table>
           <label>Trình độ tin học</label>
-           <button type="button" class="btn btnlong btn-them" data-toggle="modal" data-target="#myModal7"> Thêm</button>
+           <button type="button" class="btn btnlong btn-them" onclick="showmodel7()" > Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr> 
                 
                 <th id="th" width="60%">Phần mềm</th> 
-                <th id="th" width="40%">Trình độ</th>
+                <th id="th" width="30%">Trình độ</th>
+                <th id="th" width="10%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
              <?php if($software != null) {
+              $i = 0;
               foreach ($software as $key) { 
                 ?>
              <tr>
+              <form id="<?php echo 'click7'.$i ?>">
+                <input type="hidden" name="pm" value="<?php echo $key['software']?>">
+                <input type="hidden" name="rate1" value="<?php echo $key['rate1']?>">
+
+                <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+              </form>
               <td><?php echo $key['software']?></td>
               <td><?php echo $key['rate1']?></td>
-              
+              <td><i class="fa fa-edit" onclick="editmodal7('<?php echo 'click7'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal7('<?php echo 'click7'.$i ?>')"></i></td>
              </tr>
-             <?php } } ?>
+             <?php $i++; } } ?>
             </tbody> 
           </table>
           
@@ -606,56 +674,56 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_experience" method="post">
       <h3 class="title-modal margin-bot-15">Thêm quá trình công tác</h3>
-            <input type="hidden" name="checkup" value="0">
+            <input type="hidden" name="checkup" id="checkup2" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden5" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden5" placeholder="" name="tu" ></div>
                 <div class="col-sm-6">
                 <input class="form-control fontstyle" type="text" id="tuden6" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
-            <div class="form-group row padding-left-right-20 margin-bot-15" >
+            <div class="form-group row padding-left-right-20 margin-bot-12" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên công ty</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="tencty">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tencty" id="cty2">
             </div>
           </div>
-           <div class="form-group row padding-left-right-20 margin-bot-20" >
+           <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Địa chỉ</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize fontstyle" rows="2" name="diachi"></textarea>
+              <textarea class="form-control off-resize fontstyle" rows="2" name="diachi" id="dc2"></textarea>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20 margin-bot-15" >
-            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Chức vụ khi nghỉ</label>
+          <div class="form-group row padding-left-right-20 margin-bot-12" >
+            <label for="staticEmail" class="col-sm-4 padding-right2 fontstyle">Chức vụ khi nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvukhinghi">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvukhinghi" id="chucvu2">
             </div>
           </div>
-          <div class="form-group row padding-left-right-20 margin-bot-15" >
+          <div class="form-group row padding-left-right-20 margin-bot-12" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nhiễm vụ/ trách nhiễm</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="nhiemvu">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="nhiemvu" id="nhiemvu2">
               
             </div>
           </div>
-          <div class="form-group row padding-left-right-20 margin-bot-15" >
+          <div class="form-group row padding-left-right-20 margin-bot-12" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Lý do nghỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="lydonghi">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="lydonghi" id="lydonghi2">
               
             </div>
           </div>
-           <button type="submit" class="btn them-modal"> Thêm</button>
+           <button type="submit" class="btn them-modal" id="them12"> Thêm</button>
          
       </form>
     </div>
@@ -668,37 +736,37 @@
       <form action="<?php echo base_url()?>handling/ins_upd_reference" method="post">
       <h3 class="title-modal margin-bot-15">Thêm người tham khảo</h3>
            
-          <input type="hidden" name="checkup" value="0">
+          <input type="hidden" name="checkup" id="checkup3" value="0">
             <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="hoten">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="hoten" id="hoten3">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Chức vụ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvu">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvu" id="chucvu3">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Công ty</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="congty">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="congty" id="congty3">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Liên hệ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="lienhe">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="lienhe" id="lienhe3">
               
             </div>
           </div>
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them3"> Thêm</button>
          
       </form>
     </div>
@@ -710,50 +778,50 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_knowledge" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ học vấn</h3>
-           <input type="hidden" name="checkup" value="0">
+           <input type="hidden" name="checkup" id="checkup4" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden1" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden1" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden2" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden2" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
             <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Tên trường</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên trường</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="tentruong">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tentruong" id="truong4">
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Nơi học</label>
+            <label for="staticEmail fontstyle" class="col-sm-4 col-form-label">Nơi học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="noihoc">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="noihoc" id="noihoc4">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngành học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="nganhhoc">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="nganhhoc" id="nganhhoc4">
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ trình độ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Bằng cấp/ trình độ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="trinhdo">
-              <label class="radio-inline">
-                <input type="radio" name="caonhat" id="inlineRadio2" value="Y"> Bằng cao nhất của bạn (*)
+              <input class="form-control fontstyle" type="text"  placeholder="" name="trinhdo" id="trinhdo4">
+              <label class="radio-inline fontstyle">
+                <input type="radio"  name="caonhat" id="caonhat4" value="Y"> Bằng cao nhất của bạn (*)
               </label>
             </div>
           </div>
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them4"> Thêm</button>
          </form>
       
     </div>
@@ -765,33 +833,34 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_knowledge_v2" method="post">
       <h3 class="title-modal margin-bot-15">Thêm khóa huấn luyện/ đào tạo</h3>
-           <input type="hidden" name="checkup" value="0">
+           <input type="hidden" name="checkup" id="checkup5" value="0">
           <div class="form-group row padding-left-right-20 margin-bot-2" >
-            <label for="staticEmail" class="col-sm-4 col-form-label">Từ đến</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Từ đến</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden3" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden3" placeholder="" name="tu"></div>
                 <div class="col-sm-6">
-                <input class="form-control" type="text" id="tuden4" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden4" placeholder="" name="den"></div>
               </div>
             </div>
           </div>
             <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Tên cơ sở đào tạo</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="cs_daotao">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="cs_daotao" id="truong5">
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-2">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Thời gian học</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Thời gian học</label>
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control" type="text"  placeholder="" name="tghoc"></div>
+                <input class="form-control fontstyle" type="text"  placeholder="" name="tghoc" id="tghoc5"></div>
                 <div class="col-sm-6">
-                <select class="form-control height31" name="donvi">
+                <select class="form-control height3 fontstyle" name="donvi" id="donvi5">
+                  <option value="0">Chọn...</option>
                   <option value="Năm">Năm</option>
                   <option value="Tháng">Tháng</option>
                   <option value="Ngày">Ngày</option>
@@ -801,20 +870,20 @@
             </div>
           </div>
           <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Ngành học</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngành học</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="nganhhoc">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="nganhhoc" id="nganhhoc5">
             </div>
           </div>
           <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Bằng cấp/ chứng chỉ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Bằng cấp/ chứng chỉ</label>
             <div class="col-sm-6">
            
-              <input class="form-control" type="text"  placeholder="" name="bangcap">
+              <input class="form-control fontstyle  " type="text"  placeholder="" name="bangcap" id="bangcap5">
             </div>
           </div>
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them5"> Thêm</button>
          
       </form>
     </div>
@@ -827,64 +896,68 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_language" method="post">
       <h3 class="title-modal margin-bot-15">Thêm ngoại ngữ</h3>
-           <input type="hidden" name="checkup" value="0">
-          <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Ngoại ngữ</label>
+           <input type="hidden" name="checkup" id="checkup6" value="0">
+          <div class="form-group row padding-left-right-20 margin-bot-12">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngoại ngữ</label>
             <div class="col-sm-8">
            
-              <input class="form-control" type="text"  placeholder="Name of University/ Colleges" name="tentruong">
+              <input class="form-control fontstyle" type="text"  placeholder="Name of University/ Colleges" name="tentruong" id="truong6">
             </div>
           </div>
-            <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Nghe</label>
+            <div class="form-group row padding-left-right-20 margin-bot-12">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nghe</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31" name="nghe">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
+              <select class="form-control height31 fontstyle" name="nghe" id="nghe6">
+                  <option value="0">Chọn...</option>
+                  <option value="Giỏi">Giỏi</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung Bình">Trung Bình</option>
                   
                 </select>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Nói</label>
+          <div class="form-group row padding-left-right-20 margin-bot-12">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nói</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31" name="noi">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
+              <select class="form-control height31 fontstyle" name="noi" id="noi6">
+                  <option value="0">Chọn...</option>
+                  <option value="Giỏi">Giỏi</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung Bình">Trung Bình</option>
                   
                 </select>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Đọc</label>
+          <div class="form-group row padding-left-right-20 margin-bot-12">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Đọc</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31" name="doc">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
+              <select class="form-control height31 fontstyle" name="doc" id="doc6">
+                 <option value="0">Chọn...</option>
+                  <option value="Giỏi">Giỏi</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung Bình">Trung Bình</option>
                   
                 </select>
             </div>
           </div>
-          <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Viết</label>
+          <div class="form-group row padding-left-right-20 margin-bot-12">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Viết</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31" name="viet">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
+              <select class="form-control height31 fontstyle" name="viet" id="viet6">
+                  <option value="0">Chọn...</option>
+                  <option value="Giỏi">Giỏi</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung Bình">Trung Bình</option>
                   
                 </select>
             </div>
           </div>
           
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them6" > Thêm</button>
          
       </form>
     </div>
@@ -896,28 +969,29 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_software" method="post">
       <h3 class="title-modal margin-bot-15">Thêm trình độ tin học</h3>
-           <input type="hidden" name="checkup" value="0">
+           <input type="hidden" name="checkup" id="checkup7" value="0">
           <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Kiến thức/ Phần mềm</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Kiến thức/ Phần mềm</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize" rows="2" name="phanmem"></textarea>
+              <textarea class="form-control off-resize fontstyle" rows="2" name="phanmem" id="pm7"></textarea>
             </div>
           </div>
             <div class="form-group row padding-left-right-20">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Trình độ</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Trình độ</label>
             <div class="col-sm-6">
            
-              <select class="form-control height31" name="trinhdo">
-                  <option>Giỏi</option>
-                  <option>Khá</option>
-                  <option>Trung Bình</option>
+              <select class="form-control height31 fontstyle" name="trinhdo" id="trinhdo7">
+               <option value="0">Chọn...</option>
+                  <option value="Giỏi">Giỏi</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung Bình">Trung Bình</option>
                   
                 </select>
             </div>
           </div>
           
-           <button type="submit" class="btn them-modal" > Thêm</button>
+           <button type="submit" class="btn them-modal" id="them7"> Thêm</button>
          
       </form>
     </div>
@@ -964,26 +1038,107 @@
 </div>
 
 <div class="modal fade" id="myModaldel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_relationship" method="POST" enctype="multipart/form-data">
-
-      
-      <input type="hidden" name="checkup" value="0">
-         <strong class="title-anhdaidien">Thông báo</strong>
+      <input type="hidden" name="checkup" id="checkup1" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
-          <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Bạn có muốn xóa thông tin này không?</label>
-       
-           <button type="submit" class="btn them-modal" id="them11"> Xóa</button>
-            <button type="button" class="btn them-modal" data-dismiss="modal"> Hủy</button>
-
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
     </form>
     </div>
   </div>
 </div>
-
-
-
+<div class="modal fade" id="myModaldel2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_experience" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup2" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModaldel3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_experience" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup3" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModaldel4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_knowledge" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup4" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModaldel6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_language" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup6" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModaldel7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_software" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup7" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 $('#ngaysinh').datetimepicker();
 $('#ngaycap').datetimepicker();
@@ -993,7 +1148,6 @@ $('#tuden3').datetimepicker();
 $('#tuden4').datetimepicker();
 $('#tuden5').datetimepicker();
 $('#tuden6').datetimepicker();
-
 
 
  $(document).ready(function() {
@@ -1009,7 +1163,6 @@ $('#tuden6').datetimepicker();
       $('#anh2').show();
     });
 });
- 
 
  $('#anh1').mouseleave(function()
  {
@@ -1024,7 +1177,20 @@ $('#tuden6').datetimepicker();
   //alert("asd");
     $('#edit_anh_modal').modal('show');
  }
-   function editmodal(idform){
+   
+        
+parseQuery(queryString) {
+    var query = {};
+    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
+
+//them xoa sua quan he gia dinh
+  function editmodal(idform){
       var data = ""; 
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
@@ -1036,34 +1202,241 @@ $('#tuden6').datetimepicker();
       $('#checkup').val(data2.recordid);
       $('#namsinh11').val(data2.namsinh);
       $('#quanhe11').val(data2.quanhe);
-   }
-     function showmodel11(){
-  
-      $('#them11').text("Thêm");
-     
-      $('#myModal11').modal('show');
-      $('#hoten11').val("");
-      $('#nn11').val("");
-      $('#checkup').val("0");
-      $('#namsinh11').val("0");
-      $('#quanhe11').val("0");
-   }
-    function delmodal(idform){
+  }
+  function showmodel11(){
+    $('#them11').text("Thêm");
+   
+    $('#myModal11').modal('show');
+    $('#hoten11').val("");
+    $('#nn11').val("");
+    $('#checkup').val("0");
+    $('#namsinh11').val("0");
+    $('#quanhe11').val("0");
+  }
+  function delmodal(idform){
+    var data = ""; 
+    data = $("#"+idform+"").serialize();
+    var data2 = parseQuery(data);
+    $('#myModaldel').modal('show');
+    $('#checkup1').val(data2.recordid);
+  }
+
+ // them xoa sua kinh nghiem lam việc 
+  function editmodal2(idform){
       var data = ""; 
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
-      $('#myModaldel').modal('show');
-      $('#checkup').val(data2.recordid);
       
-   }
-        
-function parseQuery(queryString) {
-    var query = {};
-    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
-    for (var i = 0; i < pairs.length; i++) {
-        var pair = pairs[i].split('=');
-        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-    }
-    return query;
-}
+      $('#them12').text("Lưu");
+      $('#myModal2').modal('show');
+      $('#tuden5').val(data2.tungay);
+      $('#tuden6').val(data2.denngay);
+      $('#checkup2').val(data2.recordid);
+      $('#cty2').val(data2.cty);
+       $('#chucvu2').val(data2.vitri);
+        $('#nhiemvu2').val(data2.nhiemvu);
+       $('#lydonghi2').val(data2.lydo);
+  }
+  function showmodel2(){
+  
+      $('#them12').text("Thêm");
+     
+      $('#myModal2').modal('show');
+       $('#tuden5').val("");
+      $('#tuden6').val("");
+      $('#checkup2').val("0");
+      $('#cty2').val("");
+       $('#chucvu2').val("");
+        $('#nhiemvu2').val("");
+       $('#lydonghi2').val("");
+  }
+  function delmodal2(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel2').modal('show');
+      $('#checkup2').val(data2.recordid);
+      
+  }
+ // them xoa sua nguoi tham chieu
+  function editmodal3(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      
+      $('#them3').text("Lưu");
+      $('#myModal3').modal('show');
+     $('#hoten3').val(data2.hoten);
+      $('#chucvu3').val(data2.vitri);
+      $('#checkup3').val(data2.recordid);
+      $('#congty3').val(data2.cty);
+       $('#lienhe3').val(data2.lienhe);
+  }
+  function showmodel3(){
+  
+      $('#them3').text("Thêm");
+     
+      $('#myModal3').modal('show');
+       $('#hoten3').val("");
+      $('#chucvu3').val("");
+      $('#checkup3').val("0");
+      $('#congty3').val("");
+       $('#lienhe3').val("");
+  }
+      
+  function delmodal3(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel3').modal('show');
+      $('#checkup3').val(data2.recordid);
+      
+  }
+ // them xoa sua trinh do hoc van
+   function editmodal4(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      
+      $('#them4').text("Lưu");
+      $('#myModal4').modal('show');
+       $('#tuden1').val(data2.tu);
+      $('#tuden2').val(data2.den);
+      $('#checkup4').val(data2.recordid);
+      $('#truong4').val(data2.truong);
+       $('#noihoc4').val(data2.noihoc);
+       $('#nganhhoc4').val(data2.nganhhoc);
+       $('#trinhdo4').val(data2.chungchi);
+       if(data2.caonhat == "Y"){
+         $('#caonhat4').prop('checked',true);
+        } else {
+           $('#caonhat4').prop('checked',false);
+        }
+  }
+  function showmodel4(){
+  
+      $('#them4').text("Thêm");
+     
+      $('#myModal4').modal('show');
+       $('#tuden1').val("");
+      $('#tuden2').val("");
+      $('#checkup4').val("0");
+      $('#truong4').val("");
+       $('#noihoc4').val("");
+       $('#nganhhoc4').val("");
+       $('#trinhdo4').val("");
+       $('#caonhat4').prop('checked',false);
+  }
+      
+  function delmodal4(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel4').modal('show');
+      $('#checkup4').val(data2.recordid);
+      
+  }
+   function editmodal5(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      
+      $('#them5').text("Lưu");
+      $('#myModal5').modal('show');
+       $('#tuden3').val(data2.tu);
+      $('#tuden4').val(data2.den);
+      $('#checkup5').val(data2.recordid);
+      $('#truong5').val(data2.truong);
+       $('#tghoc5').val(data2.tghoc);
+       $('#donvi5').val(data2.donvi);
+       $('#nganhhoc5').val(data2.nganhhoc);
+       $('#bangcap5').val(data2.chungchi);
+       
+  }
+  function showmodel5(){
+  
+      $('#them5').text("Thêm");
+     
+      $('#myModal5').modal('show');
+       $('#tuden3').val("");
+      $('#tuden4').val("");
+      $('#checkup5').val("0");
+      $('#truong5').val("");
+       $('#tghoc5').val("");
+       $('#donvi5').val("0");
+       $('#nganhhoc5').val("");
+       $('#bangcap5').val("");
+       
+  }
+  // them xoa sua ngoai ngu
+  function editmodal6(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      
+      $('#them6').text("Lưu");
+     
+      $('#myModal6').modal('show');
+      $('#truong6').val(data2.ngonngu);
+      $('#checkup6').val(data2.recordid);
+      $('#nghe6').val(data2.rate1);
+      $('#noi6').val(data2.rate2);
+      $('#doc6').val(data2.rate3);
+      $('#viet6').val(data2.rate4);
+  }
+  function showmodel6(){
+  
+      $('#them6').text("Thêm");
+     
+      $('#myModal6').modal('show');
+      $('#truong6').val("");
+      $('#checkup6').val("0");
+      $('#nghe6').val("0");
+      $('#noi6').val("0");
+      $('#doc6').val("0");
+      $('#viet6').val("0");
+      
+  }
+  function delmodal6(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel6').modal('show');
+      $('#checkup6').val(data2.recordid);
+      
+  }
+  //them xoa sua pm
+  //  function editmodal7(idform){
+  //     var data = ""; 
+  //     data = $("#"+idform+"").serialize();
+  //     var data2 = parseQuery(data);
+      
+  //     $('#them7').text("Lưu");
+     
+  //     $('#myModal7').modal('show');
+      
+  //     $('#pm7').val(data2.pm);
+  //     $('#checkup7').val(data2.recordid);
+  //     $('#trinhdo7').val(data2.rate1);
+      
+  // }
+  // function showmodel7(){
+  
+  //     $('#them7').text("Thêm");
+     
+  //     $('#myModal7').modal('show');
+  //     $('#pm7').val("");
+  //     $('#trinhdo7').val("0");
+  //     $('#checkup7').val("0");
+     
+      
+  // }
+  // function delmodal7(idform){
+  //     var data = ""; 
+  //     data = $("#"+idform+"").serialize();
+  //     var data2 = parseQuery(data);
+  //     $('#myModaldel7').modal('show');
+  //     $('#checkup7').val(data2.recordid);
+      
+  // }
 </script>

@@ -443,7 +443,7 @@
                 <th id="th" width="20%">Trường</th> 
                 <th id="th" width="15%">Nơi học</th> 
                 <th id="th" width="20%">Ngành học</th>
-                 <th id="th" width="20%">Bằng cấp</th>
+                 <th id="th" width="15%">Bằng cấp</th>
                  <th id="th" width="10%"></th>
               </tr> 
             </thead> 
@@ -480,11 +480,11 @@
             <thead class="fontstyle"> 
               <tr> 
                 <th id="th" width="20%">Từ - Đến</th> 
-                <th id="th" width="23%">Cơ sở đạo tào</th> 
-                <th id="th" width="21%">Thời gian học</th> 
-                <th id="th" width="18%">Ngành học</th>
-                 <th id="th" width="18%">Bằng cấp</th>
-                 <th id="th" width="18%"></th>
+                <th id="th" width="25%">Cơ sở đạo tào</th> 
+                <th id="th" width="13%">TG học</th> 
+                <th id="th" width="17%">Ngành học</th>
+                 <th id="th" width="15%">Bằng cấp</th>
+                 <th id="th" width="10%"></th>
               </tr> 
             </thead> 
             <tbody class="fontstyle text-center"> 
@@ -1179,12 +1179,13 @@ $('#tuden6').datetimepicker();
  }
    
         
-parseQuery(queryString) {
+function parseQuery(queryString) {
     var query = {};
     var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
     for (var i = 0; i < pairs.length; i++) {
         var pair = pairs[i].split('=');
-        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+        
+        query[decodeURIComponent(pair[0].replace(/\+/g, '%20'))] = decodeURIComponent(pair[1].replace(/\+/g, '%20') || '');
     }
     return query;
 }
@@ -1406,37 +1407,37 @@ parseQuery(queryString) {
       
   }
   //them xoa sua pm
-  //  function editmodal7(idform){
-  //     var data = ""; 
-  //     data = $("#"+idform+"").serialize();
-  //     var data2 = parseQuery(data);
+   function editmodal7(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
       
-  //     $('#them7').text("Lưu");
+      $('#them7').text("Lưu");
      
-  //     $('#myModal7').modal('show');
+      $('#myModal7').modal('show');
+      $('#pm7').val(data2.pm);
+      $('#checkup7').val(data2.recordid);
       
-  //     $('#pm7').val(data2.pm);
-  //     $('#checkup7').val(data2.recordid);
-  //     $('#trinhdo7').val(data2.rate1);
+      $('#trinhdo7').val(data2.rate1);
       
-  // }
-  // function showmodel7(){
+  }
+  function showmodel7(){
   
-  //     $('#them7').text("Thêm");
+      $('#them7').text("Thêm");
      
-  //     $('#myModal7').modal('show');
-  //     $('#pm7').val("");
-  //     $('#trinhdo7').val("0");
-  //     $('#checkup7').val("0");
+      $('#myModal7').modal('show');
+      $('#pm7').val("");
+      $('#trinhdo7').val("0");
+      $('#checkup7').val("0");
      
       
-  // }
-  // function delmodal7(idform){
-  //     var data = ""; 
-  //     data = $("#"+idform+"").serialize();
-  //     var data2 = parseQuery(data);
-  //     $('#myModaldel7').modal('show');
-  //     $('#checkup7').val(data2.recordid);
+  }
+  function delmodal7(idform){
+      var data = ""; 
+      data = $("#"+idform+"").serialize();
+      var data2 = parseQuery(data);
+      $('#myModaldel7').modal('show');
+      $('#checkup7').val(data2.recordid);
       
-  // }
+  }
 </script>

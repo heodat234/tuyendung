@@ -20,7 +20,7 @@
       
       <!-- <link rel='shortcut icon' href='/Data/Sites/1/skins/default/favicon.ico' /> -->
     <script src="<?php echo base_url()?>public/js/jquery.min.js" type="text/javascript" ></script>
-
+     <!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/datetimepicker-master/jquery.datetimepicker.css"/ >
       
@@ -29,7 +29,12 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <!--  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script> -->
 
+    <script src="<?php echo base_url()?>public/js/dist/jquery.validate.js"></script>
+    <script src="<?php echo base_url()?>public/js/dist/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url()?>public/js/dist/validation.js"></script>
   </head>
   <body id="ctl00_Body" class="canhcam vi-vn">
 
@@ -258,50 +263,49 @@
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                
-                  <input class="kttext" type="text" placeholder="" name="email">
+                  <input class="kttext" type="email" placeholder="" name="email" required>
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Số CMND/CCCD</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="" name="cmnd">
+                  <input class="kttext" type="nunber" placeholder="" maxlength="10" name="cmnd" id="cmnd" required>
                   
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Mật khẩu</label>
                 <div class="col-sm-8">
-                  <input type="password" class="kttextl"  placeholder="" name="pass">
+                  <input type="password" class="kttextl" minlength  placeholder="" name="pass" id="pass" required>
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Xác nhận mật khẩu</label>
                 <div class="col-sm-8">
-                   <input type="password" class="kttext" placeholder="" name="repass">
+                   <input type="password" class="kttext" minlength placeholder="" name="repass" required>
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Tên</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="" name="firstname">
+                  <input class="kttext" type="text" placeholder="" name="firstname" required>
                   
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Họ và tên đệm</label>
                 <div class="col-sm-8">
-                  <input class="kttext" type="text" placeholder="" name="lastname">
-                  
+                  <input class="kttext" type="text" placeholder="" name="lastname" required>
                 </div>
               </div>
               <div class="form-group row kcform1">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Giới tính</label>
                 <div class="col-sm-8">
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio1" value="1"> Nam
+                    <input type="radio" name="gender" checked="true" value="M"> Nam
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio2" value="0"> Nữ
+                    <input type="radio" name="gender" value="F"> Nữ
                   </label>
                   
                 </div>
@@ -317,7 +321,7 @@
                 <label for="inputPassword" class="col-sm-4 col-form-label">Vị trí mong muốn</label>
                 <div class="col-sm-8">
                   <textarea class="form-control off-resize" rows="2" name="position"></textarea>
-                  <button type="button" class="btn btn-login" id="btn_sign_in" >Đăng Ký
+                  <button type="submit" class="btn btn-login" id="btn_sign_in" >Đăng Ký
                 </button>
                 </div>
               </div>
@@ -347,14 +351,17 @@
     </div>
     
     <script type="text/javascript">
-        // $('#myModal20').on('show.bs.modal', function (event) {
-        //     $('#myModal1a').modal('toggle');
-        // });
+        
 
         $('#myModal1a').on('show.bs.modal', function (event) {
             $('#myModal').modal('toggle');
         });
-        $('#ngaysinh').datetimepicker();
+        $('#ngaysinh').datetimepicker({
+           timepicker:false,
+           format:'d.m.Y',
+           defaultDate:'+1960/01/01',
+           maxDate:'+1960/01/01'
+        });
         
 
         $('#btn_login').click(function(event) {
@@ -388,15 +395,53 @@
           });
           
         });
+        $("#sign-in").validate({
+            rules: {
+              email: {
+                required: true,
+                email: true
+              },
+              cmnd: 'required',
+              pass: {
+                required: true,
+                minlength: 5
+              },
+              repass:{
+                required: true,
+                minlength: 5,
+                equalTo: "#pass"
+              },
+              firstname: 'required',
+              lastname: 'required',
+              birthday: 'validate',
+            },
+            messages: {
+              email: {
+                required: 'Vui lòng nhập vào địa chỉ email!',
+                email: 'Vui lòng nhập vào địa chỉ email!'
+              },
+              cmnd: 'Vui lòng nhập vào CMND!', 
+              pass: {
+                required: 'Vui lòng nhập mật khẩu!',
+                minlength: 'Nhập ít nhất 5 kí tự!'
+              },
+              repass: {
+                required: 'Vui lòng nhập mật khẩu!',
+                minlength: 'Nhập ít nhất 5 kí tự!',
+                equalTo: 'Nhập lại mật khẩu không chính xác!'
+              },
+              firstname: 'Vui lòng nhập tên!',
+              lastname: 'Vui lòng nhập Họ và tên đệm',
 
-         $('#btn_sign_in').click(function(event) {
-          $.ajax({
-            url: '<?php echo base_url() ?>login/insertUser',
-            type: 'POST',
-            dataType: 'json',
-            data: $('form#sign-in').serialize(),
-          })
-          .done(function(data) {
+            },
+            submitHandler: function(f) {
+            $.ajax({
+              url: '<?php echo base_url() ?>login/insertUser',
+              type: 'POST',
+              dataType: 'json',
+              data: $('form#sign-in').serialize(),
+            })
+            .done(function(data) {
              if (data != '-1' && data != '-2') {
               $('#err-sign-in').addClass('hide');
               // console.log(data[0]['email']);
@@ -413,7 +458,7 @@
                 if(data == '-1'){
                   $('#err-sign-in').text('Email đã tồn tại. Vui lòng nhập lại!').removeClass('hide');
                 }
-                else{
+                else {
                   $('#err-sign-in').text('Nhập lại mật khẩu không đúng. Vui lòng nhập lại!').removeClass('hide');
                 }
              }
@@ -425,8 +470,26 @@
           .always(function() {
             console.log("complete");
           });
-          
+          }
         });
+       $(document).ready(function() {
+    $("#cmnd").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
+       
     </script>
 
   </body>

@@ -3,8 +3,16 @@
   <div class="block-articleDetail">
     <h1 class="title-pg">Hồ sơ của tôi</h1>
     <div class="fullContent">
-      
-      <div class="color-gray title-right">Mức độ hoàn thiện hồ sơ: 2/7</div>
+      <?php $d = 0;
+         isset($candidate['introduction'])? $d++ : $d;
+         isset($candidate['name'])? $d++ :$d ;
+         isset($address)? $d++ : $d ;
+         isset($family)? $d++: $d ;
+         isset($experience)? $d++: $d ;
+         isset($knowledge)? $d++ : $d;
+         isset($language)? $d++ : (isset($software)? $d++ : $d) ;
+      ?>
+      <div class="color-gray title-right">Mức độ hoàn thiện hồ sơ: <?php echo $d ?>/7</div>
       <table class="table" >
         <tr class="none-table">
 
@@ -62,15 +70,15 @@
 
             <ul class="nav nav-tabs width100" >
               <li class="active">
-                <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10" style="color: green;"></i> Giới thiệu bản thân</a>
+                <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10 <?php echo isset($candidate['introduction'])? 'green' : 'orange';?>"  ></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10" style="color: green; "></i> Thông tin cá nhân</a></li>
-              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10" style="color: green;"></i> Thông tin liên hệ</a>
+              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php echo isset($candidate['name'])? 'green' : 'orange';?>" ></i> Thông tin cá nhân</a></li>
+              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php echo isset($address)? 'green' : 'orange';?>" ></i> Thông tin liên hệ</a>
               </li>
-              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10" style="color: green;"></i> Thông tin gia đình</a></li>
-              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10" style="color: orange;"></i> Kinh nghiệm làm việc</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10" style="color: orange;"></i> Trình độ học vấn</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10" style="color: orange;"></i> Ngoại ngữ tin học</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php echo isset($family)? 'green' : 'orange';?>" ></i> Thông tin gia đình</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php echo isset($experience)? 'green' : 'orange';?>" ></i> Kinh nghiệm làm việc</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php echo isset($knowledge)? 'green' : 'orange';?>"></i> Trình độ học vấn</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php echo isset($language)? 'green' : (isset($software)? 'green' : 'orange');?>"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
@@ -113,12 +121,8 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder=""  value="<?php echo $candidate['profilesrc'] ?>">
+                <input class="kttext" type="text" placeholder="" readonly="" value="<?php echo $candidate['profilesrc'] ?>">
                     <div class="form-group row kcform width100 margin-top12" >
-                        <!-- <div class="col-sm-6">
-                            <input class="kttext"  type="text" placeholder="Chọn file..." name="filecv"> </div>
-                      <div class="col-sm-6">
-                             <input type="file" class="btn btnlong" name="profilesrc"></div> -->
                     <div class="col-sm-6"> <input id="label1" type="text" class="form-control" readonly="">        
                     </div>
                     <div class="col-sm-6">

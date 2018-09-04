@@ -115,7 +115,7 @@
 }
 .orange
 {
-    color: #f58220;
+    color: #f58220 !important;
 }
 .margin-break
 {
@@ -386,6 +386,10 @@
 {
   color: #08c174;
 }
+.green
+{
+  color: green !important;
+}
 .margin-left-50
 {
   margin-left: 70px;
@@ -469,4 +473,8 @@ background-color: #ccc;
 .padding-right2
 {
   padding-right: 2px !important;
+}
+.error
+{
+  color: red;
 }

@@ -106,13 +106,13 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
-             <input class="kttext" type="text" placeholder="" name="cur_benefit" value="<?php echo $candidate['currentbenefit'] ?>">
+             <input class="kttext" type="number" placeholder="" name="cur_benefit" id="cur_benefit" value="<?php echo $candidate['currentbenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label"  >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
-               <input class="kttext" type="text" placeholder="" name="desirebenefit"  value="<?php echo $candidate['desirebenefit'] ?>">
+               <input class="kttext" type="number" placeholder="" name="desirebenefit" id="desirebenefit" value="<?php echo $candidate['desirebenefit'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -140,7 +140,7 @@
         </div>
 
         <div id="collapseTwo" class="tab-pane ">
-          <form action="<?php echo base_url()?>handling/update_profile" method="post">
+          <form id="form_profile" action="<?php echo base_url()?>handling/update_profile" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
           <div class="form-group row kcform">
@@ -148,16 +148,16 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Họ" name="ho" value="<?php echo $candidate['lastname'] ?>"> </div>
+                <input class="kttext" type="text" required placeholder="Họ" name="ho" value="<?php echo $candidate['lastname'] ?>"> </div>
                 <div class="col-sm-6">
-                <input class="kttext" type="text" placeholder="Tên" name="ten" value="<?php echo $candidate['firstname'] ?>"></div>
+                <input class="kttext" type="text" required placeholder="Tên" name="ten" value="<?php echo $candidate['firstname'] ?>"></div>
               </div>
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY SINH (DOB)</label>
             <div class="col-sm-6">
-              <input class="kttext" type="text" id="ngaysinh" name="ngaysinh1" value="<?php echo $candidate['dateofbirth'] ?>"></div>
+              <input class="kttext" type="text" id="ngaysinh1" name="ngaysinh1" value="<?php echo $candidate['dateofbirth'] ?>"></div>
               
             </div>
               
@@ -203,19 +203,19 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (CM)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" name="chieucao">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (KG)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" name="cannang">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CMND (ID)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" name="cmnd" value="<?php echo $candidate['idcard'] ?>">
+               <input class="kttext" type="text" placeholder="" required maxlength="10" name="cmnd" id="idid" value="<?php echo $candidate['idcard'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -249,7 +249,7 @@
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
-              <input class="kttext modal-70"  type="text" placeholder="" name="email" value="<?php echo $candidate['email'] ?>">
+              <input class="kttext modal-70"  type="email" placeholder="" required name="email" value="<?php echo $candidate['email'] ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -297,9 +297,9 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="kttext"  type="text" placeholder="" name="dt1" value="<?php echo $candidate['telephone'] ?>">
+              <input class="kttext"  type="text" placeholder="" maxlength="11" name="dt1" id="dt1" value="<?php echo $candidate['telephone'] ?>">
               <br>
-              <input class="kttext margin-top-8"  type="text" placeholder="" name="dt2" >
+              <input class="kttext margin-top-8"  type="text" maxlength="11" placeholder="" name="dt2" id="dt2" >
 
               
             </div>
@@ -617,14 +617,14 @@
             <label for="staticEmail"  class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class="fontstyle width100" type="text"  placeholder="" name="hoten" id="hoten11">
+              <input class="fontstyle width100" type="text" required  placeholder="" name="hoten" id="hoten11">
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-15" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11">
+              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11" >
                  <option value="0" >Chọn năm sinh</option>
                 <?php
                    $date = getdate(); 
@@ -639,7 +639,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11">
+             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11" >
                   <option value="0" >Chọn quan hệ</option>
                   <option value="Cha">Cha</option>
                   <option value="Mẹ">Mẹ</option>
@@ -684,9 +684,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden5" placeholder="" name="tu" ></div>
+                <input class="form-control fontstyle" type="text" id="tuden5" placeholder="" name="tu" required></div>
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden6" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden6" placeholder="" name="den" required></div>
               </div>
             </div>
           </div>
@@ -694,7 +694,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên công ty</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="tencty" id="cty2">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tencty" id="cty2" required>
             </div>
           </div>
            <div class="form-group row padding-left-right-20 margin-bot-15" >
@@ -745,28 +745,28 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Họ và tên</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="hoten" id="hoten3">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="hoten" id="hoten3" required>
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Chức vụ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvu" id="chucvu3">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="chucvu" id="chucvu3" required>
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Công ty</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="congty" id="congty3">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="congty" id="congty3" required>
             </div>
           </div>
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Liên hệ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="lienhe" id="lienhe3">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="lienhe" id="lienhe3" required>
               
             </div>
           </div>
@@ -788,9 +788,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden1" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden1" placeholder="" name="tu" required></div>
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden2" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden2" placeholder="" name="den" required></div>
               </div>
             </div>
           </div>
@@ -798,7 +798,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên trường</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="tentruong" id="truong4">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tentruong" id="truong4" required>
             </div>
           </div>
            <div class="form-group row padding-left-right-20" >
@@ -843,9 +843,9 @@
             <div class="col-sm-8">
               <div class="form-group row">
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden3" placeholder="" name="tu"></div>
+                <input class="form-control fontstyle" type="text" id="tuden3" placeholder="" name="tu" required></div>
                 <div class="col-sm-6">
-                <input class="form-control fontstyle" type="text" id="tuden4" placeholder="" name="den"></div>
+                <input class="form-control fontstyle" type="text" id="tuden4" placeholder="" name="den" required></div>
               </div>
             </div>
           </div>
@@ -853,7 +853,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
-              <input class="form-control fontstyle" type="text"  placeholder="" name="cs_daotao" id="truong5">
+              <input class="form-control fontstyle" type="text"  placeholder="" name="cs_daotao" id="truong5" required>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-2">
@@ -905,7 +905,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngoại ngữ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="Name of University/ Colleges" name="tentruong" id="truong6">
+              <input class="form-control fontstyle" type="text"  placeholder="Name of University/ Colleges" name="tentruong" id="truong6" required>
             </div>
           </div>
             <div class="form-group row padding-left-right-20 margin-bot-12">
@@ -978,7 +978,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Kiến thức/ Phần mềm</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize fontstyle" rows="2" name="phanmem" id="pm7"></textarea>
+              <textarea class="form-control off-resize fontstyle" rows="2" name="phanmem" id="pm7" required></textarea>
             </div>
           </div>
             <div class="form-group row padding-left-right-20">
@@ -1144,14 +1144,41 @@
   </div>
 </div>
 <script type="text/javascript">
-$('#ngaysinh').datetimepicker();
-$('#ngaycap').datetimepicker();
-$('#tuden1').datetimepicker();
-$('#tuden2').datetimepicker();
-$('#tuden3').datetimepicker();
-$('#tuden4').datetimepicker();
-$('#tuden5').datetimepicker();
-$('#tuden6').datetimepicker();
+$('#ngaysinh1').datetimepicker({
+   timepicker:false,
+   format:'d.m.Y',
+   defaultDate:'+1960/01/01',
+   maxDate:'+1960/01/01'
+});
+$('#ngaycap').datetimepicker({
+  timepicker:false,
+  maxDate:'+1970/01/01',
+  format:'d.m.Y'
+});
+$('#tuden1').datetimepicker({
+    timepicker:false,
+   format:'d.m.Y'
+  });
+$('#tuden2').datetimepicker({
+  timepicker:false,
+   format:'d.m.Y'
+});
+$('#tuden3').datetimepicker({
+  timepicker:false,
+   format:'d.m.Y'
+});
+$('#tuden4').datetimepicker({
+  timepicker:false,
+   format:'d.m.Y'
+});
+$('#tuden5').datetimepicker({
+  timepicker:false,
+   format:'d.m.Y'
+});
+$('#tuden6').datetimepicker({
+  timepicker:false,
+   format:'d.m.Y'
+});
 
 
  $(document).ready(function() {
@@ -1181,7 +1208,18 @@ $('#tuden6').datetimepicker();
   //alert("asd");
     $('#edit_anh_modal').modal('show');
  }
-   
+ $(document).ready(function(){
+        $('#browsebutton :file').change(function(e){
+            var fileName = e.target.files[0].name;
+            $("#label").attr('placeholder',fileName)
+        });
+    });
+$(document).ready(function(){
+        $('#browsebutton1 :file').change(function(e){
+            var fileName = e.target.files[0].name;
+            $("#label1").attr('placeholder',fileName)
+        });
+    });      
         
 function parseQuery(queryString) {
     var query = {};
@@ -1441,7 +1479,116 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel7').modal('show');
-      $('#checkup7').val(data2.recordid);
-      
+      $('#checkup7').val(data2.recordid);   
   }
+    $(document).ready(function() {
+    $("#desirebenefit ").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
+      $(document).ready(function() {
+    $("#cur_benefit").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+     $("#chieucao").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+      $("#cannang").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+       $("#idid").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+        $("#dt1").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+         $("#dt2").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
+    
 </script>

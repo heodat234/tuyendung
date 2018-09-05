@@ -111,12 +111,15 @@ class Login_model extends CI_Model{
         public function selectTableById($table,$id)
         {
             $this->db->select()->where('candidateid', $id);
+            $this->db->where('hidden', 1);
             $query = $this->db->get($table);
            return $query->row_array();
         }
         public function selectTableByIds($table,$id)
         {
-            $this->db->select()->where('candidateid', $id);
+            $this->db->select();
+            $this->db->where('candidateid', $id);
+            $this->db->where('hidden', 1);
             $query = $this->db->get($table);
            return $query->result_array();
         }
@@ -136,7 +139,7 @@ class Login_model extends CI_Model{
         }
         public function DeleteData($table,$match)
         {
-            $data = array('hidden' => 1 );
+            $data = array('hidden' => 0 );
             $a_User =   $this->db->where($match)
                                 ->update($table,$data);
         }

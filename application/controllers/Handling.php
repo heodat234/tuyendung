@@ -372,36 +372,42 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansocial",$array);
+		header('location:hoso_canhan');
 	}
 	public function del_experience()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canexperience",$array);
+		header('location:hoso_canhan');
 	}
 	public function del_reference()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canreference",$array);
+		header('location:hoso_canhan');
 	}
 	public function del_knowledge()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canknowledge",$array);
+		header('location:hoso_canhan');
 	}
 	public function del_language()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canlanguage",$array);
+		header('location:hoso_canhan');
 	}
 	public function del_software()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansoftware",$array);
+		header('location:hoso_canhan');
 	}
 }
 ?>

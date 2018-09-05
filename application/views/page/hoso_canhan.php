@@ -4,7 +4,6 @@
     <h1 class="title-pg">Hồ sơ của tôi</h1>
     <div class="fullContent">
       <?php $d = 0;
-      
          if($candidate['introduction'] != "") $d++;
          if($candidate['name'] !== "") $d++;
          if(empty($address) !== true) $d++;

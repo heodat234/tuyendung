@@ -358,7 +358,7 @@
         });
         $('#ngaysinh').datetimepicker({
            timepicker:false,
-           format:'d.m.Y',
+           format:'d-m-Y',
            defaultDate:'+1960/01/01',
            maxDate:'+1960/01/01'
         });
@@ -413,7 +413,7 @@
               },
               firstname: 'required',
               lastname: 'required',
-              birthday: 'validate',
+              
             },
             messages: {
               email: {

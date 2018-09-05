@@ -176,18 +176,22 @@ class Login extends CI_Controller {
 		$a_UserInfo['idcard'] 		= $frm['cmnd'];
 		$a_UserInfo['password']		= md5($frm['pass']);
 		$a_UserInfo['operatorname'] = $frm['firstname'];
+		$data['email'] = $frm['email'];
+		$data['idcard'] = $frm['cmnd'];
+		$data['firstname'] = $frm['firstname'];
+		$data['lastname'] = $frm['lastname'];
+		$data['name'] = $frm['lastname']." ".$frm['firstname'];
+		$data['gender'] = $frm['gender'];
+		$data['dateofbirth'] =  date("Y-m-d", strtotime($frm['birthday'] ));
+
 		if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {	
 			echo "-1";
 		}else{
-			if($frm['pass'] != $frm['repass']){
-				echo "-2";
-			}
-			else{
-
-				$this->Login_model->insertUser( $a_UserInfo );
-				$this->session->set_userdata('user', $a_UserInfo);
-				echo json_encode($a_UserInfo);
-			}
+			$this->Login_model->InsertData("candidate",$data);
+			$a_UserInfo['candidateid'] = $this->Login_model->Set_idcandite()['candidateid'];
+			$this->Login_model->insertUser( $a_UserInfo );
+			$this->session->set_userdata('user', $a_UserInfo);
+			echo json_encode($a_UserInfo);		
 		}
 		
 	}

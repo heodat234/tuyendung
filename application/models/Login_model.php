@@ -140,4 +140,12 @@ class Login_model extends CI_Model{
             $a_User =   $this->db->where($match)
                                 ->update($table,$data);
         }
+        public function Set_idcandite()
+        {
+            $this->db->select('candidateid');
+            $this->db->order_by("candidateid", "desc");
+            $this->db->limit(1);
+            $this->db->from('candidate');
+            return $this->db->get()->row_array(); 
+        }
 }

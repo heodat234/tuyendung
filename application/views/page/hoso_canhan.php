@@ -4,13 +4,14 @@
     <h1 class="title-pg">Hồ sơ của tôi</h1>
     <div class="fullContent">
       <?php $d = 0;
-         isset($candidate['introduction'])? $d++ : $d;
-         isset($candidate['name'])? $d++ :$d ;
-         isset($address)? $d++ : $d ;
-         isset($family)? $d++: $d ;
-         isset($experience)? $d++: $d ;
-         isset($knowledge)? $d++ : $d;
-         isset($language)? $d++ : (isset($software)? $d++ : $d) ;
+      
+         if($candidate['introduction'] != "") $d++;
+         if($candidate['name'] !== "") $d++;
+         if(empty($address) !== true) $d++;
+         if(empty($family) !== true) $d++;
+         if(empty($experience) !== true) $d++;
+         if(empty($knowledge) !== true) $d++;
+         if(empty($language) !== true){ $d++; }else if(empty($software) !== true){ $d++; }
       ?>
       <div class="color-gray title-right">Mức độ hoàn thiện hồ sơ: <?php echo $d ?>/7</div>
       <table class="table" >
@@ -70,15 +71,15 @@
 
             <ul class="nav nav-tabs width100" >
               <li class="active">
-                <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10 <?php echo isset($candidate['introduction'])? 'green' : 'orange';?>"  ></i> Giới thiệu bản thân</a>
+                <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10 <?php  if($candidate['introduction'] !== ""){echo 'green'; } else{ echo 'orange'; }?>"  ></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php echo isset($candidate['name'])? 'green' : 'orange';?>" ></i> Thông tin cá nhân</a></li>
-              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php echo isset($address)? 'green' : 'orange';?>" ></i> Thông tin liên hệ</a>
+              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php if($candidate['name'] !== ""){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin cá nhân</a></li>
+              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
               </li>
-              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php echo isset($family)? 'green' : 'orange';?>" ></i> Thông tin gia đình</a></li>
-              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php echo isset($experience)? 'green' : 'orange';?>" ></i> Kinh nghiệm làm việc</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php echo isset($knowledge)? 'green' : 'orange';?>"></i> Trình độ học vấn</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php echo isset($language)? 'green' : (isset($software)? 'green' : 'orange');?>"></i> Ngoại ngữ tin học</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php  if(empty($knowledge) !== true){echo 'green';} else{echo 'orange';}?>"></i> Trình độ học vấn</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php  if(empty($language) !== true){echo 'green';} else if(empty($software) !== true){echo 'green'; }else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
@@ -157,7 +158,9 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY SINH (DOB)</label>
             <div class="col-sm-6">
-              <input class="kttext" type="text" id="ngaysinh1" name="ngaysinh1" value="<?php echo $candidate['dateofbirth'] ?>"></div>
+              <input class="kttext" type="text" id="ngaysinh1" name="ngaysinh1" value="<?php
+              echo date("d-m-Y", strtotime($candidate['dateofbirth'] ));
+              ?>"></div>
               
             </div>
               
@@ -221,7 +224,9 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">NGÀY CẤP (ISSUED DATE)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" id="ngaycap" placeholder="" name="dateofissue" value="<?php echo $candidate['dateofissue'] ?>">
+               <input class="kttext" type="text" id="ngaycap" placeholder="" name="dateofissue" value="<?php
+               echo date("d-m-Y", strtotime($candidate['dateofissue'] ));
+                 ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -377,15 +382,15 @@
               foreach ($experience as $key) { ?>
              <tr>
               <form id="<?php echo 'click2'.$i ?>">
-                <input type="hidden" name="tungay" value="<?php echo $key['datefrom']?>">
-                <input type="hidden" name="denngay" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="tungay" value="<?php echo date("d-m-Y", strtotime($key['datefrom']))?>">
+                <input type="hidden" name="denngay" value="<?php echo date("d-m-Y", strtotime($key['dateto']))?>">
                 <input type="hidden" name="cty" value="<?php echo $key['company']?>">
                 <input type="hidden" name="vitri" value="<?php echo $key['position']?>">
                 <input type="hidden" name="nhiemvu" value="<?php echo $key['responsibility']?>">
                 <input type="hidden" name="lydo" value="<?php echo $key['quitreason']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
-              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
               <td><?php echo $key['company']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['responsibility']?></td>
@@ -459,8 +464,8 @@
                   { continue; } else {?>
              <tr>
               <form id="<?php echo 'click4'.$i ?>">
-                <input type="hidden" name="tu" value="<?php echo $key['datefrom']?>">
-                <input type="hidden" name="den" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="tu" value="<?php echo date("d-m-Y", strtotime($key['datefrom'])) ?>">
+                <input type="hidden" name="den" value="<?php echo date("d-m-Y", strtotime($key['dateto'])) ?>">
                 <input type="hidden" name="truong" value="<?php echo $key['trainingcenter']?>">
                 <input type="hidden" name="noihoc" value="<?php echo $key['trainingplace']?>">
                 <input type="hidden" name="nganhhoc" value="<?php echo $key['trainingcourse']?>">
@@ -468,7 +473,7 @@
                 <input type="hidden" name="caonhat" value="<?php echo $key['highestcer']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
-              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['trainingplace']?></td>
               <td><?php echo $key['trainingcourse']?></td>
@@ -499,8 +504,8 @@
                   { continue; } else {?>
              <tr>
               <form id="<?php echo 'click5'.$i ?>">
-                <input type="hidden" name="tu" value="<?php echo $key['datefrom']?>">
-                <input type="hidden" name="den" value="<?php echo $key['dateto']?>">
+                <input type="hidden" name="tu" value="<?php echo date("d-m-Y", strtotime($key['datefrom'])) ?>">
+                <input type="hidden" name="den" value="<?php echo date("d-m-Y", strtotime($key['dateto'])) ?>">
                 <input type="hidden" name="truong" value="<?php echo $key['trainingcenter']?>">
                 <input type="hidden" name="tghoc" value="<?php echo $key['traintime']?>">
                 <input type="hidden" name="donvi" value="<?php echo $key['traintimetype']?>">
@@ -508,7 +513,7 @@
                 <input type="hidden" name="chungchi" value="<?php echo $key['certificate']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
-              <td><?php echo $key['datefrom'].' - '.$key['dateto']?></td>
+              <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['traintime'].' '.$key['traintimetype']?></td>
               <td><?php echo $key['trainingcourse']?></td>
@@ -1146,38 +1151,38 @@
 <script type="text/javascript">
 $('#ngaysinh1').datetimepicker({
    timepicker:false,
-   format:'d.m.Y',
+   format:'d-m-Y',
    defaultDate:'+1960/01/01',
    maxDate:'+1960/01/01'
 });
 $('#ngaycap').datetimepicker({
   timepicker:false,
   maxDate:'+1970/01/01',
-  format:'d.m.Y'
+  format:'d-m-Y'
 });
 $('#tuden1').datetimepicker({
     timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
   });
 $('#tuden2').datetimepicker({
   timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
 });
 $('#tuden3').datetimepicker({
   timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
 });
 $('#tuden4').datetimepicker({
   timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
 });
 $('#tuden5').datetimepicker({
   timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
 });
 $('#tuden6').datetimepicker({
   timepicker:false,
-   format:'d.m.Y'
+   format:'d-m-Y'
 });
 
 

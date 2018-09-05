@@ -138,13 +138,13 @@ class Handling extends CI_Controller {
  		$frm = $this->input->post();	
 		$data['firstname'] = $frm['ten'];
 		$data['lastname'] = $frm['ho'];
-		$data['dateofbirth'] = $frm['ngaysinh1'];
+		$data['dateofbirth'] =  date("Y-m-d", strtotime($frm['ngaysinh1']));
 		$data['gender'] = $frm['gender'];
 		$data['placeofbirth'] = $frm['noisinh'];
 		$data['ethnic'] = $frm['ethnic'];
 		$data['nationality'] = $frm['quoctich'];
 		$data['idcard'] = $frm['cmnd'];
-		$data['dateofissue'] = $frm['dateofissue'];
+		$data['dateofissue'] =  date("Y-m-d", strtotime($frm['dateofissue']));
 		$data['placeofissue'] = $frm['placeofissue'];
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	     header('location:hoso_canhan');
@@ -211,8 +211,8 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();	
  		if($frm['checkup'] != "0")
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['company'] = $frm['tencty'];
  			$data1['position'] = $frm['chucvukhinghi'];
  			$data1['responsibility'] = $frm['nhiemvu'];
@@ -222,8 +222,8 @@ class Handling extends CI_Controller {
  		}
  		else
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['company'] = $frm['tencty'];
  			$data1['position'] = $frm['chucvukhinghi'];
  			$data1['responsibility'] = $frm['nhiemvu'];
@@ -262,8 +262,8 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();	
  		if($frm['checkup'] != "0")
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['trainingcenter'] = $frm['tentruong'];
  			$data1['trainingplace'] = $frm['noihoc'];
  			$data1['trainingcourse'] = $frm['nganhhoc'];
@@ -274,8 +274,8 @@ class Handling extends CI_Controller {
  		}
  		else
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['trainingcenter'] = $frm['tentruong'];
  			$data1['trainingplace'] = $frm['noihoc'];
  			$data1['trainingcourse'] = $frm['nganhhoc'];
@@ -291,8 +291,8 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();	
  		if($frm['checkup'] != "0")
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['trainingcenter'] = $frm['cs_daotao'];
  			$data1['traintime'] = $frm['tghoc'];
  			$data1['traintimetype'] = $frm['donvi'];
@@ -304,8 +304,8 @@ class Handling extends CI_Controller {
  		}
  		else
  		{
- 			$data1['datefrom'] = $frm['tu'];
- 			$data1['dateto'] = $frm['den'];
+ 			$data1['datefrom'] = date("Y-m-d", strtotime($frm['tu'])); 
+ 			$data1['dateto'] = date("Y-m-d", strtotime($frm['den'])) ;
  			$data1['trainingcenter'] = $frm['cs_daotao'];
  			$data1['traintime'] = $frm['tghoc'];
  			$data1['traintimetype'] = $frm['donvi'];

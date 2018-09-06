@@ -342,7 +342,7 @@
             Xin chào <strong id="name_tb">Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
           </p>
           <p class="justify padding-left-right-20">
-            Đê tiếp tục, mới bạn <a href="<?php echo base_url()?>handling/hoso_canhan" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
+            Đê tiếp tục, mới bạn <a href="<?php echo base_url()?>hoso_canhan.html" class="underline-orange">hoàn thiện hồ sơ </a>của mình, điều này giúp chúng tôi có thể đánh giá hồ sơ của bạn được thuẩn lợi hơn và sau đó bạn có thể Ứng tuyển vào các vị trí mà chúng tôi đang tìm kiếm nhân tài.
           </p>
           <img src="<?php echo base_url()?>public/image/banner-772x250.jpg" class="image-banner">
           

@@ -543,6 +543,7 @@
             <?php if($language != null) {
               $i = 0;
               foreach ($language as $key) { 
+                echo $key['recordid'];
                 ?>
              <tr>
               <form id="<?php echo 'click6'.$i ?>">
@@ -1049,7 +1050,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_relationship" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup1" value="0">     
+      <input type="hidden" name="checkup" id="checkup1d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1066,7 +1067,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_experience" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup2" value="0">     
+      <input type="hidden" name="checkup" id="checkup2d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1082,8 +1083,8 @@
 <div class="modal fade" id="myModaldel3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="<?php echo base_url()?>handling/del_experience" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup3" value="0">     
+      <form action="<?php echo base_url()?>handling/del_reference" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup3d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1100,7 +1101,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_knowledge" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup4" value="0">     
+      <input type="hidden" name="checkup" id="checkup4d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1117,7 +1118,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_language" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup6" value="0">     
+      <input type="hidden" name="checkup" id="checkup6d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1134,7 +1135,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_software" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup7" value="0">     
+      <input type="hidden" name="checkup" id="checkup7d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1265,7 +1266,7 @@ function parseQuery(queryString) {
     data = $("#"+idform+"").serialize();
     var data2 = parseQuery(data);
     $('#myModaldel').modal('show');
-    $('#checkup1').val(data2.recordid);
+    $('#checkup1d').val(data2.recordid);
   }
 
  // them xoa sua kinh nghiem lam việc 
@@ -1302,7 +1303,7 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel2').modal('show');
-      $('#checkup2').val(data2.recordid);
+      $('#checkup2d').val(data2.recordid);
       
   }
  // them xoa sua nguoi tham chieu
@@ -1336,7 +1337,7 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel3').modal('show');
-      $('#checkup3').val(data2.recordid);
+      $('#checkup3d').val(data2.recordid);
       
   }
  // them xoa sua trinh do hoc van
@@ -1380,7 +1381,7 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel4').modal('show');
-      $('#checkup4').val(data2.recordid);
+      $('#checkup4d').val(data2.recordid);
       
   }
    function editmodal5(idform){
@@ -1449,7 +1450,8 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel6').modal('show');
-      $('#checkup6').val(data2.recordid);
+     
+      $('#checkup6d').val(data2.recordid);
       
   }
   //them xoa sua pm
@@ -1483,7 +1485,7 @@ function parseQuery(queryString) {
       data = $("#"+idform+"").serialize();
       var data2 = parseQuery(data);
       $('#myModaldel7').modal('show');
-      $('#checkup7').val(data2.recordid);   
+      $('#checkup7d').val(data2.recordid);   
   }
     $(document).ready(function() {
     $("#desirebenefit ").keydown(function (e) {

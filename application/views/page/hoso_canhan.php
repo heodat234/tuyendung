@@ -259,7 +259,7 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize" rows="2" name="dctt" readonly onclick="showmodel8()"><?php 
+              <textarea class="kttext areatext off-resize" rows="2" name="dctt" readonly onclick="showmodel8(1)"><?php 
                   if($address != null)
                   { 
                       foreach ($address as $key ) {
@@ -270,10 +270,10 @@
                       }
                   }
               ?></textarea>
-                <input type="hidden" name="checkPREMANENT" value="<?php if($address != null){
+                <input type="hidden" name="checkPREMANENT" id="checkPREMANENT" value="<?php if($address != null){
                   foreach ($address as $key ) {
                    if($key['addtype'] == "PREMANENT"){
-                      echo "1"; break;
+                      echo "PREMANENT"; break;
                     } } } ?>">
                 <?php if($address != null){
                   foreach ($address as $key ) {
@@ -295,7 +295,7 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" readonly onclick="showmodel9()"><?php 
+              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" readonly onclick="showmodel8(2)"><?php 
                   if($address != null)
                   {
                       foreach ($address as $key ) {
@@ -309,7 +309,7 @@
                <input type="hidden" name="checkCONTACT" value="<?php if($address != null){
                   foreach ($address as $key ) {
                     if($key['addtype'] == "CONTACT"){
-                     echo "1"; break;
+                     echo "CONTACT"; break;
                     } } } ?>"> 
                       <?php if($address != null){
                   foreach ($address as $key ) {
@@ -1183,7 +1183,7 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
       <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
-           <input type="text" name="checkup" id="checkup8" value="0">
+           <input type="hidden" name="checkup" id="checkup8" value="0">
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
             <div class="col-sm-8">
@@ -1250,10 +1250,28 @@
                <textarea class="form-control off-resize fontstyle" rows="2" name="toanha" id="toanha8" required></textarea>
             </div>
           </div>
-           <button type="submit" class="btn them-modal" id="them5"> OK</button>
-            <button type="submit" class="btn them-modal title-right" style="margin-top: -40px; margin-right: 30px;" id="them5"> Xóa</button>
+           <button type="submit" class="btn them-modal" > OK</button>
+            <button type="button" class="btn them-modal title-right" style="margin-top: -40px; margin-right: 30px;" > Xóa</button>
          
       </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModaldel7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/del_software" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="checkup" id="checkup7d" value="0">     
+         <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
+      <br>
+          <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
+       <br>
+       <div class="form-group row"><div class="col-sm-6">
+           <button type="submit" class="btn them-modal" > Xóa</button></div><div class="col-sm-6">
+            <button type="button" class="btn them-modal" data-dismiss="modal" style="margin-left: 5px"> Hủy</button></div>
+          </div>
+    </form>
     </div>
   </div>
 </div>
@@ -1596,19 +1614,59 @@ function parseQuery(queryString) {
       $('#myModaldel7').modal('show');
       $('#checkup7d').val(data2.recordid);   
   }
-  function showmodel8(){
-     
-      $('#myModal8').modal('show');
+  function showmodel8($ss)
+  {
+    var dc = $ss;
 
-      var check = document.getElementById("#checkPREMANENT").value;
-      
-       $('#checkup8').text(check);
-      $('#quocgia8').val("0");
-      $('#thanhpho8').val("0");
-      $('#quanhuyen8').val("0");  
-      $('#phuongxa8').val("0");
-      $('#duong8').val("0");
-      $('#toanha8').val("0");  
+      $('#myModal8').modal('show');
+      if(dc == '1')
+      {
+        var check = document.getElementById("checkPREMANENT").value;
+        if(check != "PREMANENT")
+        {
+          $('#checkup8').val("1");
+          $('#quocgia8').val("0");
+          $('#thanhpho8').val("0");
+          $('#quanhuyen8').val("0");  
+          $('#phuongxa8').val("0");
+          $('#duong8').val("");
+          $('#toanha8').val("");  
+        }
+        else
+        {
+          $('#checkup8').val(check);
+          $('#quocgia8').val(document.getElementById("countryPREMANENT").value;);
+          $('#thanhpho8').val(document.getElementById("cityPREMANENT").value;);
+          $('#quanhuyen8').val(document.getElementById("districtPREMANENT").value;);  
+          $('#phuongxa8').val(document.getElementById("wardPREMANENT").value;);
+          $('#duong8').val(document.getElementById("streetPREMANENT").value;);
+          $('#toanha8').val(document.getElementById("addressnoPREMANENT").value;);
+        }
+      }
+      else
+      {
+        var check = document.getElementById("checkCONTACT").value;
+        if(check != "CONTACT")
+        {
+          $('#checkup8').val("2");
+          $('#quocgia8').val("0");
+          $('#thanhpho8').val("0");
+          $('#quanhuyen8').val("0");  
+          $('#phuongxa8').val("0");
+          $('#duong8').val("");
+          $('#toanha8').val("");  
+        }
+        else
+        {
+          $('#checkup8').val(check);
+          $('#quocgia8').val(document.getElementById("countryCONTACT").value;);
+          $('#thanhpho8').val(document.getElementById("cityCONTACT").value;);
+          $('#quanhuyen8').val(document.getElementById("districtCONTACT").value;);  
+          $('#phuongxa8').val(document.getElementById("wardCONTACT").value;);
+          $('#duong8').val(document.getElementById("streetCONTACT").value;);
+          $('#toanha8').val(document.getElementById("addressnoCONTACT").value;);
+        }
+      }
   }
 
 
@@ -1616,7 +1674,7 @@ function parseQuery(queryString) {
 
 
     $(document).ready(function() {
-    $("#desirebenefit ").keydown(function (e) {
+    $("#desirebenefit").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
              // Allow: Ctrl+A, Command+A

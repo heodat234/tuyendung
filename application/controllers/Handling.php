@@ -159,29 +159,58 @@ class Handling extends CI_Controller {
  	}
  	public function ins_upd_address()
  	{
- 		if($frm['checkPREMANENT'] == "1")
+ 		$frm = $this->input->post();
+ 		if($frm['checkup'] == "PREMANENT")
 		{
-			$data1['address'] = $frm['dctt'];
+			$data1['country'] = $frm['quocgia'];
+			$data1['city'] = $frm['thanhpho'];
+			$data1['district'] = $frm['quanhuyen'];
+			$data1['ward'] = $frm['phuongxa'];
+			$data1['stress'] = $frm['duong'];
+			$data1['addressno'] = $frm['toanha'];
+			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "PREMANENT");
 			$this->Login_model->UpdateData("canaddress",$array,$data1);
 
-		} else {
-			$data1['address'] = $frm['dctt'];
+		}
+		if($frm['checkup'] == "1")
+		{
+			$data1['country'] = $frm['quocgia'];
+			$data1['city'] = $frm['thanhpho'];
+			$data1['district'] = $frm['quanhuyen'];
+			$data1['ward'] = $frm['phuongxa'];
+			$data1['stress'] = $frm['duong'];
+			$data1['addressno'] = $frm['toanha'];
+			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$data1['addtype'] = "PREMANENT";
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data1);
 		}
-		if($frm['checkCONTACT'] == "1")
+		if($frm['checkup'] == "CONTACT")
 		{
-			$data2['address'] = $frm['dcll'];
+			$data1['country'] = $frm['quocgia'];
+			$data1['city'] = $frm['thanhpho'];
+			$data1['district'] = $frm['quanhuyen'];
+			$data1['ward'] = $frm['phuongxa'];
+			$data1['stress'] = $frm['duong'];
+			$data1['addressno'] = $frm['toanha'];
+			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "CONTACT");
-			$this->Login_model->UpdateData("canaddress",$array,$data2);
+			$this->Login_model->UpdateData("canaddress",$array,$data1);
 
-		} else {
-			$data2['address'] = $frm['dcll'];
-			$data2['addtype'] = "CONTACT";
-			$data2['candidateid'] = $this->session->userdata('user')['candidateid'];
-			$this->Login_model->InsertData("canaddress",$data2);
+		} 
+		if($frm['checkup'] == "2")
+		{
+			$data1['country'] = $frm['quocgia'];
+			$data1['city'] = $frm['thanhpho'];
+			$data1['district'] = $frm['quanhuyen'];
+			$data1['ward'] = $frm['phuongxa'];
+			$data1['stress'] = $frm['duong'];
+			$data1['addressno'] = $frm['toanha'];
+			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
+			$data1['addtype'] = "CONTACT";
+			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
+			$this->Login_model->InsertData("canaddress",$data1);
 		}
 		header('location:hoso_canhan');
  	}

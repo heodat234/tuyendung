@@ -41,15 +41,41 @@
                ?> tuổi
        </td>
       <td class="table-profile">
-        <i class="fa fa-dollar orange"></i>
-        <span> <?php echo $candidate['desirebenefit']?> VND</span>
+        <div class="row">
+            <div class="col-md-4">
+            <i class="fa fa-dollar orange"></i>
+            <span> <?php echo $candidate['desirebenefit']?> VND</span>
+            </div>
+            <div class="col-md-4">
+              <i class="fa fa-star orange" ></i> Học vấn
+              </div>
+              <div class="col-md-4">
+                <i class="fa fa-language orange"></i> Ngôn ngữ
+            </div>
+      </div>
       </td>
+
+   
     </tr>
     <tr class="none-table2">
           <td class="table-profile"><i class="fa fa-user orange"></i> 165cm/60kg</td>
         
-        <td class="table-profile"><i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span></td> 
+        <td class="table-profile">
+          <div class="row">
+            <div class="col-md-4">
+              <i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span>
+            </div>
+            <div class="col-md-4">
+             <i class="fa fa-road orange" ></i> Kinh nghiệm
+           </div>
+           <div class="col-md-4">
+             <i class="fa fa-laptop orange"></i> Phần mềm
+           </div>
+         </div>
+        </td> 
+       
         </tr> 
+
       </table>
  <div >
           <?php if($candidate['imagelink'] == null) {?>

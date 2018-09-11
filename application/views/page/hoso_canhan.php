@@ -249,7 +249,7 @@
         </div>
 
         <div id="collapseThree" class="tab-pane">
-          <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
+          <form action="<?php echo base_url()?>handling/ins_upd_e_phone" method="post">
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
             <div class="col-sm-8">
@@ -259,7 +259,7 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize" rows="2" name="dctt" ><?php 
+              <textarea class="kttext areatext off-resize" rows="2" name="dctt" readonly onclick="showmodel8()"><?php 
                   if($address != null)
                   { 
                       foreach ($address as $key ) {
@@ -270,17 +270,32 @@
                       }
                   }
               ?></textarea>
-               <input type="hidden" name="checkPREMANENT" value="<?php if($address != null){
+                <input type="hidden" name="checkPREMANENT" value="<?php if($address != null){
                   foreach ($address as $key ) {
-                    if($key['addtype'] == "PREMANENT"){
+                   if($key['addtype'] == "PREMANENT"){
                       echo "1"; break;
                     } } } ?>">
+                <?php if($address != null){
+                  foreach ($address as $key ) {
+                   if($key['addtype'] == "PREMANENT"){
+                    ?>
+                    <input type="hidden" name="countryPREMANENT" value="$key['country']">
+                    <input type="hidden" name="cityPREMANENT" value="$key['city']">
+                    <input type="hidden" name="districtPREMANENT" value="$key['district']">
+                    <input type="hidden" name="wardPREMANENT" value="$key['ward']">
+                    <input type="hidden" name="streetPREMANENT" value="$key['street']">
+                    <input type="hidden" name="addressnoPREMANENT" value="$key['addressno']">
+                    <?php
+                     break;
+                    } } }
+                     ?>
+                
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (CONTACT ADDRESS)</label>
             <div class="col-sm-8">
-              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" ><?php 
+              <textarea class="kttext areatext off-resize"  rows="2" name="dcll" readonly onclick="showmodel9()"><?php 
                   if($address != null)
                   {
                       foreach ($address as $key ) {
@@ -291,11 +306,25 @@
                       }
                   }
               ?></textarea>
-              <input type="hidden" name="checkCONTACT" value="<?php if($address != null){
+               <input type="hidden" name="checkCONTACT" value="<?php if($address != null){
                   foreach ($address as $key ) {
                     if($key['addtype'] == "CONTACT"){
-                      echo "1"; break;
-                    } } } ?>">
+                     echo "1"; break;
+                    } } } ?>"> 
+                      <?php if($address != null){
+                  foreach ($address as $key ) {
+                   if($key['addtype'] == "CONTACT"){
+                    ?>
+                    <input type="hidden" name="countryCONTACT" value="$key['country']">
+                    <input type="hidden" name="cityCONTACT" value="$key['city']">
+                    <input type="hidden" name="districtCONTACT" value="$key['district']">
+                    <input type="hidden" name="wardCONTACT" value="$key['ward']">
+                    <input type="hidden" name="streetCONTACT" value="$key['street']">
+                    <input type="hidden" name="addressnoCONTACT" value="$key['addressno']">
+                    <?php
+                     break;
+                    } } }
+                     ?>   
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -1148,6 +1177,86 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog width-30" role="document">
+    <div class="modal-content">
+      <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
+      <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
+           <input type="text" name="checkup" id="checkup8" value="0">
+          <div class="form-group row padding-left-right-20" >
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
+            <div class="col-sm-8">
+               <select class="form-control height3 fontstyle" name="quocgia" id="quocgia8">
+                  <option value="0">Chọn...</option>
+                  <option value="Việt Nam">Việt Nam</option>
+                  <option value="Khác">Khác</option>
+                  
+                </select>
+            </div>
+          </div>
+            <div class="form-group row padding-left-right-20">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Thành Phố</label>
+            <div class="col-sm-8">
+           
+              <select class="seletext js-example-basic-single" name="thanhpho" id="thanhpho8" style="width: 100%"> 
+                 <option value="0" >Chọn tỉnh thành</option>
+                <?php foreach ($city as $key ) {
+
+                ?>
+                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <?php } ?>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row padding-left-right-20">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quận/Huyện</label>
+            <div class="col-sm-8">
+               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%">
+                 <option value="0" >Chọn tỉnh thành</option>
+                <?php foreach ($city as $key ) {
+
+                ?>
+                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <?php } ?>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row padding-left-right-20">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Phường/ Xã</label>
+            <div class="col-sm-8">
+           
+               <select class="seletext js-example-basic-single" name="phuongxa" id="phuongxa8" style="width: 100%">
+                 <option value="0" >Chọn tỉnh thành</option>
+                <?php foreach ($city as $key ) {
+
+                ?>
+                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <?php } ?>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row padding-left-right-20">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Số nhà/ Tên đường</label>
+            <div class="col-sm-8">
+           
+               <textarea class="form-control off-resize fontstyle" rows="2" name="duong" id="duong8" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row padding-left-right-20">
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Số nhà/ Tòa nhà</label>
+            <div class="col-sm-8">
+           
+               <textarea class="form-control off-resize fontstyle" rows="2" name="toanha" id="toanha8" required></textarea>
+            </div>
+          </div>
+           <button type="submit" class="btn them-modal" id="them5"> OK</button>
+            <button type="submit" class="btn them-modal title-right" style="margin-top: -40px; margin-right: 30px;" id="them5"> Xóa</button>
+         
+      </form>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 $('#ngaysinh1').datetimepicker({
    timepicker:false,
@@ -1487,6 +1596,25 @@ function parseQuery(queryString) {
       $('#myModaldel7').modal('show');
       $('#checkup7d').val(data2.recordid);   
   }
+  function showmodel8(){
+     
+      $('#myModal8').modal('show');
+
+      var check = document.getElementById("#checkPREMANENT").value;
+      
+       $('#checkup8').text(check);
+      $('#quocgia8').val("0");
+      $('#thanhpho8').val("0");
+      $('#quanhuyen8').val("0");  
+      $('#phuongxa8').val("0");
+      $('#duong8').val("0");
+      $('#toanha8').val("0");  
+  }
+
+
+
+
+
     $(document).ready(function() {
     $("#desirebenefit ").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .

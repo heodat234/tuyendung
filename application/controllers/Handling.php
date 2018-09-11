@@ -149,14 +149,17 @@ class Handling extends CI_Controller {
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	     header('location:hoso_canhan');
  	}
- 	public function ins_upd_address()
+ 	public function ins_upd_e_phone()
  	{
  		$frm = $this->input->post();	
 		$data['email'] = $frm['email'];
 		$data['telephone'] = $frm['dt1'];		
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-		//var_dump($frm['checkPREMANENT']);
-		if($frm['checkPREMANENT'] == "1")
+		header('location:hoso_canhan');
+ 	}
+ 	public function ins_upd_address()
+ 	{
+ 		if($frm['checkPREMANENT'] == "1")
 		{
 			$data1['address'] = $frm['dctt'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "PREMANENT");
@@ -180,7 +183,6 @@ class Handling extends CI_Controller {
 			$data2['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data2);
 		}
-		
 		header('location:hoso_canhan');
  	}
  	public function ins_upd_relationship()

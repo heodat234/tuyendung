@@ -24,7 +24,6 @@ class Handling extends CI_Controller {
 		$this->load->model(array('Login_model'));
 		$this->load->helper(array('url','my_helper','file'));
 		$this->data['header'] = $this->load->view('home/header',null,true);
-	    $this->data['menu'] = $this->load->view('home/menu',null,true);
 	    $this->data['footer'] = $this->load->view('home/footer',null,true);
 	}
 	public function index()
@@ -166,7 +165,7 @@ class Handling extends CI_Controller {
 			$data1['city'] = $frm['thanhpho'];
 			$data1['district'] = $frm['quanhuyen'];
 			$data1['ward'] = $frm['phuongxa'];
-			$data1['stress'] = $frm['duong'];
+			$data1['street'] = $frm['duong'];
 			$data1['addressno'] = $frm['toanha'];
 			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "PREMANENT");
@@ -179,7 +178,7 @@ class Handling extends CI_Controller {
 			$data1['city'] = $frm['thanhpho'];
 			$data1['district'] = $frm['quanhuyen'];
 			$data1['ward'] = $frm['phuongxa'];
-			$data1['stress'] = $frm['duong'];
+			$data1['street'] = $frm['duong'];
 			$data1['addressno'] = $frm['toanha'];
 			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$data1['addtype'] = "PREMANENT";
@@ -192,7 +191,7 @@ class Handling extends CI_Controller {
 			$data1['city'] = $frm['thanhpho'];
 			$data1['district'] = $frm['quanhuyen'];
 			$data1['ward'] = $frm['phuongxa'];
-			$data1['stress'] = $frm['duong'];
+			$data1['street'] = $frm['duong'];
 			$data1['addressno'] = $frm['toanha'];
 			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "CONTACT");
@@ -205,7 +204,7 @@ class Handling extends CI_Controller {
 			$data1['city'] = $frm['thanhpho'];
 			$data1['district'] = $frm['quanhuyen'];
 			$data1['ward'] = $frm['phuongxa'];
-			$data1['stress'] = $frm['duong'];
+			$data1['street'] = $frm['duong'];
 			$data1['addressno'] = $frm['toanha'];
 			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$data1['addtype'] = "CONTACT";
@@ -440,5 +439,39 @@ class Handling extends CI_Controller {
 		$this->Login_model->DeleteData("cansoftware",$array);
 		header('location:hoso_canhan');
 	}
+	public function del_address()
+	{
+		$frm = $this->input->post();
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => $frm['checkup'], 'hidden' => 1);
+		$this->Login_model->DeleteData("canaddress",$array);
+		header('location:hoso_canhan');
+	}
+	public function selectCity()
+    {
+        $id_city = $this->input->post('id_city');
+        	 $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );  
+        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_district/'.$id_city.'',false, stream_context_create($arrContextOptions)))  ;
+
+        echo json_encode($_jsoncity);
+    }
+
+    public function selectDistrict()
+    {
+        $id_district = $this->input->post('id_district');
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );  
+        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_ward/'.$id_district.'',false, stream_context_create($arrContextOptions)))  ;
+        $city = $_jsoncity;
+        echo json_encode($city);
+    }
 }
 ?>

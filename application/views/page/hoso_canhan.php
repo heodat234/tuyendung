@@ -5,7 +5,7 @@
     <div class="fullContent">
       <?php $d = 0;
          if($candidate['introduction'] != "") $d++;
-         if($candidate['name'] !== "") $d++;
+         if($candidate['firstname'] !== "") $d++;
          if(empty($address) !== true) $d++;
          if(empty($family) !== true) $d++;
          if(empty($experience) !== true) $d++;
@@ -98,7 +98,7 @@
               <li class="active">
                 <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10 <?php  if($candidate['introduction'] !== ""){echo 'green'; } else{ echo 'orange'; }?>"  ></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php if($candidate['name'] !== ""){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin cá nhân</a></li>
+              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php if($candidate['firstname'] !== ""){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin cá nhân</a></li>
               <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
               </li>
               <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
@@ -332,7 +332,7 @@
                       }
                   }
               ?></textarea>
-               <input type="hidden" name="checkCONTACT" value="<?php if($address != null){
+               <input type="hidden" name="checkCONTACT" id="checkCONTACT" value="<?php if($address != null){
                   foreach ($address as $key ) {
                     if($key['addtype'] == "CONTACT"){
                      echo "CONTACT"; break;
@@ -1209,7 +1209,7 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
       <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
-           <input type="hidden" name="checkup" id="checkup8" value="0">
+           <input type="text" name="checkup" id="checkup8" value="0">
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
             <div class="col-sm-8">
@@ -1225,12 +1225,13 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Thành Phố</label>
             <div class="col-sm-8">
            
-              <select class="seletext js-example-basic-single" name="thanhpho" id="thanhpho8" style="width: 100%"> 
+              <select class="seletext js-example-basic-single" name="thanhpho" id="thanhpho8" style="width: 100%" required 
+              onchange="testcombo(this)"> 
                  <option value="0" >Chọn tỉnh thành</option>
                 <?php foreach ($city as $key ) {
 
                 ?>
-                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <option value="<?php echo $key['id_city'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
                   <?php } ?>
                 </select>
             </div>
@@ -1238,13 +1239,8 @@
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quận/Huyện</label>
             <div class="col-sm-8">
-               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%">
-                 <option value="0" >Chọn tỉnh thành</option>
-                <?php foreach ($city as $key ) {
-
-                ?>
-                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
-                  <?php } ?>
+               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%" required onchange="testcombo2(this)">
+                 <option value="0" id="chonqh" >Chọn quận huyện</option>
                 </select>
             </div>
           </div>
@@ -1252,13 +1248,9 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Phường/ Xã</label>
             <div class="col-sm-8">
            
-               <select class="seletext js-example-basic-single" name="phuongxa" id="phuongxa8" style="width: 100%">
-                 <option value="0" >Chọn tỉnh thành</option>
-                <?php foreach ($city as $key ) {
-
-                ?>
-                  <option value="<?php echo $key['name'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
-                  <?php } ?>
+               <select class="seletext js-example-basic-single" name="phuongxa" id="phuongxa8" style="width: 100%" required>
+                 <option value="0" id="chonpx" >Chọn phường xã</option>
+                
                 </select>
             </div>
           </div>
@@ -1273,22 +1265,22 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Số nhà/ Tòa nhà</label>
             <div class="col-sm-8">
            
-               <textarea class="form-control off-resize fontstyle" rows="2" name="toanha" id="toanha8" required></textarea>
+               <textarea class="form-control off-resize fontstyle" rows="2" name="toanha" id="toanha8"></textarea>
             </div>
           </div>
            <button type="submit" class="btn them-modal" > OK</button>
-            <button type="button" class="btn them-modal title-right" style="margin-top: -40px; margin-right: 30px;" > Xóa</button>
+            <button type="button" class="btn them-modal title-right" id="del8" style="margin-top: -40px; margin-right: 30px;" onclick="del8()" > Xóa</button>
          
       </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="myModaldel7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModaldel8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
-      <form action="<?php echo base_url()?>handling/del_software" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="checkup" id="checkup7d" value="0">     
+      <form action="<?php echo base_url()?>handling/del_address" method="POST" enctype="multipart/form-data">
+      <input type="text" name="checkup" id="checkup8d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1301,6 +1293,7 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
 $('#ngaysinh1').datetimepicker({
    timepicker:false,
@@ -1640,61 +1633,74 @@ function parseQuery(queryString) {
       $('#myModaldel7').modal('show');
       $('#checkup7d').val(data2.recordid);   
   }
-  function showmodel8($ss)
+  function showmodel8(ss)
   {
-    var dc = $ss;
-
+    var dc = ss;
+    alert(dc);
       $('#myModal8').modal('show');
-      if(dc == '1')
-      {
-        var check = document.getElementById("checkPREMANENT").value;
-        if(check != "PREMANENT")
+        if(dc == 1)
         {
-          $('#checkup8').val("1");
-          $('#quocgia8').val("0");
-          $('#thanhpho8').val("0");
-          $('#quanhuyen8').val("0");  
-          $('#phuongxa8').val("0");
-          $('#duong8').val("");
-          $('#toanha8').val("");  
+          var check = document.getElementById("checkPREMANENT").value;
+          if(check != "PREMANENT")
+          {
+            $('#checkup8').val("1");
+            $('#quocgia8').val("0");
+            $('#thanhpho8').val("0");
+            $('#quanhuyen8').val("0");  
+            $('#phuongxa8').val("0");
+            $('#duong8').val("");
+            $('#toanha8').val(""); 
+            $('#del8').addClass("hide");
+          }
+          else
+          {
+            $('#checkup8').val(check);
+            $('#quocgia8').val(document.getElementById("countryPREMANENT").value);
+            $('#thanhpho8').val(document.getElementById("cityPREMANENT").value);
+            $('#quanhuyen8').val(document.getElementById("districtPREMANENT").value);  
+            $('#phuongxa8').val(document.getElementById("wardPREMANENT").value);
+            $('#duong8').text(document.getElementById("streetPREMANENT").value);
+            $('#toanha8').text(document.getElementById("addressnoPREMANENT").value);
+            $('#del8').removeClass('hide'); 
+          }
         }
         else
         {
-          $('#checkup8').val(check);
-          $('#quocgia8').val(document.getElementById("countryPREMANENT").value;);
-          $('#thanhpho8').val(document.getElementById("cityPREMANENT").value;);
-          $('#quanhuyen8').val(document.getElementById("districtPREMANENT").value;);  
-          $('#phuongxa8').val(document.getElementById("wardPREMANENT").value;);
-          $('#duong8').val(document.getElementById("streetPREMANENT").value;);
-          $('#toanha8').val(document.getElementById("addressnoPREMANENT").value;);
-        }
-      }
-      else
-      {
-        var check = document.getElementById("checkCONTACT").value;
-        if(check != "CONTACT")
-        {
-          $('#checkup8').val("2");
-          $('#quocgia8').val("0");
-          $('#thanhpho8').val("0");
-          $('#quanhuyen8').val("0");  
-          $('#phuongxa8').val("0");
-          $('#duong8').val("");
-          $('#toanha8').val("");  
-        }
-        else
-        {
-          $('#checkup8').val(check);
-          $('#quocgia8').val(document.getElementById("countryCONTACT").value;);
-          $('#thanhpho8').val(document.getElementById("cityCONTACT").value;);
-          $('#quanhuyen8').val(document.getElementById("districtCONTACT").value;);  
-          $('#phuongxa8').val(document.getElementById("wardCONTACT").value;);
-          $('#duong8').val(document.getElementById("streetCONTACT").value;);
-          $('#toanha8').val(document.getElementById("addressnoCONTACT").value;);
-        }
-      }
-  }
+          var check2 = document.getElementById("checkCONTACT").value;
+          if(check2 != "CONTACT")
+          {
+            $('#checkup8').val("2");
+            $('#quocgia8').val("0");
+            $('#thanhpho8').val("0");
+            $('#quanhuyen8').val("0");  
+            $('#phuongxa8').val("0");
+            $('#duong8').val("");
+            $('#toanha8').val("");
+            $('#del8').addClass("hide");  
+          }
+          else
+          {
+            $('#checkup8').val(check2);
+            $('#quocgia8').val(document.getElementById("countryCONTACT").value);
+            $('#thanhpho8').val(document.getElementById("cityCONTACT").value);
+            $('#quanhuyen8').val(document.getElementById("districtCONTACT").value);  
+            $('#phuongxa8').val(document.getElementById("wardCONTACT").value);
+            //$('#duong8').text(document.getElementById("streetCONTACT").value);
+            $('#myModal8').on('shown.bs.modal', function (e) {
+                $(e.currentTarget).find('input[name="duong"]').val("code");
+            })
+            $('#toanha8').text(document.getElementById("addressnoCONTACT").value);
 
+             $('#del8').removeClass('hide'); 
+          }
+        }
+  }
+  function del8()
+  {
+    $('#myModaldel8').modal('show');
+     $('#checkup8d').val(document.getElementById("checkup").value);
+   
+  }
 
 
 
@@ -1809,4 +1815,47 @@ function parseQuery(queryString) {
     });
 });
     
+    
+   function testcombo(obj){
+    var $id = obj.value;
+    $('.gicungdc').remove();
+    $('.gicungdc2').remove();
+      $.ajax({
+        url: '<?php echo base_url()?>handling/selectCity',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {id_city : $id},
+      })
+      .done(function(data) {
+                 for(var i in data)
+                 {
+                  $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'">'+data[i].name+'</option>');
+                  }
+              })
+      .fail(function() {
+        alert('thatbai');
+        console.log("error");
+      })
+  }
+  function testcombo2(obj){
+    var $id = obj.value;
+    $('.gicungdc2').remove();
+    
+      $.ajax({
+        url: '<?php echo base_url()?>handling/selectDistrict',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {id_district : $id},
+      })
+      .done(function(data) {
+             for(var i in data)
+             {
+              $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'">'+data[i].name+'</option>');
+              }
+          })
+      .fail(function() {
+        alert('thatbai');
+        console.log("error");
+      })
+  }
 </script>

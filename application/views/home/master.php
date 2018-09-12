@@ -73,7 +73,7 @@
 
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn' class='itemcrumb' itemprop='url'><span itemprop='title'>Trang chủ</span></a></li>
 
-                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb' itemprop='url'><span itemprop='title'>Phát triển con người</span></a></li>
+                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='<?php echo base_url() ?>' class='itemcrumb' itemprop='url'><span itemprop='title'>Phát triển con người</span></a></li>
 
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>Chính sách nhân sự</span></a></li>
 
@@ -337,7 +337,7 @@
     <div class="modal fade" id="myModal20" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
-          <h3 class="title-center-complete"><strong>Đất Xanh Group chào mừng bạn dã tham gia Talent Network</strong></h3>
+          <h3 class="title-center-complete"><strong>Đất Xanh Group chào mừng bạn đã tham gia Talent Network</strong></h3>
           <p class="padding-left-right-20">
             Xin chào <strong id="name_tb">Nam</strong>, chúc mừng bạn đã đăng ký thành công tài khoản tại hệ thống Đất Xanh Talent Network
           </p>
@@ -363,7 +363,6 @@
            maxDate:'+1960/01/01'
         });
         
-
         $('#btn_login').click(function(event) {
           $.ajax({
             url: '<?php echo base_url() ?>login/loginUser',
@@ -472,24 +471,31 @@
           });
           }
         });
-       $(document).ready(function() {
-    $("#cmnd").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
-             // Allow: Ctrl+A, Command+A
-            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
-             // Allow: home, end, left, right, down, up
-            (e.keyCode >= 35 && e.keyCode <= 40)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-});
-       
+      $(document).ready(function() {
+          $("#cmnd").keydown(function (e) {
+              // Allow: backspace, delete, tab, escape, enter and .
+              if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+                   // Allow: Ctrl+A, Command+A
+                  (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                   // Allow: home, end, left, right, down, up
+                  (e.keyCode >= 35 && e.keyCode <= 40)) {
+                       // let it happen, don't do anything
+                       return;
+              }
+              // Ensure that it is a number and stop the keypress
+              if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                  e.preventDefault();
+              }
+          });
+      });
+      $('#form-login').keypress(function (e) {
+          if(e.keyCode=='13') 
+          $('#btn_login').click();
+      });
+      $('#sign-in').keypress(function (e) {
+          if(e.keyCode=='13') 
+          $('#btn_sign_in').click();
+      });
     </script>
 
   </body>

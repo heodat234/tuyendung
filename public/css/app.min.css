@@ -19786,7 +19786,7 @@ pre code {
 .radio input[type=radio],
 .radio-inline input[type=radio] {
 				position: absolute;
-				margin-top: .25rem;
+				margin-top: -2px;
 				margin-left: -1.25rem
 }
 
@@ -27999,7 +27999,9 @@ img {
 }
 
 a {
-				color: #3c3c3c
+				color: #3c3c3c;
+				cursor: pointer;
+
 }
 
 .ActionMenu .ActionMenuBody>dl dd>a,

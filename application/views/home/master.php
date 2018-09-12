@@ -1,3 +1,6 @@
+<?php 
+if($this->session->has_userdata('user')) {
+?>
 <!DOCTYPE html>
 <html id="ctl00_Html1" lang="vi">
   <head id="ctl00_Head1">
@@ -500,3 +503,6 @@
 
   </body>
 </html>
+<?php 
+}else{redirect(base_url());}
+?>

@@ -1209,7 +1209,7 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
       <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
-           <input type="text" name="checkup" id="checkup8" value="0">
+           <input type="hidden" name="checkup" id="checkup8" value="0">
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
             <div class="col-sm-8">
@@ -1280,7 +1280,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_address" method="POST" enctype="multipart/form-data">
-      <input type="text" name="checkup" id="checkup8d" value="0">     
+      <input type="hidden" name="checkup" id="checkup8d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>

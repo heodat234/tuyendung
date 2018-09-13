@@ -90,8 +90,8 @@ class Handling extends CI_Controller {
 	{
 		$frm = $this->input->post();	
 		$data['introduction'] = $frm['introduction'];
-		$data['currentbenefit'] = $frm['cur_benefit'];
-		$data['desirebenefit'] = $frm['desirebenefit'];
+		$data['currentbenefit'] = $this->toInt($frm['cur_benefit']);
+		$data['desirebenefit'] = $this->toInt($frm['desirebenefit']);
 
 		if (!empty($_FILES['profilesrc']['name'])) {
 	        $config['upload_path'] = './public/document/';
@@ -145,6 +145,8 @@ class Handling extends CI_Controller {
 		$data['placeofbirth'] = $frm['noisinh'];
 		$data['ethnic'] = $frm['ethnic'];
 		$data['nationality'] = $frm['quoctich'];
+		$data['height'] = $frm['chieucao'];
+		$data['weight'] = $frm['cannang'];
 		$data['idcard'] = $frm['cmnd'];
 		$data['dateofissue'] =  date("Y-m-d", strtotime($frm['dateofissue']));
 		$data['placeofissue'] = $frm['placeofissue'];
@@ -500,5 +502,9 @@ class Handling extends CI_Controller {
         $city = $_jsoncity;
         echo json_encode($city);
     }
+    function toInt($str)
+	{
+	    return (int)preg_replace("/\..+$/i", "", preg_replace("/[^0-9\.]/i", "", $str));
+	}
 }
 ?>

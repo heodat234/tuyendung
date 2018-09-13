@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-4">
             <i class="fa fa-dollar orange"></i>
-            <span> <?php echo $candidate['desirebenefit']?> VND</span>
+            <span> <?php echo number_format($candidate['desirebenefit'])?> VND</span>
             </div>
             <div class="col-md-4">
               <i class="fa fa-star orange" ></i> Học vấn
@@ -58,7 +58,7 @@
    
     </tr>
     <tr class="none-table2">
-          <td class="table-profile"><i class="fa fa-user orange"></i> 165cm/60kg</td>
+          <td class="table-profile"><i class="fa fa-user orange"></i> <?php echo $candidate['height'].'cm/ '.$candidate['weight'].'kg'?></td>
         
         <td class="table-profile">
           <div class="row">
@@ -132,13 +132,14 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
-             <input class="kttext" type="number" placeholder="" name="cur_benefit" id="cur_benefit" value="<?php echo $candidate['currentbenefit'] ?>">
+             <input type="text" class="kttext so" name="cur_benefit" id="cur_benefit" value="<?php echo number_format($candidate['currentbenefit']) ?>">
+              
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label"  >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
-               <input class="kttext" type="number" placeholder="" name="desirebenefit" id="desirebenefit" value="<?php echo $candidate['desirebenefit'] ?>">
+               <input class="kttext so" type="text"  name="desirebenefit" id="desirebenefit" value="<?php echo number_format($candidate['desirebenefit']) ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -147,9 +148,9 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder="" readonly="" value="<?php echo $candidate['profilesrc'] ?>">
-                    <div class="form-group row kcform width100 margin-top12" >
-                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control" readonly="">        
+               
+                    <div class="form-group row kcform width100" >
+                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control fontstyle" readonly="" value="<?php echo $candidate['profilesrc'] ?>">        
                     </div>
                     <div class="col-sm-6">
                     <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector1" style="background-color:white">
@@ -231,13 +232,13 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (CM)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao" value="<?php echo $candidate['height'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (KG)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang" value="<?php echo $candidate['weight'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -367,9 +368,9 @@
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
-            <div class="col-sm-8">
-              <input class="kttext" type="text" placeholder="" name="dtkhancap">
-              <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap">
+            <div class="col-sm-4">
+              <input class="kttext" type="text" placeholder="" name="dtkhancap" value="<?php echo $candidate['emergencycontact'] ?>">
+              <!-- <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap"> -->
                <button type="submit" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
@@ -1370,7 +1371,7 @@ $('#tuden6').datetimepicker({
 $(document).ready(function(){
         $('#browsebutton1 :file').change(function(e){
             var fileName = e.target.files[0].name;
-            $("#label1").attr('placeholder',fileName)
+            $("#label1").attr('value',fileName)
         });
     });      
         
@@ -1737,8 +1738,7 @@ function parseQuery(queryString) {
     $('#checkup8d').val($("#checkup8").val());
   
   }
-
-
+ 
 
 
     $(document).ready(function() {
@@ -1773,6 +1773,7 @@ function parseQuery(queryString) {
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
+
     });
      $("#chieucao").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
@@ -1813,7 +1814,7 @@ function parseQuery(queryString) {
             (e.keyCode >= 35 && e.keyCode <= 40)) {
                  // let it happen, don't do anything
                  return;
-        }
+           }
         // Ensure that it is a number and stop the keypress
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
@@ -1909,4 +1910,24 @@ function parseQuery(queryString) {
         console.log("error");
       })
   }
+$('.so').on('input', function(e){
+    if ($(this).val() == '') {
+              $(this).val(0);
+        }        
+    $(this).val(formatCurrency(this.value.replace(/[,VNĐ]/g,'')));
+    }).on('keypress',function(e){
+        if ($(this).val() == 0)
+          $(this).val('');
+        if(!$.isNumeric(String.fromCharCode(e.which))) e.preventDefault();
+    }).on('paste', function(e){    
+        var cb = e.originalEvent.clipboardData || window.clipboardData;      
+        if(!$.isNumeric(cb.getData('text'))) e.preventDefault();
+    });
+    function formatCurrency(number){
+        var n = number.split('').reverse().join("");
+        var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");    
+        return  n2.split('').reverse().join('');
+    }
+
+
 </script>

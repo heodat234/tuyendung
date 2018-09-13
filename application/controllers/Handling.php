@@ -49,26 +49,28 @@ class Handling extends CI_Controller {
 	}
 	public function hoso_canhan()
 	{
-		$data['hoso'] = "active";
-		$arrContextOptions=array(
-            "ssl"=>array(
-                "verify_peer"=>false,
-                "verify_peer_name"=>false,
-            ),
-        );
-        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
-        $data['city'] =$_jsoncity;
-        $data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-		$this->data['menu'] = $this->load->view('home/menu',$data,true);
-		$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
-		$this->load->view('home/master',$this->data);	
+		if($this->session->has_userdata('user')) {
+			$data['hoso'] = "active";
+			$arrContextOptions=array(
+	            "ssl"=>array(
+	                "verify_peer"=>false,
+	                "verify_peer_name"=>false,
+	            ),
+	        );
+	        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
+	        $data['city'] =$_jsoncity;
+	        $data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+			$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+			$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+			$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+			$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+			$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+			$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+			$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
+			$this->data['menu'] = $this->load->view('home/menu',$data,true);
+			$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
+			$this->load->view('home/master',$this->data);	
+		}else{redirect(base_url());}
 	}
 	public function lichsu_apply()
 	{
@@ -98,6 +100,7 @@ class Handling extends CI_Controller {
 	    	$config['overwrite'] = TRUE;  
 	        $this->load->library('upload', $config);
 	        $this->upload->initialize($config);
+
 
         if ($this->upload->do_upload('profilesrc')) {
           $uploadData = $this->upload->data();
@@ -459,8 +462,15 @@ class Handling extends CI_Controller {
 	public function del_address()
 	{
 		$frm = $this->input->post();
-		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => $frm['checkup'], 'hidden' => 1);
-		$this->Login_model->DeleteData("canaddress",$array);
+		$data1['country'] = "";
+		$data1['city'] = "";
+		$data1['district'] = "";
+		$data1['ward'] = "";
+		$data1['street'] = "";
+		$data1['addressno'] = "";
+		$data1['address'] ="";
+		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => $frm['checkup']);
+		$this->Login_model->UpdateData("canaddress",$array,$data1);
 		header('location:hoso_canhan');
 	}
 	public function selectCity()

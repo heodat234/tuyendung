@@ -1271,7 +1271,7 @@
             </div>
           </div>
            <button type="submit" class="btn them-modal" > OK</button>
-            <button type="button" class="btn them-modal title-right" id="del8" style="margin-top: -40px; margin-right: 30px;" onclick="del8()" > Xóa</button>
+            <button type="button" class="btn them-modal title-right" id="del8" style="margin-top: -40px; margin-right: 30px;" onclick="showdel8()" > Xóa</button>
          
       </form>
     </div>
@@ -1647,7 +1647,7 @@ function parseQuery(queryString) {
           var check = document.getElementById("checkPREMANENT").value;
           if(check != "PREMANENT")
           {
-            alert("1");
+            
             $('#checkup8').val("1");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1675,6 +1675,14 @@ function parseQuery(queryString) {
              $('#select2-thanhpho8-container').text($( "#thanhpho8 option:selected" ).text());
              $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
              $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
+             if($("#cityPREMANENT").val() == "")
+             {
+                $('#del8').addClass("hide");
+             }
+             else
+             {
+              $('#del8').removeClass('hide'); 
+              }
           }
         }
         else
@@ -1711,15 +1719,23 @@ function parseQuery(queryString) {
              $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
              $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
 
-             $('#del8').removeClass('hide'); 
+              if($("#cityPREMANENT").val() == "")
+             {
+                $('#del8').addClass("hide");
+             }
+             else
+             {
+              $('#del8').removeClass('hide'); 
+              }
           }
         }
   }
-  function del8()
+  function showdel8()
   {
     $('#myModaldel8').modal('show');
-     $('#checkup8d').val(document.getElementById("checkup").value);
-   
+    $('#myModal8').modal('hide');
+    $('#checkup8d').val($("#checkup8").val());
+  
   }
 
 

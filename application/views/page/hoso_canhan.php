@@ -305,12 +305,12 @@
                   foreach ($address as $key ) {
                    if($key['addtype'] == "PREMANENT"){
                     ?>
-                    <input type="hidden" name="countryPREMANENT" value="$key['country']">
-                    <input type="hidden" name="cityPREMANENT" value="$key['city']">
-                    <input type="hidden" name="districtPREMANENT" value="$key['district']">
-                    <input type="hidden" name="wardPREMANENT" value="$key['ward']">
-                    <input type="hidden" name="streetPREMANENT" value="$key['street']">
-                    <input type="hidden" name="addressnoPREMANENT" value="$key['addressno']">
+                    <input type="hidden" name="countryPREMANENT" id="countryPREMANENT" value="<?php echo $key['country']?>" >
+                    <input type="hidden" name="cityPREMANENT" id="cityPREMANENT" value="<?php echo $key['city']?>">
+                    <input type="hidden" name="districtPREMANENT" id="districtPREMANENT" value="<?php echo$key['district']?>">
+                    <input type="hidden" name="wardPREMANENT" id="wardPREMANENT" value="<?php echo $key['ward']?>">
+                    <input type="hidden" name="streetPREMANENT" id="streetPREMANENT" value="<?php echo $key['street']?>">
+                    <input type="hidden" name="addressnoPREMANENT" id="addressnoPREMANENT" value="<?php echo $key['addressno']?>">
                     <?php
                      break;
                     } } }
@@ -341,12 +341,14 @@
                   foreach ($address as $key ) {
                    if($key['addtype'] == "CONTACT"){
                     ?>
-                    <input type="hidden" name="countryCONTACT" value="$key['country']">
-                    <input type="hidden" name="cityCONTACT" value="$key['city']">
-                    <input type="hidden" name="districtCONTACT" value="$key['district']">
-                    <input type="hidden" name="wardCONTACT" value="$key['ward']">
-                    <input type="hidden" name="streetCONTACT" value="$key['street']">
-                    <input type="hidden" name="addressnoCONTACT" value="$key['addressno']">
+                    
+
+                     <input type="hidden" name="countryCONTACT" id="countryCONTACT" value="<?php echo $key['country']?>" >
+                    <input type="hidden" name="cityCONTACT" id="cityCONTACT" value="<?php echo $key['city']?>">
+                    <input type="hidden" name="districtCONTACT" id="districtCONTACT" value="<?php echo$key['district']?>">
+                    <input type="hidden" name="wardCONTACT" id="wardCONTACT" value="<?php echo $key['ward']?>">
+                    <input type="hidden" name="streetCONTACT" id="streetCONTACT" value="<?php echo $key['street']?>">
+                    <input type="hidden" name="addressnoCONTACT" id="addressnoCONTACT" value="<?php echo $key['addressno']?>">
                     <?php
                      break;
                     } } }
@@ -1226,12 +1228,12 @@
             <div class="col-sm-8">
            
               <select class="seletext js-example-basic-single" name="thanhpho" id="thanhpho8" style="width: 100%" required 
-              onchange="testcombo(this)"> 
+              onchange="testcombo(this.value,0)"> 
                  <option value="0" >Chọn tỉnh thành</option>
                 <?php foreach ($city as $key ) {
 
                 ?>
-                  <option value="<?php echo $key['id_city'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <option value="<?php echo $key['id_city'] ?>" data-name="<?php echo $key['name'] ?>"><?php echo $key['name'] ?></option>
                   <?php } ?>
                 </select>
             </div>
@@ -1239,7 +1241,7 @@
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quận/Huyện</label>
             <div class="col-sm-8">
-               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%" required onchange="testcombo2(this)">
+               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%" required onchange="testcombo2(this.value,0)">
                  <option value="0" id="chonqh" >Chọn quận huyện</option>
                 </select>
             </div>
@@ -1636,13 +1638,16 @@ function parseQuery(queryString) {
   function showmodel8(ss)
   {
     var dc = ss;
-    alert(dc);
       $('#myModal8').modal('show');
+      $('#select2-thanhpho8-container').text("Chọn tỉnh thành");
+      $('#select2-quanhuyen8-container').text("Chọn quận huyện");
+      $('#select2-phuongxa8-container').text("Chọn phường xã");
         if(dc == 1)
         {
           var check = document.getElementById("checkPREMANENT").value;
           if(check != "PREMANENT")
           {
+            alert("1");
             $('#checkup8').val("1");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1654,14 +1659,22 @@ function parseQuery(queryString) {
           }
           else
           {
+           
             $('#checkup8').val(check);
-            $('#quocgia8').val(document.getElementById("countryPREMANENT").value);
-            $('#thanhpho8').val(document.getElementById("cityPREMANENT").value);
-            $('#quanhuyen8').val(document.getElementById("districtPREMANENT").value);  
-            $('#phuongxa8').val(document.getElementById("wardPREMANENT").value);
-            $('#duong8').text(document.getElementById("streetPREMANENT").value);
-            $('#toanha8').text(document.getElementById("addressnoPREMANENT").value);
+            $('#quocgia8 option[value="'+$("#countryPREMANENT").val()+'"]').prop('selected','selected');
+
+            $('#thanhpho8 option[value="'+$("#cityPREMANENT").val()+'"]').prop('selected','selected');
+            
+            testcombo($("#cityPREMANENT").val(),$("#districtPREMANENT").val());
+            testcombo2($("#districtPREMANENT").val(),$("#wardPREMANENT").val());
+            // $('#quanhuyen8 option[value="'+$("#districtPREMANENT").val()+'"]').prop('selected','selected');
+            // $('#phuongxa8 option[value="'+$("#wardPREMANENT").val()+'"]').prop('selected','selected');
+            $('#duong8').val($("#streetPREMANENT").val());
+            $('#toanha8').val($("#addressnoPREMANENT").val());
             $('#del8').removeClass('hide'); 
+             $('#select2-thanhpho8-container').text($( "#thanhpho8 option:selected" ).text());
+             $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
+             $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
           }
         }
         else
@@ -1669,6 +1682,7 @@ function parseQuery(queryString) {
           var check2 = document.getElementById("checkCONTACT").value;
           if(check2 != "CONTACT")
           {
+            
             $('#checkup8').val("2");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1680,16 +1694,22 @@ function parseQuery(queryString) {
           }
           else
           {
+            
             $('#checkup8').val(check2);
-            $('#quocgia8').val(document.getElementById("countryCONTACT").value);
-            $('#thanhpho8').val(document.getElementById("cityCONTACT").value);
-            $('#quanhuyen8').val(document.getElementById("districtCONTACT").value);  
-            $('#phuongxa8').val(document.getElementById("wardCONTACT").value);
-            //$('#duong8').text(document.getElementById("streetCONTACT").value);
-            $('#myModal8').on('shown.bs.modal', function (e) {
-                $(e.currentTarget).find('input[name="duong"]').val("code");
-            })
-            $('#toanha8').text(document.getElementById("addressnoCONTACT").value);
+            $('#quocgia8 option[value="'+$("#countryCONTACT").val()+'"]').prop('selected','selected');
+
+            $('#thanhpho8 option[value="'+$("#cityCONTACT").val()+'"]').prop('selected','selected');
+            
+            testcombo($("#cityCONTACT").val(),$("#districtCONTACT").val());
+            testcombo2($("#districtCONTACT").val(),$("#wardCONTACT").val());
+            // $('#quanhuyen8 option[value="'+$("#districtPREMANENT").val()+'"]').prop('selected','selected');
+            // $('#phuongxa8 option[value="'+$("#wardPREMANENT").val()+'"]').prop('selected','selected');
+            $('#duong8').val($("#streetCONTACT").val());
+            $('#toanha8').val($("#addressnoCONTACT").val());
+            $('#del8').removeClass('hide'); 
+             $('#select2-thanhpho8-container').text($( "#thanhpho8 option:selected" ).text());
+             $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
+             $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
 
              $('#del8').removeClass('hide'); 
           }
@@ -1816,8 +1836,9 @@ function parseQuery(queryString) {
 });
     
     
-   function testcombo(obj){
-    var $id = obj.value;
+   function testcombo(obj,get){
+
+    var $id = obj;
     $('.gicungdc').remove();
     $('.gicungdc2').remove();
       $.ajax({
@@ -1829,7 +1850,14 @@ function parseQuery(queryString) {
       .done(function(data) {
                  for(var i in data)
                  {
-                  $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'">'+data[i].name+'</option>');
+                  if(get != 0 && get == data[i].id_district)
+                  {
+                    $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'" selected>'+data[i].name+'</option>');
+                  }
+                  else
+                  {
+                    $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'">'+data[i].name+'</option>');
+                  } 
                   }
               })
       .fail(function() {
@@ -1837,8 +1865,8 @@ function parseQuery(queryString) {
         console.log("error");
       })
   }
-  function testcombo2(obj){
-    var $id = obj.value;
+  function testcombo2(obj,get){
+    var $id = obj;
     $('.gicungdc2').remove();
     
       $.ajax({
@@ -1850,7 +1878,14 @@ function parseQuery(queryString) {
       .done(function(data) {
              for(var i in data)
              {
-              $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'">'+data[i].name+'</option>');
+              if(get != 0 && get == data[i].id_ward)
+              {
+                $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'" selected>'+data[i].name+'</option>');
+              }
+              else
+              {
+                 $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'">'+data[i].name+'</option>');
+              }
               }
           })
       .fail(function() {

@@ -23,6 +23,12 @@ class Login extends CI_Controller {
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 		
+		
+
+		// $this->_data['html_header'] = $this->load->view('home/header', NULL, TRUE);  
+		
+        
+        
 	}
 	public function index($value='')
 	{

@@ -159,54 +159,71 @@ class Handling extends CI_Controller {
  	public function ins_upd_address()
  	{
  		$frm = $this->input->post();
+ 		$data1['country'] = $frm['quocgia'];
+		$data1['city'] = $frm['thanhpho'];
+		$data1['district'] = $frm['quanhuyen'];
+		$data1['ward'] = $frm['phuongxa'];
+		$data1['street'] = $frm['duong'];
+		$data1['addressno'] = $frm['toanha'];
+		$arrContextOptions=array(
+        	"ssl"=>array(
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+       		 ),
+	   );  
+		$_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
+    	foreach ($_jsoncity as $key ) {
+    		if($key['id_city'] == $frm['thanhpho'])
+    		{
+    			$namecity = $key['name']; break;
+    		}
+    	}
+    	
+    	 $qh = json_decode(file_get_contents('https://hungminhits.com/api/list_district/'.$frm['thanhpho'].'',false, stream_context_create($arrContextOptions)),true)  ;
+
+    	foreach ($qh as $key ) {
+    		if($key['id_district'] == $frm['quanhuyen'])
+    		{
+    			$nameqh = $key['name']; break;
+    		}
+    	}
+
+    	$px = json_decode(file_get_contents('https://hungminhits.com/api/list_ward/'.$frm['quanhuyen'].'',false, stream_context_create($arrContextOptions)),true)  ;
+    	foreach ($px as $key ) {
+    		if($key['id_ward'] == $frm['phuongxa'])
+    		{
+    			$namepx = $key['name']; break;
+    		}
+    	}
+		if($frm['toanha'] == "")
+		{
+			$data1['address'] = $frm['duong'].", ".$namepx.", ".$nameqh.", ".$namecity;
+		}else
+		{
+			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$namepx.", ".$nameqh.", ".$namecity;
+		}
  		if($frm['checkup'] == "PREMANENT")
 		{
-			$data1['country'] = $frm['quocgia'];
-			$data1['city'] = $frm['thanhpho'];
-			$data1['district'] = $frm['quanhuyen'];
-			$data1['ward'] = $frm['phuongxa'];
-			$data1['street'] = $frm['duong'];
-			$data1['addressno'] = $frm['toanha'];
-			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "PREMANENT");
 			$this->Login_model->UpdateData("canaddress",$array,$data1);
 
 		}
 		if($frm['checkup'] == "1")
 		{
-			$data1['country'] = $frm['quocgia'];
-			$data1['city'] = $frm['thanhpho'];
-			$data1['district'] = $frm['quanhuyen'];
-			$data1['ward'] = $frm['phuongxa'];
-			$data1['street'] = $frm['duong'];
-			$data1['addressno'] = $frm['toanha'];
-			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
+			
 			$data1['addtype'] = "PREMANENT";
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data1);
 		}
 		if($frm['checkup'] == "CONTACT")
 		{
-			$data1['country'] = $frm['quocgia'];
-			$data1['city'] = $frm['thanhpho'];
-			$data1['district'] = $frm['quanhuyen'];
-			$data1['ward'] = $frm['phuongxa'];
-			$data1['street'] = $frm['duong'];
-			$data1['addressno'] = $frm['toanha'];
-			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
+			
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => "CONTACT");
 			$this->Login_model->UpdateData("canaddress",$array,$data1);
 
 		} 
 		if($frm['checkup'] == "2")
 		{
-			$data1['country'] = $frm['quocgia'];
-			$data1['city'] = $frm['thanhpho'];
-			$data1['district'] = $frm['quanhuyen'];
-			$data1['ward'] = $frm['phuongxa'];
-			$data1['street'] = $frm['duong'];
-			$data1['addressno'] = $frm['toanha'];
-			$data1['address'] = $frm['toanha'].", ".$frm['duong'].", ".$frm['phuongxa'].", ".$frm['quanhuyen'].", ".$frm['thanhpho'];
 			$data1['addtype'] = "CONTACT";
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data1);

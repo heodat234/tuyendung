@@ -359,9 +359,15 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="kttext"  type="text" placeholder="" maxlength="11" name="dt1" id="dt1" value="<?php echo $candidate['telephone'] ?>">
+               <?php 
+                    $pizza  = $candidate['telephone'];
+                    $pieces = explode(" ", $pizza);
+                    $p1 = isset($pieces[0])? $pieces[0] : "" ;
+                    $p2 = isset($pieces[1])? $pieces[1] : "" ;
+              ?>
+              <input class="kttext"  type="text" placeholder="" maxlength="11" name="dt1" id="dt1" value="<?php echo $p1; ?>">
               <br>
-              <input class="kttext margin-top-8"  type="text" maxlength="11" placeholder="" name="dt2" id="dt2" >
+              <input class="kttext margin-top-8"  type="text" maxlength="11" placeholder="" name="dt2" id="dt2" value="<?php echo $p2; ?>">
 
               
             </div>
@@ -369,7 +375,8 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
             <div class="col-sm-4">
-              <input class="kttext" type="text" placeholder="" name="dtkhancap" value="<?php echo $candidate['emergencycontact'] ?>">
+
+              <input class="kttext" type="text" placeholder="" name="dtkhancap" id="dtkhancap" value="<?php echo $candidate['emergencycontact'] ?>">
               <!-- <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap"> -->
                <button type="submit" class="btn btnlong margin-top12" > Lưu</button>  
             </div>

@@ -8,7 +8,7 @@
          if($candidate['firstname'] !== "") $d++;
          if(empty($address) !== true) $d++;
          if(empty($family) !== true) $d++;
-         if(empty($experience) !== true) $d++;
+         if(empty($experience) !== true){ $d++; }else if(empty($reference) !== true){ $d++; }
          if(empty($knowledge) !== true) $d++;
          if(empty($language) !== true){ $d++; }else if(empty($software) !== true){ $d++; }
       ?>
@@ -44,13 +44,37 @@
         <div class="row">
             <div class="col-md-4">
             <i class="fa fa-dollar orange"></i>
-            <span> <?php echo $candidate['desirebenefit']?> VND</span>
+            <span> <?php echo number_format($candidate['currentbenefit']).' - '.number_format($candidate['desirebenefit'])?> VND</span>
             </div>
             <div class="col-md-4">
-              <i class="fa fa-star orange" ></i> Học vấn
+               <?php
+              if($knowledge != null){ 
+              foreach($knowledge as $key) {
+                if($key['highestcer'] == "Y")
+                {
+                  echo '<i class="fa fa-star orange" ></i> ';
+                  echo $key['certificate'];
+                  break;
+                }              
+              } }
+              ?>
               </div>
               <div class="col-md-4">
-                <i class="fa fa-language orange"></i> Ngôn ngữ
+                
+                <?php 
+                    if($language != null)
+                    {
+                      echo '<i class="fa fa-language orange"></i> ';
+                      if(count($language) == 1)
+                        echo $language[0]['language'];
+                      else if(count($language) == 2)
+                        echo $language[0]['language'].', '.$language[1]['language'];
+                      else
+                      {
+                        echo $language[0]['language'].', '.$language[1]['language'].', +'.(count($language)-2);
+                      }
+                    }
+                ?>
             </div>
       </div>
       </td>
@@ -58,7 +82,7 @@
    
     </tr>
     <tr class="none-table2">
-          <td class="table-profile"><i class="fa fa-user orange"></i> 165cm/60kg</td>
+          <td class="table-profile"><i class="fa fa-user orange"></i> <?php echo $candidate['height'].'cm/ '.$candidate['weight'].'kg'?></td>
         
         <td class="table-profile">
           <div class="row">
@@ -66,10 +90,32 @@
               <i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span>
             </div>
             <div class="col-md-4">
-             <i class="fa fa-road orange" ></i> Kinh nghiệm
+             
+             <?php if($experience != null){ 
+                echo '<i class="fa fa-road orange" ></i> ';
+                  $secs = strtotime($experience[count($experience)-1]['dateto']) - strtotime($experience[count($experience)-1]['datefrom']);
+                  $days = $secs / 86400;
+                  $month = $days/30;
+                  echo ($month < 1)? "1 tháng kinh nghiệm" : round($month)." tháng kinh nghiệm";
+              }              
+              ?>
            </div>
            <div class="col-md-4">
-             <i class="fa fa-laptop orange"></i> Phần mềm
+            
+             <?php 
+                    if($software != null)
+                    {
+                      echo '<i class="fa fa-laptop orange"></i> ';
+                      if(count($software) == 1)
+                        echo $software[0]['software'];
+                      else if(count($software) == 2)
+                        echo $software[0]['software'].', '.$software[1]['software'];
+                      else
+                      {
+                        echo $software[0]['software'].', '.$software[1]['software'].', +'.(count($software)-2);
+                      }
+                    }
+                ?>
            </div>
          </div>
         </td> 
@@ -102,16 +148,17 @@
               <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
               </li>
               <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
-              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true || empty($reference) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
               <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php  if(empty($knowledge) !== true){echo 'green';} else{echo 'orange';}?>"></i> Trình độ học vấn</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php  if(empty($language) !== true){echo 'green';} else if(empty($software) !== true){echo 'green'; }else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php
+                if(empty($language) !== true || empty($software) !== true){echo 'green';} else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
 
         <div class="col-md-9 ">
           <div class="tab-content">
-        <div id="collapseOne" class="tab-pane  in active">
+        <div id="collapseOne" class="tab-pane  <?php echo isset($one)? $one : ""; ?>e">
           <form action="<?php echo base_url()?>handling/update_introduce" method="post" enctype="multipart/form-data">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
@@ -132,13 +179,14 @@
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label" >THU NHẬP HIỆN TẠI (CURRENT INCOME)</label>
             <div class="col-sm-8">
-             <input class="kttext" type="number" placeholder="" name="cur_benefit" id="cur_benefit" value="<?php echo $candidate['currentbenefit'] ?>">
+             <input type="text" class="kttext so" name="cur_benefit" id="cur_benefit" value="<?php echo number_format($candidate['currentbenefit']) ?>">
+              
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label"  >THU NHẬP MONG MUỐN (EXPECTATION INCOME) (IN VND)</label>
             <div class="col-sm-8">
-               <input class="kttext" type="number" placeholder="" name="desirebenefit" id="desirebenefit" value="<?php echo $candidate['desirebenefit'] ?>">
+               <input class="kttext so" type="text"  name="desirebenefit" id="desirebenefit" value="<?php echo number_format($candidate['desirebenefit']) ?>">
             </div>
           </div>
           <div class="form-group row kcform">
@@ -147,9 +195,9 @@
 
             <div class="col-sm-8">
 
-                <input class="kttext" type="text" placeholder="" readonly="" value="<?php echo $candidate['profilesrc'] ?>">
-                    <div class="form-group row kcform width100 margin-top12" >
-                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control" readonly="">        
+               
+                    <div class="form-group row kcform width100" >
+                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control fontstyle" readonly="" value="<?php echo $candidate['profilesrc'] ?>">        
                     </div>
                     <div class="col-sm-6">
                     <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector1" style="background-color:white">
@@ -165,7 +213,7 @@
         </form>
         </div>
 
-        <div id="collapseTwo" class="tab-pane ">
+        <div id="collapseTwo" class="tab-pane <?php echo isset($two)? $two : ""; ?>">
           <form id="form_profile" action="<?php echo base_url()?>handling/update_profile" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
@@ -231,13 +279,13 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (CM)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao" value="<?php echo $candidate['height'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (KG)</label>
             <div class="col-sm-6">
-               <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang">
+               <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang" value="<?php echo $candidate['weight'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
@@ -274,7 +322,7 @@
          </form>
         </div>
 
-        <div id="collapseThree" class="tab-pane">
+        <div id="collapseThree" class="tab-pane <?php echo isset($three)? $three : ""; ?>">
           <form action="<?php echo base_url()?>handling/ins_upd_e_phone" method="post">
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
@@ -305,12 +353,12 @@
                   foreach ($address as $key ) {
                    if($key['addtype'] == "PREMANENT"){
                     ?>
-                    <input type="hidden" name="countryPREMANENT" value="$key['country']">
-                    <input type="hidden" name="cityPREMANENT" value="$key['city']">
-                    <input type="hidden" name="districtPREMANENT" value="$key['district']">
-                    <input type="hidden" name="wardPREMANENT" value="$key['ward']">
-                    <input type="hidden" name="streetPREMANENT" value="$key['street']">
-                    <input type="hidden" name="addressnoPREMANENT" value="$key['addressno']">
+                    <input type="hidden" name="countryPREMANENT" id="countryPREMANENT" value="<?php echo $key['country']?>" >
+                    <input type="hidden" name="cityPREMANENT" id="cityPREMANENT" value="<?php echo $key['city']?>">
+                    <input type="hidden" name="districtPREMANENT" id="districtPREMANENT" value="<?php echo$key['district']?>">
+                    <input type="hidden" name="wardPREMANENT" id="wardPREMANENT" value="<?php echo $key['ward']?>">
+                    <input type="hidden" name="streetPREMANENT" id="streetPREMANENT" value="<?php echo $key['street']?>">
+                    <input type="hidden" name="addressnoPREMANENT" id="addressnoPREMANENT" value="<?php echo $key['addressno']?>">
                     <?php
                      break;
                     } } }
@@ -341,12 +389,14 @@
                   foreach ($address as $key ) {
                    if($key['addtype'] == "CONTACT"){
                     ?>
-                    <input type="hidden" name="countryCONTACT" value="$key['country']">
-                    <input type="hidden" name="cityCONTACT" value="$key['city']">
-                    <input type="hidden" name="districtCONTACT" value="$key['district']">
-                    <input type="hidden" name="wardCONTACT" value="$key['ward']">
-                    <input type="hidden" name="streetCONTACT" value="$key['street']">
-                    <input type="hidden" name="addressnoCONTACT" value="$key['addressno']">
+                    
+
+                     <input type="hidden" name="countryCONTACT" id="countryCONTACT" value="<?php echo $key['country']?>" >
+                    <input type="hidden" name="cityCONTACT" id="cityCONTACT" value="<?php echo $key['city']?>">
+                    <input type="hidden" name="districtCONTACT" id="districtCONTACT" value="<?php echo$key['district']?>">
+                    <input type="hidden" name="wardCONTACT" id="wardCONTACT" value="<?php echo $key['ward']?>">
+                    <input type="hidden" name="streetCONTACT" id="streetCONTACT" value="<?php echo $key['street']?>">
+                    <input type="hidden" name="addressnoCONTACT" id="addressnoCONTACT" value="<?php echo $key['addressno']?>">
                     <?php
                      break;
                     } } }
@@ -356,25 +406,32 @@
           <div class="form-group row kcform-more">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
             <div class="col-sm-8">
-              <input class="kttext"  type="text" placeholder="" maxlength="11" name="dt1" id="dt1" value="<?php echo $candidate['telephone'] ?>">
+               <?php 
+                    $pizza  = $candidate['telephone'];
+                    $pieces = explode(" ", $pizza);
+                    $p1 = isset($pieces[0])? $pieces[0] : "" ;
+                    $p2 = isset($pieces[1])? $pieces[1] : "" ;
+              ?>
+              <input class="kttext"  type="text" placeholder="" maxlength="11" name="dt1" id="dt1" value="<?php echo $p1; ?>">
               <br>
-              <input class="kttext margin-top-8"  type="text" maxlength="11" placeholder="" name="dt2" id="dt2" >
+              <input class="kttext margin-top-8"  type="text" maxlength="11" placeholder="" name="dt2" id="dt2" value="<?php echo $p2; ?>">
 
               
             </div>
           </div>
           <div class="form-group row kcform">
             <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
-            <div class="col-sm-8">
-              <input class="kttext" type="text" placeholder="" name="dtkhancap">
-              <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap">
+            <div class="col-sm-4">
+
+              <input class="kttext" type="text" placeholder="" name="dtkhancap" id="dtkhancap" value="<?php echo $candidate['emergencycontact'] ?>">
+              <!-- <input class="kttext margin-left-25"  type="text" placeholder="" name="tenkhancap"> -->
                <button type="submit" class="btn btnlong margin-top12" > Lưu</button>  
             </div>
           </div>
         </form>
         </div>
 
-        <div id="collapseFour" class="tab-pane ">
+        <div id="collapseFour" class="tab-pane <?php echo isset($four)? $four : ""; ?>">
          
           <button type="button" class="btn btnlong btn-them" onclick="showmodel11()"> Thêm</button>  
           
@@ -402,8 +459,8 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['name']?></td>
-              <td><?php echo $key['yob']?></td>
-              <td><?php echo $key['type']?></td>
+              <td><?php echo ($key['yob'] !== 0) ? $key['yob'] : ""; ?></td>
+              <td><?php echo ($key['type'] !== '0') ? $key['type'] : ""; ?></td>
               <td><?php echo $key['career']?></td>
               <td><i class="fa fa-edit" onclick="editmodal('<?php echo 'click'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal('<?php echo 'click'.$i ?>')"></i></td>
              </tr>
@@ -415,7 +472,7 @@
          -->
         </div>
 
-        <div id="collapseFive" class="tab-pane ">
+        <div id="collapseFive" class="tab-pane <?php echo isset($five)? $five : ""; ?>">
           
           <label>Quá trình công tác</label>
           <button type="button" class="btn btnlong btn-them" onclick="showmodel2()"> Thêm</button>  
@@ -443,9 +500,10 @@
                 <input type="hidden" name="nhiemvu" value="<?php echo $key['responsibility']?>">
                 <input type="hidden" name="lydo" value="<?php echo $key['quitreason']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+                <input type="hidden" name="diachi" value="<?php echo $key['address']?>">
               </form>
               <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
-              <td><?php echo $key['company']?></td>
+              <td><?php echo $key['company']." ".$key['address']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['responsibility']?></td>
               <td><?php echo $key['quitreason']?></td>
@@ -495,7 +553,7 @@
           --> 
         </div>
 
-        <div id="collapseSix" class="tab-pane ">
+        <div id="collapseSix" class="tab-pane <?php echo isset($six)? $six : ""; ?>">
 
           <label>Trình độ học vấn</label>
           <button type="button" class="btn btnlong btn-them" onclick="showmodel4()"> Thêm</button>  
@@ -531,7 +589,7 @@
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['trainingplace']?></td>
               <td><?php echo $key['trainingcourse']?></td>
-              <td><?php echo $key['certificate']?></td>
+              <td><?php echo $key['certificate']; if($key['highestcer'] == "Y") echo "(*)"; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal4('<?php echo 'click4'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal4('<?php echo 'click4'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } }?>
@@ -580,9 +638,9 @@
           <!-- <button type="button" class="btn btnlong" > Lưu</button>   -->
         </div>
 
-        <div id="collapseSeven" class="tab-pane ">
+        <div id="collapseSeven" class="tab-pane <?php echo isset($seven)? $seven : ""; ?>">
           <label>Trình độ Ngoại ngữ</label>
-          <button type="button" class="btn btnlong btn-them" onclick="showmodel6()"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel6()"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr> 
@@ -611,10 +669,10 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['language']?></td>
-              <td><?php echo $key['rate1']?></td>
-              <td><?php echo $key['rate2']?></td>
-              <td><?php echo $key['rate3']?></td>
-              <td><?php echo $key['rate4']?></td>
+              <td><?php echo ($key['rate1'] !== "0") ? $key['rate1'] : ""; ?></td>
+              <td><?php echo ($key['rate2'] !== "0")? $key['rate2'] : ""; ?></td>
+              <td><?php echo ($key['rate3'] !== "0")? $key['rate3']: ""; ?></td>
+              <td><?php echo ($key['rate4'] !== "0")? $key['rate4']: ""; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal6('<?php echo 'click6'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal6('<?php echo 'click6'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } ?>
@@ -644,7 +702,7 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['software']?></td>
-              <td><?php echo $key['rate1']?></td>
+              <td><?php echo ($key['rate1'] !== "0")? $key['rate1'] : ""; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal7('<?php echo 'click7'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal7('<?php echo 'click7'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } ?>
@@ -684,12 +742,12 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11" >
-                 <option value="0" >Chọn năm sinh</option>
+              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11">
+                 <option value="0">Chọn năm sinh</option>
                 <?php
                    $date = getdate(); 
 
-                 for($i = ($date['year'] - 10); $i > 1940; $i--) { ?>
+                 for($i = $date['year']; $i > 1940; $i--) { ?>
                   <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>  
                 </select>
@@ -699,8 +757,8 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11" >
-                  <option value="0" >Chọn quan hệ</option>
+             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11">
+                  <option value="0">Chọn quan hệ</option>
                   <option value="Cha">Cha</option>
                   <option value="Mẹ">Mẹ</option>
                   <option value="Anh">Anh</option>
@@ -909,7 +967,7 @@
               </div>
             </div>
           </div>
-            <div class="form-group row padding-left-right-20">
+            <div class="form-group row padding-left-right-20 margin-bot-2">
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
@@ -924,8 +982,8 @@
                 <input class="form-control fontstyle" type="text"  placeholder="" name="tghoc" id="tghoc5"></div>
                 <div class="col-sm-6">
                 <select class="form-control height3 fontstyle" name="donvi" id="donvi5">
-                  <option value="0">Chọn...</option>
-                  <option value="Năm">Năm</option>
+                  <!-- <option value="0" disabled>Chọn...</option> -->
+                  <option value="Năm" selected>Năm</option>
                   <option value="Tháng">Tháng</option>
                   <option value="Ngày">Ngày</option>
                   
@@ -977,7 +1035,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -990,7 +1048,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1003,7 +1061,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1016,7 +1074,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1050,7 +1108,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1209,7 +1267,7 @@
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
       <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
-           <input type="text" name="checkup" id="checkup8" value="0">
+           <input type="hidden" name="checkup" id="checkup8" value="0">
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
             <div class="col-sm-8">
@@ -1226,12 +1284,12 @@
             <div class="col-sm-8">
            
               <select class="seletext js-example-basic-single" name="thanhpho" id="thanhpho8" style="width: 100%" required 
-              onchange="testcombo(this)"> 
+              onchange="testcombo(this.value,0)"> 
                  <option value="0" >Chọn tỉnh thành</option>
                 <?php foreach ($city as $key ) {
 
                 ?>
-                  <option value="<?php echo $key['id_city'] ?>" <?php if($key['name'] == $candidate['placeofbirth']) echo "selected";?> ><?php echo $key['name'] ?></option>
+                  <option value="<?php echo $key['id_city'] ?>" data-name="<?php echo $key['name'] ?>"><?php echo $key['name'] ?></option>
                   <?php } ?>
                 </select>
             </div>
@@ -1239,7 +1297,7 @@
           <div class="form-group row padding-left-right-20">
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quận/Huyện</label>
             <div class="col-sm-8">
-               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%" required onchange="testcombo2(this)">
+               <select class="seletext js-example-basic-single" name="quanhuyen" id="quanhuyen8" style="width: 100%" required onchange="testcombo2(this.value,0)">
                  <option value="0" id="chonqh" >Chọn quận huyện</option>
                 </select>
             </div>
@@ -1269,7 +1327,7 @@
             </div>
           </div>
            <button type="submit" class="btn them-modal" > OK</button>
-            <button type="button" class="btn them-modal title-right" id="del8" style="margin-top: -40px; margin-right: 30px;" onclick="del8()" > Xóa</button>
+            <button type="button" class="btn them-modal title-right" id="del8" style="margin-top: -40px; margin-right: 30px;" onclick="showdel8()" > Xóa</button>
          
       </form>
     </div>
@@ -1280,7 +1338,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/del_address" method="POST" enctype="multipart/form-data">
-      <input type="text" name="checkup" id="checkup8d" value="0">     
+      <input type="hidden" name="checkup" id="checkup8d" value="0">     
          <strong class="title-anhdaidien fontbig" style="margin-left: 25%;">Thông báo</strong>
       <br>
           <label for="staticEmail"  style="margin-left: 40px">Bạn có muốn xóa thông tin này không?</label>
@@ -1368,7 +1426,7 @@ $('#tuden6').datetimepicker({
 $(document).ready(function(){
         $('#browsebutton1 :file').change(function(e){
             var fileName = e.target.files[0].name;
-            $("#label1").attr('placeholder',fileName)
+            $("#label1").attr('value',fileName)
         });
     });      
         
@@ -1430,6 +1488,7 @@ function parseQuery(queryString) {
        $('#chucvu2').val(data2.vitri);
         $('#nhiemvu2').val(data2.nhiemvu);
        $('#lydonghi2').val(data2.lydo);
+       $('#dc2').val(data2.diachi);
   }
   function showmodel2(){
   
@@ -1443,6 +1502,7 @@ function parseQuery(queryString) {
        $('#chucvu2').val("");
         $('#nhiemvu2').val("");
        $('#lydonghi2').val("");
+       $('#dc2').val("");
   }
   function delmodal2(idform){
       var data = ""; 
@@ -1557,7 +1617,7 @@ function parseQuery(queryString) {
       $('#checkup5').val("0");
       $('#truong5').val("");
        $('#tghoc5').val("");
-       $('#donvi5').val("0");
+       $('#donvi5').val("Năm");
        $('#nganhhoc5').val("");
        $('#bangcap5').val("");
        
@@ -1636,13 +1696,16 @@ function parseQuery(queryString) {
   function showmodel8(ss)
   {
     var dc = ss;
-    alert(dc);
       $('#myModal8').modal('show');
+      $('#select2-thanhpho8-container').text("Chọn tỉnh thành");
+      $('#select2-quanhuyen8-container').text("Chọn quận huyện");
+      $('#select2-phuongxa8-container').text("Chọn phường xã");
         if(dc == 1)
         {
           var check = document.getElementById("checkPREMANENT").value;
           if(check != "PREMANENT")
           {
+            
             $('#checkup8').val("1");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1654,14 +1717,30 @@ function parseQuery(queryString) {
           }
           else
           {
+           
             $('#checkup8').val(check);
-            $('#quocgia8').val(document.getElementById("countryPREMANENT").value);
-            $('#thanhpho8').val(document.getElementById("cityPREMANENT").value);
-            $('#quanhuyen8').val(document.getElementById("districtPREMANENT").value);  
-            $('#phuongxa8').val(document.getElementById("wardPREMANENT").value);
-            $('#duong8').text(document.getElementById("streetPREMANENT").value);
-            $('#toanha8').text(document.getElementById("addressnoPREMANENT").value);
+            $('#quocgia8 option[value="'+$("#countryPREMANENT").val()+'"]').prop('selected','selected');
+
+            $('#thanhpho8 option[value="'+$("#cityPREMANENT").val()+'"]').prop('selected','selected');
+            
+            testcombo($("#cityPREMANENT").val(),$("#districtPREMANENT").val());
+            testcombo2($("#districtPREMANENT").val(),$("#wardPREMANENT").val());
+            // $('#quanhuyen8 option[value="'+$("#districtPREMANENT").val()+'"]').prop('selected','selected');
+            // $('#phuongxa8 option[value="'+$("#wardPREMANENT").val()+'"]').prop('selected','selected');
+            $('#duong8').val($("#streetPREMANENT").val());
+            $('#toanha8').val($("#addressnoPREMANENT").val());
             $('#del8').removeClass('hide'); 
+             $('#select2-thanhpho8-container').text($( "#thanhpho8 option:selected" ).text());
+             $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
+             $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
+             if($("#cityPREMANENT").val() == "")
+             {
+                $('#del8').addClass("hide");
+             }
+             else
+             {
+              $('#del8').removeClass('hide'); 
+              }
           }
         }
         else
@@ -1669,6 +1748,7 @@ function parseQuery(queryString) {
           var check2 = document.getElementById("checkCONTACT").value;
           if(check2 != "CONTACT")
           {
+            
             $('#checkup8').val("2");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1680,29 +1760,42 @@ function parseQuery(queryString) {
           }
           else
           {
+            
             $('#checkup8').val(check2);
-            $('#quocgia8').val(document.getElementById("countryCONTACT").value);
-            $('#thanhpho8').val(document.getElementById("cityCONTACT").value);
-            $('#quanhuyen8').val(document.getElementById("districtCONTACT").value);  
-            $('#phuongxa8').val(document.getElementById("wardCONTACT").value);
-            //$('#duong8').text(document.getElementById("streetCONTACT").value);
-            $('#myModal8').on('shown.bs.modal', function (e) {
-                $(e.currentTarget).find('input[name="duong"]').val("code");
-            })
-            $('#toanha8').text(document.getElementById("addressnoCONTACT").value);
+            $('#quocgia8 option[value="'+$("#countryCONTACT").val()+'"]').prop('selected','selected');
 
-             $('#del8').removeClass('hide'); 
+            $('#thanhpho8 option[value="'+$("#cityCONTACT").val()+'"]').prop('selected','selected');
+            
+            testcombo($("#cityCONTACT").val(),$("#districtCONTACT").val());
+            testcombo2($("#districtCONTACT").val(),$("#wardCONTACT").val());
+            // $('#quanhuyen8 option[value="'+$("#districtPREMANENT").val()+'"]').prop('selected','selected');
+            // $('#phuongxa8 option[value="'+$("#wardPREMANENT").val()+'"]').prop('selected','selected');
+            $('#duong8').val($("#streetCONTACT").val());
+            $('#toanha8').val($("#addressnoCONTACT").val());
+            $('#del8').removeClass('hide'); 
+             $('#select2-thanhpho8-container').text($( "#thanhpho8 option:selected" ).text());
+             $('#select2-quanhuyen8-container').text($( "#quanhuyen8 option:selected" ).text());
+             $('#select2-phuongxa8-container').text($( "#phuongxa8 option:selected" ).text());
+
+              if($("#cityPREMANENT").val() == "")
+             {
+                $('#del8').addClass("hide");
+             }
+             else
+             {
+              $('#del8').removeClass('hide'); 
+              }
           }
         }
   }
-  function del8()
+  function showdel8()
   {
     $('#myModaldel8').modal('show');
-     $('#checkup8d').val(document.getElementById("checkup").value);
-   
+    $('#myModal8').modal('hide');
+    $('#checkup8d').val($("#checkup8").val());
+  
   }
-
-
+ 
 
 
     $(document).ready(function() {
@@ -1737,6 +1830,7 @@ function parseQuery(queryString) {
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
+
     });
      $("#chieucao").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
@@ -1777,7 +1871,7 @@ function parseQuery(queryString) {
             (e.keyCode >= 35 && e.keyCode <= 40)) {
                  // let it happen, don't do anything
                  return;
-        }
+           }
         // Ensure that it is a number and stop the keypress
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
@@ -1816,8 +1910,9 @@ function parseQuery(queryString) {
 });
     
     
-   function testcombo(obj){
-    var $id = obj.value;
+   function testcombo(obj,get){
+
+    var $id = obj;
     $('.gicungdc').remove();
     $('.gicungdc2').remove();
       $.ajax({
@@ -1829,7 +1924,14 @@ function parseQuery(queryString) {
       .done(function(data) {
                  for(var i in data)
                  {
-                  $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'">'+data[i].name+'</option>');
+                  if(get != 0 && get == data[i].id_district)
+                  {
+                    $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'" selected>'+data[i].name+'</option>');
+                  }
+                  else
+                  {
+                    $('#chonqh').after('<option class="gicungdc" value="'+data[i].id_district+'">'+data[i].name+'</option>');
+                  } 
                   }
               })
       .fail(function() {
@@ -1837,8 +1939,8 @@ function parseQuery(queryString) {
         console.log("error");
       })
   }
-  function testcombo2(obj){
-    var $id = obj.value;
+  function testcombo2(obj,get){
+    var $id = obj;
     $('.gicungdc2').remove();
     
       $.ajax({
@@ -1850,7 +1952,14 @@ function parseQuery(queryString) {
       .done(function(data) {
              for(var i in data)
              {
-              $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'">'+data[i].name+'</option>');
+              if(get != 0 && get == data[i].id_ward)
+              {
+                $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'" selected>'+data[i].name+'</option>');
+              }
+              else
+              {
+                 $('#chonpx').after('<option class="gicungdc2" value="'+data[i].id_ward+'">'+data[i].name+'</option>');
+              }
               }
           })
       .fail(function() {
@@ -1858,4 +1967,24 @@ function parseQuery(queryString) {
         console.log("error");
       })
   }
+$('.so').on('input', function(e){
+    if ($(this).val() == '') {
+              $(this).val(0);
+        }        
+    $(this).val(formatCurrency(this.value.replace(/[,VNĐ]/g,'')));
+    }).on('keypress',function(e){
+        if ($(this).val() == 0)
+          $(this).val('');
+        if(!$.isNumeric(String.fromCharCode(e.which))) e.preventDefault();
+    }).on('paste', function(e){    
+        var cb = e.originalEvent.clipboardData || window.clipboardData;      
+        if(!$.isNumeric(cb.getData('text'))) e.preventDefault();
+    });
+    function formatCurrency(number){
+        var n = number.split('').reverse().join("");
+        var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");    
+        return  n2.split('').reverse().join('');
+    }
+
+
 </script>

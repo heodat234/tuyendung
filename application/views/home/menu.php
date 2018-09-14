@@ -1,6 +1,14 @@
 
 	
-
+ <?php $d = 0;
+         if($candidate['introduction'] != "") $d++;
+         if($candidate['firstname'] !== "") $d++;
+         if(empty($address) !== true) $d++;
+         if(empty($family) !== true) $d++;
+         if(empty($experience) !== true){ $d++; }else if(empty($reference) !== true){ $d++; }
+         if(empty($knowledge) !== true) $d++;
+         if(empty($language) !== true){ $d++; }else if(empty($software) !== true){ $d++; }
+      ?>
 <div class="Module Module-167">
 	<div class="ModuleContent">
 		<nav class="block-leftMenu menuPage mrb30">
@@ -8,7 +16,7 @@
 				<li class="<?php echo isset($chinhsach)? $chinhsach:'' ?>"><a href="<?php echo base_url()?>index.html" target="_self"><i class="fa fa-angle-right"></i> Chính sách nhân sự</a></li>
 				<li class="<?php echo isset($cohoi)? $cohoi:'' ?>"><a href="<?php echo base_url()?>cohoi_nghe_nghiep.html" target="_self"><i class="fa fa-angle-right"></i> Cơ hội nghề nghiệp</a></li>
 				<li><a href="#" target="_self"><i class="fa fa-angle-right"></i> Qui định hồ sơ ứng tuyển</a></li>
-				<li class="<?php echo isset($hoso)? $hoso:'' ?> hide" id="hoso1"><a href="<?php echo base_url()?>hoso_canhan.html" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân</a></li>
+				<li class="<?php echo isset($hoso)? $hoso:'' ?> hide" id="hoso1"><a href="<?php echo base_url()?>hoso_canhan.html" target="_self"><i class="fa fa-angle-right"></i> Hồ sơ cá nhân (<?php echo $d?>/7)</a></li>
 				<li class="<?php echo isset($ls)? $ls:'' ?> hide" id="lichsu1"><a href="<?php echo base_url()?>lichsu_apply.html" target="_self"><i class="fa fa-angle-right"></i> Lịch sử ứng tuyển</a></li>
 				
 			</ul>

@@ -14,8 +14,8 @@ class Login extends CI_Controller {
 		    'protocol'  =>  'smtp',
 		    'smtp_host' =>  'ssl://smtp.googlemail.com',
 		    'smtp_port' =>  465,
-		    'smtp_user' =>  'hososuckhoe.org@gmail.com',
-		    'smtp_pass' =>  'hungminhits',
+		    'smtp_user' =>  'thanhhung23495@gmail.com',
+		    'smtp_pass' =>  'Heodat1323',
 		    'mailtype'  =>  'html', 
 		    'charset'   =>  'utf-8',
 		);
@@ -23,6 +23,12 @@ class Login extends CI_Controller {
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 		
+		
+
+		// $this->_data['html_header'] = $this->load->view('home/header', NULL, TRUE);  
+		
+        
+        
 	}
 	public function index($value='')
 	{
@@ -185,7 +191,22 @@ class Login extends CI_Controller {
 			$a_UserInfo['candidateid'] = $this->Login_model->Set_idcandite()['candidateid'];
 			$this->Login_model->insertUser( $a_UserInfo );
 			$this->session->set_userdata('user', $a_UserInfo);
-			echo json_encode($a_UserInfo);		
+
+			$this->email->from('thanhhung23495@gmail.com', 'Tuyển dụng Đất Xanh');
+			//cau hinh nguoi nhan
+			$this->email->to($frm['email']);
+			$this->email->subject('Đăng kí tài khoản thành công');
+			$this->email->message('Cảm ơn bạn đã đăng ký tài khoản tại Đất Xanh.<br>');
+			
+			if ( $this->email->send())
+			{
+				echo json_encode($a_UserInfo);		
+			}else{
+				var_dump('thất bại');
+				var_dump($this->email->print_debugger());
+			}
+			
+			
 		}
 		
 	}

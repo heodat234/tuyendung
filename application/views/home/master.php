@@ -1,6 +1,3 @@
-<?php 
-if($this->session->has_userdata('user')) {
-?>
 <!DOCTYPE html>
 <html id="ctl00_Html1" lang="vi">
   <head id="ctl00_Head1">
@@ -78,7 +75,9 @@ if($this->session->has_userdata('user')) {
 
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='<?php echo base_url() ?>' class='itemcrumb' itemprop='url'><span itemprop='title'>Phát triển con người</span></a></li>
 
-                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>Chính sách nhân sự</span></a></li>
+                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>
+                       <?php echo $this->uri->segment(1); ?>
+                      </span></a></li>
 
                 
                     </ol>
@@ -503,6 +502,3 @@ if($this->session->has_userdata('user')) {
 
   </body>
 </html>
-<?php 
-}else{redirect(base_url());}
-?>

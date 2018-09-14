@@ -126,24 +126,23 @@ class Login extends CI_Controller {
 	public function forgotPassword()
 	{
 		$mail = $this->input->post('email');
-		 
-		//cau hinh email va ten nguoi gui
-		$this->email->from('hososuckhoe.org@gmail.com', 'Hồ sơ sức khỏe');
+		$new_pass = random_string('alnum',8);
+		$data['password'] = md5($new_pass);
+		$this->Login_model->UpdateData('operator', array('email' => $mail),$data);
+		//cau hinh email va ten nguoi guioperator
+        $this->email->from('thanhhung23495@gmail.com', 'Tuyển dụng Đất Xanh');
 		//cau hinh nguoi nhan
 		$this->email->to($mail);
 		$this->email->subject('Lấy lại mật khẩu');
-		$this->email->message('Bấm vào <a href="'.base_url().'login">đây</a> để đăng nhập bằng mật khẩu bên dưới và đổi mật khẩu mới cho tài khoản của bạn.<br>
-			Mật khẩu mới: <b>'.random_string('alnum',8).'</b><br>');
-		 
-		
-		//thuc hien gui
-		$this->email->send();
-	    $this->c_Check = true;
-	    $this->a_Data['c_Check']= $this->c_Check;
-		$this->_data['html_body'] = $this->load->view('page/login',$this->a_Data, TRUE);
-    	return $this->load->view('home/master', $this->_data);
-
-		
+		$this->email->message('Bấm vào <a href="'.base_url().'">đây</a> để đăng nhập bằng mật khẩu bên dưới và đổi mật khẩu mới cho tài khoản của bạn.<br>
+			Mật khẩu mới: <b>'.$new_pass.'</b><br>');
+		if ( $this->email->send())
+		{
+			echo json_encode(1);		
+		}else{
+			var_dump('thất bại');
+			var_dump($this->email->print_debugger());
+		}
 	}
 
 	public function checkPassword()

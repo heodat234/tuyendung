@@ -218,8 +218,8 @@
                   <input type="password" class="kttext" id="inputPassword" name="password" placeholder="">
                   <button type="button" class="btn btn-login"  id="btn_login">Đăng Nhập
                 </button>
-                <p class="margin-top17">
-                <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu
+                <p class="margin-top17"><a data-toggle="modal" data-target="#myModal1c">
+                <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu</a>
                 </p>  
                 <p class="margin-top-13"><a data-toggle="modal" data-target="#myModal1a">
                 <i class="fa fa-caret-right fa-lg"></i> Đăng ký tài khoản</a>
@@ -332,10 +332,37 @@
             </div>
             </div>
           </div>
-        </div>
       </div>
+    </div>
    
-
+    <div class="modal fade" id="myModal1c" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog"  role="document" style="width: 35% !important">
+        <div class="modal-content">
+          <div class="modal-body" style="text-align: center;">
+            <div class="row">
+              <div class="col-md-12 padding-form-login">
+                <form id="forgot_pass">
+                  <h3 class="color-blue">Khôi phục tài khoản</h3>
+                  <p>Khôi phục tài khoản tuyển dụng Đất Xanh</p>
+                   <div class="alert alert-success hide" id="err-forgot"></div>
+                  <div class="form-group row kcform1" style="margin-top: 15px">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email xác nhận</label>
+                    <div class="col-sm-9">
+                      <input class="kttext" type="email" placeholder="" name="email" required width="80%">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row kcform1" style="text-align: center;">
+                      <button type="submit" class="btn btn-login" id="btn_forgot" >Gửi
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            </div>
+          </div>
+      </div>
+    </div>
     <div class="modal fade" id="myModal20" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-70"  role="document">
         <div class="modal-content">
@@ -356,6 +383,9 @@
         
 
         $('#myModal1a').on('show.bs.modal', function (event) {
+            $('#myModal').modal('toggle');
+        });
+        $('#myModal1c').on('show.bs.modal', function (event) {
             $('#myModal').modal('toggle');
         });
         $('#ngaysinh').datetimepicker({
@@ -470,6 +500,41 @@
           })
           .always(function() {
             console.log("complete");
+          });
+          }
+        });
+
+
+      $("#forgot_pass").validate({
+            rules: {
+              email: {
+                required: true,
+                email: true
+              },
+            },
+            messages: {
+              email: {
+                required: 'Vui lòng nhập vào địa chỉ email!',
+                email: 'Vui lòng nhập vào địa chỉ email!'
+              },
+            },
+            submitHandler: function(f) {
+            $.ajax({
+              url: '<?php echo base_url() ?>login/forgotPassword',
+              type: 'POST',
+              dataType: 'json',
+              data: $('form#forgot_pass').serialize(),
+            })
+            .done(function(data) {
+             if (data == '1' ) {
+              $('#err-forgot').removeClass('hide');
+              $('#err-forgot').text('Vui lòng kiểm tra mail để nhận lại mật khẩu mới.');
+             }
+             
+           
+          })
+          .fail(function() {
+            console.log("error");
           });
           }
         });

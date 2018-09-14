@@ -8,7 +8,7 @@
          if($candidate['firstname'] !== "") $d++;
          if(empty($address) !== true) $d++;
          if(empty($family) !== true) $d++;
-         if(empty($experience) !== true) $d++;
+         if(empty($experience) !== true){ $d++; }else if(empty($reference) !== true){ $d++; }
          if(empty($knowledge) !== true) $d++;
          if(empty($language) !== true){ $d++; }else if(empty($software) !== true){ $d++; }
       ?>
@@ -44,13 +44,37 @@
         <div class="row">
             <div class="col-md-4">
             <i class="fa fa-dollar orange"></i>
-            <span> <?php echo number_format($candidate['desirebenefit'])?> VND</span>
+            <span> <?php echo number_format($candidate['currentbenefit']).' - '.number_format($candidate['desirebenefit'])?> VND</span>
             </div>
             <div class="col-md-4">
-              <i class="fa fa-star orange" ></i> Học vấn
+               <?php
+              if($knowledge != null){ 
+              foreach($knowledge as $key) {
+                if($key['highestcer'] == "Y")
+                {
+                  echo '<i class="fa fa-star orange" ></i> ';
+                  echo $key['certificate'];
+                  break;
+                }              
+              } }
+              ?>
               </div>
               <div class="col-md-4">
-                <i class="fa fa-language orange"></i> Ngôn ngữ
+                
+                <?php 
+                    if($language != null)
+                    {
+                      echo '<i class="fa fa-language orange"></i> ';
+                      if(count($language) == 1)
+                        echo $language[0]['language'];
+                      else if(count($language) == 2)
+                        echo $language[0]['language'].', '.$language[1]['language'];
+                      else
+                      {
+                        echo $language[0]['language'].', '.$language[1]['language'].', +'.(count($language)-2);
+                      }
+                    }
+                ?>
             </div>
       </div>
       </td>
@@ -66,10 +90,32 @@
               <i class="fa fa-briefcase orange"></i><span> Designer, Consullant, +1...</span>
             </div>
             <div class="col-md-4">
-             <i class="fa fa-road orange" ></i> Kinh nghiệm
+             
+             <?php if($experience != null){ 
+                echo '<i class="fa fa-road orange" ></i> ';
+                  $secs = strtotime($experience[count($experience)-1]['dateto']) - strtotime($experience[count($experience)-1]['datefrom']);
+                  $days = $secs / 86400;
+                  $month = $days/30;
+                  echo ($month < 1)? "1 tháng kinh nghiệm" : round($month)." tháng kinh nghiệm";
+              }              
+              ?>
            </div>
            <div class="col-md-4">
-             <i class="fa fa-laptop orange"></i> Phần mềm
+            
+             <?php 
+                    if($software != null)
+                    {
+                      echo '<i class="fa fa-laptop orange"></i> ';
+                      if(count($software) == 1)
+                        echo $software[0]['software'];
+                      else if(count($software) == 2)
+                        echo $software[0]['software'].', '.$software[1]['software'];
+                      else
+                      {
+                        echo $software[0]['software'].', '.$software[1]['software'].', +'.(count($software)-2);
+                      }
+                    }
+                ?>
            </div>
          </div>
         </td> 
@@ -102,16 +148,17 @@
               <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
               </li>
               <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
-              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
+              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true || empty($reference) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
               <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php  if(empty($knowledge) !== true){echo 'green';} else{echo 'orange';}?>"></i> Trình độ học vấn</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php  if(empty($language) !== true){echo 'green';} else if(empty($software) !== true){echo 'green'; }else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
+              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php
+                if(empty($language) !== true || empty($software) !== true){echo 'green';} else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
        </div>
 
         <div class="col-md-9 ">
           <div class="tab-content">
-        <div id="collapseOne" class="tab-pane  in active">
+        <div id="collapseOne" class="tab-pane  <?php echo isset($one)? $one : ""; ?>e">
           <form action="<?php echo base_url()?>handling/update_introduce" method="post" enctype="multipart/form-data">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
@@ -166,7 +213,7 @@
         </form>
         </div>
 
-        <div id="collapseTwo" class="tab-pane ">
+        <div id="collapseTwo" class="tab-pane <?php echo isset($two)? $two : ""; ?>">
           <form id="form_profile" action="<?php echo base_url()?>handling/update_profile" method="post">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
@@ -275,7 +322,7 @@
          </form>
         </div>
 
-        <div id="collapseThree" class="tab-pane">
+        <div id="collapseThree" class="tab-pane <?php echo isset($three)? $three : ""; ?>">
           <form action="<?php echo base_url()?>handling/ins_upd_e_phone" method="post">
           <div class="form-group row kcform-more">
             <label for="staticEmail" class="col-sm-4 col-form-label">EMAIL ĐĂNG KÝ</label>
@@ -384,7 +431,7 @@
         </form>
         </div>
 
-        <div id="collapseFour" class="tab-pane ">
+        <div id="collapseFour" class="tab-pane <?php echo isset($four)? $four : ""; ?>">
          
           <button type="button" class="btn btnlong btn-them" onclick="showmodel11()"> Thêm</button>  
           
@@ -412,8 +459,8 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['name']?></td>
-              <td><?php echo $key['yob']?></td>
-              <td><?php echo $key['type']?></td>
+              <td><?php echo ($key['yob'] !== 0) ? $key['yob'] : ""; ?></td>
+              <td><?php echo ($key['type'] !== '0') ? $key['type'] : ""; ?></td>
               <td><?php echo $key['career']?></td>
               <td><i class="fa fa-edit" onclick="editmodal('<?php echo 'click'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal('<?php echo 'click'.$i ?>')"></i></td>
              </tr>
@@ -425,7 +472,7 @@
          -->
         </div>
 
-        <div id="collapseFive" class="tab-pane ">
+        <div id="collapseFive" class="tab-pane <?php echo isset($five)? $five : ""; ?>">
           
           <label>Quá trình công tác</label>
           <button type="button" class="btn btnlong btn-them" onclick="showmodel2()"> Thêm</button>  
@@ -453,9 +500,10 @@
                 <input type="hidden" name="nhiemvu" value="<?php echo $key['responsibility']?>">
                 <input type="hidden" name="lydo" value="<?php echo $key['quitreason']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
+                <input type="hidden" name="diachi" value="<?php echo $key['address']?>">
               </form>
               <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
-              <td><?php echo $key['company']?></td>
+              <td><?php echo $key['company']." ".$key['address']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['responsibility']?></td>
               <td><?php echo $key['quitreason']?></td>
@@ -505,7 +553,7 @@
           --> 
         </div>
 
-        <div id="collapseSix" class="tab-pane ">
+        <div id="collapseSix" class="tab-pane <?php echo isset($six)? $six : ""; ?>">
 
           <label>Trình độ học vấn</label>
           <button type="button" class="btn btnlong btn-them" onclick="showmodel4()"> Thêm</button>  
@@ -541,7 +589,7 @@
               <td><?php echo $key['trainingcenter']?></td>
               <td><?php echo $key['trainingplace']?></td>
               <td><?php echo $key['trainingcourse']?></td>
-              <td><?php echo $key['certificate']?></td>
+              <td><?php echo $key['certificate']; if($key['highestcer'] == "Y") echo "(*)"; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal4('<?php echo 'click4'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal4('<?php echo 'click4'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } }?>
@@ -590,9 +638,9 @@
           <!-- <button type="button" class="btn btnlong" > Lưu</button>   -->
         </div>
 
-        <div id="collapseSeven" class="tab-pane ">
+        <div id="collapseSeven" class="tab-pane <?php echo isset($seven)? $seven : ""; ?>">
           <label>Trình độ Ngoại ngữ</label>
-          <button type="button" class="btn btnlong btn-them" onclick="showmodel6()"> Thêm</button>  
+          <button type="button" class="btn btnlong btn-them" onclick="showmodel6()"> Thêm</button>
           <table   class="table table-striped table-bordered" > 
             <thead class="fontstyle"> 
               <tr> 
@@ -621,10 +669,10 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['language']?></td>
-              <td><?php echo $key['rate1']?></td>
-              <td><?php echo $key['rate2']?></td>
-              <td><?php echo $key['rate3']?></td>
-              <td><?php echo $key['rate4']?></td>
+              <td><?php echo ($key['rate1'] !== "0") ? $key['rate1'] : ""; ?></td>
+              <td><?php echo ($key['rate2'] !== "0")? $key['rate2'] : ""; ?></td>
+              <td><?php echo ($key['rate3'] !== "0")? $key['rate3']: ""; ?></td>
+              <td><?php echo ($key['rate4'] !== "0")? $key['rate4']: ""; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal6('<?php echo 'click6'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal6('<?php echo 'click6'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } ?>
@@ -654,7 +702,7 @@
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
               </form>
               <td><?php echo $key['software']?></td>
-              <td><?php echo $key['rate1']?></td>
+              <td><?php echo ($key['rate1'] !== "0")? $key['rate1'] : ""; ?></td>
               <td><i class="fa fa-edit" onclick="editmodal7('<?php echo 'click7'.$i ?>')"></i> <i class="fa fa-eraser" onclick="delmodal7('<?php echo 'click7'.$i ?>')"></i></td>
              </tr>
              <?php $i++; } } ?>
@@ -694,12 +742,12 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Năm sinh</label>
             <div class="col-sm-8">
            
-              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11" >
-                 <option value="0" >Chọn năm sinh</option>
+              <select class="form-control height31" style="font-size: 14px" name="namsinh" id="namsinh11">
+                 <option value="0">Chọn năm sinh</option>
                 <?php
                    $date = getdate(); 
 
-                 for($i = ($date['year'] - 10); $i > 1940; $i--) { ?>
+                 for($i = $date['year']; $i > 1940; $i--) { ?>
                   <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>  
                 </select>
@@ -709,8 +757,8 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quan hệ</label>
             <div class="col-sm-8">
            
-             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11" >
-                  <option value="0" >Chọn quan hệ</option>
+             <select class="form-control height31" style="font-size: 14px" name="quanhe" id="quanhe11">
+                  <option value="0">Chọn quan hệ</option>
                   <option value="Cha">Cha</option>
                   <option value="Mẹ">Mẹ</option>
                   <option value="Anh">Anh</option>
@@ -919,7 +967,7 @@
               </div>
             </div>
           </div>
-            <div class="form-group row padding-left-right-20">
+            <div class="form-group row padding-left-right-20 margin-bot-2">
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Tên cơ sở đào tạo</label>
             <div class="col-sm-6">
            
@@ -934,8 +982,8 @@
                 <input class="form-control fontstyle" type="text"  placeholder="" name="tghoc" id="tghoc5"></div>
                 <div class="col-sm-6">
                 <select class="form-control height3 fontstyle" name="donvi" id="donvi5">
-                  <option value="0">Chọn...</option>
-                  <option value="Năm">Năm</option>
+                  <!-- <option value="0" disabled>Chọn...</option> -->
+                  <option value="Năm" selected>Năm</option>
                   <option value="Tháng">Tháng</option>
                   <option value="Ngày">Ngày</option>
                   
@@ -987,7 +1035,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1000,7 +1048,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1013,7 +1061,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1026,7 +1074,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1060,7 +1108,7 @@
                   <option value="Giỏi">Giỏi</option>
                   <option value="Khá">Khá</option>
                   <option value="Trung Bình">Trung Bình</option>
-                  
+                  <option value="Yếu">Yếu</option>
                 </select>
             </div>
           </div>
@@ -1440,6 +1488,7 @@ function parseQuery(queryString) {
        $('#chucvu2').val(data2.vitri);
         $('#nhiemvu2').val(data2.nhiemvu);
        $('#lydonghi2').val(data2.lydo);
+       $('#dc2').val(data2.diachi);
   }
   function showmodel2(){
   
@@ -1453,6 +1502,7 @@ function parseQuery(queryString) {
        $('#chucvu2').val("");
         $('#nhiemvu2').val("");
        $('#lydonghi2').val("");
+       $('#dc2').val("");
   }
   function delmodal2(idform){
       var data = ""; 
@@ -1567,7 +1617,7 @@ function parseQuery(queryString) {
       $('#checkup5').val("0");
       $('#truong5').val("");
        $('#tghoc5').val("");
-       $('#donvi5').val("0");
+       $('#donvi5').val("Năm");
        $('#nganhhoc5').val("");
        $('#bangcap5').val("");
        

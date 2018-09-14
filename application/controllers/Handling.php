@@ -30,6 +30,14 @@ class Handling extends CI_Controller {
 	{
 
 		$data['chinhsach'] = "active";
+		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/chinhsachnhansu',$data,true);
 		$this->load->view('home/master',$this->data);
@@ -37,6 +45,14 @@ class Handling extends CI_Controller {
 	public function cohoi_nghe_nghiep()
 	{
 		$data['cohoi'] = "active";
+		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep',$data,true);
 		$this->load->view('home/master',$this->data);
@@ -47,7 +63,7 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep_detail',$data,true);
 		$this->load->view('home/master',$this->data);
 	}
-	public function hoso_canhan()
+	public function hoso_canhan($tab = '')
 	{
 		if($this->session->has_userdata('user')) {
 			$data['hoso'] = "active";
@@ -67,6 +83,7 @@ class Handling extends CI_Controller {
 			$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
 			$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
 			$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
+			$data[($tab !== "") ? $tab : "one"] = "in active";
 			$this->data['menu'] = $this->load->view('home/menu',$data,true);
 			$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 			$this->load->view('home/master',$this->data);	
@@ -75,6 +92,14 @@ class Handling extends CI_Controller {
 	public function lichsu_apply()
 	{
 		$data['ls'] = "active";
+		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
 		$this->data['menu'] = $this->load->view('home/menu',$data,true);
 		$this->data['temp'] = $this->load->view('page/lichsu_ungtuyen',$data,true);
 		$this->load->view('home/master',$this->data);	
@@ -150,8 +175,10 @@ class Handling extends CI_Controller {
 		$data['idcard'] = $frm['cmnd'];
 		$data['dateofissue'] =  date("Y-m-d", strtotime($frm['dateofissue']));
 		$data['placeofissue'] = $frm['placeofissue'];
+
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-	     header('location:hoso_canhan');
+	     // header('location:hoso_canhan');
+		$this->hoso_canhan("two");
  	}
  	public function ins_upd_e_phone()
  	{
@@ -270,6 +297,7 @@ class Handling extends CI_Controller {
  			$data1['position'] = $frm['chucvukhinghi'];
  			$data1['responsibility'] = $frm['nhiemvu'];
  			$data1['quitreason'] = $frm['lydonghi'];
+ 			$data1['address'] = $frm['diachi'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 			$this->Login_model->UpdateData("canexperience",$array,$data1);
  		}
@@ -281,6 +309,7 @@ class Handling extends CI_Controller {
  			$data1['position'] = $frm['chucvukhinghi'];
  			$data1['responsibility'] = $frm['nhiemvu'];
  			$data1['quitreason'] = $frm['lydonghi'];
+ 			$data1['address'] = $frm['diachi'];
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canexperience",$data1);
  		}
@@ -322,6 +351,12 @@ class Handling extends CI_Controller {
  			$data1['trainingcourse'] = $frm['nganhhoc'];
  			$data1['certificate'] = $frm['trinhdo'];
  			$data1['highestcer'] = isset($frm['caonhat'])?$frm['caonhat']:"N";
+ 			if(isset($frm['caonhat']) == true)
+ 			{
+ 				$array2 = array('candidateid' => $this->session->userdata('user')['candidateid'], 'highestcer' => "Y");
+ 				$data2 = array('highestcer' => "N");
+ 				$this->Login_model->UpdateData("canknowledge",$array2,$data2);
+ 			}
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 			$this->Login_model->UpdateData("canknowledge",$array,$data1);
  		}

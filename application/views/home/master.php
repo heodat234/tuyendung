@@ -75,7 +75,9 @@
 
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='<?php echo base_url() ?>' class='itemcrumb' itemprop='url'><span itemprop='title'>Phát triển con người</span></a></li>
 
-                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>Chính sách nhân sự</span></a></li>
+                      <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>
+                       <?php echo $this->uri->segment(1); ?>
+                      </span></a></li>
 
                 
                     </ol>

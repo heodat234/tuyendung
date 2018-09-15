@@ -14,8 +14,8 @@ class Login extends CI_Controller {
 		    'protocol'  =>  'smtp',
 		    'smtp_host' =>  'ssl://smtp.googlemail.com',
 		    'smtp_port' =>  465,
-		    'smtp_user' =>  'hososuckhoe.org@gmail.com',
-		    'smtp_pass' =>  'hungminhits',
+		    'smtp_user' =>  'thanhhung23495@gmail.com',
+		    'smtp_pass' =>  'Heodat1323',
 		    'mailtype'  =>  'html', 
 		    'charset'   =>  'utf-8',
 		);
@@ -126,24 +126,23 @@ class Login extends CI_Controller {
 	public function forgotPassword()
 	{
 		$mail = $this->input->post('email');
-		 
-		//cau hinh email va ten nguoi gui
-		$this->email->from('hososuckhoe.org@gmail.com', 'Hồ sơ sức khỏe');
+		$new_pass = random_string('alnum',8);
+		$data['password'] = md5($new_pass);
+		$this->Login_model->UpdateData('operator', array('email' => $mail),$data);
+		//cau hinh email va ten nguoi guioperator
+        $this->email->from('thanhhung23495@gmail.com', 'Tuyển dụng Đất Xanh');
 		//cau hinh nguoi nhan
 		$this->email->to($mail);
 		$this->email->subject('Lấy lại mật khẩu');
-		$this->email->message('Bấm vào <a href="'.base_url().'login">đây</a> để đăng nhập bằng mật khẩu bên dưới và đổi mật khẩu mới cho tài khoản của bạn.<br>
-			Mật khẩu mới: <b>'.random_string('alnum',8).'</b><br>');
-		 
-		
-		//thuc hien gui
-		$this->email->send();
-	    $this->c_Check = true;
-	    $this->a_Data['c_Check']= $this->c_Check;
-		$this->_data['html_body'] = $this->load->view('page/login',$this->a_Data, TRUE);
-    	return $this->load->view('home/master', $this->_data);
-
-		
+		$this->email->message('Bấm vào <a href="'.base_url().'">đây</a> để đăng nhập bằng mật khẩu bên dưới và đổi mật khẩu mới cho tài khoản của bạn.<br>
+			Mật khẩu mới: <b>'.$new_pass.'</b><br>');
+		if ( $this->email->send())
+		{
+			echo json_encode(1);		
+		}else{
+			var_dump('thất bại');
+			var_dump($this->email->print_debugger());
+		}
 	}
 
 	public function checkPassword()
@@ -191,7 +190,22 @@ class Login extends CI_Controller {
 			$a_UserInfo['candidateid'] = $this->Login_model->Set_idcandite()['candidateid'];
 			$this->Login_model->insertUser( $a_UserInfo );
 			$this->session->set_userdata('user', $a_UserInfo);
-			echo json_encode($a_UserInfo);		
+
+			$this->email->from('thanhhung23495@gmail.com', 'Tuyển dụng Đất Xanh');
+			//cau hinh nguoi nhan
+			$this->email->to($frm['email']);
+			$this->email->subject('Đăng kí tài khoản thành công');
+			$this->email->message('Cảm ơn bạn đã đăng ký tài khoản tại Đất Xanh.<br>');
+			
+			if ( $this->email->send())
+			{
+				echo json_encode($a_UserInfo);		
+			}else{
+				var_dump('thất bại');
+				var_dump($this->email->print_debugger());
+			}
+			
+			
 		}
 		
 	}

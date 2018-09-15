@@ -76,7 +76,38 @@
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='<?php echo base_url() ?>' class='itemcrumb' itemprop='url'><span itemprop='title'>Phát triển con người</span></a></li>
 
                       <li itemscope itemtype='http://data-vocabulary.org/Breadcrumb'><a href='http://www.datxanh.vn/phat-trien-con-nguoi/chinh-sach-nhan-su' class='itemcrumb active' itemprop='url'><span itemprop='title'>
-                       <?php echo $this->uri->segment(1); ?>
+                      <?php if($this->uri->segment(1) != null)
+                              {
+                                if($this->uri->segment(1) == "handling")
+                                {
+                                  if($this->uri->segment(2) ==  "lichsu_apply")
+                                    echo "Lịch sử ứng truyển";
+                                  if($this->uri->segment(2) ==  "hoso_canhan")
+                                    echo "Hồ sơ cá nhân";
+                                  if($this->uri->segment(2) == "cohoi_nghe_nghiep")
+                                    echo "Cơ hội nghề nghiệp";
+                                  if($this->uri->segment(2) == "index")
+                                    echo "Chính sách nhân sự";
+                                }
+                                else
+                                {
+                                  if($this->uri->segment(1) ==  "lichsu_apply.html")
+                                    echo "Lịch sử ứng truyển";
+                                  if($this->uri->segment(1) ==  "hoso_canhan.html")
+                                    echo "Hồ sơ cá nhân";
+                                  if($this->uri->segment(1) == "cohoi_nghe_nghiep.html")
+                                    echo "Cơ hội nghề nghiệp";
+                                  if($this->uri->segment(1) == "index.html")
+                                    echo "Chính sách nhân sự";
+                                }
+                              }
+                              else
+                              {
+                                echo "Chính sách nhân sự";
+                              }
+
+
+                       ; ?>
                       </span></a></li>
 
                 

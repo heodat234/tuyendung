@@ -19,18 +19,18 @@ class Handling extends CI_Controller {
 		// $this->load->library('excel');
 
 		$this->load->library('session');
+		$this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
 		
-		
-		$this->load->model(array('Login_model'));
+		$this->load->model(array('Login_model','Candidate_model'));
 		$this->load->helper(array('url','my_helper','file'));
-		$this->datamenu['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-		$this->datamenu['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['address'] = $this->Candidate_model->countTableById('canaddress',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['candidate'] = $this->Candidate_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['family'] = $this->Candidate_model->countTableById('cansocial',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['experience'] = $this->Candidate_model->countTableById('canexperience',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['reference'] = $this->Candidate_model->countTableById('canreference',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['knowledge'] = $this->Candidate_model->countTableById('canknowledge',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['language'] = $this->Candidate_model->countTableById('canlanguage',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['software'] = $this->Candidate_model->countTableById('cansoftware',$this->session->userdata('user')['candidateid']);
 		
 		$this->data['header'] = $this->load->view('home/header',null,true);
 	    $this->data['footer'] = $this->load->view('home/footer',null,true);
@@ -61,20 +61,73 @@ class Handling extends CI_Controller {
 	}
 	public function hoso_canhan($tab = 'one')
 	{
+
 		if($this->session->has_userdata('user')) {
-			$this->datamenu['hoso'] = "active";
+			$data['hoso'] = "active";
 			$arrContextOptions=array(
 	            "ssl"=>array(
 	                "verify_peer"=>false,
 	                "verify_peer_name"=>false,
 	            ),
 	        );
-	        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
-	       $this->datamenu['city'] =$_jsoncity;
-	      
-			$this->datamenu[$tab] = "in active";
+	        if ( ! $data['city'] = $this->cache->get('city'))
+    		 {
+		           $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
+		          $this->cache->save('city', $_jsoncity, 36000);
+		          $data['city'] = $_jsoncity;
+		     }
+		      if ( !  $data['address'] = $this->cache->get('address'))
+    		 {
+		           $_jsoncity = $this->Candidate_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('address', $_jsoncity, 3600);
+		          $data['address'] = $_jsoncity;
+		     }
+	       	if ( !  $data['candidate'] = $this->cache->get('candidate'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('candidate', $_jsoncity, 3600);
+		          $data['candidate'] = $_jsoncity;
+		     }
+	        if ( !  $data['family'] = $this->cache->get('family'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('family', $_jsoncity, 3600);
+		          $data['family'] = $_jsoncity;
+		     }
+		     if ( !  $data['experience'] = $this->cache->get('experience'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('experience', $_jsoncity, 3600);
+		          $data['experience'] = $_jsoncity;
+		     }
+	        if ( !  $data['reference'] = $this->cache->get('reference'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('reference', $_jsoncity, 3600);
+		          $data['reference'] = $_jsoncity;
+		     }
+			if ( !  $data['knowledge'] = $this->cache->get('knowledge'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('knowledge', $_jsoncity, 3600);
+		          $data['knowledge'] = $_jsoncity;
+		     }
+			if ( !  $data['language'] = $this->cache->get('language'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('language', $_jsoncity, 3600);
+		          $data['language'] = $_jsoncity;
+		     }
+			if ( !  $data['software'] = $this->cache->get('software'))
+    		 {
+		           $_jsoncity =  $this->Candidate_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
+		          $this->cache->save('software', $_jsoncity, 3600);
+		          $data['software'] = $_jsoncity;
+		     }
+			
+			$data[$tab] = "in active";
 			$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
-			$this->data['temp'] = $this->load->view('page/hoso_canhan',$this->datamenu,true);
+			$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 			$this->load->view('home/master',$this->data);	
 		}else{redirect(base_url());}
 	}
@@ -116,6 +169,7 @@ class Handling extends CI_Controller {
        		 } 
 	     }
 	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+	      $this->cache->delete('candidate');
 	      header('location:hoso_canhan');
  	}
  	public function upload_image()
@@ -138,6 +192,7 @@ class Handling extends CI_Controller {
 	        $data["imagelink"] = 'unknow.jpg';
 	      }
 	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
+	      $this->cache->delete('candidate');
 	      header('location:hoso_canhan');
 	      
 	      // echo $_FILES['image']['name'];
@@ -160,7 +215,7 @@ class Handling extends CI_Controller {
 
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	     // header('location:hoso_canhan');
-		// $this->hoso_canhan("two");
+		$this->cache->delete('candidate');
 		redirect(base_url('hoso_canhan.html/two'));
  	}
  	public function ins_upd_e_phone()
@@ -170,7 +225,7 @@ class Handling extends CI_Controller {
 		$data['telephone'] = $frm['dt1']." ".$frm['dt2'];	
 		$data['emergencycontact'] = $frm['dtkhancap'];
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-		//header('location:hoso_canhan');
+		$this->cache->delete('candidate');
 		redirect(base_url('hoso_canhan.html/three'));
  	}
  	public function ins_upd_address()
@@ -245,6 +300,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data1);
 		}
+		 $this->cache->delete('address');
 		redirect(base_url('hoso_canhan.html/three'));
  	}
  	public function ins_upd_relationship()
@@ -268,6 +324,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("cansocial",$data1);
  		}
+ 		$this->cache->delete('family');
  		redirect(base_url('hoso_canhan.html/four'));
 	}
 	public function ins_upd_experience()
@@ -299,6 +356,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canexperience",$data1);
  		}
+ 		$this->cache->delete('experience');
  		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function ins_upd_reference()
@@ -323,6 +381,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canreference",$data1);
  		}
+ 		$this->cache->delete('reference');
  		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function ins_upd_knowledge()
@@ -358,6 +417,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canknowledge",$data1);
  		}
+ 		$this->cache->delete('knowledge');
  		redirect(base_url('hoso_canhan.html/six'));
 	}
  	public function ins_upd_knowledge_v2()
@@ -389,6 +449,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canknowledge",$data1);
  		}
+ 		$this->cache->delete('knowledge');
  		redirect(base_url('hoso_canhan.html/six'));
 	}
 	public function ins_upd_language()
@@ -416,6 +477,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canlanguage",$data1);
  		}
+ 		$this->cache->delete('language');
  		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function ins_upd_software()
@@ -439,6 +501,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("cansoftware",$data1);
  		}
+ 		$this->cache->delete('software');
  		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_relationship()
@@ -446,6 +509,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansocial",$array);
+		$this->cache->delete('family');
 		redirect(base_url('hoso_canhan.html/four'));
 	}
 	public function del_experience()
@@ -453,6 +517,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canexperience",$array);
+		$this->cache->delete('experience');
 		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function del_reference()
@@ -460,6 +525,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canreference",$array);
+		$this->cache->delete('reference');
 		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function del_knowledge()
@@ -467,6 +533,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canknowledge",$array);
+		$this->cache->delete('knowledge');
 		redirect(base_url('hoso_canhan.html/six'));
 	}
 	public function del_language()
@@ -474,6 +541,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canlanguage",$array);
+		$this->cache->delete('language');
 		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_software()
@@ -481,6 +549,7 @@ class Handling extends CI_Controller {
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansoftware",$array);
+		$this->cache->delete('software');
 		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_address()
@@ -495,6 +564,7 @@ class Handling extends CI_Controller {
 		$data1['address'] ="";
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => $frm['checkup']);
 		$this->Login_model->UpdateData("canaddress",$array,$data1);
+		$this->cache->delete('address');
 		redirect(base_url('hoso_canhan.html/three'));
 	}
 	public function selectCity()

@@ -40,8 +40,7 @@
     <div id="loading" style="display:none">
         <img src="<?php echo base_url() ?>public/image/loading.gif" alt="Loading..."/>
     </div>
-   
-
+ 
     <div id="wrapper" class="site-container">
       <div class="site-pusher">
         <?php echo isset($header)?$header:'' ?>

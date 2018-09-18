@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	private $fb;
 	public function __construct() {
 		parent::__construct();
-		$this->load->helper(array('url','string','security'));
+		$this->load->helper(array('url','string','security','cookie'));
 		$this->load->model(array('Login_model'));
 		$this->load->library(array('form_validation','session'));
 
@@ -43,7 +43,29 @@ class Login extends CI_Controller {
 		$username = $frm['email'];
 		$password = md5($frm['password']);
 		$a_UserChecking = $this->Login_model->a_fCheckUser( $username, $password );
+		$autologin =	($this->input->post('luumatkhau') == '1') ? 1 : 0;	
 		if($a_UserChecking){
+			if($autologin == 1){
+				// $cookie_name	=	'siteAuth';
+				// $cookie_time	=	3600*24*30; // 30 days.
+				// setcookie('ci-session', 'user='."", time() - 3600);	// Unset cookie of user
+				// setcookie($cookie_name, 'user='.$a_UserChecking[0]['email'].'&password='.$a_UserChecking[0]['password'], time() + $cookie_time);
+				$cookie = array(
+                    'name'   => 'email',
+                    'value'  => $a_UserChecking[0]['email'],
+                    'expire' =>  3600*24*30,
+                    'secure' => false
+                );
+                $this->input->set_cookie($cookie); 
+                $cookie1 = array(
+                    'name'   => 'password',
+                    'value'  => $frm['password'],
+                    'expire' =>  3600*24*30,
+                    'secure' => false
+                );
+                $this->input->set_cookie($cookie1); 
+                
+			}
 			$this->session->set_userdata('user', $a_UserChecking[0]);
 			echo json_encode($a_UserChecking);
 		}else{
@@ -51,74 +73,14 @@ class Login extends CI_Controller {
 		}
 	}
 
-	//đăng kí tài khoản mới
-	// public function insertUser()
-	// {
-	// 	$frm = $this->input->post();
-	// 	$a_UserInfo['name'] = $frm['name'];
-	// 	$a_UserInfo['email'] = $frm['email'];
-	// 	$a_UserInfo['password'] = md5($frm['password']);
-	// 	$a_UserInfo['phone'] 		= $frm['phone'];
-	// 	$a_UserInfo['dia_chi'] 		= $frm['dia_chi'];
-	// 	$a_UserInfo['gioi_tinh'] 	= $frm['gioi_tinh'];
-	// 	$a_UserInfo['ngay_sinh'] 	= $frm['ngay_sinh'];
-	// 	$a_UserInfo['cmnd'] 		= $frm['cmnd'];
-	// 	$a_UserInfo['nhom_mau'] 	= $frm['nhom_mau'];
-	// 	if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {
-	// 		$this->b_Check = false;
-	// 	}else{
-	// 		$this->b_Check = true;
-
-	// 		if (!empty($_FILES['avatar']['name'])) {
-			
-	// 			$config['upload_path'] = './images/avatar';
-	// 			$config['allowed_types'] = 'jpg|png';
-	// 			$config['file_name'] = $_FILES['avatar']['name'];
-	// 			$this->load->library('upload', $config);
-	// 			$this->upload->initialize($config);
-	// 			if ($this->upload->do_upload('avatar')) {
-	// 				$uploadData = $this->upload->data();
-	// 				$a_UserInfo['avatar']  = $uploadData['file_name'];
-	// 			} else{
-	// 				$error = $this->upload->display_errors();
- //            		echo $error;
-	// 				$a_UserInfo['avatar'] = '';
-	// 			}
-	// 		}else{
-	// 			$a_UserInfo['avatar']  = '';
-	// 		}
-
-	// 		$this->Login_model->insertUser( $a_UserInfo );
-	// 		$this->email->from('hososuckhoe.org@gmail.com', 'Hồ sơ sức khỏe');
-	// 		//cau hinh nguoi nhan
-	// 		$this->email->to($a_UserInfo['email']);
-	// 		$this->email->subject('Xác nhận tài khoản');
-	// 		$this->email->message('Cảm ơn bạn đã đăng ký tài khoản tại hososuckhoe.org. Bấm vào <a href="'.base_url().'activeUser/'.$a_UserInfo['email'].'/'.$this->a_Data['csrf']['hash'].'">đây</a> để xác nhận tài khoản của bạn.<br>');
-			 
-	// 		//thuc hien gui
-	// 		$this->email->send();
-
-	// 		$this->a_Data['a_Check']= 'Tài khoản của bạn đã được đăng ký. Vui lòng vào mail để kiểm tra và xác nhận tài khoản trước khi đăng nhập.';
-	// 		$this->_data['html_body'] = $this->load->view('page/login', $this->a_Data, TRUE);
- //        	return $this->load->view('home/master', $this->_data);
-	// 	}
-	// 	$this->a_Data['b_Check']= $this->b_Check;
-	// 	$this->_data['html_body'] = $this->load->view('page/register',$this->a_Data, TRUE);
- //        return $this->load->view('home/master', $this->_data);
-	// }
-
-	// public function activeUser($email, $token){
- //        $this->Login_model->activeUser($email);
- //        $this->a_Data['d_Check']= true;
-	// 	$this->_data['html_body'] = $this->load->view('page/login',$this->a_Data, TRUE);
- //        return $this->load->view('home/master', $this->_data);
-
- //    }
+	
 	
 	//đăng xuất
 	public function logout($value='')
 	{
-		$this->session->unset_userdata('user');	// Unset session of user
+		$this->session->unset_userdata('user');
+		// $cookiename	=	"siteAuth";
+		// setcookie($cookiename, 'user='."", time() - 3600);	// Unset cookie of user	// Unset session of user
 		redirect(base_url(''));
 	}
 

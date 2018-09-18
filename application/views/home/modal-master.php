@@ -25,16 +25,16 @@
                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
                  
-                  <input class="kttext" type="text" name="email" placeholder="">
+                  <input class="kttext" type="text" name="email" value="<?php echo $this->input->cookie('email',true); ?>" >
                  
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="kttext" id="inputPassword" name="password" placeholder="">
-                   <input type="checkbox" name="luumatkhau" value="1"> Lưu mật khẩu
-                  <button type="button" class="btn btn-login"  id="btn_login">Đăng Nhập
+                  <input type="password" class="kttext" id="inputPassword" name="password" value="<?php echo $this->input->cookie('password',true); ?>" >
+                   <label style="width: 100%"><input type="checkbox" name="luumatkhau" value="1" <?php echo isset($_COOKIE['email'])? "checked" : "";?>> <span style="margin-top: -5px"> Lưu mật khẩu <span></label>
+                  <button type="button" class="btn btn-login"  id="btn_login" style="margin-top: 0px !important;">Đăng Nhập
                 </button>
                 <p class="margin-top17"><a data-toggle="modal" data-target="#myModal1c">
                 <i class="fa fa-caret-right fa-lg"></i> Quên mật khẩu</a>

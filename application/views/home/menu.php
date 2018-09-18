@@ -3,11 +3,11 @@
  <?php $d = 0;
          if($candidate['introduction'] != "") $d++;
          if($candidate['firstname'] !== "") $d++;
-         if(empty($address) !== true) $d++;
-         if(empty($family) !== true) $d++;
-         if(empty($experience) !== true){ $d++; }else if(empty($reference) !== true){ $d++; }
-         if(empty($knowledge) !== true) $d++;
-         if(empty($language) !== true){ $d++; }else if(empty($software) !== true){ $d++; }
+         if($address == true) $d++;
+         if($family == true) $d++;
+         if($experience == true || $reference == true) $d++; 
+         if($knowledge == true) $d++;
+         if($language == true || $software == true) $d++;
       ?>
 <div class="Module Module-167">
 	<div class="ModuleContent">

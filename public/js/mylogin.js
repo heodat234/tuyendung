@@ -204,13 +204,15 @@
               data: $('form#changepass').serialize(),
             })
             .done(function(data) {
+          
              if (data == '1' ) {
               $('#err-change').removeClass('hide');
               $('#err-change').text('Mật khẩu cũ không chính xác!.');
              }   
              else
              {
-
+             
+               
               $('#err-change').addClass('hide');
               $('#myModalchangepass').modal('hide');
               alert("Đổi mật khẩu thành công!");

@@ -23,38 +23,34 @@ class Handling extends CI_Controller {
 		
 		$this->load->model(array('Login_model'));
 		$this->load->helper(array('url','my_helper','file'));
+		$this->datamenu['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
+		$this->datamenu['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
+		
 		$this->data['header'] = $this->load->view('home/header',null,true);
 	    $this->data['footer'] = $this->load->view('home/footer',null,true);
 	}
 	public function index()
 	{
 
-		$data['chinhsach'] = "active";
-		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-		$this->data['menu'] = $this->load->view('home/menu',$data,true);
-		$this->data['temp'] = $this->load->view('page/chinhsachnhansu',$data,true);
+		$this->datamenu['chinhsach'] = "active";
+		
+		$this->data['modal'] = $this->load->view('home/modal-master',null,true);
+		$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
+		$this->data['temp'] = $this->load->view('page/chinhsachnhansu',null,true);
 		$this->load->view('home/master',$this->data);
 	}
 	public function cohoi_nghe_nghiep()
 	{
-		$data['cohoi'] = "active";
-		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-		$this->data['menu'] = $this->load->view('home/menu',$data,true);
-		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep',$data,true);
+		$this->datamenu['cohoi'] = "active";
+		$this->data['modal'] = $this->load->view('home/modal-master',null,true);
+		$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
+		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep',null,true);
 		$this->load->view('home/master',$this->data);
 	}
 	public function co_hoi_nghe_nghiep_detail($id='')
@@ -66,7 +62,7 @@ class Handling extends CI_Controller {
 	public function hoso_canhan($tab = 'one')
 	{
 		if($this->session->has_userdata('user')) {
-			$data['hoso'] = "active";
+			$this->datamenu['hoso'] = "active";
 			$arrContextOptions=array(
 	            "ssl"=>array(
 	                "verify_peer"=>false,
@@ -74,41 +70,27 @@ class Handling extends CI_Controller {
 	            ),
 	        );
 	        $_jsoncity = json_decode(file_get_contents('https://hungminhits.com/api/list_city',false, stream_context_create($arrContextOptions)),true)  ;
-	        $data['city'] =$_jsoncity;
-	        $data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-			$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-			$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-			$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-			$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-			$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-			$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-			$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-			$data[$tab] = "in active";
-			$this->data['menu'] = $this->load->view('home/menu',$data,true);
-			$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
+	       $this->datamenu['city'] =$_jsoncity;
+	      
+			$this->datamenu[$tab] = "in active";
+			$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
+			$this->data['temp'] = $this->load->view('page/hoso_canhan',$this->datamenu,true);
 			$this->load->view('home/master',$this->data);	
 		}else{redirect(base_url());}
 	}
 	public function lichsu_apply()
 	{
-		$data['ls'] = "active";
-		$data['address'] = $this->Login_model->selectTableByIds('canaddress',$this->session->userdata('user')['candidateid']);
-		$data['candidate'] = $this->Login_model->selectTableById('candidate',$this->session->userdata('user')['candidateid']);
-		$data['family'] = $this->Login_model->selectTableByIds('cansocial',$this->session->userdata('user')['candidateid']);
-		$data['experience'] = $this->Login_model->selectTableByIds('canexperience',$this->session->userdata('user')['candidateid']);
-		$data['reference'] = $this->Login_model->selectTableByIds('canreference',$this->session->userdata('user')['candidateid']);
-		$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
-		$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
-		$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-		$this->data['menu'] = $this->load->view('home/menu',$data,true);
-		$this->data['temp'] = $this->load->view('page/lichsu_ungtuyen',$data,true);
+		$this->datamenu['ls'] = "active";
+		
+		$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
+		$this->data['temp'] = $this->load->view('page/lichsu_ungtuyen',null,true);
 		$this->load->view('home/master',$this->data);	
 	}
 	public function lichsu_detail()
 	{
-		$data['ls'] = "active";
-		$this->data['menu'] = $this->load->view('home/menu',$data,true);
-		$this->data['temp'] = $this->load->view('page/lichsu_detail',$data,true);
+		$this->datamenu['ls'] = "active";
+		$this->data['menu'] = $this->load->view('home/menu',$this->datamenu,true);
+		$this->data['temp'] = $this->load->view('page/lichsu_detail',null,true);
 		$this->load->view('home/master',$this->data);	
 	}
 	public function update_introduce()

@@ -177,7 +177,7 @@ class Login extends CI_Controller {
 			$data['password'] = md5($frm['passnew']);
 			$array = array('operatorid' => $this->session->userdata('user')['operatorid']);
 			$this->Login_model->UpdateData("operator",$array,$data);
-
+			echo "0";
 		}else{
 			echo "1";
 		} 

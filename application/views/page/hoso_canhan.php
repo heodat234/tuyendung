@@ -141,16 +141,16 @@
           <nav class="block-leftMenu menuPage mrb30">
 
             <ul class="nav nav-tabs width100" >
-              <li class="active">
+              <li class="<?php echo isset($one)? $one : "";?>">
                 <a  data-toggle="tab" href="#collapseOne" ><i class="fa fa-circle size10 <?php  if($candidate['introduction'] !== ""){echo 'green'; } else{ echo 'orange'; }?>"  ></i> Giới thiệu bản thân</a>
               </li>
-              <li class=""><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php if($candidate['firstname'] !== ""){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin cá nhân</a></li>
-              <li><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
+              <li class="<?php echo isset($two)? $two : "";?>"><a  data-toggle="tab"  href="#collapseTwo" ><i class="fa fa-circle size10 <?php if($candidate['firstname'] !== ""){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin cá nhân</a></li>
+              <li class="<?php echo isset($three)? $three : "";?>"><a  data-toggle="tab"  href="#collapseThree" ><i class="fa fa-circle size10 <?php  if(empty($address) !== true) {echo 'green';} else {echo 'orange';}?>" ></i> Thông tin liên hệ</a>
               </li>
-              <li><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
-              <li><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true || empty($reference) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php  if(empty($knowledge) !== true){echo 'green';} else{echo 'orange';}?>"></i> Trình độ học vấn</a></li>
-              <li><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php
+              <li class="<?php echo isset($four)? $four : "";?>"><a  data-toggle="tab"  href="#collapseFour" ><i class="fa fa-circle size10 <?php  if(empty($family) !== true){ echo 'green'; } else { echo 'orange';}?>" ></i> Thông tin gia đình</a></li>
+              <li class="<?php echo isset($five)? $five : "";?>"><a  data-toggle="tab"  href="#collapseFive" ><i class="fa fa-circle size10 <?php  if(empty($experience) !== true || empty($reference) !== true){ echo 'green';} else { echo 'orange';}?>" ></i> Kinh nghiệm làm việc</a></li>
+              <li class="<?php echo isset($six)? $six : "";?>"><a  data-toggle="tab"  href="#collapseSix" ><i class="fa fa-circle size10 <?php  if(empty($knowledge) !== true){echo 'green';} else{echo 'orange';}?>"></i> Trình độ học vấn</a></li>
+              <li class="<?php echo isset($seven)? $seven : "";?>"><a  data-toggle="tab"  href="#collapseSeven" ><i class="fa fa-circle size10 <?php
                 if(empty($language) !== true || empty($software) !== true){echo 'green';} else {echo 'orange';}?>"></i> Ngoại ngữ tin học</a></li>
             </ul>
           </nav>
@@ -158,7 +158,7 @@
 
         <div class="col-md-9 ">
           <div class="tab-content">
-        <div id="collapseOne" class="tab-pane  <?php echo isset($one)? $one : ""; ?>e">
+        <div id="collapseOne" class="tab-pane  <?php echo isset($one)? $one : ""; ?>">
           <form action="<?php echo base_url()?>handling/update_introduce" method="post" enctype="multipart/form-data">
             <!-- <label for="staticEmail" style ="float: right;" class="col-form-label">Tóm tắt bản thân</label> -->
         
@@ -170,7 +170,7 @@
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label" >VỊ TRÍ MONG MUỐN (EXPECT POSOTION)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label" >VỊ TRÍ MONG MUỐN (EXPECTED POSITION)</label>
             <div class="col-sm-8">
               <textarea class="areatext kttext off-resize" rows="2" name="position"></textarea>
               
@@ -262,7 +262,7 @@
             </div>
           </div>
           <div class="form-group row kcform-more">
-            <label for="inputPassword" class="col-sm-4 col-form-label">DÂN TÔC (ETHNIC)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">DÂN TỘC (ETHNIC)</label>
             <div class="col-sm-6">
                <input class="kttext" type="text" placeholder="" name="ethnic" value="<?php echo $candidate['ethnic'] ?>">
             </div>
@@ -277,13 +277,13 @@
             </div>
           </div>
           <div class="form-group row kcform-more">
-            <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (CM)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">CHIỀU CAO (HEIGHT) (CM)</label>
             <div class="col-sm-6">
                <input class="kttext" type="text" placeholder="" maxlength="3" name="chieucao" id="chieucao" value="<?php echo $candidate['height'] ?>">
             </div>
           </div>
           <div class="form-group row kcform-more">
-            <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (KG)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">CÂN NẶNG (WEIGHT) (KG)</label>
             <div class="col-sm-6">
                <input class="kttext" type="text" placeholder="" maxlength="3" name="cannang" id="cannang" value="<?php echo $candidate['weight'] ?>">
             </div>
@@ -331,7 +331,7 @@
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PREMANENT ADDRESS)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ THƯỜNG TRÚ (PERNAMENT ADDRESS)</label>
             <div class="col-sm-8">
               <textarea class="kttext areatext off-resize" rows="2" name="dctt" readonly onclick="showmodel8(1)"><?php 
                   if($address != null)
@@ -404,7 +404,7 @@
             </div>
           </div>
           <div class="form-group row kcform-more">
-            <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL PHONE)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐIỆN THOẠI CÁ NHÂN (PESONAL CONTACT)</label>
             <div class="col-sm-8">
                <?php 
                     $pizza  = $candidate['telephone'];
@@ -420,7 +420,7 @@
             </div>
           </div>
           <div class="form-group row kcform">
-            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC (EMERGENCY CONTACT)</label>
+            <label for="inputPassword" class="col-sm-4 col-form-label">ĐỊA CHỈ LIÊN LẠC KHẨN CẤP (EMERGENCY CONTACT)</label>
             <div class="col-sm-4">
 
               <input class="kttext" type="text" placeholder="" name="dtkhancap" id="dtkhancap" value="<?php echo $candidate['emergencycontact'] ?>">
@@ -501,9 +501,10 @@
                 <input type="hidden" name="lydo" value="<?php echo $key['quitreason']?>">
                 <input type="hidden" name="recordid" value="<?php echo $key['recordid']?>">
                 <input type="hidden" name="diachi" value="<?php echo $key['address']?>">
+                <input type="hidden" name="sdt" value="<?php echo $key['phone']?>">
               </form>
               <td><?php echo date("d-m-Y", strtotime($key['datefrom'])).' - '.date("d-m-Y", strtotime($key['dateto']))?></td>
-              <td><?php echo $key['company']." ".$key['address']?></td>
+              <td><?php echo $key['company']." / ".$key['address']." / ".$key['phone']?></td>
               <td><?php echo $key['position']?></td>
               <td><?php echo $key['responsibility']?></td>
               <td><?php echo $key['quitreason']?></td>
@@ -819,7 +820,14 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Địa chỉ</label>
             <div class="col-sm-8">
            
-              <textarea class="form-control off-resize fontstyle" rows="2" name="diachi" id="dc2"></textarea>
+              <textarea class="form-control off-resize fontstyle" rows="2" name="diachi" id="dc2" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row padding-left-right-20 margin-bot-15" >
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Số điện thoại</label>
+            <div class="col-sm-8">
+           
+              <input class="form-control fontstyle" type="text"  maxlength="12" name="sdt" id="sdt2" required>
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-12" >
@@ -830,7 +838,7 @@
             </div>
           </div>
           <div class="form-group row padding-left-right-20 margin-bot-12" >
-            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Nhiễm vụ/ trách nhiễm</label>
+            <label for="staticEmail" class="col-sm-4 col-form-label fontstyle"> Nhiệm vụ/ Trách nhiệm </label>
             <div class="col-sm-6">
            
               <input class="form-control fontstyle" type="text"  placeholder="" name="nhiemvu" id="nhiemvu2">
@@ -1023,7 +1031,7 @@
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Ngoại ngữ</label>
             <div class="col-sm-8">
            
-              <input class="form-control fontstyle" type="text"  placeholder="Name of University/ Colleges" name="tentruong" id="truong6" required>
+              <input class="form-control fontstyle" type="text"  placeholder="" name="tentruong" id="truong6" required>
             </div>
           </div>
             <div class="form-group row padding-left-right-20 margin-bot-12">
@@ -1266,7 +1274,7 @@
   <div class="modal-dialog width-30" role="document">
     <div class="modal-content">
       <form action="<?php echo base_url()?>handling/ins_upd_address" method="post">
-      <h3 class="title-modal margin-bot-15">Địa chỉ thường chú</h3>
+      <h3 class="title-modal margin-bot-15" id="titleaddress">Địa chỉ</h3>
            <input type="hidden" name="checkup" id="checkup8" value="0">
           <div class="form-group row padding-left-right-20" >
             <label for="staticEmail" class="col-sm-4 col-form-label fontstyle">Quốc gia</label>
@@ -1489,6 +1497,7 @@ function parseQuery(queryString) {
         $('#nhiemvu2').val(data2.nhiemvu);
        $('#lydonghi2').val(data2.lydo);
        $('#dc2').val(data2.diachi);
+       $('#sdt2').val(data2.sdt);
   }
   function showmodel2(){
   
@@ -1503,6 +1512,7 @@ function parseQuery(queryString) {
         $('#nhiemvu2').val("");
        $('#lydonghi2').val("");
        $('#dc2').val("");
+       $('#sdt2').val("");
   }
   function delmodal2(idform){
       var data = ""; 
@@ -1696,6 +1706,7 @@ function parseQuery(queryString) {
   function showmodel8(ss)
   {
     var dc = ss;
+     $('.js-example-basic-single').select2({dropdownParent: $("#myModal8")});
       $('#myModal8').modal('show');
       $('#select2-thanhpho8-container').text("Chọn tỉnh thành");
       $('#select2-quanhuyen8-container').text("Chọn quận huyện");
@@ -1705,7 +1716,7 @@ function parseQuery(queryString) {
           var check = document.getElementById("checkPREMANENT").value;
           if(check != "PREMANENT")
           {
-            
+            $('#titleaddress').text("Địa chỉ thường trú");
             $('#checkup8').val("1");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1717,7 +1728,7 @@ function parseQuery(queryString) {
           }
           else
           {
-           
+            $('#titleaddress').text("Địa chỉ thường trú");
             $('#checkup8').val(check);
             $('#quocgia8 option[value="'+$("#countryPREMANENT").val()+'"]').prop('selected','selected');
 
@@ -1748,7 +1759,7 @@ function parseQuery(queryString) {
           var check2 = document.getElementById("checkCONTACT").value;
           if(check2 != "CONTACT")
           {
-            
+            $('#titleaddress').text("Địa chỉ liên hệ");
             $('#checkup8').val("2");
             $('#quocgia8').val("0");
             $('#thanhpho8').val("0");
@@ -1760,7 +1771,7 @@ function parseQuery(queryString) {
           }
           else
           {
-            
+            $('#titleaddress').text("Địa chỉ liên hệ");
             $('#checkup8').val(check2);
             $('#quocgia8 option[value="'+$("#countryCONTACT").val()+'"]').prop('selected','selected');
 
@@ -1907,6 +1918,21 @@ function parseQuery(queryString) {
             e.preventDefault();
         }
     });
+         $("#sdt2").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+             // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
 });
     
     
@@ -1985,6 +2011,4 @@ $('.so').on('input', function(e){
         var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");    
         return  n2.split('').reverse().join('');
     }
-
-
-</script>
+ </script>

@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['cohoi_nghe_nghiep.html'] = 'handling/cohoi_nghe_nghiep';
 $route['index.html'] = 'handling/index';
 $route['hoso_canhan.html'] = 'handling/hoso_canhan';
+$route['hoso_canhan.html/(:any)'] = 'handling/hoso_canhan/$1';
 $route['lichsu_apply.html'] = 'handling/lichsu_apply';

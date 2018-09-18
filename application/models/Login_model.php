@@ -31,6 +31,18 @@ class Login_model extends CI_Model{
             return false;
         }
     }
+    // kiem tra cmnd đa ton tai chua
+     public function checkID( $id ){
+        $a_User =   $this->db->select()
+                            ->where('idcard', $id)
+                            ->get($this->table)
+                            ->row_array();
+        if($a_User != null){
+            return true;
+        } else {
+            return false;
+        }
+    }
     // kiem tra co dung password khong
     public function checkPassword($id, $pass ){
         $a_User =   $this->db->select()

@@ -167,6 +167,21 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('user');
 		redirect(base_url('pageLogin'));
 	}
+	public function change_pass()
+	{
+		$frm = $this->input->post();	
+		$username = $this->session->userdata('user')['email'];
+		$password = md5($frm['passold']);
+		$a_UserChecking = $this->Login_model->a_fCheckUser( $username, $password );
+		if($a_UserChecking){
+			$data['password'] = md5($frm['passnew']);
+			$array = array('operatorid' => $this->session->userdata('user')['operatorid']);
+			$this->Login_model->UpdateData("operator",$array,$data);
+
+		}else{
+			echo "1";
+		} 
+	}
 	public function insertUser()
 	{	
 		$frm = $this->input->post();	
@@ -185,7 +200,12 @@ class Login extends CI_Controller {
 
 		if ($this->Login_model->checkMail( $a_UserInfo['email'] )) {	
 			echo "-1";
-		}else{
+		}
+		else if($this->Login_model->checkID( $a_UserInfo['idcard'] ))
+		{
+			echo "-2";
+		}
+		else{
 			$this->Login_model->InsertData("candidate",$data);
 			$a_UserInfo['candidateid'] = $this->Login_model->Set_idcandite()['candidateid'];
 			$this->Login_model->insertUser( $a_UserInfo );

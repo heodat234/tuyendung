@@ -63,7 +63,7 @@ class Handling extends CI_Controller {
 		$this->data['temp'] = $this->load->view('page/cohoi_nghe_nghiep_detail',$data,true);
 		$this->load->view('home/master',$this->data);
 	}
-	public function hoso_canhan($tab = '')
+	public function hoso_canhan($tab = 'one')
 	{
 		if($this->session->has_userdata('user')) {
 			$data['hoso'] = "active";
@@ -83,7 +83,7 @@ class Handling extends CI_Controller {
 			$data['knowledge'] = $this->Login_model->selectTableByIds('canknowledge',$this->session->userdata('user')['candidateid']);
 			$data['language'] = $this->Login_model->selectTableByIds('canlanguage',$this->session->userdata('user')['candidateid']);
 			$data['software'] = $this->Login_model->selectTableByIds('cansoftware',$this->session->userdata('user')['candidateid']);
-			$data[($tab !== "") ? $tab : "one"] = "in active";
+			$data[$tab] = "in active";
 			$this->data['menu'] = $this->load->view('home/menu',$data,true);
 			$this->data['temp'] = $this->load->view('page/hoso_canhan',$data,true);
 			$this->load->view('home/master',$this->data);	
@@ -178,7 +178,8 @@ class Handling extends CI_Controller {
 
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	     // header('location:hoso_canhan');
-		$this->hoso_canhan("two");
+		// $this->hoso_canhan("two");
+		redirect(base_url('hoso_canhan.html/two'));
  	}
  	public function ins_upd_e_phone()
  	{
@@ -187,7 +188,8 @@ class Handling extends CI_Controller {
 		$data['telephone'] = $frm['dt1']." ".$frm['dt2'];	
 		$data['emergencycontact'] = $frm['dtkhancap'];
 		$this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
-		header('location:hoso_canhan');
+		//header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/three'));
  	}
  	public function ins_upd_address()
  	{
@@ -261,7 +263,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canaddress",$data1);
 		}
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/three'));
  	}
  	public function ins_upd_relationship()
  	{
@@ -284,7 +286,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("cansocial",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/four'));
 	}
 	public function ins_upd_experience()
 	{
@@ -298,6 +300,7 @@ class Handling extends CI_Controller {
  			$data1['responsibility'] = $frm['nhiemvu'];
  			$data1['quitreason'] = $frm['lydonghi'];
  			$data1['address'] = $frm['diachi'];
+ 			$data1['phone'] = $frm['sdt'];
 			$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 			$this->Login_model->UpdateData("canexperience",$array,$data1);
  		}
@@ -310,10 +313,11 @@ class Handling extends CI_Controller {
  			$data1['responsibility'] = $frm['nhiemvu'];
  			$data1['quitreason'] = $frm['lydonghi'];
  			$data1['address'] = $frm['diachi'];
+ 			$data1['phone'] = $frm['sdt'];
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canexperience",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function ins_upd_reference()
 	{
@@ -337,7 +341,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canreference",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function ins_upd_knowledge()
 	{
@@ -372,7 +376,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canknowledge",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/six'));
 	}
  	public function ins_upd_knowledge_v2()
 	{
@@ -403,7 +407,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canknowledge",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/six'));
 	}
 	public function ins_upd_language()
 	{
@@ -430,7 +434,7 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("canlanguage",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function ins_upd_software()
 	{
@@ -453,49 +457,49 @@ class Handling extends CI_Controller {
 			$data1['candidateid'] = $this->session->userdata('user')['candidateid'];
 			$this->Login_model->InsertData("cansoftware",$data1);
  		}
- 		header('location:hoso_canhan');
+ 		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_relationship()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansocial",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/four'));
 	}
 	public function del_experience()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canexperience",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function del_reference()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canreference",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/five'));
 	}
 	public function del_knowledge()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canknowledge",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/six'));
 	}
 	public function del_language()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("canlanguage",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_software()
 	{
 		$frm = $this->input->post();
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'recordid' => $frm['checkup']);
 		$this->Login_model->DeleteData("cansoftware",$array);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/seven'));
 	}
 	public function del_address()
 	{
@@ -509,7 +513,7 @@ class Handling extends CI_Controller {
 		$data1['address'] ="";
 		$array =  array('candidateid' => $this->session->userdata('user')['candidateid'], 'addtype' => $frm['checkup']);
 		$this->Login_model->UpdateData("canaddress",$array,$data1);
-		header('location:hoso_canhan');
+		redirect(base_url('hoso_canhan.html/three'));
 	}
 	public function selectCity()
     {

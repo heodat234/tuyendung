@@ -63,7 +63,7 @@ class Handling extends CI_Controller {
 	{
 
 		if($this->session->has_userdata('user')) {
-			$data['hoso'] = "active";
+			$this->datamenu['hoso'] = "active";
 			$arrContextOptions=array(
 	            "ssl"=>array(
 	                "verify_peer"=>false,

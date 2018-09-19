@@ -197,7 +197,9 @@
 
                
                     <div class="form-group row kcform width100" >
-                    <div class="col-sm-6"> <input id="label1" type="text" class="form-control fontstyle" readonly="" value="<?php echo $candidate['profilesrc'] ?>">        
+                    <div class="col-sm-6"> 
+                      <!-- <input id="label1"type="text"class="form-control fontstyle"readonly=""value="<?php //echo $candidate['profilesrc'] ?>"> -->
+                        <a id="label1"  class="fontstyle"  href="<?php echo base_url().'public/document/'.$candidate['profilesrc']?>"><?php echo $candidate['profilesrc'] ?></a>   
                     </div>
                     <div class="col-sm-6">
                     <label id="browsebutton1" class="btn btn-default input-group-addon btn-tailen" for="my-file-selector1" style="background-color:white">

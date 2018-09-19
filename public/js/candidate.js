@@ -72,7 +72,8 @@ $('#tuden6').datetimepicker({
 $(document).ready(function(){
         $('#browsebutton1 :file').change(function(e){
             var fileName = e.target.files[0].name;
-            $("#label1").attr('value',fileName)
+            $("#label1").text(fileName);
+            $("#label1").attr('href','#');
         });
     });      
         

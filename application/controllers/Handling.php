@@ -157,7 +157,7 @@ class Handling extends CI_Controller {
 	        $config['upload_path'] = './public/document/';
 	        $config['allowed_types'] = 'pdf|doc|docx';
 	        $config['file_name'] = $_FILES['profilesrc']['name'];
-	    	$config['overwrite'] = TRUE;  
+	    	$config['overwrite'] = FALSE;  
 	        $this->load->library('upload', $config);
 	        $this->upload->initialize($config);
 
@@ -166,8 +166,17 @@ class Handling extends CI_Controller {
           $uploadData = $this->upload->data();
           $data["profilesrc"] = $uploadData['file_name'];
         	
+       		 }
+       		 else
+       		 {
+       		 	$datas['errors'] = $this->upload->display_errors();
        		 } 
 	     }
+	     else
+	     {
+	     	$datas['errors'] = $this->upload->display_errors();
+	     }
+	     //var_dump($data['errors']);
 	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	      $this->cache->delete('candidate');
 	      header('location:hoso_canhan');
@@ -178,7 +187,7 @@ class Handling extends CI_Controller {
 	        $config['upload_path'] = './public/image/';
 	        $config['allowed_types'] = 'jpg|jpeg|png|gif';
 	        $config['file_name'] = $_FILES['image']['name'];
-	    	$config['overwrite'] = TRUE;  
+	    	$config['overwrite'] = FALSE;  
 	        $this->load->library('upload', $config);
 	        $this->upload->initialize($config);
 
@@ -186,11 +195,14 @@ class Handling extends CI_Controller {
           $uploadData = $this->upload->data();
           $data["imagelink"] = $uploadData['file_name'];
        	 } else{
+       	 	$datas['errors'] = $this->upload->display_errors();
          	 $data["imagelink"] = 'unknow.jpg';
 	        }
 	      }else{
+	      	$datas['errors'] = $this->upload->display_errors();
 	        $data["imagelink"] = 'unknow.jpg';
 	      }
+
 	      $this->Login_model->updateCandidate($this->session->userdata('user')['candidateid'],$data);
 	      $this->cache->delete('candidate');
 	      header('location:hoso_canhan');

@@ -57,3 +57,7 @@ $route['index.html'] = 'handling/index';
 $route['hoso_canhan.html'] = 'handling/hoso_canhan';
 $route['hoso_canhan.html/(:any)'] = 'handling/hoso_canhan/$1';
 $route['lichsu_apply.html'] = 'handling/lichsu_apply';
+
+//admin
+$route['login.html'] = 'admin/login';
+$route['profile/(:num)'] = 'admin/handling/profile/$1';

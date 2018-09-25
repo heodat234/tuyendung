@@ -128,7 +128,7 @@
            <img src="<?php echo base_url()?>public/image/avatar.jpg" alt="" id="anh1" class="img image-avatar">
            <?php }
            else { ?>
-           <img src="<?php echo base_url()?>public/image/<?php echo $candidate['imagelink'] ?>" alt="" id="anh1" class="img image-avatar">
+           <img src="<?php echo base_url()?>admin/public/images/<?php echo $candidate['imagelink'] ?>" alt="" id="anh1" class="img image-avatar">
            <?php } ?>
            <div class="image-edit margin-bot-21" id="anh2" onclick="edit_anh()"><i class="fa fa-camera icon-camera" ></i></div>
            

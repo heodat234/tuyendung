@@ -184,7 +184,7 @@ class Handling extends CI_Controller {
  	public function upload_image()
  	{
  		if (!empty($_FILES['image']['name'])) {
-	        $config['upload_path'] = './public/image/';
+	        $config['upload_path'] = './admin/public/images/';
 	        $config['allowed_types'] = 'jpg|jpeg|png|gif';
 	        $config['file_name'] = $_FILES['image']['name'];
 	    	$config['overwrite'] = FALSE;  

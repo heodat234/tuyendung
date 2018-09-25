@@ -28,26 +28,27 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form  method="post" id="form-login">
+      <div class="alert alert-danger hide" id="err-login"></div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox" name="luumatkhau" value="1"> Remember Me
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="button" class="btn btn-primary btn-block btn-flat" id="btn_login">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
@@ -77,6 +78,31 @@
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' /* optional */
     });
+  });
+  $('#btn_login').click(function(event) {
+    $.ajax({
+      url:'<?php echo base_url() ?>admin/login/loginUser',
+      type: 'POST',
+      dataType: 'json',
+      data: $('form#form-login').serialize(),
+    })
+    .done(function(data) {
+      if (data != '1') {
+        $('#err-login').addClass('hide');  
+        window.location.href = '<?php echo base_url() ?>hosoadmin';      
+      }else{
+        $('#err-login').text('Sai email hoặc mật khẩu. Vui lòng nhập lại!').removeClass('hide');
+      }
+      
+      // console.log(data);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+    
   });
 </script>
 </body>

@@ -60,4 +60,5 @@ $route['lichsu_apply.html'] = 'handling/lichsu_apply';
 
 //admin
 $route['login.html'] = 'admin/login';
+$route['hosoadmin'] = 'admin/handling';
 $route['profile/(:num)'] = 'admin/handling/profile/$1';

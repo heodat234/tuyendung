@@ -1,3 +1,6 @@
+<?php 
+if($this->session->has_userdata('user')) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,3 +94,6 @@
 
 </body>
 </html>
+<?php 
+}else{redirect(base_url('login.html'));}
+?>

@@ -30,6 +30,7 @@ class Handling extends CI_Controller {
 	public function index()
 	{
 		$this->data1['candidate'] = $this->Candidate_model->selectAllCan();
+		var_dump( $this->Candidate_model->selectCan());
 		$this->data1['nav'] = $this->load->view('admin/page/nav',null,true);
 		$this->data['temp'] = $this->load->view('admin/page/content',$this->data1,true);
 

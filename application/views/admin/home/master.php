@@ -1,5 +1,5 @@
 <?php 
-if($this->session->has_userdata('user')) {
+if($this->session->has_userdata('user_admin')) {
 ?>
 <!DOCTYPE html>
 <html>

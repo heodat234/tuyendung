@@ -27,14 +27,14 @@ class login extends CI_Controller {
 		if($a_UserChecking){
 			if($autologin == 1){
 				$cookie = array(
-                    'name'   => 'email',
+                    'name'   => 'email_admin',
                     'value'  => $a_UserChecking[0]['email'],
                     'expire' =>  3600*24*30,
                     'secure' => false
                 );
                 $this->input->set_cookie($cookie); 
                 $cookie1 = array(
-                    'name'   => 'password',
+                    'name'   => 'password_admin',
                     'value'  => $frm['password'],
                     'expire' =>  3600*24*30,
                     'secure' => false
@@ -42,7 +42,7 @@ class login extends CI_Controller {
                 $this->input->set_cookie($cookie1); 
                 
 			}
-			$this->session->set_userdata('user', $a_UserChecking[0]);
+			$this->session->set_userdata('user_admin', $a_UserChecking[0]);
 			echo json_encode($a_UserChecking);
 		}else{
 			echo "1";
@@ -54,10 +54,10 @@ class login extends CI_Controller {
 	//đăng xuất
 	public function logout($value='')
 	{
-		$this->session->unset_userdata('user');
+		$this->session->unset_userdata('user_admin');
 		// $cookiename	=	"siteAuth";
 		// setcookie($cookiename, 'user='."", time() - 3600);	// Unset cookie of user	// Unset session of user
-		redirect(base_url(''));
+		redirect(base_url('login.html'));
 	}
 
 	//lấy lại password, gửi qua mail

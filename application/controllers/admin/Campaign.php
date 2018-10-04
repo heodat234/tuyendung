@@ -5,7 +5,7 @@ class Campaign extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->helper(array('url'));
+		$this->load->helper(array('url','my_helper','file'));
 		$this->load->model(array('admin/Candidate_model'));
 		$this->load->library('session');
 		$this->_data['header'] 	= $this->load->view('admin/home/header',null,true);

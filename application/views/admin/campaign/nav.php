@@ -210,59 +210,12 @@
 
             </div>
         </nav>
-      <button type="button" class="btn-luu-nav" onclick="clicksave()"> Lưu</button>
+      <!-- <button type="button" class="btn-luu-nav" onclick="clicksave()"> Lưu</button> -->
         </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="save-preset" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form action="#" method="POST" enctype="multipart/form-data">
 
-      <div class="modal-header model-tittle" >
-        <button type="button" class="close" data-dismiss="modal" style="color: white" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title model-filter" id="myModalLabel" >Lưu tiêu chí lọc tổng hợp</h4>
-
-      </div>
-      <div class="modal-body">
-           <div class="row margin-b10" >
-            <div class="col-md-5"><label class="weight350">Tên gọi của tiêu chí</label>
-            </div>
-            <div class="col-md-7">
-                <select class="model-select">
-                    <option class="pad5">Ứng viên vị trí hành chính nhân sự</option>
-                </select>
-            </div>
-           </div>
-           <label class="weight350">Dành cho Admin:</label>
-            <div class="row">
-            <div class="col-md-5">
-                <label class="weight350">Áp dụng E-mail</label>
-            </div>
-            <div class="col-md-7"> 
-               <label class="weight350 width100"><i class="fa fa-minus-circle" style="color: #F5821F"></i> &nbsp; Tin tức DXG</label>
-               <label class="weight350 width100"><i class="fa fa-minus-circle" style="color: #F5821F"></i> &nbsp; Tin tức Tuyển dụng (Nhân sự)</label>
-               <label class="weight350"><i class="fa fa-plus-circle" style="color: #5FA2DD"></i></label> &nbsp;
-                <select id="example-multiple-selected" multiple="multiple">
-                    <option value="1">Chọn tất cả</option>
-                    <option value="2" selected="selected">Tin tức chế độ nhân sự</option>
-                    <option value="3">Tin tức đãi ngộ đặc biệt</option>
-                </select>
-            </div>
-           </div>
-      </div>
-
-      <div class="modal-footer pad-tb10" >
-        <label class="model-share"><input type="checkbox" > &nbsp; Chia sẻ tiêu chí lọc</label>
-        <button type="button" class="btn btn-admin orange"  data-dismiss="modal">Hủy</button>
-        
-        <input type="submit" class="btn btn-admin blue" value="Lưu">  
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 <script type="text/javascript">
 
 

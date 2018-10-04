@@ -18,7 +18,7 @@
         	<div class="box box-default">
 	            <div class="box-header">
 	              <!-- <i class="fa fa-warning"></i> -->
-	              <h3 class="box-title">Nhân viên kinh doanh (100)</h3>
+	              <h3 class="box-title"><a style="color: black" href="<?php echo base_url()?>admin/Campaign/round_1_1">Nhân viên kinh doanh (100)</a></h3>
 	              <a href="#">Sale, Bán hàng, Kinh doanh</a> - 
 	              <h5> T.P Hồ Chí Minh - Việt Nam / Không thời hạn</h5>
 	              <div class="box-tools pull-right">

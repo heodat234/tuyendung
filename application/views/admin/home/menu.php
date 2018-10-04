@@ -38,8 +38,8 @@
           </a>
             <ul class="treeview-menu" style="padding-left: 20px">
             <li><a href="<?php echo base_url()?>admin/tintuc/index"><i class="fa fa-file-text"></i> Tin tức tuyển dụng</a></li>
-            <li><a href="#"><i class="fa fa-flag"></i> Chiến dịch tuyển dụng</a></li>
-            <li><a href="#"><i class="fa fa-comments"></i> Quy trình phỏng vấn</a></li>
+            <li><a href="<?php echo base_url()?>admin/Campaign/main"><i class="fa fa-flag"></i> Chiến dịch tuyển dụng</a></li>
+            <li><a href="<?php echo base_url()?>admin/recruitprocess/"><i class="fa fa-comments"></i> Quy trình phỏng vấn</a></li>
             <li><a href="#"><i class="fa fa-pencil-square-o"></i> Trắc nghiệm/ Đánh giá</a></li>
           </ul> 
         </li>

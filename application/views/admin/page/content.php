@@ -6,59 +6,77 @@
    			 echo isset($nav)? $nav : "";
    		 ?>
 </section>
-<section class="col-lg-9 connectedSortable" style="padding-left: 0px; padding-right: 0px">
+<section class="col-lg-9 connectedSortable padding-lr0">
     <div style="background-color: white; min-height: 932px">
 			<div class="row rowedit">
 				<div class="col-md-6">	
-					<label style="font-size: 13px;font-weight: 400; margin-left: 5px; padding-top: 15px;"><span style="color: #ccc">Chọn: </span><span style=" color: #5fade0">Tất cả | Bỏ chọn</span> &nbsp; &nbsp; &nbsp; &nbsp;   <span style="color: #ccc">Sắp xếp:</span><span style="color: #5fade0"> Tiềm năng ></span></label>
+					<label class="header-content"><span class="color-ccc">Chọn: </span><span class="color-blue">Tất cả | Bỏ chọn</span> &nbsp; &nbsp; &nbsp; &nbsp;   <span class="color-ccc">Sắp xếp:</span><span class="color-blue"> Tiềm năng ></span></label>
 				</div>
 				<div class="col-md-6 hovbtn">
-					<button type="button" style="float: right;height: 27px; width: 27px; font-size: 12px;margin-top: 7px;border: 0px;background-color: #f6f6f6;" ><i class="fa fa-print" style="color: #ccc"></i></button>
-					<button type="button" style="float: right;margin-right: 7px;height: 27px; width: 27px;margin-top: 7px; font-size: 12px;border: 0px;background-color: #f6f6f6;" ><i class="fa fa-envelope-o" style="color: #ccc"></i></button>
-					<button type="button" style="float: right;margin-right: 7px; height: 27px; width: 27px;margin-top: 7px; font-size: 12px;border: 0px;background-color: #f6f6f6;" ><i class="fa fa-star" style="color: #ccc"></i></button>
-					<button type="button" style="float: right;margin-right: 7px; height: 27px; width: 27px;margin-top: 7px; font-size: 12px;border: 0px;background-color: #f6f6f6;" > <i class="fa fa-check-circle-o" style="color: #ccc"></i></button>
+					<button type="button" class="btn-icon-header" ><i class="fa fa-print color-ccc" ></i></button>
+					<button type="button" class="btn-icon-header margin-r7" ><i class="fa fa-envelope-o color-ccc" ></i></button>
+					<button type="button" class="btn-icon-header margin-r7" ><i class="fa fa-star color-ccc"></i></button>
+					<button type="button" class="btn-icon-header margin-r7" > <i class="fa fa-check-circle-o color-ccc"></i>
+					</button>
 				</div>
 			</div>
-			<div style="border: 0.5px solid #ececec;margin-top: 5px;"></div>
-				<label style="font-size: 14px;font-weight: 400; color: #ccc;margin-left: 15px;padding-top: 8px">10 Hồ sơ</label>
+			<div class="dash-horizontal"></div>
+				<label class="demhs">10 Hồ sơ</label>
 
-			<div class="row rowedit" style="padding-top: 5px">
+			<div class="row rowedit pad-t5" >
 				<?php
 
 				 for($i = 0; $i < count($candidate); $i++)
 				{
 					?>
-					<a href="<?php echo base_url()?>profile/<?php echo $candidate[$i]['candidateid']?>">
-					<div class="col-md-6 profile" style="border: 0.5px solid #ececec; padding-left: 0px; padding-right: 5px">
+					<a href="<?php echo base_url()?>admin/handling/profile/<?php echo $candidate[$i]['candidateid']?>" class="hover-profile">
+					<div class="col-md-6 profile dash-horizontal pad-l0 pad-r5 min-h152">
 
-						<table style="margin-top: 5px; margin-bottom: 5px">
+						<table class="margin-t5 margin-b5">
 							<tr>
-								<td style="vertical-align: top;padding: 2px">
+								<td class="td-cot1">
 									<input type="checkbox">
 								</td>
-								<td style="vertical-align: top;padding: 2px">
-									<img src="<?php echo base_url()?>public/admin/images/<?php echo $candidate[$i]['imagelink']?>" style="border: 1.5px solid #ececec;" width="70px" height="70px">
-									<label style="font-size: 12px;font-weight: 400;margin-bottom: 0px; color: #5fade0; padding-top: 3px">80 điểm</label>
-									<label style="font-size: 12px;font-weight: 400;margin-bottom: 0px; color: #5fade0;padding-top: 1px">3 mẩu thư</label>
-									<label style="margin-top: -3px">
-										<i class="fa fa-bell" style="padding-right: 10px;font-size: 12px;padding-left: 2px;color: #ccc"></i>
-										<i class="fa fa-user" style="padding-right: 10px;font-size: 12px;color: #ccc"></i>
+								<td class="td-cot2">
+									<img src="<?php echo base_url()?>public/image/<?php echo $candidate[$i]['imagelink']?>" class="frameimage" width="70px" height="70px">
+									<label class="label-td pad-t3" >80 điểm</label>
+									<label class="label-td pad-t1" >3 mẩu thư</label>
+									<label class="margin-t-3">
+										<i class="fa fa-bell icon-label" style="padding-left: 2px;"></i>
+										<i class="fa fa-user icon-label"></i>
 										<i class="fa fa-clock-o" style="font-size: 14px;color: #ccc"></i>
 									</label>
 								</td>
-								<td style="vertical-align: top;padding: 2px">
-									<div class="row" >
-										<div class="col-md-7">
-											<label style="font-size: 16px; font-weight: 600;margin-bottom: 0px;"><?php echo $candidate[$i]['name'] ?></label>
+								<td class="td-cot3">
+									<div class="row width100 margin-l0" >
+										<div class="col-md-7 padding-lr0">
+											<label class="label-name color-black"><?php echo $candidate[$i]['name'] ?></label>
 										</div>
-										<div class="col-md-5">
-											<span style="float: right; margin-bottom: 0px;font-size: 14px;color: #5fade0">Web portal <i class="fa fa-star" style="color: orange"></i></span>
+										<div class="col-md-5 padding-lr0 ">
+											<span class="webportal">Web portal <i class="fa fa-star color-orange"></i></span>
 										</div>
 									</div>
-									<label style="font-size: 14px;margin-bottom: 0px;font-weight: 400;margin-top: -5px; width: 100%">Chuyên viên tuyển dụng - VP BANK</label>
-									<label style="font-size: 13px;margin-bottom: 0px;font-weight: 350;color: #5fade0">Tuyển dụng, đào tạo</label>
-									<label style="font-size: 14px;margin-bottom: 0px;font-weight: 350;color: #ccc">Nam, 27 tuổi, 1m75, 70kg, 8 năm kinh nghiệm, mức lương 30 - 50 tr(VND), Cử nhân hành chính Nhân sự +3..., Tiếng Anh +2, MS OFfice +3,...</label>
-									<span style="font-size: 13px;color: #5fade0">#HighR</span>
+									<label class="tuyendung-label1 color-black">Chuyên viên tuyển dụng - VP BANK</label>
+									<label class="tuyendung-label2">Tuyển dụng, đào tạo</label>
+									<label class="tuyendung-label3">
+										<?php echo ($candidate[$i]['gender'] == "M")? "Nam" : "Nữ"?>, <?php echo getAge($candidate[$i]['dateofbirth']);?> tuổi, <?php echo ($candidate[$i]['height'] == 0)? "" : $candidate[$i]['height']."cm, ";?><?php echo ($candidate[$i]['weight'] == 0)? "" : $candidate[$i]['weight']."kg, ";?><?php if($candidate[$i]['dateto'] != null && $candidate[$i]['datefrom'] != null){    
+							                  $secs = strtotime($candidate[$i]['dateto']) - strtotime($candidate[$i]['datefrom']);
+							                  $days = $secs / 86400;
+							                  $month = $days/30;
+							                  echo ($month < 1)? "1 tháng kinh nghiệm, " : round($month)." tháng kinh nghiệm, ";
+							              }              
+							              ?><?php echo ($candidate[$i]['desirebenefit'] == 0)? "" : number_format($candidate[$i]['desirebenefit'])." VND, "?><?php echo ($candidate[$i]['certificate'] == "")? "" :$candidate[$i]['certificate'].", ";?><?php 
+							              	  if($candidate[$i]['countlanguage'] == 0) echo "";
+							              	  else if($candidate[$i]['countlanguage'] == 1) echo $candidate[$i]['language'].", ";
+							              	  else echo $candidate[$i]['language']."+".($candidate[$i]['countlanguage']-1).", ";
+							              	  ?><?php
+							              	  if($candidate[$i]['countsoftware'] == 0) echo "";
+							              	  else if($candidate[$i]['countsoftware'] == 1) echo $candidate[$i]['software'].", ";
+							              	  else echo $candidate[$i]['software']."+".($candidate[$i]['countsoftware']-1).", ";
+							                  ?>...
+									</label>
+
+									<span class="highr">#HighR</span>
 								</td>
 							</tr>
 						</table>
@@ -68,10 +86,12 @@
 				<?php } ?>
 			
 			</div>
-			<button type="button" style="border: 0px;height: 30px;color: white;background-color: #5fade0;margin-top: 15px;margin-left: 10px; margin-bottom: 20px;" > Thêm Hồ Sơ</button>
+			<button type="button" class="btn-themhoso" > Thêm Hồ Sơ</button>
 		</div>    	
 </section>	
 
   </div>
     </section>
   </div>
+
+ 

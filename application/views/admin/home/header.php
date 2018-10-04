@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo" style="background-color: #5FA2DD">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>DXG</b></span>
+      <span class="logo-mini"><img src="<?php echo base_url()?>public/image/logoheader.png" class="sizelogo-header margin-l12"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>DXG</b> Recruiter</span>
+      <span class="logo-lg"><img src="<?php echo base_url()?>public/image/logoheader.png" class="sizelogo-header"> &nbsp;DXG Recruiter</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" style="background-color: #fff">
@@ -16,7 +16,7 @@
       <div class="navbar-custom-menu" >
         <ul class="nav navbar-nav">
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle h40" data-toggle="dropdown">
               <i class="fa fa-bell-o" style="color: gray"></i>
               <span class="label label-warning">10</span>
             </a>
@@ -58,7 +58,7 @@
           </li>
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle h40" data-toggle="dropdown">
               <i class="fa fa-envelope-o" style="color: gray"></i>
               <span class="label label-success">4</span>
             </a>
@@ -70,7 +70,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url()?>public/image/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -83,7 +83,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url()?>public/image/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -95,7 +95,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url()?>public/image/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -107,7 +107,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url()?>public/image/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -119,7 +119,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?php echo base_url()?>public/image/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -137,7 +137,7 @@
           
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle h40" data-toggle="dropdown">
               <i class="fa fa-calendar" style="color: gray"></i>
               <span class="label label-danger">9</span>
             </a>
@@ -215,8 +215,8 @@
           </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px; padding-bottom: 10px">
-              <img src="<?php echo base_url()?>public/image/2.jpg" width="30" height="30" alt="User Image" style="">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 8px; padding-bottom: 7px">
+              <img src="<?php echo base_url()?>public/image/2.jpg" width="25" height="25" alt="User Image" style="">
              <!--  <span class="hidden-xs">Alexander Pierce</span> -->
             </a>
             <ul class="dropdown-menu">

@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
 	<section class="content">
 		<div class="row">
@@ -5,7 +6,8 @@
 				<?php echo isset($nav)? $nav : ""; ?>  	
 			</section>
 			<section class="col-lg-7 connectedSortable" style="width: 63% !important; padding-left: 0px; padding-right: 0px">
-				<iframe src="<?php echo base_url()?>handling/hosochitiet" style="min-height: 600px;width: 100%;
+				<iframe src="<?php echo base_url()?>admin/handling/hosochitiet/<?php echo isset($id)? $id : ""; ?>" id="idf_profile" 
+					style="min-height: 600px;width: 100%;
 				border: none"></iframe>
 			</section>
 		</div>

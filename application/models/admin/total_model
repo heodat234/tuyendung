@@ -1,0 +1,37 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+class total_model extends CI_Model{
+	
+	function __construct(){
+        parent::__construct();
+        $this->load->database();
+    }
+    public function InsertData($table,$data)
+    {
+        $a_User =   $this->db->insert($table,$data);
+    }
+    public function UpdateData($table,$match,$data)
+    {
+        $a_User =   $this->db->where($match)
+                            ->update($table,$data);
+    }
+    public function DeleteData($table,$match)
+    {
+        $data = array('hidden' => 0 );
+        $a_User =   $this->db->where($match)
+                            ->update($table,$data);
+    }
+     public function selectTableById($table,$id)
+    {
+        $this->db->select()->where('candidateid', $id);
+        $this->db->where('hidden', 1);
+        $query = $this->db->get($table);
+       return $query->row_array();
+    }
+    public function selectTableByIds($table,$id)
+    {
+        $this->db->select();
+        $this->db->where('candidateid', $id);
+        $this->db->where('hidden', 1);
+        $query = $this->db->get($table);
+       return $query->result_array();
+    } 

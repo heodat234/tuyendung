@@ -17,7 +17,7 @@
           </ul> -->
         </li>
         <li >
-          <a href="#">
+          <a href="<?php echo base_url()?>admin/handling/index">
             <i class="fa fa-book"></i>
             <span>Hồ sơ ứng viên</span>
            <!--  <span class="pull-right-container">
@@ -37,10 +37,10 @@
             </span> -->
           </a>
             <ul class="treeview-menu" style="padding-left: 20px">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-file-text"></i> Tin tức tuyển dụng</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-flag"></i> Chiến dịch tuyển dụng</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-comments"></i> Quy trình phỏng vấn</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-pencil-square-o"></i> Trắc nghiệm/ Đánh giá</a></li>
+            <li><a href="<?php echo base_url()?>admin/tintuc/index"><i class="fa fa-file-text"></i> Tin tức tuyển dụng</a></li>
+            <li><a href="#"><i class="fa fa-flag"></i> Chiến dịch tuyển dụng</a></li>
+            <li><a href="#"><i class="fa fa-comments"></i> Quy trình phỏng vấn</a></li>
+            <li><a href="#"><i class="fa fa-pencil-square-o"></i> Trắc nghiệm/ Đánh giá</a></li>
           </ul> 
         </li>
         <li class="treeview">

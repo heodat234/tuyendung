@@ -10,6 +10,14 @@
 	padding-left: 0px;
 	padding-right: 0px; 
 }
+.width5
+{
+	width: 5%;
+}
+.width15
+{
+	width: 15%;
+}
 .width20
 {
 	width: 20%;
@@ -17,6 +25,10 @@
 .width30
 {
 	width: 30%;
+}
+.width60
+{
+	width: 60%
 }
 .width80
 {
@@ -101,3 +113,93 @@
     height: 30px;
     padding-left: 5px;
 }
+.off-resize
+{
+	resize: none;
+}
+.np-header
+{
+	font-size: 12px;
+	font-weight: 400;
+	padding-left: 10px; 
+	padding-top: 15px;
+	padding-right: 10px;
+	width: 100%
+}
+.np-icon
+{
+	float: right;
+	height: 27px; 
+	width: 27px;
+	margin-top: 7px; 
+	font-size: 12px;
+	border: 0px;
+	background-color: #f6f6f6
+}
+.margin-r7
+{
+	margin-right: 7px;
+}
+.margin-t4
+{
+	margin-top: 4px;
+}
+.image-avatar-ad
+{
+	border: 1.5px solid #d0d0d0; margin-top: -26px; margin-left: 18px;
+}
+.rowcontent
+{
+	margin-top: -99px; 
+	margin-left: 142px;
+}
+.fontstyle
+{
+	font-size: 14px !important;
+}
+#th
+{
+	background-color: #F8F9FC;
+	color: black;
+	text-align: center;
+}
+.text-center
+{
+	text-align: center;
+}
+.margin-t35
+{
+	margin-top: 35px;
+}
+.hov-btn-ad>button:hover
+{
+	background-color: #e8e7e7
+}
+.h-auto
+{
+	height: auto;
+	padding-bottom: 2px;
+}
+.color-black
+{
+	color: black;
+}
+.hov-a-if:hover
+{
+	background-color: #EFF5FB !important;
+}
+.nemu-info-pf
+{
+	height: 30px; 
+	border-radius: 0px !important;
+	font-size: 14px;
+	padding-left: 6px !important; 
+	padding-right: 6px !important;
+	padding-top: 6px !important;
+}
+.border-rad0
+{
+	border-radius: 0px;
+	border: 0px;
+}
+

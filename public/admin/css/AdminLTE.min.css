@@ -17,10 +17,10 @@ body {
 }
 
 body {
-				font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-				font-weight: 400;
-				overflow-x: hidden;
-				overflow-y: auto
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 340;
+	overflow-x: hidden;
+	overflow-y: auto
 }
 
 .wrapper {
@@ -209,7 +209,7 @@ a:focus {
 				margin-bottom: 0;
 				margin-left: 230px;
 				border: none;
-				min-height: 50px;
+				min-height: 40px;
 				border-radius: 0
 }
 
@@ -314,9 +314,9 @@ a:focus {
 				transition: width .3s ease-in-out;
 				display: block;
 				float: left;
-				height: 50px;
+				height: 40px;
 				font-size: 20px;
-				line-height: 50px;
+				line-height: 40px;
 				text-align: center;
 				width: 230px;
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -326,7 +326,7 @@ a:focus {
 }
 
 .main-header .logo .logo-lg {
-				display: block
+	display: block
 }
 
 .main-header .logo .logo-mini {
@@ -450,17 +450,18 @@ a:focus {
 }
 
 .main-sidebar {
-				position: absolute;
-				top: 0;
-				left: 0;
-				padding-top: 50px;
-				min-height: 100%;
-				width: 230px;
-				z-index: 810;
-				-webkit-transition: -webkit-transform .3s ease-in-out, width .3s ease-in-out;
-				-moz-transition: -moz-transform .3s ease-in-out, width .3s ease-in-out;
-				-o-transition: -o-transform .3s ease-in-out, width .3s ease-in-out;
-				transition: transform .3s ease-in-out, width .3s ease-in-out
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-top: 40px;
+	min-height: 100%;
+	width: 230px;
+	z-index: 810;
+	-webkit-transition: -webkit-transform .3s ease-in-out, width .3s ease-in-out;
+	-moz-transition: -moz-transform .3s ease-in-out, width .3s ease-in-out;
+	-o-transition: -o-transform .3s ease-in-out, width .3s ease-in-out;
+	transition: transform .3s ease-in-out, width .3s ease-in-out;
+	background-color: #3F505F !important;
 }
 
 @media (max-width:767px) {
@@ -706,7 +707,7 @@ a:focus {
 }
 
 .sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu>li:hover>.treeview-menu {
-				top: 44px;
+				top: 40px;
 				margin-left: 0
 }
 
@@ -765,7 +766,7 @@ a:focus {
 
 .control-sidebar {
 				position: absolute;
-				padding-top: 50px;
+				padding-top: 40px;
 				z-index: 1010
 }
 
@@ -3006,7 +3007,7 @@ a:focus {
 }
 
 .products-list .product-img img {
-				width: 50px;
+				width: 40px;
 				height: 50px
 }
 
@@ -3183,7 +3184,7 @@ table.text-center th {
 }
 
 .right .direct-chat-text {
-				margin-right: 50px;
+				margin-right: 40px;
 				margin-left: 0
 }
 
@@ -3859,7 +3860,7 @@ table.text-center th {
 
 .btn-social {
 				position: relative;
-				padding-left: 44px;
+				padding-left: 40px;
 				text-align: left;
 				white-space: nowrap;
 				overflow: hidden;
@@ -3910,7 +3911,7 @@ table.text-center th {
 
 .btn-social-icon {
 				position: relative;
-				padding-left: 44px;
+				padding-left: 40px;
 				text-align: left;
 				white-space: nowrap;
 				overflow: hidden;
@@ -5750,4 +5751,67 @@ table.text-center th {
 				.table-responsive>.table tr td {
 								white-space: normal !important
 				}
+}
+
+
+
+/* Header */
+.main-header {
+	height:40px;
+}
+.navbar {
+	height:40px;
+}
+.main-header .logo {
+	text-align: left;
+	font-size: 16px;
+}
+.logo-lg{
+	height:40px;
+}
+.nav-tabs>li>a {
+    font-size: 12px;
+    font-weight: 350;
+}
+.label-edit{
+	font-weight: 400; 
+	font-size: 11px; 
+	color:#5fade0;
+	padding-top: 10px;
+	padding-left: 10px
+}
+.tab-pane .search-div{
+	padding: 5px;
+}
+.tab-pane .search-input{
+	width: 100%;
+	padding:4px; 
+	font-size: 12px;
+	color: #55595c; 
+	background-color: #fff; 
+	border: 1px solid #ccc;
+}
+.search-icon{
+	float: right;
+	margin-right: 6px;
+	margin-top: -22px;
+	position: relative;
+	z-index: 2;
+	color: #ADB3B8;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ADB3B8;
+    opacity: 1; /* Firefox */
+    font-size: 11px
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ADB3B8;
+    font-size: 11px
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ADB3B8;
+    font-size: 11px
 }

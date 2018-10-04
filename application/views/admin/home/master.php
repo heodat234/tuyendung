@@ -30,11 +30,18 @@ if($this->session->has_userdata('user_admin')) {
   <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/bootstrap-multiselect.css">
   <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/mycss.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/mycss2.css">
   <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/profile.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/custom.css">
   <link rel="stylesheet" href="<?php echo base_url()?>public/admin/css/bootstrap-multiselect.css">
   <script src="<?php echo base_url()?>public/admin/js/jquery.min.js"></script>
   <script src="<?php echo base_url()?>public/admin/js/bootstrap-multiselect.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/datetimepicker-master/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!-- 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 </head>
@@ -68,12 +75,15 @@ if($this->session->has_userdata('user_admin')) {
 
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url()?>public/admin/js/jquery-ui.min.js"></script>
+  <script src="<?php echo base_url()?>public/admin/js/bootstrap-multiselect.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url()?>public/admin/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url()?>public/ckeditor/ckeditor.js"></script>
 
 <!-- <script src="bower_components/moment/min/moment.min.js"></script> -->
 <script src="<?php echo base_url()?>public/admin/js/daterangepicker.js"></script>
@@ -89,8 +99,10 @@ if($this->session->has_userdata('user_admin')) {
 <script src="<?php echo base_url()?>public/admin/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url()?>public/admin/js/dashboard.js"></script>
+<script src="<?php echo base_url() ?>public/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url()?>public/admin/js/demo.js"></script>
+<?php echo isset($script)? $script: ""; ?>
 
 </body>
 </html>

@@ -184,7 +184,7 @@ class Handling extends CI_Controller {
  	public function upload_image()
  	{
  		if (!empty($_FILES['image']['name'])) {
-	        $config['upload_path'] = './admin/public/images/';
+	        $config['upload_path'] = './public/image/';
 	        $config['allowed_types'] = 'jpg|jpeg|png|gif';
 	        $config['file_name'] = $_FILES['image']['name'];
 	    	$config['overwrite'] = FALSE;  
@@ -196,7 +196,7 @@ class Handling extends CI_Controller {
           $data["imagelink"] = $uploadData['file_name'];
        	 } else{
        	 	$datas['errors'] = $this->upload->display_errors();
-         	 $data["imagelink"] = 'unknow.jpg';
+         	$data["imagelink"] = 'unknow.jpg';
 	        }
 	      }else{
 	      	$datas['errors'] = $this->upload->display_errors();
